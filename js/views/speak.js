@@ -268,7 +268,7 @@ async function runFeedback(e) {
   const text = root.querySelector('#transcript').value;
   if (words(text) < 5) { toast('Chưa có đủ chữ để nhận xét. Nói hoặc gõ thêm.'); return; }
   if (!(await hasAI())) {
-    box.innerHTML = '<div class="notice notice-quiet" style="margin-top:12px">Chưa có khoá Gemini. Vào <a href="#/settings">Cài đặt</a> để kết nối repo dữ liệu có config.json, hoặc dùng nút “Copy”.</div>';
+    box.innerHTML = '<div class="notice notice-quiet" style="margin-top:12px">Chưa có khoá Gemini. Vào <a href="#/settings">Cài đặt</a> dán khoá, hoặc dùng nút “Copy”.</div>';
     return;
   }
   btn.disabled = true;

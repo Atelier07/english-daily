@@ -211,7 +211,7 @@ export async function testConnection() {
   try {
     const cfg = await loadConfig(true);
     if (!cfg) lines.push('Chưa có config.json: các tính năng AI sẽ tắt.');
-    else lines.push(cfg.geminiKey ? `config.json có khoá Gemini${Array.isArray(cfg.models) && cfg.models.length ? `, ${cfg.models.length} model tự chọn` : ''}.` : 'config.json chưa có "geminiKey".');
+    else lines.push(cfg.geminiKey ? `Repo có khoá Gemini${Array.isArray(cfg.models) && cfg.models.length ? `, ${cfg.models.length} model tự chọn` : ''}.` : 'Repo chưa có khoá Gemini (dán khoá ở mục AI).');
   } catch (e) { lines.push(`config.json lỗi: ${e.message}`); }
   return { ok: true, lines };
 }
@@ -229,7 +229,16 @@ export async function loadConfig(force = false) {
   try { localStorage.setItem(CFG_KEY, JSON.stringify(memConfig)); } catch (e) { /* ignore */ }
   return memConfig;
 }
+export const MANUAL_KEY = 'ed.geminiKey.manual';
+export function getManualKey() { try { return (localStorage.getItem(MANUAL_KEY) || '').trim(); } catch (e) { return ''; } }
+export function setManualKey(k) { try { k ? localStorage.setItem(MANUAL_KEY, k.trim()) : localStorage.removeItem(MANUAL_KEY); } catch (e) { /* ignore */ } }
 export async function getConfig() {
+  const manual = getManualKey();
+  const base = await getRepoConfig();
+  if (manual) return { ...(base || {}), geminiKey: manual };
+  return base;
+}
+async function getRepoConfig() {
   if (memConfig) return memConfig;
   try {
     const cached = JSON.parse(localStorage.getItem(CFG_KEY) || 'null');

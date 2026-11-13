@@ -51,7 +51,7 @@ function modelOrder(cfg) {
 
 export async function ask(prompt) {
   const cfg = await getConfig();
-  if (!cfg || !cfg.geminiKey) throw new AIError('nokey', 'Chưa có khoá Gemini. Vào Cài đặt để kết nối repo dữ liệu có config.json.', true);
+  if (!cfg || !cfg.geminiKey) throw new AIError('nokey', 'Chưa có khoá Gemini. Vào Cài đặt, dán khoá Gemini (hoặc dán token GitHub).', true);
   let lastErr = null;
   for (const model of modelOrder(cfg)) {
     const ctrl = new AbortController();

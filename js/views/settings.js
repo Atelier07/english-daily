@@ -1,4 +1,4 @@
-import { getSettings, setSettings, testConnection, syncNow, getStatus, onStatus, isConfigured, forgetConfig, loadConfig } from '../sync.js';
+import { getSettings, setSettings, testConnection, syncNow, getStatus, onStatus, isConfigured, forgetConfig, loadConfig, getManualKey, setManualKey } from '../sync.js';
 import { ask } from '../ai.js';
 import { esc } from '../util.js';
 import { toast, confirmModal } from '../ui.js';
@@ -20,7 +20,7 @@ function render() {
     <div class="page-head">
       <div class="eyebrow">Cài đặt</div>
       <h1>Đồng bộ và AI</h1>
-      <p class="lede">Không bắt buộc. Không có token, app vẫn chạy đầy đủ trên máy này. Có token, dữ liệu được lưu vào một repo GitHub riêng tư của bạn và khoá Gemini được đọc từ <code>config.json</code> trong repo đó.</p>
+      <p class="lede">Không bắt buộc. Không có token, app vẫn chạy đầy đủ trên máy này. Có token, dữ liệu được lưu vào một repo GitHub riêng tư của bạn và AI tự lấy khoá có sẵn trong repo đó.</p>
     </div>
 
     <section class="card stack">
@@ -43,10 +43,14 @@ function render() {
 
     <section class="section card stack">
       <h3>AI (Gemini)</h3>
-      <p class="muted small" style="margin:0">Khoá nằm trong <code>config.json</code> ở repo dữ liệu: <code>{"geminiKey": "…", "models": []}</code>. App chỉ đọc file này, không bao giờ ghi khoá vào mã nguồn. Mọi tính năng AI đều tuỳ chọn.</p>
+      <p class="muted small" style="margin:0">Dán khoá Gemini vào đây là AI chạy. Đã dán token GitHub ở trên thì không cần: app tự lấy khoá có sẵn trong repo riêng.</p>
+      <div class="field"><label for="gemKey">Khoá Gemini</label>
+        <input id="gemKey" class="input" type="password" autocomplete="off" spellcheck="false" placeholder="Dán khoá Gemini" value="${esc(getManualKey())}">
+      </div>
       <div class="row">
-        <button type="button" class="btn" id="reloadCfg" ${isConfigured() ? '' : 'disabled'}>Tải lại config.json</button>
-        <button type="button" class="btn btn-quiet" id="testAI" ${isConfigured() ? '' : 'disabled'}>Thử gọi AI</button>
+        <button type="button" class="btn btn-primary" id="saveKey">Lưu khoá</button>
+        <button type="button" class="btn btn-quiet" id="testAI">Thử gọi AI</button>
+        <button type="button" class="btn btn-quiet" id="reloadCfg" ${isConfigured() ? '' : 'disabled'}>Lấy lại khoá từ repo</button>
       </div>
       <div id="aiOut" class="small"></div>
     </section>
@@ -79,12 +83,16 @@ function render() {
     e.target.disabled = false;
   });
   root.querySelector('#syncGh').addEventListener('click', () => syncNow());
+  root.querySelector('#saveKey').addEventListener('click', () => {
+    setManualKey(root.querySelector('#gemKey').value);
+    root.querySelector('#aiOut').textContent = getManualKey() ? 'Đã lưu khoá trên máy này.' : 'Đã xoá khoá dán tay.';
+  });
   root.querySelector('#reloadCfg').addEventListener('click', async () => {
     const out = root.querySelector('#aiOut');
     try {
       const cfg = await loadConfig(true);
-      out.textContent = !cfg ? 'Không thấy config.json trong repo.' : cfg.geminiKey ? 'Đã tải config.json, có khoá Gemini.' : 'config.json chưa có "geminiKey".';
-    } catch (err) { out.textContent = err.message || 'Không tải được config.json.'; }
+      out.textContent = !cfg ? 'Repo chưa có khoá.' : cfg.geminiKey ? 'Đã lấy khoá từ repo.' : 'Repo chưa có khoá.';
+    } catch (err) { out.textContent = err.message || 'Không lấy được khoá từ repo.'; }
   });
   root.querySelector('#testAI').addEventListener('click', async (e) => {
     const out = root.querySelector('#aiOut');
