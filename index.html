@@ -27,14 +27,15 @@
       </a>
       <nav class="sidenav-links">
         <a href="#/today" data-route="today">Hôm nay</a>
-        <a href="#/roadmap" data-route="roadmap">Lộ trình</a>
-        <a href="#/shadow" data-route="shadow">Shadowing</a>
-        <a href="#/phrases" data-route="phrases">Cụm từ</a>
-        <a href="#/speak" data-route="speak">Nói</a>
-        <a href="#/pron" data-route="pron">Âm cuối</a>
-        <a href="#/errors" data-route="errors">Lỗi của tôi</a>
-        <a href="#/progress" data-route="progress">Mốc</a>
+        <a href="#/course" data-route="course">Khoá học</a>
+        <a href="#/progress" data-route="progress">Tiến độ</a>
         <span class="sidenav-sep"></span>
+        <span class="sidenav-group">Phần thêm</span>
+        <a href="#/pron" data-route="pron">Âm cuối</a>
+        <a href="#/shadow" data-route="shadow">Shadowing YouTube</a>
+        <a href="#/phrases" data-route="phrases">Nhặt cụm từ văn bản</a>
+        <a href="#/speak" data-route="speak">Nói tự do</a>
+        <a href="#/errors" data-route="errors">Lỗi của tôi</a>
         <a href="#/library" data-route="library">Thư viện</a>
         <a href="#/why" data-route="why">Vì sao cách này hiệu quả</a>
         <a href="#/data" data-route="data">Dữ liệu</a>
@@ -59,7 +60,7 @@
           <button type="button" class="timer-pill-stop" id="timerPillStop">Dừng</button>
         </div>
         <a class="sync-ind sync-ind-top" href="#/settings" data-sync-ind hidden><span class="sync-dot"></span><span class="sync-label"></span></a>
-        <button type="button" class="more-btn" id="moreBtn" aria-label="Mục khác">Khác</button>
+        <button type="button" class="more-btn" id="moreBtn" aria-label="Mục khác" hidden>Khác</button>
       </header>
 
       <main id="view" tabindex="-1">
@@ -75,6 +76,8 @@
         <section data-view="pron" hidden></section>
         <section data-view="library" hidden></section>
         <section data-view="settings" hidden></section>
+        <section data-view="course" hidden></section>
+        <section data-view="placement" hidden></section>
       </main>
     </div>
 
@@ -83,22 +86,18 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
         <span>Hôm nay</span>
       </a>
-      <a href="#/shadow" data-route="shadow">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h2M7 8v8M11 5v14M15 9v6M19 7v10M21 12h0"/></svg>
-        <span>Shadowing</span>
-      </a>
-      <a href="#/phrases" data-route="phrases">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="13" height="15" rx="1.5"/><path d="M8 3h10.5A1.5 1.5 0 0 1 20 4.5V17"/><path d="M7.5 11h6M7.5 14.5h4"/></svg>
-        <span>Cụm từ</span>
-      </a>
-      <a href="#/speak" data-route="speak">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg>
-        <span>Nói</span>
+      <a href="#/course" data-route="course">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg>
+        <span>Khoá học</span>
       </a>
       <a href="#/progress" data-route="progress">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16"/><path d="M6.5 20v-6M11 20V9M15.5 20v-8M20 20V5"/></svg>
-        <span>Mốc</span>
+        <span>Tiến độ</span>
       </a>
+      <button type="button" id="moreTab" data-route="more">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="18.5" cy="12" r="1.3"/></svg>
+        <span>Khác</span>
+      </button>
     </nav>
   </div>
 

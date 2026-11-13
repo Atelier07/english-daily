@@ -14,13 +14,14 @@ import * as roadmap from './views/roadmap.js';
 import * as pron from './views/pron.js';
 import * as library from './views/library.js';
 import * as settings from './views/settings.js';
+import * as course from './views/course.js';
+import * as placement from './views/placement.js';
 import { initSync, onStatus, getStatus } from './sync.js';
-import { askComprehension } from './comprehension.js';
 
-const VIEWS = { today, shadow, phrases, speak, errors, progress, why, data, roadmap, pron, library, settings };
+const VIEWS = { today, shadow, phrases, speak, errors, progress, why, data, roadmap, pron, library, settings, course, placement };
 const TITLES = {
-  today: 'Hôm nay', shadow: 'Shadowing', phrases: 'Cụm từ', speak: 'Nói', errors: 'Lỗi của tôi',
-  progress: 'Mốc', why: 'Vì sao cách này hiệu quả', data: 'Dữ liệu',
+  today: 'Hôm nay', shadow: 'Shadowing YouTube', phrases: 'Nhặt cụm từ văn bản', speak: 'Nói tự do', errors: 'Lỗi của tôi',
+  progress: 'Tiến độ', course: 'Khoá học', placement: 'Bài xếp lớp', why: 'Vì sao cách này hiệu quả', data: 'Dữ liệu',
   roadmap: 'Lộ trình', pron: 'Âm cuối', library: 'Thư viện', settings: 'Cài đặt',
 };
 const mounted = new Set();
@@ -34,7 +35,8 @@ function route() {
   const el = document.querySelector(`[data-view="${key}"]`);
   if (!mounted.has(key)) { VIEWS[key].mount(el); mounted.add(key); }
   if (VIEWS[key].show) VIEWS[key].show(el);
-  document.querySelectorAll('[data-route]').forEach((a) => a.classList.toggle('active', a.dataset.route === key));
+  const EXTRA = ['shadow', 'phrases', 'speak', 'errors', 'why', 'data', 'pron', 'library', 'settings', 'placement'];
+  document.querySelectorAll('[data-route]').forEach((a) => a.classList.toggle('active', a.dataset.route === key || (a.dataset.route === 'more' && EXTRA.includes(key))));
   document.title = `${TITLES[key]} · English Daily`;
   if (current !== key) window.scrollTo(0, 0);
   current = key;
@@ -44,14 +46,17 @@ function route() {
 function openMore() {
   openModal({
     title: 'Mục khác',
-    html: `<ul class="menu-list">
-      <li><a href="#/roadmap">Lộ trình</a></li>
+    html: `<p class="small muted" style="margin-top:0">Phần thêm, không bắt buộc.</p>
+    <ul class="menu-list">
+      <li><a href="#/settings">Cài đặt · thời gian, xếp lớp, đồng bộ</a></li>
       <li><a href="#/pron">Âm cuối · phát âm</a></li>
+      <li><a href="#/shadow">Shadowing với video YouTube</a></li>
+      <li><a href="#/phrases">Nhặt cụm từ văn bản</a></li>
+      <li><a href="#/speak">Nói tự do</a></li>
       <li><a href="#/errors">Lỗi của tôi</a></li>
       <li><a href="#/library">Thư viện</a></li>
       <li><a href="#/why">Vì sao cách này hiệu quả</a></li>
-      <li><a href="#/data">Dữ liệu · xuất / nhập / xoá</a></li>
-      <li><a href="#/settings">Cài đặt · đồng bộ, AI</a></li>
+      <li><a href="#/data">Dữ liệu · xuất / nhập</a></li>
     </ul>`,
     actions: [{ label: 'Đóng' }],
     onOpen: (box) => box.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => closeModal())),
@@ -60,6 +65,7 @@ function openMore() {
 
 load();
 document.getElementById('moreBtn').addEventListener('click', openMore);
+document.getElementById('moreTab').addEventListener('click', openMore);
 document.getElementById('timerPillStop').addEventListener('click', () => stop());
 window.addEventListener('hashchange', route);
 // khi dữ liệu đổi, làm mới view đang mở (nhẹ, vì các view nhỏ)
@@ -80,8 +86,6 @@ onStatus(renderSync);
 renderSync(getStatus());
 initSync();
 
-// hỏi mức hiểu sau mỗi lượt nghe/đọc
-window.addEventListener('ed:input-logged', (e) => askComprehension(e.detail.id));
 
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {
   window.addEventListener('load', () => {

@@ -2,6 +2,9 @@ import { getSettings, setSettings, testConnection, syncNow, getStatus, onStatus,
 import { ask } from '../ai.js';
 import { esc } from '../util.js';
 import { toast, confirmModal } from '../ui.js';
+import { getProfile, budget, setBudget } from '../profile.js';
+import { BUDGETS, LEVELS } from '../placement.js';
+import { planSentence } from '../roadmap.js';
 
 let root;
 const LABEL = { off: 'Chỉ lưu trên máy này', syncing: 'Đang đồng bộ…', ok: 'Đã đồng bộ', error: 'Lỗi đồng bộ', offline: 'Ngoại tuyến, sẽ thử lại' };
@@ -19,11 +22,20 @@ function render() {
   root.innerHTML = `
     <div class="page-head">
       <div class="eyebrow">Cài đặt</div>
-      <h1>Đồng bộ và AI</h1>
-      <p class="lede">Không bắt buộc. Không có token, app vẫn chạy đầy đủ trên máy này. Có token, dữ liệu được lưu vào một repo GitHub riêng tư của bạn và AI tự lấy khoá có sẵn trong repo đó.</p>
+      <h1>Cài đặt</h1>
+
     </div>
 
     <section class="card stack">
+      <h3>Học mỗi ngày</h3>
+      <div class="chip-group" id="budgetChips">${BUDGETS.map((b) => `<button type="button" class="chip ${b === budget() ? 'on' : ''}" data-budget="${b}">${b} phút</button>`).join('')}</div>
+      <p class="small" style="margin:0">${esc(planSentence())}</p>
+      <p class="small" style="margin:0">Trình độ xếp lớp: <b>${esc(getProfile() && getProfile().level ? LEVELS.find((l) => l.id === getProfile().level)?.label || getProfile().level : 'chưa làm')}</b></p>
+      <div><a class="btn" href="#/placement">Làm lại bài xếp lớp</a></div>
+    </section>
+
+    <section class="section card stack">
+      <h3>Đồng bộ GitHub <span class="small muted">· không bắt buộc</span></h3>
       <div class="sync-state" id="syncState"></div>
       <div class="field"><label for="ghToken">GitHub token (fine-grained)</label>
         <input id="ghToken" class="input" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…" value="${esc(s.token)}">
@@ -42,7 +54,7 @@ function render() {
     </section>
 
     <section class="section card stack">
-      <h3>AI (Gemini)</h3>
+      <h3>AI (Gemini) <span class="small muted">· phần thêm</span></h3>
       <p class="muted small" style="margin:0">Dán khoá Gemini vào đây là AI chạy. Đã dán token GitHub ở trên thì không cần: app tự lấy khoá có sẵn trong repo riêng.</p>
       <div class="field"><label for="gemKey">Khoá Gemini</label>
         <input id="gemKey" class="input" type="password" autocomplete="off" spellcheck="false" placeholder="Dán khoá Gemini" value="${esc(getManualKey())}">
@@ -61,6 +73,7 @@ function render() {
       <div><button type="button" class="btn btn-danger" id="forgetGh">Ngắt kết nối…</button></div>
     </section>`;
 
+  root.querySelectorAll('[data-budget]').forEach((b) => b.addEventListener('click', () => { setBudget(Number(b.dataset.budget)); toast(`Mỗi ngày ${b.dataset.budget} phút.`); render(); }));
   const val = (id) => root.querySelector(id).value;
   const saveForm = () => setSettings({ token: val('#ghToken'), owner: val('#ghOwner'), repo: val('#ghRepo'), branch: val('#ghBranch') });
   root.querySelector('#saveGh').addEventListener('click', () => {

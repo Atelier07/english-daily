@@ -1,7 +1,9 @@
 // progress.md: bản tóm tắt dễ đọc cho người (và AI mentor) xem trong repo dữ liệu.
 import { db, BLOCKS } from './store.js';
 import { today, addDays, totalMinutes, weekMinutes, streakInfo, dueCount, dayMinutes, fmtHours } from './util.js';
-import { currentPhase, phaseHours, nextCheckpoint, trend, PHASES, checkState } from './roadmap.js';
+import { currentPhase, phaseHours, nextCheckpoint, trend, phases, checkState, goalHours, planSentence } from './roadmap.js';
+import { getProfile, budget, weeklyHours, currentDay, dayDoneMap } from './profile.js';
+import { stats as itemStats } from './items.js';
 
 const COMP = { lt70: '<70%', '70-90': '70–90%', '90-95': '90–95%', gt95: '>95%' };
 
@@ -18,11 +20,18 @@ export function progressMarkdown(now = new Date()) {
   lines.push(`Cập nhật: ${now.toISOString().replace('T', ' ').slice(0, 16)} (UTC)`);
   lines.push('');
   lines.push('## Tổng quan');
-  lines.push(`- Tổng giờ: ${fmtHours(totalMinutes())} / 600`);
+  const prof = getProfile();
+  const its = itemStats();
+  if (prof && prof.level) lines.push(`- Xếp lớp: ${prof.level} (ước tính ${prof.vocab || '?'} từ, ngày ${prof.placedAt || '?'})`);
+  lines.push(`- Khoá học: đang ở Ngày ${currentDay()}, đã xong ${Object.keys(dayDoneMap()).length} ngày`);
+  lines.push(`- Cụm: ${its.mastered} thuộc, ${its.learning} đang học; ${its.due} thẻ đến hạn hôm nay`);
+  lines.push(`- Ôn 7 ngày: ${its.reviewed7} thẻ, trong đó ${its.lapsed7} thẻ từng quên`);
+  lines.push(`- Thời gian mỗi ngày: ${budget()} phút (${weeklyHours().toFixed(1)} giờ/tuần). ${planSentence()}`);
+  lines.push(`- Tổng giờ: ${fmtHours(totalMinutes())} / ${goalHours()}`);
   lines.push(`- Tuần này: ${fmtHours(weekMinutes())} giờ`);
   lines.push(`- Nhịp 4 tuần gần nhất: ${tr.last.toFixed(1)} giờ/tuần (4 tuần trước: ${tr.prev.toFixed(1)}; ${tr.label})`);
   lines.push(`- Chuỗi ngày: ${st.current} (dài nhất ${st.best})${st.restDays.length ? `, đã dùng ${st.restDays.length} ngày nghỉ có phép` : ''}`);
-  lines.push(`- Giai đoạn: ${p.label} "${p.name}" (${p.from} → ${p.to}), ${phaseHours(p).toFixed(1)} / ${p.hours} giờ`);
+  lines.push(`- Giai đoạn: ${p.label} "${p.name}", ${phaseHours(p).toFixed(1)} / ${p.hours} giờ${p.to ? `, dự kiến xong ${p.to}` : ''}`);
   lines.push(`- Mốc tiếp theo: ${cp.date} (còn ${cp.days} ngày)`);
   lines.push('');
   lines.push('## 7 ngày gần nhất (phút)');
@@ -56,7 +65,7 @@ export function progressMarkdown(now = new Date()) {
   else lines.push('- (chưa có)');
   lines.push('');
   lines.push('## Mục tiêu giai đoạn');
-  for (const ph of PHASES) {
+  for (const ph of phases()) {
     lines.push(`- ${ph.label} ${ph.name}: ` + ph.done.map((i) => `${checkState(i) ? '[x]' : '[ ]'} ${i.text}`).join('; '));
   }
   const doubts = d.doubts.filter((x) => x.date >= addDays(t, -30));

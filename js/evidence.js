@@ -5,6 +5,17 @@ export const STRENGTH = { strong: 'mạnh', moderate: 'vừa', weak: 'yếu' };
 
 export const EVIDENCE = [
   {
+    id: 'chunks', part: 'Học bằng cụm', title: 'Học bằng cụm và khung câu',
+    concept: 'Formulaic sequences · Wood; Boers & Lindstromberg; Myles và cs.; Ellis',
+    strength: 'moderate',
+    body: [
+      'Người nói dùng nhiều cụm có sẵn thì được đánh giá là trôi chảy hơn: mối liên hệ này khá chắc (Boers & Lindstromberg 2012; Wood 2010). Nhưng chưa có thử nghiệm nào so trực tiếp “học cụm trước” với “học từ trước” ở người mới bắt đầu, nên đây là lựa chọn có cơ sở, không phải đã được chứng minh.',
+      'Từng kỹ thuật trong buổi học đều có bằng chứng riêng: chú ý thẳng vào cụm tốt hơn chỉ chờ tự gặp; tự nhớ ra (nói từ nghĩa tiếng Việt) tốt hơn đọc lại; ôn giãn cách tốt hơn ôn dồn; cụm không có cách nói tương đương tiếng Việt khó hơn và cần ôn nhiều hơn (Yamashita & Jiang 2010; Laufer & Girsai 2008).',
+      'Khung câu cần nhiều cách thay ô khác nhau mới “mở” ra được (Ellis); người mới học thường đi từ cụm thuộc lòng sang tự ghép câu, có lúc sai nhiều hơn trước: đó là dấu hiệu đang tiến (Myles và cs. 1998). Gặp một cụm khoảng 10–15 lần là con số tham khảo từ nghiên cứu đọc (Webb và cs. 2013), chưa phải luật.',
+    ],
+    sources: 'Boers & Lindstromberg 2012; Wood 2010; Myles, Hooper & Mitchell 1998; Ellis & Ferreira-Junior 2009; Yamashita & Jiang 2010; Webb, Newton & Chang 2013',
+  },
+  {
     id: 'input', part: 'Nghe/đọc', title: 'Nghe/đọc nhiều thứ mình hiểu được',
     concept: 'Comprehensible input · Krashen; extensive reading',
     strength: 'strong',

@@ -9,7 +9,7 @@
 const KEY = 'englishDaily.v1';
 const listeners = new Set();
 
-export const COLLECTIONS = ['sessions', 'phrases', 'errors', 'toeic', 'videos', 'speakLog', 'doubts', 'checks', 'pronLog', 'dictLog'];
+export const COLLECTIONS = ['sessions', 'phrases', 'errors', 'toeic', 'videos', 'speakLog', 'doubts', 'checks', 'pronLog', 'dictLog', 'profile', 'items'];
 
 export const BLOCKS = {
   input:  { name: 'Nghe/đọc thứ bạn thích', short: 'Nghe/đọc', min: 30, max: 45 },
@@ -26,6 +26,7 @@ function defaults() {
     timer: null,                       // chỉ trên máy này
     reader: { text: '', source: '' },  // chỉ trên máy này
     promptShift: { date: '', n: 0 },   // chỉ trên máy này
+    session: null,                     // buổi học đang dở (chỉ trên máy này)
     tombstones: {},
   };
   COLLECTIONS.forEach((c) => { d[c] = []; d.tombstones[c] = {}; });
@@ -231,5 +232,6 @@ export function resetAll() {
   state.timer = null;
   state.reader = { text: '', source: '' };
   state.promptShift = { date: '', n: 0 };
+  state.session = null;
   return save();
 }

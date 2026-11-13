@@ -1,36 +1,46 @@
-// Lộ trình 3 giai đoạn, mốc thi thử 3 tháng một lần, và các con số "của chính bạn".
+// Lộ trình theo trình độ xuất phát và thời gian mỗi ngày.
+// Số giờ mỗi giai đoạn cố định (ước tính giờ học có hướng dẫn của Cambridge + biên cho tự học);
+// ngày tháng chỉ là dự kiến, tính thật thà từ số giờ mỗi tuần bạn chọn.
 import { db } from './store.js';
-import { today, addDays, parseDate, dateStr, daysBetween } from './util.js';
+import { today, addDays, parseDate, dateStr, daysBetween, totalMinutes } from './util.js';
+import { level, weeklyHours, budget, getProfile } from './profile.js';
 
 export const START = '2026-11-13';
-export const GOAL_DATE = '2028-06-30';
 export const RULE = 'Chỉ xét lại cách học ở ngày mốc. Chỉ đổi khi 2 lần thi thử liền không nhích.';
 
-export const PHASES = [
+const masteredCount = () => db().items.filter((i) => i.kind === 'chunk' && i.mastered).length;
+
+const DEFS = [
   {
-    id: 'p1', label: 'GĐ1', name: 'Nền tai và âm', from: '2026-11-13', to: '2027-02-28', hours: 150,
-    months: 'Tháng 11/2026 → 2/2027',
-    focus: 'Tai quen âm tiếng Anh, nói rõ âm cuối, bắt đầu kho cụm từ. Tài liệu chủ yếu là loại dễ (BBC 6 Minute English, VOA).',
+    id: 'p0', label: 'GĐ0', name: 'Nền tảng bằng cụm', target: 'A2',
+    hoursBy: { A0: 200, A1: 100 },
+    focus: 'Những cụm và khung câu dùng nhiều nhất: chào hỏi, muốn, xin, hỏi, kể việc đơn giản. Nghe trước, nói theo, thay ô bằng miệng, đóng vai.',
+    done: [
+      { id: 'p0-chunks', text: 'Thuộc khoảng 150 cụm (nói ra được từ nghĩa tiếng Việt)', auto: () => masteredCount() >= 150, autoNote: () => `${masteredCount()} / 150` },
+      { id: 'p0-listen', text: 'Nghe hiểu hội thoại ngắn ở tốc độ thường, không cần nhìn chữ' },
+      { id: 'p0-talk', text: 'Tự nói 5 câu nối nhau về một việc thường ngày' },
+    ],
+  },
+  {
+    id: 'p1', label: 'GĐ1', name: 'Nền tai và âm', target: 'A2+', hours: 150,
+    focus: 'Tai quen âm tiếng Anh, nói rõ âm cuối, cụm lớn dần. Thêm tài liệu dễ (BBC 6 Minute English, VOA).',
     done: [
       { id: 'p1-endings', text: 'Nói rõ âm cuối (-s/-ed) trong các cặp từ luyện' },
       { id: 'p1-bbc', text: 'Nghe BBC 6 Minute English có phụ đề tiếng Anh, hiểu ý chính' },
-      { id: 'p1-cards', text: '300 cụm trong thẻ', auto: () => db().phrases.length >= 300, autoNote: () => `${db().phrases.length} / 300` },
+      { id: 'p1-chunks', text: 'Thuộc khoảng 300 cụm', auto: () => masteredCount() >= 300, autoNote: () => `${masteredCount()} / 300` },
     ],
   },
   {
-    id: 'p2', label: 'GĐ2', name: 'Lên B1', from: '2027-03-01', to: '2027-06-30', hours: 200,
-    months: 'Tháng 3 → 6/2027',
-    focus: 'Chuyển dần sang video hướng dẫn kỹ thuật thật (nói chậm, có phụ đề). Nói dài hơn, lỗi lặp lại ít dần.',
+    id: 'p2', label: 'GĐ2', name: 'Lên B1', target: 'B1', hours: 200,
+    focus: 'Video hướng dẫn kỹ thuật nói chậm, có phụ đề. Nói dài hơn, lỗi lặp lại ít dần.',
     done: [
       { id: 'p2-tech', text: 'Xem video hướng dẫn kỹ thuật nói chậm, có phụ đề tiếng Anh' },
-      { id: 'p2-talk', text: 'Nói liền 2 phút về việc mình làm' },
-      { id: 'p2-intern', text: 'Sẵn sàng phỏng vấn thực tập hè' },
+      { id: 'p2-talk', text: 'Nói liền 2 phút về một chủ đề quen' },
     ],
   },
   {
-    id: 'p3', label: 'GĐ3', name: 'Lên B2', from: '2027-07-01', to: '2028-03-31', hours: 250,
-    months: 'Tháng 7/2027 → 3/2028',
-    focus: 'Nội dung thật về AI/data không cần phụ đề tiếng Việt, luyện đề TOEIC đều đặn.',
+    id: 'p3', label: 'GĐ3', name: 'Lên B2', target: 'B2', hours: 250,
+    focus: 'Nội dung thật không cần phụ đề tiếng Việt, luyện đề TOEIC đều đặn.',
     done: [
       {
         id: 'p3-toeic', text: 'TOEIC thi thử 750+ (mốc quy đổi B2 chỉ gần đúng)',
@@ -41,12 +51,52 @@ export const PHASES = [
   },
 ];
 
-// Mốc giờ CEFR (ước tính giờ học có hướng dẫn của Cambridge, tính từ con số 0).
-export const CEFR_MARKS = [
-  { h: 200, label: 'A2' },
-  { h: 400, label: 'B1' },
-  { h: 600, label: 'B2' },
-];
+const ORDER = { A0: ['p0', 'p1', 'p2', 'p3'], A1: ['p0', 'p1', 'p2', 'p3'], A2: ['p1', 'p2', 'p3'], B1: ['p3'], B2: ['p3'] };
+
+export function monthLabel(s) { const d = parseDate(s); return `${d.getMonth() + 1}/${d.getFullYear()}`; }
+
+// Các giai đoạn với giờ cộng dồn và ngày dự kiến (từ hôm nay, theo số giờ/tuần đã chọn)
+export function phases(lv = level(), perWeek = weeklyHours()) {
+  const doneH = totalMinutes() / 60;
+  let acc = 0;
+  let cursor = today();
+  return (ORDER[lv] || ORDER.A0).map((id) => {
+    const d = DEFS.find((x) => x.id === id);
+    const hours = d.hours || d.hoursBy[lv] || 100;
+    const startH = acc;
+    const endH = acc + hours;
+    acc = endH;
+    const inPhase = Math.max(0, Math.min(hours, doneH - startH));
+    const remaining = hours - inPhase;
+    const status = inPhase >= hours ? 'done' : doneH >= startH ? 'current' : 'future';
+    const from = status === 'future' ? cursor : null;
+    const to = remaining > 0 ? addDays(cursor, Math.round((remaining / Math.max(0.5, perWeek)) * 7)) : null;
+    if (to) cursor = to;
+    return { ...d, hours, startH, endH, inPhase, status, from, to };
+  });
+}
+
+export const goalHours = () => { const ps = phases(); return ps[ps.length - 1].endH; };
+export function currentPhase() { const ps = phases(); return ps.find((p) => p.status !== 'done') || ps[ps.length - 1]; }
+export const phaseHours = (p) => p.inPhase;
+export function etaFor(target) {
+  const ps = phases();
+  const p = ps.find((x) => x.target === target);
+  return p ? (p.to || today()) : null;
+}
+
+// mốc trên thanh giờ: cuối mỗi giai đoạn mang trình độ mục tiêu
+export function levelMarks() {
+  return phases().filter((p) => ['A2', 'B1', 'B2'].includes(p.target)).map((p) => ({ h: p.endH, label: p.target }));
+}
+
+export function planSentence() {
+  const b = budget();
+  const b1 = etaFor('B1');
+  const b2 = etaFor('B2');
+  const wk = weeklyHours(b).toLocaleString('vi-VN', { maximumFractionDigits: 1 });
+  return `Với ${b} phút/ngày (khoảng ${wk} giờ/tuần, nghỉ 1 ngày/tuần): ${b1 ? `B1 khoảng tháng ${monthLabel(b1)}, ` : ''}B2 khoảng tháng ${monthLabel(b2)}.`;
+}
 
 function addMonths(s, n) {
   const d = parseDate(s);
@@ -58,24 +108,30 @@ function addMonths(s, n) {
   return dateStr(d);
 }
 
-export const CHECKPOINTS = [1, 2, 3, 4, 5, 6].map((i) => addMonths(START, 3 * i));
+export function startDate() { const p = getProfile(); return (p && p.startDate) || START; }
 
-export function currentPhase(date = today()) {
-  for (const p of PHASES) if (date <= p.to) return p;
-  return PHASES[PHASES.length - 1];
+// mốc thi thử 3 tháng/lần từ ngày bắt đầu đến khi dự kiến đạt B2 (tối đa 16 mốc)
+export function checkpoints() {
+  const end = etaFor('B2') || today();
+  const out = [];
+  for (let i = 1; i <= 16; i++) {
+    const c = addMonths(startDate(), 3 * i);
+    out.push(c);
+    if (c >= end) break;
+  }
+  return out;
+}
+
+export function nextCheckpoint(date = today()) {
+  const cps = checkpoints();
+  const d = cps.find((c) => c >= date) || cps[cps.length - 1];
+  return { date: d, days: Math.max(0, daysBetween(date, d)), index: cps.indexOf(d) + 1 };
 }
 
 export function minutesBetween(from, to) {
   return db().sessions.filter((s) => s.date >= from && s.date <= to).reduce((a, s) => a + (Number(s.minutes) || 0), 0);
 }
-export function phaseHours(p) { return minutesBetween(p.from, p.to) / 60; }
 
-export function nextCheckpoint(date = today()) {
-  const d = CHECKPOINTS.find((c) => c >= date) || CHECKPOINTS[CHECKPOINTS.length - 1];
-  return { date: d, days: Math.max(0, daysBetween(date, d)), index: CHECKPOINTS.indexOf(d) + 1 };
-}
-
-// giờ trung bình/tuần trong 4 tuần gần nhất so với 4 tuần trước đó
 export function trend() {
   const t = today();
   const last = minutesBetween(addDays(t, -27), t) / 60 / 4;
@@ -98,11 +154,4 @@ export function toeicTrend() {
   if (list.length < 2) return null;
   const a = list[list.length - 2], b = list[list.length - 1];
   return { from: a.score, to: b.score, diff: b.score - a.score };
-}
-
-// phần trăm thời gian đã trôi qua của giai đoạn hiện tại (để so nhịp, nhẹ nhàng)
-export function phaseElapsed(p, date = today()) {
-  const total = daysBetween(p.from, p.to) + 1;
-  const gone = Math.min(total, Math.max(0, daysBetween(p.from, date) + 1));
-  return gone / total;
 }

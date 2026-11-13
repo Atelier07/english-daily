@@ -1,178 +1,175 @@
 import { db, save, BLOCKS } from '../store.js';
 import {
-  today, viLongDate, fmtMinutes, fmtHours, totalMinutes, weekMinutes, dayMinutes, streakInfo,
-  dueCount, esc, GOAL_HOURS, MIN_DAY,
+  today, viLongDate, fmtMinutes, fmtHours, totalMinutes, weekMinutes, dayMinutes, streakInfo, esc, MIN_DAY,
 } from '../util.js';
-import { toggle, running, tick, logMinutes } from '../timer.js';
+import { logMinutes } from '../timer.js';
 import { openModal, toast, confirmModal } from '../ui.js';
-import { materialAdvice } from '../comprehension.js';
 import { openDoubt } from '../doubt.js';
-import { currentPhase, phaseHours, nextCheckpoint, CEFR_MARKS } from '../roadmap.js';
+import { goalHours, levelMarks, planSentence } from '../roadmap.js';
+import { loadIndex, loadDay } from '../course.js';
+import { budget, currentDay, dayDoneMap, needsPlacement, skipPlacement, weeklyHours } from '../profile.js';
+import { dueItems } from '../items.js';
+import { startSession, renderSession, hasSession, resumeClock, stopSession, buildSteps, planFor, STEPS } from '../session.js';
 
 let root;
+let renderToken = 0;
 
-const BLOCK_COPY = {
-  input: {
-    desc: 'Thứ bạn thật sự muốn xem: AI, công nghệ, piano… Mức tốt là hiểu khoảng 90–98%. Ở trình độ hiện tại, ưu tiên tài liệu cho người học (BBC 6 Minute English, VOA) rồi mới sang video thật; bật phụ đề tiếng Anh.',
-    link: { href: '#/library', label: 'Thư viện' },
-  },
-  shadow: {
-    desc: 'Một đoạn 30–90 giây, dễ hơn hoặc bằng trình độ. Nghe lấy ý trước, rồi lẩm bẩm theo, rồi mới nói đè. Ghi âm và so sánh.',
-    link: { href: '#/shadow', label: 'Mở Shadowing' },
-  },
-  speak: {
-    desc: 'Nói về đề hôm nay, không cần đúng hết. Sau đó nhờ AI chỉ ra 1–2 lỗi lặp lại.',
-    link: { href: '#/speak', label: 'Mở đề nói' },
-  },
-  review: {
-    desc: 'Nhìn nghĩa tiếng Việt, nói to cụm tiếng Anh, rồi lật thẻ kiểm tra.',
-    link: { href: '#/phrases?review', label: 'Ôn ngay' },
-  },
-};
-
-function ring(pct) {
-  const r = 12, c = 2 * Math.PI * r;
-  const p = Math.max(0, Math.min(1, pct));
-  return `<svg class="ring" viewBox="0 0 30 30" aria-hidden="true">
-    <circle cx="15" cy="15" r="${r}" fill="none" stroke="var(--line)" stroke-width="3"/>
-    <circle cx="15" cy="15" r="${r}" fill="none" stroke="${p >= 1 ? 'var(--moss)' : 'var(--accent)'}" stroke-width="3"
-      stroke-dasharray="${c * p} ${c}" stroke-linecap="round" transform="rotate(-90 15 15)"/>
-  </svg>`;
+function quietSection() {
+  const total = totalMinutes();
+  const st = streakInfo();
+  const goal = goalHours();
+  const pct = Math.min(100, (total / 60 / goal) * 100);
+  const sessions = db().sessions.filter((s) => s.date === today()).sort((a, b) => b.ts - a.ts);
+  return `
+    <details class="quiet">
+      <summary>Số liệu và ghi giờ</summary>
+      <div class="quiet-body">
+        <div class="stats-strip">
+          <div class="stat"><span class="num">${st.current}</span><span class="k">ngày liên tiếp</span></div>
+          <div class="stat"><span class="num">${fmtHours(weekMinutes())}</span><span class="k">/ ${weeklyHours().toLocaleString('vi-VN', { maximumFractionDigits: 1 })} giờ tuần</span></div>
+          <div class="stat"><span class="num">${Math.round(dayMinutes(today()))}</span><span class="k">phút hôm nay</span></div>
+        </div>
+        <div class="progress">
+          <div class="progress-meta"><span><span class="num">${fmtHours(total)}</span> / ${goal} giờ</span></div>
+          <div class="progress-bar"><i style="width:${pct}%"></i>${levelMarks().filter((m) => m.h < goal).map((m) => `<b class="cefr-tick" style="left:${(m.h / goal) * 100}%"></b>`).join('')}</div>
+          <div class="cefr-labels">${levelMarks().map((m) => `<span style="left:${(m.h / goal) * 100}%">${m.label}</span>`).join('')}</div>
+        </div>
+        <p class="small">${esc(planSentence())}</p>
+        ${st.restUsedThisWeek ? '<p class="small muted">Tuần này đã dùng ngày nghỉ có phép, chuỗi vẫn giữ.</p>' : ''}
+        <div class="row">
+          <button type="button" class="btn btn-sm" id="manualBtn">+ Nhập giờ học ở chỗ khác</button>
+          <button type="button" class="btn btn-quiet btn-sm" id="doubtBtn">Mình đang nghi ngờ</button>
+        </div>
+        ${sessions.length ? `<ul class="session-list">${sessions.map((s) => `
+          <li><span>${esc(BLOCKS[s.block]?.short || s.block)}</span><span class="when">${esc(s.note || '')}</span><span class="spacer"></span>
+          <span class="num">${fmtMinutes(s.minutes)}</span><button type="button" class="btn btn-quiet btn-sm" data-del="${s.id}">Xoá</button></li>`).join('')}</ul>` : ''}
+      </div>
+    </details>`;
 }
 
-function render() {
-  const t = today();
-  const total = totalMinutes();
-  const week = weekMinutes();
-  const dayMin = dayMinutes(t);
-  const st = streakInfo();
-  const due = dueCount();
-  const run = running();
-  const pct = Math.min(100, (total / 60 / GOAL_HOURS) * 100);
-
-  const lede = st.todayDone
-    ? 'Hôm nay đã đủ ngày tối thiểu. Làm thêm được bao nhiêu là lãi bấy nhiêu.'
-    : `Chỉ cần ${MIN_DAY} phút là hôm nay được tính vào chuỗi. Bắt đầu bằng thứ dễ nhất.`;
-
-  const blocks = Object.entries(BLOCKS).map(([key, b], i) => {
-    const done = dayMinutes(t, key);
-    const isRun = run && run.block === key;
-    const copy = BLOCK_COPY[key];
-    const range = b.min === b.max ? `${b.min}′` : `${b.min}–${b.max}′`;
-    const adv = key === 'input' ? materialAdvice() : null;
-    const extra = key === 'review' ? `<span class="tag ${due ? 'tag-accent' : ''}">${due} thẻ đến hạn</span>` : '';
-    return `
-      <article class="card block ${isRun ? 'running' : ''}">
-        <div class="block-title">
-          <span class="block-num">${i + 1}</span>
-          <h3>${esc(b.name)}</h3>
-          <span class="tag">${range}</span>
-          ${extra}
-        </div>
-        <span class="timer-time" data-timer-display="${key}" aria-live="off">00:00</span>
-        <p class="block-desc">${copy.desc}</p>
-        ${adv ? `<p class="block-desc notice notice-quiet">${esc(adv.text)}</p>` : ''}
-        <div class="block-foot">
-          <button type="button" class="btn ${isRun ? 'btn-primary' : ''}" data-toggle="${key}">${isRun ? 'Dừng & ghi' : 'Bắt đầu'}</button>
-          ${copy.link ? `<a class="btn btn-quiet" href="${copy.link.href}">${copy.link.label}${key === 'review' && due ? ` (${due})` : ''} →</a>` : ''}
-          <span class="spacer"></span>
-          <span class="block-done">${done ? `Hôm nay: ${fmtMinutes(done)}` : 'Chưa làm'}</span>
-        </div>
-      </article>`;
-  }).join('');
-
-  const sessions = db().sessions.filter((s) => s.date === t).sort((a, b) => b.ts - a.ts);
-  const sessionList = sessions.length
-    ? `<ul class="session-list">${sessions.map((s) => `
-        <li>
-          <span>${esc(BLOCKS[s.block]?.short || s.block)}</span>
-          <span class="when">${s.manual ? 'nhập tay' : 'bấm giờ'}${s.note ? ' · ' + esc(s.note) : ''}</span>
-          <span class="spacer"></span>
-          <span class="num">${fmtMinutes(s.minutes)}</span>
-          <button type="button" class="btn btn-quiet btn-sm" data-del="${s.id}" aria-label="Xoá lượt này">Xoá</button>
-        </li>`).join('')}</ul>`
-    : `<p class="muted small">Chưa có lượt nào hôm nay.</p>`;
-
-  root.innerHTML = `
-    <div class="page-head today-hero">
-      <div class="eyebrow">Hôm nay</div>
-      <h1>${esc(viLongDate())}</h1>
-      <p class="lede">${lede}</p>
-    </div>
-
-    <div class="stats-strip">
-      <div class="stat"><span class="num">${st.current}</span><span class="k">ngày liên tiếp</span></div>
-      <div class="stat"><span class="num">${fmtHours(week)}</span><span class="k">giờ tuần này</span></div>
-      <div class="stat"><span class="num">${Math.round(dayMin)}</span><span class="k">phút hôm nay</span></div>
-    </div>
-
-    <div class="progress">
-      <div class="progress-meta"><span><span class="num">${fmtHours(total)}</span> / ${GOAL_HOURS} giờ</span><span>${pct.toLocaleString('vi-VN', { maximumFractionDigits: 1 })}%</span></div>
-      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${GOAL_HOURS}" aria-valuenow="${(total / 60).toFixed(1)}"><i style="width:${pct}%"></i>
-        ${CEFR_MARKS.filter((m) => m.h < GOAL_HOURS).map((m) => `<b class="cefr-tick" style="left:${(m.h / GOAL_HOURS) * 100}%"></b>`).join('')}</div>
-      <div class="cefr-labels">${CEFR_MARKS.map((m) => `<span style="left:${(m.h / GOAL_HOURS) * 100}%">${m.label} ~${m.h}h</span>`).join('')}</div>
-      <p class="muted tiny">Mốc CEFR: ước tính giờ học có hướng dẫn của Cambridge (tính từ 0), chỉ để tham khảo.</p>
-    </div>
-
-    <div class="minday">${ring(dayMin / MIN_DAY)}
-      <span>${st.todayDone ? 'Ngày tối thiểu: xong.' : `Ngày tối thiểu: ${Math.round(dayMin)} / ${MIN_DAY} phút.`}${st.restUsedThisWeek ? ' <span class="muted">Tuần này đã dùng ngày nghỉ có phép, chuỗi vẫn giữ.</span>' : ''}</span>
-    </div>
-
-    ${roadmapCard()}
-
-    <section class="section">
-      <div class="row" style="margin-bottom:12px"><h2>Bốn việc hôm nay</h2></div>
-      <div class="blocks">${blocks}</div>
-      <div class="row" style="margin-top:14px">
-        <button type="button" class="btn" id="manualBtn">+ Nhập giờ thủ công</button>
-        <span class="muted small">Ví dụ: vừa xem video tiếng Anh ở chỗ khác.</span>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Đã ghi hôm nay</h2>
-      <div class="card">${sessionList}</div>
-    </section>
-  `;
-
-  root.querySelectorAll('[data-toggle]').forEach((b) => b.addEventListener('click', () => toggle(b.dataset.toggle)));
-  root.querySelector('#manualBtn').addEventListener('click', manualEntry);
-  root.querySelector('#doubtBtn').addEventListener('click', openDoubt);
+function wireQuiet() {
+  const mb = root.querySelector('#manualBtn');
+  if (mb) mb.addEventListener('click', manualEntry);
+  const db2 = root.querySelector('#doubtBtn');
+  if (db2) db2.addEventListener('click', openDoubt);
   root.querySelectorAll('[data-del]').forEach((b) => b.addEventListener('click', async () => {
     const ok = await confirmModal({ title: 'Xoá lượt này?', message: 'Thời gian của lượt này sẽ bị trừ khỏi tổng.', confirmLabel: 'Xoá', danger: true });
     if (!ok) return;
     db().sessions = db().sessions.filter((s) => s.id !== b.dataset.del);
     save();
+    render();
   }));
-  tick();
 }
 
-function roadmapCard() {
-  const p = currentPhase();
-  const h = phaseHours(p);
-  const cp = nextCheckpoint();
-  const pct = Math.min(100, (h / p.hours) * 100);
-  return `
-    <a class="card phase-card" href="#/roadmap">
-      <div class="row" style="gap:8px"><span class="eyebrow" style="margin:0">${p.label} · ${esc(p.months)}</span><span class="spacer"></span><span class="muted small">Lộ trình →</span></div>
-      <h3>${esc(p.name)}</h3>
-      <div class="progress-bar thin"><i style="width:${pct}%"></i></div>
-      <div class="progress-meta" style="margin:6px 0 0"><span>${h.toLocaleString('vi-VN', { maximumFractionDigits: 1 })} / ${p.hours} giờ trong giai đoạn</span><span>mốc thi thử sau ${cp.days} ngày</span></div>
-    </a>
-    <div class="row" style="margin-top:10px"><button type="button" class="btn btn-quiet btn-sm" id="doubtBtn">Mình đang nghi ngờ</button></div>`;
+async function render() {
+  const token = ++renderToken;
+  stopSession();
+  if (hasSession() && !db().session.paused) {
+    resumeClock();
+    root.innerHTML = '<div id="sessHost"></div>';
+    renderSession(root.querySelector('#sessHost'), () => render());
+    return;
+  }
+  const head = `<div class="eyebrow">${esc(viLongDate())}</div>`;
+
+  if (needsPlacement()) {
+    root.innerHTML = `
+      <div class="hero">
+        ${head}
+        <h1>Chào bạn.</h1>
+        <p class="lede">Trước khi bắt đầu, làm một bài xếp lớp ngắn (5–7 phút) để app biết nên bắt đầu từ ngày nào và mỗi ngày học bao lâu.</p>
+        <a class="btn btn-primary btn-xl" href="#/placement">Làm bài xếp lớp</a>
+        <button type="button" class="btn btn-quiet" id="skipPl">Bỏ qua, học từ Ngày 1</button>
+      </div>`;
+    root.querySelector('#skipPl').addEventListener('click', () => { skipPlacement(); render(); });
+    return;
+  }
+
+  const fin = db().session && db().session.finished;
+  let idx;
+  try { idx = await loadIndex(); } catch (e) {
+    if (token !== renderToken) return;
+    root.innerHTML = `<div class="hero">${head}<h1>Chưa tải được khoá học</h1><p class="lede">Kiểm tra kết nối mạng rồi mở lại. Sau lần tải đầu, app học được cả khi mất mạng.</p></div>${quietSection()}`;
+    wireQuiet();
+    return;
+  }
+  if (token !== renderToken) return;
+
+  if (fin && fin.date === today()) {
+    const next = currentDay();
+    const nextEntry = idx.find((d) => d.day === next && !dayDoneMap()[next]);
+    root.innerHTML = `
+      <div class="hero">
+        ${head}
+        <h1>Xong Ngày ${fin.day}.</h1>
+        <p class="lede">${fin.minutes ? `${fin.minutes} phút. ` : ''}${fin.chunks} cụm mới đã vào thẻ ôn, sẽ quay lại từ ngày mai.</p>
+        <p class="small">Mai học tiếp ${nextEntry ? `Ngày ${next}: ${esc(nextEntry.title || nextEntry.function || '')}` : 'phần ôn'}.</p>
+        ${nextEntry ? `<button type="button" class="btn btn-quiet" id="moreDay">Học luôn Ngày ${next}</button>` : ''}
+      </div>
+      ${quietSection()}`;
+    const md = root.querySelector('#moreDay');
+    if (md) md.addEventListener('click', async () => { db().session = null; save(); await startSession(next); render(); });
+    wireQuiet();
+    return;
+  }
+
+  const paused = hasSession() && db().session.paused ? db().session : null;
+  const n = paused ? paused.day : currentDay();
+  const entry = idx.find((d) => d.day === n) || idx[0];
+  const allDone = !!dayDoneMap()[entry.day] && !idx.find((d) => d.day > entry.day);
+  const due = dueItems().length;
+  if (allDone) {
+    root.innerHTML = `
+      <div class="hero">
+        ${head}
+        <h1>Bạn đã học hết ${idx.length} ngày hiện có.</h1>
+        <p class="lede">Bài mới sẽ được thêm dần. Trong lúc chờ, ôn thẻ mỗi ngày để giữ những gì đã học.</p>
+        ${due ? `<button type="button" class="btn btn-primary btn-xl" id="reviewOnly">Ôn ${due} thẻ</button>` : '<p class="small">Hôm nay không còn thẻ đến hạn.</p>'}
+      </div>
+      ${quietSection()}`;
+    const ro = root.querySelector('#reviewOnly');
+    if (ro) ro.addEventListener('click', async () => {
+      await startSession(entry.day);
+      db().session.steps = ['S1'];
+      save();
+      render();
+    });
+    wireQuiet();
+    return;
+  }
+
+  let day = null;
+  try { day = await loadDay(entry.day, idx); } catch (e) { /* hiện tối thiểu */ }
+  if (token !== renderToken) return;
+  const b = budget();
+  const steps = day ? buildSteps(day, b, Math.min(due, planFor(b).rev)) : [];
+  root.innerHTML = `
+    <div class="hero">
+      ${head}
+      <h1>Ngày ${entry.day}${day && day.title ? `<span class="hero-sub">${esc(day.title)}</span>` : ''}</h1>
+      ${day && day.intro_vi ? `<p class="lede">${esc(day.intro_vi)}</p>` : ''}
+      <button type="button" class="btn btn-primary btn-xl" id="startBtn">${paused ? `Tiếp tục Ngày ${entry.day} · bước ${paused.i + 1}/${paused.steps.length}` : `Bắt đầu Ngày ${entry.day} · ${b} phút`}</button>
+      ${steps.length ? `<ol class="step-preview">${steps.map((k) => `<li>${esc(STEPS[k].name)}${k === 'S1' ? ` · ${Math.min(due, planFor(b).rev)} thẻ` : ''}${k === 'S3' && day ? ` · ${day.chunks.length} cụm` : ''}</li>`).join('')}</ol>` : ''}
+    </div>
+    ${quietSection()}`;
+  root.querySelector('#startBtn').addEventListener('click', async (e) => {
+    e.currentTarget.disabled = true;
+    try { if (paused) resumeClock(); else await startSession(entry.day); render(); } catch (err) { toast('Chưa tải được bài, thử lại.'); e.currentTarget.disabled = false; }
+  });
+  wireQuiet();
 }
 
 function manualEntry() {
   const opts = Object.entries(BLOCKS).map(([k, b]) => `<option value="${k}">${esc(b.name)}</option>`).join('');
   openModal({
-    title: 'Nhập giờ thủ công',
+    title: 'Nhập giờ học ở chỗ khác',
     html: `
       <div class="field"><label for="mBlock">Phần</label><select id="mBlock" class="select">${opts}</select></div>
       <div class="field-grid" style="margin-top:12px">
         <div class="field"><label for="mMin">Số phút</label><input id="mMin" class="input" type="number" inputmode="numeric" min="1" max="600" value="20"></div>
         <div class="field"><label for="mDate">Ngày</label><input id="mDate" class="input" type="date" value="${today()}" max="${today()}"></div>
       </div>
-      <div class="field"><label for="mNote">Ghi chú (không bắt buộc)</label><input id="mNote" class="input" placeholder="vd: xem Fireship trên YouTube"></div>`,
+      <div class="field"><label for="mNote">Ghi chú</label><input id="mNote" class="input" placeholder="vd: xem video tiếng Anh"></div>`,
     actions: [
       { label: 'Huỷ' },
       {
@@ -183,6 +180,7 @@ function manualEntry() {
           if (date > today()) { toast('Không ghi cho ngày tương lai.'); return false; }
           logMinutes(box.querySelector('#mBlock').value, min, { date, manual: true, note: box.querySelector('#mNote').value.trim().slice(0, 80) });
           toast(`Đã ghi ${min} phút.`);
+          render();
         },
       },
     ],
@@ -191,4 +189,5 @@ function manualEntry() {
 
 export function mount(el) { root = el; }
 export function show() { render(); }
-export function onData() { render(); }
+export function hide() { stopSession(); }
+export { MIN_DAY };

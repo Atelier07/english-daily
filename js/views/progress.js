@@ -1,12 +1,15 @@
 import { db, save, uid, BLOCKS } from '../store.js';
 import {
   esc, today, mondayOf, addDays, weekMinutes, totalMinutes, streakInfo, dueCount, fmtHours, viShortDate,
-  parseDate, GOAL_HOURS,
+  parseDate,
 } from '../util.js';
 import { toast, confirmModal } from '../ui.js';
 import { hasAI, askJSON, weeklyPrompt } from '../ai.js';
 import { progressMarkdown } from '../summary.js';
-import { CEFR_MARKS } from '../roadmap.js';
+import { goalHours, planSentence } from '../roadmap.js';
+import { weeklyHours } from '../profile.js';
+import { stats as itemStats } from '../items.js';
+import { renderRoadmapInto } from './roadmap.js';
 
 const WEEKLY_KEY = 'englishDaily.weekly';
 function lastWeekly() { try { return JSON.parse(localStorage.getItem(WEEKLY_KEY) || 'null'); } catch (e) { return null; } }
@@ -49,13 +52,8 @@ function chartW() {
   const w = root && root.clientWidth ? root.clientWidth - 38 : 640;
   return Math.max(280, Math.min(720, Math.round(w)));
 }
-const DEADLINE = '2028-06-30';
-
-function paceNeeded() {
-  const remainH = Math.max(0, GOAL_HOURS - totalMinutes() / 60);
-  const weeks = Math.max(1, (parseDate(DEADLINE) - parseDate(today())) / (7 * 86400000));
-  return remainH / weeks;
-}
+// đường mục tiêu = số giờ/tuần theo thời gian mỗi ngày đã chọn
+function paceNeeded() { return weeklyHours(); }
 
 function weeklyChart() {
   const thisMon = mondayOf(today());
@@ -120,23 +118,26 @@ function render() {
   const nextTest = lastTest ? addDays(lastTest.date, 91) : null;
   const openErr = db().errors.filter((e) => !e.fixed).length;
 
+  const its = itemStats();
+  const goal = goalHours();
   root.innerHTML = `
     <div class="page-head">
-      <div class="eyebrow">Mốc</div>
+      <div class="eyebrow">Tiến độ</div>
       <h1>Đường dài, đo bằng giờ</h1>
-      <p class="lede">Còn ${fmtHours(Math.max(0, GOAL_HOURS * 60 - total), 0)} giờ đến ${GOAL_HOURS}. Để kịp giữa 2028, nhịp cần khoảng <b>${pace.toLocaleString('vi-VN', { maximumFractionDigits: 1 })} giờ/tuần</b> (đường nét đứt trong biểu đồ).</p>
-      <p class="muted small">Mốc CEFR theo giờ học có hướng dẫn của Cambridge (tính từ 0, chỉ tham khảo): ${CEFR_MARKS.map((m) => `${m.label} ~${m.h} giờ`).join(' · ')}.</p>
+      <p class="lede">${esc(planSentence())}</p>
     </div>
 
     <div class="kpis">
-      <div class="stat"><span class="num">${fmtHours(total)}</span><span class="k">/ ${GOAL_HOURS} giờ</span></div>
-      <div class="stat"><span class="num">${st.current}</span><span class="k">ngày liên tiếp · dài nhất ${st.best}${st.restDays.length ? ` · ${st.restDays.length} ngày nghỉ có phép` : ''}</span></div>
-      <div class="stat"><span class="num">${db().phrases.length}</span><span class="k">cụm từ · ${dueCount()} đến hạn</span></div>
-      <div class="stat"><span class="num">${openErr}</span><span class="k">lỗi đang sửa</span></div>
+      <div class="stat"><span class="num">${fmtHours(total)}</span><span class="k">/ ${goal} giờ</span></div>
+      <div class="stat"><span class="num">${st.current}</span><span class="k">ngày liên tiếp · dài nhất ${st.best}</span></div>
+      <div class="stat"><span class="num">${its.mastered}</span><span class="k">cụm thuộc · ${its.learning} đang học</span></div>
+      <div class="stat"><span class="num">${its.reviewed7}</span><span class="k">thẻ đã ôn 7 ngày</span></div>
     </div>
 
+    <div id="roadmapPart"></div>
+
     <section class="section">
-      <div class="row" style="margin-bottom:10px"><h2>Giờ mỗi tuần</h2><span class="spacer"></span><span class="muted small">tuần này ${fmtHours(week)} giờ</span></div>
+      <div class="row" style="margin-bottom:10px"><h2>Giờ mỗi tuần</h2><span class="spacer"></span><span class="small">tuần này ${fmtHours(week)} / ${weeklyHours().toLocaleString('vi-VN', { maximumFractionDigits: 1 })} giờ</span></div>
       <div class="card">${weeklyChart()}</div>
       <div class="card"><ul class="session-list">${byBlock}</ul><p class="muted small" style="margin:6px 0 0">Phân bổ tuần này theo từng phần.</p></div>
     </section>
@@ -168,9 +169,10 @@ function render() {
       </div>
     </section>
 
-    <p class="muted small section">Xem thêm: <a href="#/roadmap">Lộ trình</a> · <a href="#/errors">Lỗi của tôi</a> · <a href="#/why">Vì sao cách này hiệu quả</a> · <a href="#/data">Xuất / nhập dữ liệu</a></p>
+    <p class="muted small section">Xem thêm: <a href="#/errors">Lỗi của tôi</a> · <a href="#/why">Vì sao cách này hiệu quả</a> · <a href="#/data">Xuất / nhập dữ liệu</a></p>
   `;
 
+  renderRoadmapInto(root.querySelector('#roadmapPart'));
   root.querySelector('#weeklyBtn').addEventListener('click', async (e) => {
     const btn = e.currentTarget;
     const out = root.querySelector('#weeklyOut');

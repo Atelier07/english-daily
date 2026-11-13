@@ -1,6 +1,6 @@
 // Service worker: lưu sẵn khung ứng dụng để mở được khi mất mạng.
 // YouTube và các dịch vụ Google video KHÔNG bao giờ bị cache.
-const VERSION = 'ed-v3';
+const VERSION = 'ed-v4';
 const SHELL = [
   './',
   './index.html',
@@ -39,11 +39,23 @@ const SHELL = [
   './js/doubt.js',
   './js/recorder.js',
   './js/dictation.js',
+  './js/placement.js',
+  './js/profile.js',
+  './js/items.js',
+  './js/course.js',
+  './js/audio.js',
+  './js/stt.js',
+  './js/session.js',
+  './js/data/ngsl.js',
+  './js/views/course.js',
+  './js/views/placement.js',
 ];
 const NEVER = /(^|\.)(youtube\.com|youtube-nocookie\.com|ytimg\.com|googlevideo\.com|ggpht\.com|doubleclick\.net|api\.github\.com|generativelanguage\.googleapis\.com)$/;
 
 self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(VERSION).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(VERSION)
+    .then((c) => c.addAll(SHELL).then(() => c.add('./course/index.json').catch(() => {})))
+    .then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', (e) => {
@@ -78,7 +90,8 @@ self.addEventListener('fetch', (e) => {
   e.respondWith(
     fetch(req)
       .then((r) => {
-        if (r.ok) { const copy = r.clone(); caches.open(VERSION).then((c) => c.put(req, copy)); }
+        // chỉ lưu phản hồi đầy đủ (200); bỏ qua 206 (audio tải từng đoạn)
+        if (r.status === 200) { const copy = r.clone(); caches.open(VERSION).then((c) => c.put(req, copy)).catch(() => {}); }
         return r;
       })
       .catch(async () => (await caches.match(req, { ignoreSearch: true })) || (req.mode === 'navigate' ? caches.match('./index.html') : Response.error())),
