@@ -27,16 +27,23 @@
       </a>
       <nav class="sidenav-links">
         <a href="#/today" data-route="today">Hôm nay</a>
+        <a href="#/roadmap" data-route="roadmap">Lộ trình</a>
         <a href="#/shadow" data-route="shadow">Shadowing</a>
         <a href="#/phrases" data-route="phrases">Cụm từ</a>
         <a href="#/speak" data-route="speak">Nói</a>
+        <a href="#/pron" data-route="pron">Âm cuối</a>
         <a href="#/errors" data-route="errors">Lỗi của tôi</a>
         <a href="#/progress" data-route="progress">Mốc</a>
         <span class="sidenav-sep"></span>
+        <a href="#/library" data-route="library">Thư viện</a>
         <a href="#/why" data-route="why">Vì sao cách này hiệu quả</a>
         <a href="#/data" data-route="data">Dữ liệu</a>
+        <a href="#/settings" data-route="settings">Cài đặt</a>
       </nav>
-      <p class="sidenav-foot">Mục tiêu: 600 giờ · B2 · giữa 2028</p>
+      <div class="sidenav-foot">
+        <a class="sync-ind" href="#/settings" data-sync-ind hidden><span class="sync-dot"></span><span class="sync-label"></span></a>
+        <p>Mục tiêu: 600 giờ · B2 · giữa 2028</p>
+      </div>
     </aside>
 
     <div class="main-col">
@@ -51,6 +58,7 @@
           <span class="timer-pill-time" data-timer-display></span>
           <button type="button" class="timer-pill-stop" id="timerPillStop">Dừng</button>
         </div>
+        <a class="sync-ind sync-ind-top" href="#/settings" data-sync-ind hidden><span class="sync-dot"></span><span class="sync-label"></span></a>
         <button type="button" class="more-btn" id="moreBtn" aria-label="Mục khác">Khác</button>
       </header>
 
@@ -63,6 +71,10 @@
         <section data-view="progress" hidden></section>
         <section data-view="why" hidden></section>
         <section data-view="data" hidden></section>
+        <section data-view="roadmap" hidden></section>
+        <section data-view="pron" hidden></section>
+        <section data-view="library" hidden></section>
+        <section data-view="settings" hidden></section>
       </main>
     </div>
 

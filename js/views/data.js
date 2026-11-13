@@ -10,7 +10,7 @@ function render() {
     <div class="page-head">
       <div class="eyebrow">Dữ liệu</div>
       <h1>Dữ liệu của bạn</h1>
-      <p class="lede">Mọi thứ chỉ nằm trong trình duyệt này (localStorage), không gửi đi đâu. Muốn chuyển giữa điện thoại và máy Mac: xuất file ở máy này, nhập file ở máy kia.</p>
+      <p class="lede">Dữ liệu nằm trong trình duyệt này (localStorage). Nếu bật đồng bộ ở <a href="#/settings">Cài đặt</a>, nó được lưu thêm vào repo GitHub riêng tư của bạn và tự gộp giữa điện thoại và máy Mac. Không đồng bộ thì dùng xuất/nhập file.</p>
     </div>
 
     ${isStorageOk() ? '' : '<div class="notice" style="margin-bottom:16px">Trình duyệt đang chặn lưu dữ liệu (có thể do chế độ ẩn danh). Dữ liệu sẽ mất khi đóng trang, hãy xuất file thường xuyên.</div>'}
@@ -80,7 +80,7 @@ function render() {
   root.querySelector('#resetBtn').addEventListener('click', () => {
     openModal({
       title: 'Xoá toàn bộ dữ liệu?',
-      html: `<p>Không hoàn tác được. Nếu chưa xuất file dự phòng, hãy xuất trước.</p>
+      html: `<p>Không hoàn tác được. Nếu chưa xuất file dự phòng, hãy xuất trước. Nếu đang đồng bộ GitHub, dữ liệu trong repo cũng bị xoá ở lần đồng bộ sau.</p>
         <div class="field"><label for="confirmText">Gõ <b>XOÁ</b> để xác nhận</label><input id="confirmText" class="input" autocomplete="off"></div>`,
       actions: [
         { label: 'Huỷ' },

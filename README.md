@@ -47,6 +47,58 @@ Nên xuất file mỗi tuần một lần để dự phòng. Nút “Xoá toàn 
 
 Chi tiết nằm ở trang “Vì sao cách này hiệu quả” trong ứng dụng. Con số 600 giờ là ước tính, không phải lời hứa.
 
+## Đồng bộ GitHub và AI (tuỳ chọn)
+
+Không bật thì app vẫn chạy đủ, dữ liệu chỉ nằm trên máy. Bật thì dữ liệu được lưu vào một repo **riêng tư** của bạn và tự gộp giữa điện thoại và Mac.
+
+### 1. Tạo repo dữ liệu
+Tạo repo **Private** tên `english-daily-data` (owner mặc định `Atelier07`; đổi được trong Cài đặt). Có thể để trống, app sẽ tự tạo `data.json` và `progress.md`.
+
+### 2. Tạo fine-grained token
+1. GitHub → Settings → Developer settings → Personal access tokens → **Fine-grained tokens** → Generate new token.
+2. Resource owner: tài khoản của bạn. Expiration: tuỳ (ví dụ 1 năm).
+3. Repository access: **Only select repositories** → chọn **chỉ** `english-daily-data`.
+4. Permissions → Repository permissions → **Contents: Read and write** (Metadata: Read-only tự có). Không cấp gì khác.
+5. Tạo, copy token (`github_pat_…`).
+
+### 3. Nhập vào app
+Khác → **Cài đặt** → dán token, kiểm tra owner/repo/branch → **Lưu** → **Kiểm tra kết nối**. Làm như vậy trên cả điện thoại và Mac.
+Token chỉ lưu trong localStorage của trình duyệt đó, không nằm trong mã nguồn hay repo app.
+
+### 4. Khoá Gemini (cho tính năng AI)
+Trong repo **dữ liệu** (không phải repo app), tạo file `config.json`:
+
+```json
+{ "geminiKey": "KHOÁ_CỦA_BẠN", "models": [] }
+```
+
+`models` để trống thì app dùng danh sách mặc định (gemini-3.8-flash → … → gemini-3.1-flash-lite), tự chuyển model khi một model quá tải, và nhớ model chạy được lần cuối. **Không bao giờ** đưa khoá vào repo app (repo công khai trên GitHub Pages).
+
+### Đồng bộ hoạt động thế nào
+- Mở app: tải `data.json` về và gộp. Mỗi lần dữ liệu đổi: chờ khoảng 5 giây rồi ghi lên (mỗi lần là một commit `sync YYYY-MM-DD HH:MM`).
+- Gộp theo từng bản ghi: bản sửa sau cùng thắng. Bản ghi bị xoá được nhớ bằng “bia mộ” nên không sống lại ở máy kia.
+- Hai máy ghi cùng lúc: app tải lại, gộp, ghi lại (tự thử lại).
+- Mất mạng: dấu chấm báo “Ngoại tuyến/Lỗi đồng bộ”, app tự thử lại sau.
+- `progress.md`: bản tóm tắt dễ đọc (tổng giờ, tuần này, chuỗi ngày, giai đoạn, lỗi hay gặp, cụm từ, TOEIC gần nhất) cho bạn hoặc một AI mentor đọc.
+
+### Các tính năng AI
+- **Nói**: “AI nhận xét” chỉ đưa gợi ý cho 1–2 lỗi quan trọng (ưu tiên lỗi điển hình người Việt: -s, thì/dạng động từ, mạo từ…). Bạn tự sửa trước, rồi mới “Xem đáp án”, rồi lưu vào Lỗi của tôi.
+- **Cụm từ**: “AI gợi ý cụm” trên đoạn văn đã dán; “Câu mới” khi lật thẻ (một câu ví dụ khác tình huống, lưu tạm trong ngày).
+- **Mốc**: “AI tổng kết tuần” đọc nhật ký 7 ngày.
+- **Âm cuối**: “AI giải thích” nguyên nhân có thể và một mẹo. Không bao giờ chấm điểm phát âm.
+
+## Lộ trình và lúc nghi ngờ
+- Trang **Lộ trình**: GĐ1 “Nền tai và âm” (11/2026 → 2/2027, ~150 giờ), GĐ2 “Lên B1” (3 → 6/2027, ~200 giờ), GĐ3 “Lên B2” (7/2027 → 3/2028, ~250 giờ), mỗi giai đoạn có điều kiện “xong khi” để đánh dấu, mốc thi thử 3 tháng/lần.
+- Luật: **Chỉ xét lại cách học ở ngày mốc. Chỉ đổi khi 2 lần thi thử liền không nhích.**
+- Nút **Mình đang nghi ngờ** (Hôm nay, Lộ trình): bằng chứng nghiên cứu cho phần bạn đang nghi ngờ, số liệu của chính bạn, và luật. Mỗi lần mở được ghi lại để tổng kết tuần thấy.
+
+## Thêm từ nghiên cứu
+- Sau mỗi lượt nghe/đọc app hỏi “Hiểu khoảng bao nhiêu?”. Hai lần liền dưới 70% → gợi ý tài liệu dễ hơn; ba lần liền trên 95% → gợi ý khó hơn. Mức tốt: hiểu khoảng 90–98%.
+- **Nghe chép** (Shadowing, tuỳ chọn): gõ cả câu nghe được, dán câu thật từ phụ đề, app chỉ ra từ sót: từ chức năng, đuôi -s/-ed, từ nội dung. Không phải bài điền chỗ trống.
+- **Âm cuối**: cặp từ tối thiểu (want/wants, pay/paid, rice/rise…) đọc ngẫu nhiên, máy nhận giọng nói trả 5 khả năng. Cả 5 đều thiếu âm cuối → nhiều khả năng bạn bỏ âm thật; máy nghe đúng → chưa chắc đã rõ. Thêm phần nhấn âm, nhấn câu, “th” (ưu tiên thấp), ghi âm so với giọng mẫu.
+- **Ngày nghỉ có phép**: mỗi tuần một ngày lỡ đơn lẻ được bỏ qua, chuỗi vẫn giữ.
+- **Thư viện** theo cấp độ; mỗi cụm từ có link “Nghe người thật nói” (YouGlish).
+
 ## Lịch ôn thẻ (SM-2 rút gọn)
 
 - **Quên**: thẻ quay lại cuối buổi ôn hôm nay, lần sau sau 1 ngày; hệ số dễ −0,2.
@@ -59,7 +111,9 @@ Chi tiết nằm ở trang “Vì sao cách này hiệu quả” trong ứng d�
 - **Nhận giọng nói** (Web Speech API) chạy tốt trên Chrome/Edge máy tính và Chrome Android, cần mạng. Trên iPhone/iPad và Firefox thường không có: ứng dụng vẫn bấm giờ nói, bạn gõ hoặc dùng nút micro đọc chính tả trên bàn phím.
 - **Ghi âm shadowing** chỉ giữ trong bộ nhớ tạm, đóng/tải lại trang là mất (cố ý, không lưu giọng nói).
 - Một số video YouTube bị chủ kênh **chặn phát nhúng**; khi đó chọn video khác. Tốc độ 0.9× phụ thuộc video có hỗ trợ không (ứng dụng sẽ báo nếu không).
-- Không đồng bộ tự động giữa các máy: dùng Xuất/Nhập.
+- Đồng bộ cần token GitHub; không có token thì dùng Xuất/Nhập. `data.json` lớn hơn 1 MB sẽ không đọc được qua Contents API (còn rất xa mới tới).
+- Tính năng AI cần `config.json` trong repo dữ liệu; Gemini có thể quá tải, khi đó app thử model khác rồi báo lỗi nhẹ.
+- Nhận xét phát âm dựa trên bản chép lời của máy: không đáng tin tuyệt đối với âm cuối, nên app chỉ gợi ý, không chấm điểm.
 - Cần mở qua `http(s)://` (GitHub Pages hoặc máy chủ tĩnh), không mở trực tiếp bằng `file://` vì dùng ES modules.
 
 ## Chạy thử trên máy
@@ -82,6 +136,12 @@ js/timer.js           đồng hồ bấm giờ (sống qua lần tải lại tra
 js/srs.js             lịch ôn thẻ
 js/prompts.js         40 đề nói
 js/ui.js              modal trong trang, toast, copy
+js/sync.js            đồng bộ GitHub (data.json, progress.md, đọc config.json)
+js/ai.js              Gemini Interactions API, đổi model khi lỗi, các lời nhắc
+js/summary.js         nội dung progress.md
+js/roadmap.js         giai đoạn, mốc, nhịp học
+js/evidence.js        bằng chứng nghiên cứu (trang Vì sao, nút nghi ngờ)
+js/dictation.js       so câu nghe chép
 js/views/*.js         từng màn hình
 sw.js                 cache khung ứng dụng (không bao giờ cache YouTube)
 manifest.webmanifest  cài lên màn hình chính

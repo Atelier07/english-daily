@@ -4,6 +4,43 @@ import {
   parseDate, GOAL_HOURS,
 } from '../util.js';
 import { toast, confirmModal } from '../ui.js';
+import { hasAI, askJSON, weeklyPrompt } from '../ai.js';
+import { progressMarkdown } from '../summary.js';
+import { CEFR_MARKS } from '../roadmap.js';
+
+const WEEKLY_KEY = 'englishDaily.weekly';
+function lastWeekly() { try { return JSON.parse(localStorage.getItem(WEEKLY_KEY) || 'null'); } catch (e) { return null; } }
+
+export function weeklyLog() {
+  const t = today();
+  const from = addDays(t, -6);
+  const d = db();
+  const pron = d.pronLog.filter((x) => x.date >= from);
+  const dict = d.dictLog.filter((x) => x.date >= from);
+  const reviewed = d.phrases.filter((p) => p.lastReview && p.lastReview >= from);
+  const extra = [
+    '## Thêm (7 ngày)',
+    `- Cụm từ đã ôn: ${reviewed.length}; cụm có lần quên trong lịch sử: ${reviewed.filter((p) => p.lapses).length}`,
+    `- Lỗi mới lưu: ${d.errors.filter((e) => e.created >= Date.parse(from)).length}`,
+    `- Luyện âm cuối: ${pron.length} lần, nghi bỏ âm cuối ${pron.filter((x) => x.result === 'missing').length} lần`,
+    `- Nghe chép: ${dict.length} câu; sót từ chức năng ${dict.reduce((a, x) => a + x.function, 0)}, đuôi -s/-ed ${dict.reduce((a, x) => a + x.ending, 0)}, từ nội dung ${dict.reduce((a, x) => a + x.content, 0)}`,
+    `- Lúc nghi ngờ: ${d.doubts.filter((x) => x.date >= from).map((x) => `${x.date} ${x.part}`).join(', ') || 'không có'}`,
+  ];
+  return `${progressMarkdown()}\n${extra.join('\n')}`;
+}
+
+function weeklyHtml(w) {
+  if (!w || !w.data) return '';
+  const d = w.data;
+  const list = (a) => (Array.isArray(a) ? a : [a]).filter(Boolean).map((x) => `<li>${esc(String(x))}</li>`).join('');
+  return `<div class="weekly">
+    <p class="muted small">Tổng kết ngày ${viShortDate(w.date)}/${w.date.slice(0, 4)}</p>
+    ${d.went_well ? `<h3>Đã làm tốt</h3><ul>${list(d.went_well)}</ul>` : ''}
+    ${d.focus ? `<h3>Tuần tới tập trung</h3><ul>${list(d.focus)}</ul>` : ''}
+    ${d.material ? `<h3>Độ khó tài liệu</h3><p>${esc(String(d.material))}</p>` : ''}
+    ${d.doubt_note ? `<p class="muted">${esc(String(d.doubt_note))}</p>` : ''}
+  </div>`;
+}
 
 let root;
 let resizeT = null;
@@ -88,11 +125,12 @@ function render() {
       <div class="eyebrow">Mốc</div>
       <h1>Đường dài, đo bằng giờ</h1>
       <p class="lede">Còn ${fmtHours(Math.max(0, GOAL_HOURS * 60 - total), 0)} giờ đến ${GOAL_HOURS}. Để kịp giữa 2028, nhịp cần khoảng <b>${pace.toLocaleString('vi-VN', { maximumFractionDigits: 1 })} giờ/tuần</b> (đường nét đứt trong biểu đồ).</p>
+      <p class="muted small">Mốc CEFR theo giờ học có hướng dẫn của Cambridge (tính từ 0, chỉ tham khảo): ${CEFR_MARKS.map((m) => `${m.label} ~${m.h} giờ`).join(' · ')}.</p>
     </div>
 
     <div class="kpis">
       <div class="stat"><span class="num">${fmtHours(total)}</span><span class="k">/ ${GOAL_HOURS} giờ</span></div>
-      <div class="stat"><span class="num">${st.current}</span><span class="k">ngày liên tiếp · dài nhất ${st.best}</span></div>
+      <div class="stat"><span class="num">${st.current}</span><span class="k">ngày liên tiếp · dài nhất ${st.best}${st.restDays.length ? ` · ${st.restDays.length} ngày nghỉ có phép` : ''}</span></div>
       <div class="stat"><span class="num">${db().phrases.length}</span><span class="k">cụm từ · ${dueCount()} đến hạn</span></div>
       <div class="stat"><span class="num">${openErr}</span><span class="k">lỗi đang sửa</span></div>
     </div>
@@ -121,9 +159,32 @@ function render() {
       </div>
     </section>
 
-    <p class="muted small section">Xem thêm: <a href="#/errors">Lỗi của tôi</a> · <a href="#/why">Vì sao cách này hiệu quả</a> · <a href="#/data">Xuất / nhập dữ liệu</a></p>
+    <section class="section">
+      <h2>Tổng kết tuần</h2>
+      <p class="muted small">AI đọc nhật ký 7 ngày (giờ học, mức hiểu, lỗi, cụm hay quên, lúc nghi ngờ) và nói ngắn: điều làm tốt, 1–2 việc cho tuần tới, độ khó tài liệu.</p>
+      <div class="card">
+        <div id="weeklyOut">${weeklyHtml(lastWeekly()) || '<p class="muted small" style="margin:0">Chưa có bản tổng kết nào.</p>'}</div>
+        <div class="row" style="margin-top:12px"><button type="button" class="btn" id="weeklyBtn">AI tổng kết tuần</button></div>
+      </div>
+    </section>
+
+    <p class="muted small section">Xem thêm: <a href="#/roadmap">Lộ trình</a> · <a href="#/errors">Lỗi của tôi</a> · <a href="#/why">Vì sao cách này hiệu quả</a> · <a href="#/data">Xuất / nhập dữ liệu</a></p>
   `;
 
+  root.querySelector('#weeklyBtn').addEventListener('click', async (e) => {
+    const btn = e.currentTarget;
+    const out = root.querySelector('#weeklyOut');
+    if (!(await hasAI())) { out.innerHTML = '<p class="small">Cần khoá Gemini: vào <a href="#/settings">Cài đặt</a> để kết nối repo dữ liệu.</p>'; return; }
+    btn.disabled = true;
+    out.innerHTML = '<p class="muted small">AI đang đọc nhật ký…</p>';
+    try {
+      const { data } = await askJSON(weeklyPrompt(weeklyLog()));
+      const w = { date: today(), data };
+      try { localStorage.setItem(WEEKLY_KEY, JSON.stringify(w)); } catch (err) { /* ignore */ }
+      out.innerHTML = weeklyHtml(w);
+    } catch (err) { out.innerHTML = `<p class="small">${esc(err.message)}</p>`; }
+    btn.disabled = false;
+  });
   root.querySelector('#addToeic').addEventListener('click', () => {
     const score = Number(root.querySelector('#tScore').value);
     const date = root.querySelector('#tDate').value || today();

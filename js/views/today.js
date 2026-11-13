@@ -5,16 +5,19 @@ import {
 } from '../util.js';
 import { toggle, running, tick, logMinutes } from '../timer.js';
 import { openModal, toast, confirmModal } from '../ui.js';
+import { materialAdvice } from '../comprehension.js';
+import { openDoubt } from '../doubt.js';
+import { currentPhase, phaseHours, nextCheckpoint, CEFR_MARKS } from '../roadmap.js';
 
 let root;
 
 const BLOCK_COPY = {
   input: {
-    desc: 'Video, podcast, bài viết tiếng Anh về AI, công nghệ, piano... thứ bạn thật sự muốn xem. Hiểu khoảng 70–90% là vừa; bật phụ đề tiếng Anh nếu cần.',
-    link: null,
+    desc: 'Thứ bạn thật sự muốn xem: AI, công nghệ, piano… Mức tốt là hiểu khoảng 90–98%. Ở trình độ hiện tại, ưu tiên tài liệu cho người học (BBC 6 Minute English, VOA) rồi mới sang video thật; bật phụ đề tiếng Anh.',
+    link: { href: '#/library', label: 'Thư viện' },
   },
   shadow: {
-    desc: 'Chọn 1 đoạn 1–2 phút, nghe kỹ rồi nói đè theo người nói. Ghi âm và so sánh.',
+    desc: 'Một đoạn 30–90 giây, dễ hơn hoặc bằng trình độ. Nghe lấy ý trước, rồi lẩm bẩm theo, rồi mới nói đè. Ghi âm và so sánh.',
     link: { href: '#/shadow', label: 'Mở Shadowing' },
   },
   speak: {
@@ -56,6 +59,7 @@ function render() {
     const isRun = run && run.block === key;
     const copy = BLOCK_COPY[key];
     const range = b.min === b.max ? `${b.min}′` : `${b.min}–${b.max}′`;
+    const adv = key === 'input' ? materialAdvice() : null;
     const extra = key === 'review' ? `<span class="tag ${due ? 'tag-accent' : ''}">${due} thẻ đến hạn</span>` : '';
     return `
       <article class="card block ${isRun ? 'running' : ''}">
@@ -67,6 +71,7 @@ function render() {
         </div>
         <span class="timer-time" data-timer-display="${key}" aria-live="off">00:00</span>
         <p class="block-desc">${copy.desc}</p>
+        ${adv ? `<p class="block-desc notice notice-quiet">${esc(adv.text)}</p>` : ''}
         <div class="block-foot">
           <button type="button" class="btn ${isRun ? 'btn-primary' : ''}" data-toggle="${key}">${isRun ? 'Dừng & ghi' : 'Bắt đầu'}</button>
           ${copy.link ? `<a class="btn btn-quiet" href="${copy.link.href}">${copy.link.label}${key === 'review' && due ? ` (${due})` : ''} →</a>` : ''}
@@ -103,12 +108,17 @@ function render() {
 
     <div class="progress">
       <div class="progress-meta"><span><span class="num">${fmtHours(total)}</span> / ${GOAL_HOURS} giờ</span><span>${pct.toLocaleString('vi-VN', { maximumFractionDigits: 1 })}%</span></div>
-      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${GOAL_HOURS}" aria-valuenow="${(total / 60).toFixed(1)}"><i style="width:${pct}%"></i></div>
+      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${GOAL_HOURS}" aria-valuenow="${(total / 60).toFixed(1)}"><i style="width:${pct}%"></i>
+        ${CEFR_MARKS.filter((m) => m.h < GOAL_HOURS).map((m) => `<b class="cefr-tick" style="left:${(m.h / GOAL_HOURS) * 100}%"></b>`).join('')}</div>
+      <div class="cefr-labels">${CEFR_MARKS.map((m) => `<span style="left:${(m.h / GOAL_HOURS) * 100}%">${m.label} ~${m.h}h</span>`).join('')}</div>
+      <p class="muted tiny">Mốc CEFR: ước tính giờ học có hướng dẫn của Cambridge (tính từ 0), chỉ để tham khảo.</p>
     </div>
 
     <div class="minday">${ring(dayMin / MIN_DAY)}
-      <span>${st.todayDone ? 'Ngày tối thiểu: xong.' : `Ngày tối thiểu: ${Math.round(dayMin)} / ${MIN_DAY} phút.`}</span>
+      <span>${st.todayDone ? 'Ngày tối thiểu: xong.' : `Ngày tối thiểu: ${Math.round(dayMin)} / ${MIN_DAY} phút.`}${st.restUsedThisWeek ? ' <span class="muted">Tuần này đã dùng ngày nghỉ có phép, chuỗi vẫn giữ.</span>' : ''}</span>
     </div>
+
+    ${roadmapCard()}
 
     <section class="section">
       <div class="row" style="margin-bottom:12px"><h2>Bốn việc hôm nay</h2></div>
@@ -127,6 +137,7 @@ function render() {
 
   root.querySelectorAll('[data-toggle]').forEach((b) => b.addEventListener('click', () => toggle(b.dataset.toggle)));
   root.querySelector('#manualBtn').addEventListener('click', manualEntry);
+  root.querySelector('#doubtBtn').addEventListener('click', openDoubt);
   root.querySelectorAll('[data-del]').forEach((b) => b.addEventListener('click', async () => {
     const ok = await confirmModal({ title: 'Xoá lượt này?', message: 'Thời gian của lượt này sẽ bị trừ khỏi tổng.', confirmLabel: 'Xoá', danger: true });
     if (!ok) return;
@@ -134,6 +145,21 @@ function render() {
     save();
   }));
   tick();
+}
+
+function roadmapCard() {
+  const p = currentPhase();
+  const h = phaseHours(p);
+  const cp = nextCheckpoint();
+  const pct = Math.min(100, (h / p.hours) * 100);
+  return `
+    <a class="card phase-card" href="#/roadmap">
+      <div class="row" style="gap:8px"><span class="eyebrow" style="margin:0">${p.label} · ${esc(p.months)}</span><span class="spacer"></span><span class="muted small">Lộ trình →</span></div>
+      <h3>${esc(p.name)}</h3>
+      <div class="progress-bar thin"><i style="width:${pct}%"></i></div>
+      <div class="progress-meta" style="margin:6px 0 0"><span>${h.toLocaleString('vi-VN', { maximumFractionDigits: 1 })} / ${p.hours} giờ trong giai đoạn</span><span>mốc thi thử sau ${cp.days} ngày</span></div>
+    </a>
+    <div class="row" style="margin-top:10px"><button type="button" class="btn btn-quiet btn-sm" id="doubtBtn">Mình đang nghi ngờ</button></div>`;
 }
 
 function manualEntry() {

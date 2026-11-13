@@ -1,7 +1,9 @@
-import { db, save } from '../store.js';
-import { esc, fmtClock } from '../util.js';
+import { db, save, uid } from '../store.js';
+import { esc, fmtClock, today } from '../util.js';
 import { toast } from '../ui.js';
 import { toggle, running } from '../timer.js';
+import { diffDictation } from '../dictation.js';
+import { youglish } from '../library.js';
 
 let root;
 let player = null;
@@ -99,7 +101,7 @@ function rememberVideo(id, url) {
   try { title = (player.getVideoData && player.getVideoData().title) || ''; } catch (e) { /* ignore */ }
   const list = db().videos.filter((v) => v.videoId !== id);
   const old = db().videos.find((v) => v.videoId === id);
-  list.unshift({ videoId: id, url: url.startsWith('http') ? url : `https://youtu.be/${id}`, title: title || old?.title || '', lastUsed: Date.now() });
+  list.unshift({ id, videoId: id, url: url.startsWith('http') ? url : `https://youtu.be/${id}`, title: title || old?.title || '', lastUsed: Date.now() });
   db().videos = list.slice(0, 12);
   save();
   renderRecent();
@@ -235,7 +237,7 @@ function setControlsEnabled(on) {
 function renderRecent() {
   const box = root && root.querySelector('#recent');
   if (!box) return;
-  const vids = db().videos;
+  const vids = db().videos.slice().sort((a, b) => (b.lastUsed || 0) - (a.lastUsed || 0));
   box.innerHTML = vids.length
     ? `<ul class="link-list">${vids.map((v) => `
         <li>
@@ -273,7 +275,7 @@ export function mount(el) {
     <div class="page-head">
       <div class="eyebrow">Shadowing</div>
       <h1>Nói đè theo người thật</h1>
-      <p class="lede">Chọn một đoạn ngắn 1–2 phút, lặp đến khi miệng bạn theo kịp nhịp của họ.</p>
+      <p class="lede">10–15 phút mỗi ngày, một đoạn 30–90 giây, dễ bằng hoặc dưới trình độ. Dùng lại cùng đoạn vài ngày liền. Nếu đọc phụ đề rồi vẫn không theo kịp, đoạn đó quá khó: chọn đoạn dễ hơn.</p>
       <div class="row" style="margin-top:12px"><button type="button" class="btn" id="shadowTimer">Bấm giờ Shadowing</button></div>
     </div>
 
@@ -320,19 +322,29 @@ export function mount(el) {
       </div>
     </div>
 
+    <details class="section card dict" id="dictBox">
+      <summary><b>Nghe chép</b> <span class="muted small">· tuỳ chọn, 2–3 phút</span></summary>
+      <p class="muted small" style="margin-top:10px">Nghe đoạn A–B rồi gõ <b>cả câu</b> bạn nghe được. Sau đó dán câu thật (copy từ phụ đề YouTube) để so. App chỉ ra từ bạn bỏ sót: từ chức năng (a, the, to…), đuôi -s/-ed, hay từ nội dung. Đây là cách tìm đúng chỗ tai đang hụt.</p>
+      <div class="field"><label for="dictHeard">Bạn nghe được</label><textarea id="dictHeard" class="textarea" lang="en" rows="2" style="min-height:70px"></textarea></div>
+      <div class="field"><label for="dictReal">Câu thật (từ phụ đề)</label><textarea id="dictReal" class="textarea" lang="en" rows="2" style="min-height:70px"></textarea></div>
+      <div class="row" style="margin-top:10px"><button type="button" class="btn btn-primary btn-sm" id="dictCheck">So sánh</button></div>
+      <div id="dictOut"></div>
+    </details>
+
     <section class="section">
       <h2>Cách shadowing</h2>
       <ol class="steps">
-        <li><span><b>Nghe</b> đoạn A–B 2–3 lần, chưa nói. Bật phụ đề nếu cần, đoán ý chính.</span></li>
-        <li><span><b>Lẩm bẩm theo</b> thật nhỏ, ở tốc độ 0.75×. Chỉ bắt nhịp và chỗ nhấn, chưa cần rõ chữ.</span></li>
-        <li><span><b>Shadow</b>: nói to, đè ngay sau người nói nửa nhịp. Tăng dần lên 0.9× rồi 1×.</span></li>
-        <li><span><b>Ghi âm & so sánh</b>: nghe bản gốc rồi giọng mình. Chọn một chỗ khác nhất, sửa đúng chỗ đó.</span></li>
+        <li><span><b>Nghe lấy ý</b> 1–2 lần, chưa nhìn chữ. Hiểu đoạn này nói gì.</span></li>
+        <li><span><b>Xem phụ đề</b>, tra từ lạ. Shadow thứ mình không hiểu chỉ là nhại âm thanh.</span></li>
+        <li><span><b>Lẩm bẩm theo</b> thật nhỏ, tốc độ 0.75×, không nhìn chữ. Chỉ bắt nhịp và chỗ nhấn.</span></li>
+        <li><span><b>Shadow</b> nói rõ, đè sau người nói nửa nhịp: lúc đầu nhìn phụ đề, sau đó bỏ phụ đề. Tăng dần lên 0.9× rồi 1×.</span></li>
+        <li><span><b>Ghi âm & so sánh</b>: chú ý nhấn âm, ngữ điệu, âm cuối. Chọn một chỗ khác nhất, sửa đúng chỗ đó.</span></li>
       </ol>
     </section>
 
     <section class="section">
       <h2>Gợi ý để tìm video</h2>
-      <p class="muted small">Đây là link tìm kiếm trên YouTube (không phải video cố định), chọn video nào bạn thấy thích rồi dán link vào ô ở trên.</p>
+      <p class="muted small">Xem đủ theo cấp độ ở <a href="#/library">Thư viện</a>. Đây là link tìm kiếm trên YouTube (không phải video cố định), chọn video nào bạn thấy thích rồi dán link vào ô ở trên.</p>
       <div class="card">
         <ul class="link-list">
           ${STARTERS.map((s) => `
@@ -378,7 +390,37 @@ export function mount(el) {
   el.querySelector('#cmpBtn').addEventListener('click', compare);
   el.querySelector('#meBtn').addEventListener('click', playRecording);
   el.querySelector('#shadowTimer').addEventListener('click', () => toggle('shadow'));
+  el.querySelector('#dictCheck').addEventListener('click', checkDictation);
   renderRecent();
+}
+
+function checkDictation() {
+  const heard = root.querySelector('#dictHeard').value.trim();
+  const real = root.querySelector('#dictReal').value.trim();
+  const out = root.querySelector('#dictOut');
+  if (!heard || !real) { toast('Cần cả câu bạn nghe được và câu thật.'); return; }
+  const r = diffDictation(real, heard);
+  const c = r.counts;
+  const words = r.items.map((it) => {
+    if (it.status === 'ok') return `<span class="dw ok">${esc(it.word)}</span>`;
+    if (it.status === 'ending') return `<span class="dw ending" title="bạn nghe: ${esc(it.heard)}">${esc(it.word)}</span>`;
+    return `<span class="dw ${it.tag === 'từ chức năng' ? 'func' : 'content'}">${esc(it.word)}</span>`;
+  }).join(' ');
+  const missedContent = r.items.filter((it) => it.status === 'missed' && it.tag === 'từ nội dung').map((it) => it.word);
+  out.innerHTML = `
+    <div class="dict-result" lang="en">${words}</div>
+    <div class="dict-legend small">
+      <span><i class="dw func">từ chức năng</i> ${c.function}</span>
+      <span><i class="dw ending">đuôi -s/-ed</i> ${c.ending}</span>
+      <span><i class="dw content">từ nội dung</i> ${c.content}</span>
+      <span class="muted">đúng ${c.ok}/${c.total}${c.extra ? ` · thừa: ${esc(r.extras.join(', '))}` : ''}</span>
+    </div>
+    ${c.function > c.content ? '<p class="small">Bạn hụt nhiều từ chức năng: chúng bị đọc lướt, nối âm. Nghe lại đúng chỗ đó ở 0.75×, rồi nghe lại 1×.</p>' : ''}
+    ${c.ending ? '<p class="small">Hụt đuôi -s/-ed: tai chưa quen nghe âm cuối, thường đi cùng việc mình chưa nói âm cuối. Luyện thêm ở trang <a href="#/pron">Âm cuối</a>.</p>' : ''}
+    ${missedContent.length ? `<p class="small">Từ nội dung bị sót: ${missedContent.map((w) => `<a href="${youglish(w)}" target="_blank" rel="noopener">${esc(w)}</a>`).join(', ')} (nghe người thật nói).</p>` : ''}`;
+  db().dictLog.push({ id: uid(), date: today(), total: c.total, ok: c.ok, function: c.function, ending: c.ending, content: c.content });
+  if (db().dictLog.length > 300) db().dictLog.splice(0, db().dictLog.length - 300);
+  save();
 }
 
 export function show() { renderTimerBtn(); renderRecent(); }

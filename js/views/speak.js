@@ -4,6 +4,8 @@ import { toast, copyText } from '../ui.js';
 import { logMinutes } from '../timer.js';
 import { PROMPTS, promptIndexFor } from '../prompts.js';
 import { addError } from './errors.js';
+import { hasAI, askJSON, speakFeedbackPrompt } from '../ai.js';
+import { tokenize } from '../dictation.js';
 
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
 
@@ -142,6 +144,7 @@ function resetSpeech() {
   spokenSec = 0;
   logged = false;
   root.querySelector('#transcript').value = '';
+  root.querySelector('#aiFb').innerHTML = '';
   const lb = root.querySelector('#logBtn');
   lb.disabled = false;
   updateStats();
@@ -190,11 +193,13 @@ export function mount(el) {
       <div class="section">
         <h2>Sau khi nói</h2>
         <div class="row">
-          <button type="button" class="btn btn-primary" id="copyAI">Copy để nhờ AI sửa</button>
+          <button type="button" class="btn btn-primary" id="aiFeedback">AI nhận xét</button>
+          <button type="button" class="btn" id="copyAI">Copy để nhờ AI sửa</button>
           <button type="button" class="btn" id="logBtn">Ghi phút vào “Nói ra”</button>
           <button type="button" class="btn btn-quiet" id="speakReset">Nói lại từ đầu</button>
         </div>
-        <p class="muted small" style="margin-top:8px">Dán vào ChatGPT, Claude hay Gemini. Lời nhắc đã dặn AI chỉ nêu 1–2 lỗi lặp lại nhất, kèm câu đúng và giải thích ngắn.</p>
+        <p class="muted small" style="margin-top:8px">“AI nhận xét” chỉ gợi ý chỗ sai trước để bạn tự sửa, rồi mới hiện đáp án (tự sửa nhớ lâu hơn). Không có khoá AI thì dùng “Copy” và dán vào ChatGPT, Claude hay Gemini.</p>
+        <div id="aiFb"></div>
       </div>
 
       <div class="section card">
@@ -240,6 +245,7 @@ export function mount(el) {
     toast(`Đã ghi ${mins} phút.`);
   });
   el.querySelector('#speakReset').addEventListener('click', resetSpeech);
+  el.querySelector('#aiFeedback').addEventListener('click', runFeedback);
   el.querySelector('#saveErr').addEventListener('click', () => {
     const wrong = el.querySelector('#eWrong').value.trim();
     const right = el.querySelector('#eRight').value.trim();
@@ -250,6 +256,68 @@ export function mount(el) {
   });
   updateStats();
   setMicUI();
+}
+
+export function splitSentences(text) {
+  return String(text || '').replace(/\s+/g, ' ').split(/(?<=[.!?])\s+/).map((x) => x.trim()).filter((x) => x.length > 1);
+}
+
+async function runFeedback(e) {
+  const btn = e.currentTarget;
+  const box = root.querySelector('#aiFb');
+  const text = root.querySelector('#transcript').value;
+  if (words(text) < 5) { toast('Chưa có đủ chữ để nhận xét. Nói hoặc gõ thêm.'); return; }
+  if (!(await hasAI())) {
+    box.innerHTML = '<div class="notice notice-quiet" style="margin-top:12px">Chưa có khoá Gemini. Vào <a href="#/settings">Cài đặt</a> để kết nối repo dữ liệu có config.json, hoặc dùng nút “Copy”.</div>';
+    return;
+  }
+  btn.disabled = true;
+  box.innerHTML = '<p class="muted small" style="margin-top:12px">Đang nhờ AI đọc…</p>';
+  const sentences = splitSentences(text);
+  try {
+    const { data } = await askJSON(speakFeedbackPrompt(sentences, currentPrompt().en));
+    const items = (Array.isArray(data.items) ? data.items : []).filter((x) => x && x.right).slice(0, 2);
+    if (!items.length) {
+      box.innerHTML = '<div class="notice notice-quiet" style="margin-top:12px">AI không thấy lỗi lặp lại đáng kể lần này. Nói dài hơn một chút ở lần sau.</div>';
+    } else {
+      box.innerHTML = `<div class="stack" style="margin-top:14px">${items.map((it, k) => `
+        <div class="card fb-item">
+          <div class="row" style="gap:8px"><b>Câu ${Number(it.sentence) || k + 1}</b>${it.category ? `<span class="tag">${esc(it.category)}</span>` : ''}</div>
+          <p class="fb-hint">${esc(it.hint || 'Câu này có một chỗ chưa đúng. Thử tự sửa.')}</p>
+          <div class="fb-quote" lang="en">“${esc(it.quote || sentences[(Number(it.sentence) || 1) - 1] || '')}”</div>
+          <div class="field" style="margin-top:10px"><label for="try${k}">Bạn tự sửa thử</label>
+            <input id="try${k}" class="input" lang="en" value="${esc(it.quote || '')}"></div>
+          <div class="row" style="margin-top:10px"><button type="button" class="btn btn-sm" data-reveal="${k}">Xem đáp án</button></div>
+          <div class="fb-answer" data-ans="${k}" hidden></div>
+        </div>`).join('')}</div>`;
+      box.querySelectorAll('[data-reveal]').forEach((b) => b.addEventListener('click', () => {
+        const k = Number(b.dataset.reveal);
+        const it = items[k];
+        const attempt = box.querySelector(`#try${k}`).value;
+        const same = tokenize(attempt).join(' ') === tokenize(it.right).join(' ');
+        const ans = box.querySelector(`[data-ans="${k}"]`);
+        ans.hidden = false;
+        ans.innerHTML = `
+          ${same ? '<p class="self-ok">Bạn tự sửa đúng.</p>' : ''}
+          <div class="err-wrong" lang="en">${esc(it.quote || '')}</div>
+          <div class="err-right" lang="en">${esc(it.right)}</div>
+          <p class="err-note">${esc(it.reason || '')}</p>
+          <button type="button" class="btn btn-sm btn-primary" data-save="${k}">Lưu vào Lỗi của tôi</button>`;
+        b.remove();
+        ans.querySelector('[data-save]').addEventListener('click', (ev) => {
+          const r = addError({ wrong: it.quote || attempt, right: it.right, note: [it.category, it.reason].filter(Boolean).join(': ') });
+          ev.currentTarget.disabled = true;
+          ev.currentTarget.textContent = r === 'again' ? 'Đã có · tăng số lần gặp' : 'Đã lưu';
+        });
+      }));
+    }
+    if (data.ending_note) {
+      box.insertAdjacentHTML('beforeend', `<div class="notice notice-quiet" style="margin-top:12px">${esc(data.ending_note)} <span class="muted">Máy chép lời hay nghe sai âm cuối, nên chỉ coi đây là gợi ý; kiểm tra lại ở trang <a href="#/pron">Âm cuối</a>.</span></div>`);
+    }
+  } catch (err) {
+    box.innerHTML = `<div class="notice" style="margin-top:12px">${esc(err.message)}</div>`;
+  }
+  btn.disabled = false;
 }
 
 export function show() { renderPrompt(); }

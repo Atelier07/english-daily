@@ -37,8 +37,12 @@ export function stop({ silent = false } = {}) {
 }
 
 export function logMinutes(block, minutes, { date = today(), manual = true, note = '' } = {}) {
-  db().sessions.push({ id: uid(), date, block, minutes: Math.round(minutes * 10) / 10, note, manual, ts: Date.now() });
+  const rec = { id: uid(), date, block, minutes: Math.round(minutes * 10) / 10, note, manual, ts: Date.now() };
+  db().sessions.push(rec);
   save();
+  // sau một lượt nghe/đọc: hỏi mức hiểu (xem comprehension.js)
+  if (block === 'input') window.dispatchEvent(new CustomEvent('ed:input-logged', { detail: { id: rec.id } }));
+  return rec;
 }
 
 export function toggle(block) {

@@ -86,23 +86,55 @@ export function weekMinutes(monday = mondayOf(today())) {
     .filter((s) => s.date >= monday && s.date < end)
     .reduce((a, s) => a + (Number(s.minutes) || 0), 0);
 }
+// Chuỗi ngày: ngày có ≥ MIN_DAY phút. Mỗi tuần (thứ Hai → Chủ nhật) có 1 "ngày nghỉ có phép":
+// một ngày lỡ đơn lẻ (hôm trước có học) được tự bỏ qua mà không làm đứt chuỗi.
 export function streakInfo() {
   const map = minutesByDate();
   const ok = (d) => (map.get(d) || 0) >= MIN_DAY;
   const t = today();
   const todayDone = ok(t);
   let cur = 0;
+  const restWeeks = new Set();
+  const restDays = [];
   let d = todayDone ? t : addDays(t, -1);
-  while (ok(d)) { cur++; d = addDays(d, -1); }
-  // chuỗi dài nhất
-  const days = [...map.keys()].filter(ok).sort();
-  let best = 0, run = 0, prev = null;
-  for (const day of days) {
-    run = prev && daysBetween(prev, day) === 1 ? run + 1 : 1;
-    best = Math.max(best, run);
-    prev = day;
+  for (let guard = 0; guard < 4000; guard++) {
+    if (ok(d)) { cur++; d = addDays(d, -1); continue; }
+    const wk = mondayOf(d);
+    if (cur > 0 || d === addDays(t, -1)) {
+      if (!restWeeks.has(wk) && ok(addDays(d, -1))) {
+        restWeeks.add(wk);
+        restDays.push(d);
+        d = addDays(d, -1);
+        continue;
+      }
+    }
+    break;
   }
-  return { current: cur, best: Math.max(best, cur), todayDone };
+  // chuỗi dài nhất, cùng luật ngày nghỉ
+  const days = [...map.keys()].filter(ok).sort();
+  let best = 0;
+  if (days.length) {
+    let run = 0;
+    const used = new Set();
+    for (let day = days[0]; day <= t; day = addDays(day, 1)) {
+      if (ok(day)) { run++; best = Math.max(best, run); continue; }
+      const wk = mondayOf(day);
+      if (!used.has(wk) && ok(addDays(day, -1)) && (ok(addDays(day, 1)) || addDays(day, 1) === t || day === t)) {
+        used.add(wk);
+        continue;
+      }
+      if (day === t) continue; // hôm nay chưa xong thì chưa tính là đứt
+      run = 0;
+    }
+  }
+  const thisWeek = mondayOf(t);
+  return {
+    current: cur,
+    best: Math.max(best, cur),
+    todayDone,
+    restDays,
+    restUsedThisWeek: restDays.some((x) => mondayOf(x) === thisWeek),
+  };
 }
 
 export function dueCount(date = today()) {

@@ -1,0 +1,111 @@
+import { getSettings, setSettings, testConnection, syncNow, getStatus, onStatus, isConfigured, forgetConfig, loadConfig } from '../sync.js';
+import { ask } from '../ai.js';
+import { esc } from '../util.js';
+import { toast, confirmModal } from '../ui.js';
+
+let root;
+const LABEL = { off: 'Chỉ lưu trên máy này', syncing: 'Đang đồng bộ…', ok: 'Đã đồng bộ', error: 'Lỗi đồng bộ', offline: 'Ngoại tuyến, sẽ thử lại' };
+
+function statusLine() {
+  const st = getStatus();
+  const el = root && root.querySelector('#syncState');
+  if (!el) return;
+  el.dataset.state = st.status;
+  el.innerHTML = `<span class="sync-dot"></span> ${esc(LABEL[st.status] || st.status)}${st.lastOk ? ` <span class="muted">· lần cuối ${new Date(st.lastOk).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })}</span>` : ''}${st.message && st.status !== 'ok' ? `<br><span class="small">${esc(st.message)}</span>` : ''}`;
+}
+
+function render() {
+  const s = getSettings();
+  root.innerHTML = `
+    <div class="page-head">
+      <div class="eyebrow">Cài đặt</div>
+      <h1>Đồng bộ và AI</h1>
+      <p class="lede">Không bắt buộc. Không có token, app vẫn chạy đầy đủ trên máy này. Có token, dữ liệu được lưu vào một repo GitHub riêng tư của bạn và khoá Gemini được đọc từ <code>config.json</code> trong repo đó.</p>
+    </div>
+
+    <section class="card stack">
+      <div class="sync-state" id="syncState"></div>
+      <div class="field"><label for="ghToken">GitHub token (fine-grained)</label>
+        <input id="ghToken" class="input" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…" value="${esc(s.token)}">
+        <span class="muted small">Chỉ lưu trong trình duyệt này. Tạo token chỉ cho repo dữ liệu, quyền Contents: Read and write.</span></div>
+      <div class="field-grid">
+        <div class="field"><label for="ghOwner">Owner</label><input id="ghOwner" class="input" autocomplete="off" spellcheck="false" value="${esc(s.owner)}"></div>
+        <div class="field"><label for="ghRepo">Repo dữ liệu</label><input id="ghRepo" class="input" autocomplete="off" spellcheck="false" value="${esc(s.repo)}"></div>
+      </div>
+      <div class="field"><label for="ghBranch">Branch</label><input id="ghBranch" class="input" autocomplete="off" spellcheck="false" value="${esc(s.branch)}"></div>
+      <div class="row">
+        <button type="button" class="btn btn-primary" id="saveGh">Lưu</button>
+        <button type="button" class="btn" id="testGh">Kiểm tra kết nối</button>
+        <button type="button" class="btn btn-quiet" id="syncGh" ${isConfigured() ? '' : 'disabled'}>Đồng bộ ngay</button>
+      </div>
+      <div id="testOut" class="small"></div>
+    </section>
+
+    <section class="section card stack">
+      <h3>AI (Gemini)</h3>
+      <p class="muted small" style="margin:0">Khoá nằm trong <code>config.json</code> ở repo dữ liệu: <code>{"geminiKey": "…", "models": []}</code>. App chỉ đọc file này, không bao giờ ghi khoá vào mã nguồn. Mọi tính năng AI đều tuỳ chọn.</p>
+      <div class="row">
+        <button type="button" class="btn" id="reloadCfg" ${isConfigured() ? '' : 'disabled'}>Tải lại config.json</button>
+        <button type="button" class="btn btn-quiet" id="testAI" ${isConfigured() ? '' : 'disabled'}>Thử gọi AI</button>
+      </div>
+      <div id="aiOut" class="small"></div>
+    </section>
+
+    <section class="section card stack">
+      <h3>Ngắt kết nối</h3>
+      <p class="muted small" style="margin:0">Xoá token và khoá đã lưu tạm trên máy này. Dữ liệu học vẫn còn trên máy và trong repo.</p>
+      <div><button type="button" class="btn btn-danger" id="forgetGh">Ngắt kết nối…</button></div>
+    </section>`;
+
+  const val = (id) => root.querySelector(id).value;
+  const saveForm = () => setSettings({ token: val('#ghToken'), owner: val('#ghOwner'), repo: val('#ghRepo'), branch: val('#ghBranch') });
+  root.querySelector('#saveGh').addEventListener('click', () => {
+    saveForm();
+    toast(isConfigured() ? 'Đã lưu. Đang đồng bộ…' : 'Đã lưu (chưa có token: chỉ lưu trên máy).');
+    if (isConfigured()) { syncNow(); loadConfig(true).catch(() => {}); }
+    render();
+  });
+  root.querySelector('#testGh').addEventListener('click', async (e) => {
+    saveForm();
+    const out = root.querySelector('#testOut');
+    e.target.disabled = true;
+    out.textContent = 'Đang kiểm tra…';
+    try {
+      const r = await testConnection();
+      out.innerHTML = `<ul class="plain-list">${r.lines.map((l) => `<li>${esc(l)}</li>`).join('')}</ul>`;
+    } catch (err) {
+      out.textContent = 'Không kết nối được GitHub. Kiểm tra mạng.';
+    }
+    e.target.disabled = false;
+  });
+  root.querySelector('#syncGh').addEventListener('click', () => syncNow());
+  root.querySelector('#reloadCfg').addEventListener('click', async () => {
+    const out = root.querySelector('#aiOut');
+    try {
+      const cfg = await loadConfig(true);
+      out.textContent = !cfg ? 'Không thấy config.json trong repo.' : cfg.geminiKey ? 'Đã tải config.json, có khoá Gemini.' : 'config.json chưa có "geminiKey".';
+    } catch (err) { out.textContent = err.message || 'Không tải được config.json.'; }
+  });
+  root.querySelector('#testAI').addEventListener('click', async (e) => {
+    const out = root.querySelector('#aiOut');
+    e.target.disabled = true;
+    out.textContent = 'Đang hỏi Gemini…';
+    try {
+      const r = await ask('Reply with exactly: OK');
+      out.textContent = `AI trả lời qua ${r.model}: ${r.text.slice(0, 80)}`;
+    } catch (err) { out.textContent = err.message; }
+    e.target.disabled = false;
+  });
+  root.querySelector('#forgetGh').addEventListener('click', async () => {
+    const ok = await confirmModal({ title: 'Ngắt kết nối GitHub?', message: 'Token và khoá Gemini lưu tạm trên máy này sẽ bị xoá. Dữ liệu học không bị xoá.', confirmLabel: 'Ngắt kết nối', danger: true });
+    if (!ok) return;
+    setSettings({ token: '', owner: getSettings().owner, repo: getSettings().repo, branch: getSettings().branch });
+    forgetConfig();
+    syncNow();
+    render();
+  });
+  statusLine();
+}
+
+export function mount(el) { root = el; onStatus(statusLine); }
+export function show() { render(); }

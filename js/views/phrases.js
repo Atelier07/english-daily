@@ -3,6 +3,9 @@ import { esc, today, dueCount, viShortDate, daysBetween } from '../util.js';
 import { openModal, toast, confirmModal } from '../ui.js';
 import { newCard, apply, preview, intervalLabel } from '../srs.js';
 import { logMinutes } from '../timer.js';
+import { hasAI, askJSON, phraseSuggestPrompt, newSentencePrompt } from '../ai.js';
+import { youglish } from '../library.js';
+import { speakEn as ttsEn } from '../recorder.js';
 
 let root;
 let tab = 'pick';
@@ -138,12 +141,14 @@ function renderPick() {
       <span class="tag">${esc(r.source || 'Không ghi nguồn')}</span>
       <span class="spacer"></span>
       <button type="button" class="btn btn-quiet btn-sm" id="manualAdd">Thêm thủ công</button>
+      <button type="button" class="btn btn-sm" id="aiSuggest">AI gợi ý cụm</button>
       <button type="button" class="btn btn-sm" id="newText">Dán đoạn khác</button>
     </div>
     <p class="reader-hint">Bôi đen một cụm (2–6 từ hay nhất) → bấm <b>Lưu cụm</b>. Nên chọn cụm bạn muốn tự nói được.</p>
     <div class="reader" id="reader" lang="en"></div>`;
   body.querySelector('#reader').textContent = r.text;
   body.querySelector('#newText').addEventListener('click', () => { db().reader = { text: '', source: r.source }; save(); renderPick(); });
+  body.querySelector('#aiSuggest').addEventListener('click', (e) => suggestPhrases(e.currentTarget));
   body.querySelector('#manualAdd').addEventListener('click', () => openSaveModal({ phrase: '', sentence: '' }));
 }
 
@@ -272,7 +277,7 @@ function renderReview() {
           : `<div class="meaning muted">Thẻ này chưa có nghĩa tiếng Việt</div>
              <div class="field"><label for="addMeaning">Thêm nghĩa để lần sau ôn được</label>
                <div class="url-row"><input id="addMeaning" class="input" placeholder="nghĩa / tình huống"><button type="button" class="btn" id="saveMeaning">Lưu</button></div></div>`}
-        ${card.source ? `<div class="situation">Gặp trong: ${esc(card.source)}</div>` : ''}
+        ${card.source ? `<div class="situation">Tình huống: gặp trong “${esc(card.source)}”</div>` : ''}
         <div class="ask">Nói cụm tiếng Anh ra thành tiếng trước khi lật. Nghĩ mãi không ra cũng được: cố nhớ chính là lúc trí nhớ được củng cố.</div>
         <button type="button" class="btn btn-primary btn-lg btn-block" id="reveal" style="margin-top:auto">Lật thẻ</button>
       </div>`;
@@ -298,12 +303,18 @@ function renderReview() {
       <div class="row"><div class="answer-phrase" lang="en">${esc(card.phrase)}</div>
         <button type="button" class="btn btn-quiet btn-sm" id="say" aria-label="Nghe phát âm">Nghe</button></div>
       <div class="answer-sentence" lang="en">${highlight(card.sentence || card.phrase, card.phrase)}</div>
+      <div class="row" style="gap:6px">
+        <a class="btn btn-quiet btn-sm" href="${youglish(card.phrase)}" target="_blank" rel="noopener">Nghe người thật nói ↗</a>
+        <button type="button" class="btn btn-quiet btn-sm" id="newSent">Câu mới</button>
+      </div>
+      <div id="newSentOut"></div>
       <div class="ask">Giờ nói một câu <b>của bạn</b> có dùng cụm này: về hôm nay, công việc, AI, piano…</div>
       <div class="rate-row">
         ${opts.map((o) => `<button type="button" class="btn ${o.cls}" data-grade="${o.g}">${o.label}<small>${o.g === 'forgot' ? 'lại ngay' : intervalLabel(preview(card, o.g).interval)}</small></button>`).join('')}
       </div>
     </div>`;
   body.querySelector('#say').addEventListener('click', () => speakEn(card.phrase));
+  body.querySelector('#newSent').addEventListener('click', (e) => freshSentence(card, e.currentTarget));
   body.querySelectorAll('[data-grade]').forEach((b) => b.addEventListener('click', () => {
     const g = b.dataset.grade;
     apply(card, g);
@@ -341,7 +352,7 @@ function renderBank() {
           <button type="button" class="btn btn-quiet btn-sm btn-danger" data-del="${p.id}">Xoá</button>
         </div>
         <div class="s" lang="en">${highlight(p.sentence || '', p.phrase)}</div>
-        <div class="meta">${p.source ? `<span class="tag">${esc(p.source)}</span>` : ''}<span>${dueLabel(p)}</span>${p.lapses ? `<span>· quên ${p.lapses} lần</span>` : ''}</div>
+        <div class="meta">${p.source ? `<span class="tag">${esc(p.source)}</span>` : ''}<span>${dueLabel(p)}</span>${p.lapses ? `<span>· quên ${p.lapses} lần</span>` : ''}<a href="${youglish(p.phrase)}" target="_blank" rel="noopener">Nghe người thật nói ↗</a></div>
       </div>`).join('') : `<p class="muted">Không tìm thấy.</p>`;
     box.querySelectorAll('[data-edit]').forEach((b) => b.addEventListener('click', () => openSaveModal({ editId: b.dataset.edit })));
     box.querySelectorAll('[data-del]').forEach((b) => b.addEventListener('click', async () => {
@@ -355,6 +366,95 @@ function renderBank() {
   };
   body.querySelector('#bankQ').addEventListener('input', (e) => { bankQuery = e.target.value; draw(); });
   draw();
+}
+
+// ---------- AI ----------
+const CACHE_KEY = 'englishDaily.aiCache';
+function cacheGet(k) { try { return (JSON.parse(localStorage.getItem(CACHE_KEY) || '{}'))[k] || null; } catch (e) { return null; } }
+function cacheSet(k, v) {
+  try {
+    const all = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}');
+    const t = today();
+    for (const key of Object.keys(all)) if (!key.endsWith(`|${t}`)) delete all[key]; // chỉ giữ của hôm nay
+    all[k] = v;
+    localStorage.setItem(CACHE_KEY, JSON.stringify(all));
+  } catch (e) { /* ignore */ }
+}
+
+async function freshSentence(card, btn) {
+  const out = root.querySelector('#newSentOut');
+  const key = `${card.id}|${today()}`;
+  const show = (v) => {
+    out.innerHTML = `<div class="ai-box"><div class="answer-sentence" lang="en">${highlight(v.en || '', card.phrase)}</div><p class="muted small" style="margin:6px 0 0">${esc(v.vi || '')}</p>
+      <button type="button" class="btn btn-quiet btn-sm" id="sayNew">Nghe câu này</button></div>`;
+    out.querySelector('#sayNew').addEventListener('click', () => ttsEn(v.en || '', 0.9));
+  };
+  const cached = cacheGet(key);
+  if (cached) { show(cached); return; }
+  if (!(await hasAI())) { out.innerHTML = '<p class="muted small">Cần khoá Gemini (Cài đặt) để tạo câu mới.</p>'; return; }
+  btn.disabled = true;
+  out.innerHTML = '<p class="muted small">Đang tạo câu mới…</p>';
+  try {
+    const { data } = await askJSON(newSentencePrompt(card.phrase, card.sentence || card.phrase, card.meaning));
+    if (!data || !data.en) throw new Error('AI không trả về câu.');
+    cacheSet(key, { en: String(data.en), vi: String(data.vi || '') });
+    show(data);
+  } catch (e) { out.innerHTML = `<p class="small">${esc(e.message)}</p>`; }
+  btn.disabled = false;
+}
+
+async function suggestPhrases(btn) {
+  const text = db().reader.text;
+  if (!text) return;
+  if (!(await hasAI())) { toast('Cần khoá Gemini: vào Cài đặt để kết nối.'); return; }
+  btn.disabled = true;
+  btn.textContent = 'Đang gợi ý…';
+  try {
+    const { data } = await askJSON(phraseSuggestPrompt(text));
+    const have = new Set(db().phrases.map((p) => p.phrase.toLowerCase()));
+    const list = (Array.isArray(data.phrases) ? data.phrases : (Array.isArray(data) ? data : []))
+      .filter((x) => x && x.phrase && !have.has(String(x.phrase).toLowerCase()))
+      .slice(0, 8)
+      .map((x) => {
+        const phrase = String(x.phrase).trim();
+        let sentence = String(x.sentence || '').trim();
+        // câu gốc phải có thật trong đoạn; nếu AI chép sai thì tự tìm lại
+        if (!sentence || !text.replace(/\s+/g, ' ').includes(sentence)) {
+          const i = text.toLowerCase().indexOf(phrase.toLowerCase());
+          sentence = i >= 0 ? sentenceAround(text, i, i + phrase.length) : sentence || phrase;
+        }
+        return { phrase, meaning: String(x.meaning || '').trim(), sentence };
+      });
+    if (!list.length) { toast('AI không tìm thêm được cụm mới trong đoạn này.'); return; }
+    openModal({
+      title: 'AI gợi ý cụm',
+      html: `<p class="muted small">Đánh dấu những cụm bạn muốn tự nói được. Sửa nghĩa sau trong Kho cụm nếu cần.</p>
+        <ul class="suggest-list">${list.map((x, i) => `
+          <li><label class="toggle"><input type="checkbox" data-sug="${i}" checked>
+            <span><span class="p" lang="en">${esc(x.phrase)}</span> · <span class="m">${esc(x.meaning)}</span>
+            <span class="s" lang="en">${highlight(x.sentence, x.phrase)}</span></span></label></li>`).join('')}</ul>`,
+      actions: [
+        { label: 'Huỷ' },
+        {
+          label: 'Lưu cụm đã chọn', kind: 'primary', onClick: (box) => {
+            let n = 0;
+            box.querySelectorAll('[data-sug]').forEach((c) => {
+              if (!c.checked) return;
+              const x = list[Number(c.dataset.sug)];
+              db().phrases.push({ id: uid(), phrase: x.phrase, sentence: x.sentence, meaning: x.meaning, source: db().reader.source || '', created: Date.now(), ...newCard() });
+              n++;
+            });
+            if (n) { save(); toast(`Đã lưu ${n} cụm.`); }
+          },
+        },
+      ],
+    });
+  } catch (e) {
+    toast(e.message, 4000);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'AI gợi ý cụm';
+  }
 }
 
 export function mount(el) {

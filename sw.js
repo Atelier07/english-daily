@@ -1,6 +1,6 @@
 // Service worker: lưu sẵn khung ứng dụng để mở được khi mất mạng.
 // YouTube và các dịch vụ Google video KHÔNG bao giờ bị cache.
-const VERSION = 'ed-v1';
+const VERSION = 'ed-v2';
 const SHELL = [
   './',
   './index.html',
@@ -25,8 +25,22 @@ const SHELL = [
   './js/views/progress.js',
   './js/views/why.js',
   './js/views/data.js',
+  './js/views/roadmap.js',
+  './js/views/pron.js',
+  './js/views/library.js',
+  './js/views/settings.js',
+  './js/sync.js',
+  './js/ai.js',
+  './js/summary.js',
+  './js/roadmap.js',
+  './js/evidence.js',
+  './js/library.js',
+  './js/comprehension.js',
+  './js/doubt.js',
+  './js/recorder.js',
+  './js/dictation.js',
 ];
-const NEVER = /(^|\.)(youtube\.com|youtube-nocookie\.com|ytimg\.com|googlevideo\.com|ggpht\.com|doubleclick\.net)$/;
+const NEVER = /(^|\.)(youtube\.com|youtube-nocookie\.com|ytimg\.com|googlevideo\.com|ggpht\.com|doubleclick\.net|api\.github\.com|generativelanguage\.googleapis\.com)$/;
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(VERSION).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
