@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>English Daily</title>
+  <meta name="description" content="Lộ trình tiếng Anh mỗi ngày: nghe thứ mình thích, shadowing, nói ra, ôn cụm từ.">
+  <meta name="theme-color" content="#F4EFE4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1A1714" media="(prefers-color-scheme: dark)">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidenav" aria-label="Điều hướng">
+      <a class="brand" href="#/today">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">English <em>Daily</em></span>
+      </a>
+      <nav class="sidenav-links">
+        <a href="#/today" data-route="today">Hôm nay</a>
+        <a href="#/shadow" data-route="shadow">Shadowing</a>
+        <a href="#/phrases" data-route="phrases">Cụm từ</a>
+        <a href="#/speak" data-route="speak">Nói</a>
+        <a href="#/errors" data-route="errors">Lỗi của tôi</a>
+        <a href="#/progress" data-route="progress">Mốc</a>
+        <span class="sidenav-sep"></span>
+        <a href="#/why" data-route="why">Vì sao cách này hiệu quả</a>
+        <a href="#/data" data-route="data">Dữ liệu</a>
+      </nav>
+      <p class="sidenav-foot">Mục tiêu: 600 giờ · B2 · giữa 2028</p>
+    </aside>
+
+    <div class="main-col">
+      <header class="topbar">
+        <a class="brand brand-mobile" href="#/today">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">English <em>Daily</em></span>
+        </a>
+        <div class="timer-pill" id="timerPill" hidden>
+          <span class="dot" aria-hidden="true"></span>
+          <span class="timer-pill-label" id="timerPillLabel"></span>
+          <span class="timer-pill-time" data-timer-display></span>
+          <button type="button" class="timer-pill-stop" id="timerPillStop">Dừng</button>
+        </div>
+        <button type="button" class="more-btn" id="moreBtn" aria-label="Mục khác">Khác</button>
+      </header>
+
+      <main id="view" tabindex="-1">
+        <section data-view="today" hidden></section>
+        <section data-view="shadow" hidden></section>
+        <section data-view="phrases" hidden></section>
+        <section data-view="speak" hidden></section>
+        <section data-view="errors" hidden></section>
+        <section data-view="progress" hidden></section>
+        <section data-view="why" hidden></section>
+        <section data-view="data" hidden></section>
+      </main>
+    </div>
+
+    <nav class="tabbar" aria-label="Điều hướng chính">
+      <a href="#/today" data-route="today">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+        <span>Hôm nay</span>
+      </a>
+      <a href="#/shadow" data-route="shadow">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h2M7 8v8M11 5v14M15 9v6M19 7v10M21 12h0"/></svg>
+        <span>Shadowing</span>
+      </a>
+      <a href="#/phrases" data-route="phrases">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="13" height="15" rx="1.5"/><path d="M8 3h10.5A1.5 1.5 0 0 1 20 4.5V17"/><path d="M7.5 11h6M7.5 14.5h4"/></svg>
+        <span>Cụm từ</span>
+      </a>
+      <a href="#/speak" data-route="speak">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg>
+        <span>Nói</span>
+      </a>
+      <a href="#/progress" data-route="progress">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16"/><path d="M6.5 20v-6M11 20V9M15.5 20v-8M20 20V5"/></svg>
+        <span>Mốc</span>
+      </a>
+    </nav>
+  </div>
+
+  <div class="modal-root" id="modalRoot" hidden></div>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+// Service worker: lưu sẵn khung ứng dụng để mở được khi mất mạng.
+// YouTube và các dịch vụ Google video KHÔNG bao giờ bị cache.
+const VERSION = 'ed-v1';
+const SHELL = [
+  './',
+  './index.html',
+  './css/app.css',
+  './manifest.webmanifest',
+  './icons/icon.svg',
+  './icons/icon-180.png',
+  './icons/icon-192.png',
+  './icons/icon-512.png',
+  './js/app.js',
+  './js/store.js',
+  './js/util.js',
+  './js/ui.js',
+  './js/timer.js',
+  './js/srs.js',
+  './js/prompts.js',
+  './js/views/today.js',
+  './js/views/shadow.js',
+  './js/views/phrases.js',
+  './js/views/speak.js',
+  './js/views/errors.js',
+  './js/views/progress.js',
+  './js/views/why.js',
+  './js/views/data.js',
+];
+const NEVER = /(^|\.)(youtube\.com|youtube-nocookie\.com|ytimg\.com|googlevideo\.com|ggpht\.com|doubleclick\.net)$/;
+
+self.addEventListener('install', (e) => {
+  e.waitUntil(caches.open(VERSION).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
+});
+
+self.addEventListener('activate', (e) => {
+  e.waitUntil(
+    caches.keys()
+      .then((keys) => Promise.all(keys.filter((k) => k !== VERSION).map((k) => caches.delete(k))))
+      .then(() => self.clients.claim()),
+  );
+});
+
+self.addEventListener('fetch', (e) => {
+  const req = e.request;
+  if (req.method !== 'GET') return;
+  const url = new URL(req.url);
+  if (NEVER.test(url.hostname)) return; // để trình duyệt tự xử lý, không cache
+
+  // Font Google: dùng bản đã lưu, cập nhật ngầm
+  if (url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com') {
+    e.respondWith(
+      caches.open(VERSION).then(async (c) => {
+        const hit = await c.match(req);
+        const net = fetch(req).then((r) => { if (r.ok || r.type === 'opaque') c.put(req, r.clone()); return r; }).catch(() => hit);
+        return hit || net;
+      }),
+    );
+    return;
+  }
+
+  if (url.origin !== self.location.origin) return;
+
+  // Cùng nguồn: ưu tiên mạng (để bản mới lên ngay), mất mạng thì dùng cache.
+  e.respondWith(
+    fetch(req)
+      .then((r) => {
+        if (r.ok) { const copy = r.clone(); caches.open(VERSION).then((c) => c.put(req, copy)); }
+        return r;
+      })
+      .catch(async () => (await caches.match(req, { ignoreSearch: true })) || (req.mode === 'navigate' ? caches.match('./index.html') : Response.error())),
+  );
+});
