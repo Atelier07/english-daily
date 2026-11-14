@@ -1,0 +1,298 @@
+{
+  "day": 29,
+  "level": "A1",
+  "function": "Giữ liên lạc",
+  "title": "Xin số, xin email, giữ liên lạc",
+  "intro_vi": "Hôm nay: xin số điện thoại và email của người mới quen, nhờ họ nhắn tin, hẹn gọi và chào tạm biệt thân thiện.",
+  "chunks": [
+    {
+      "id": "c169",
+      "text": "Can I get your number?",
+      "type": "fixed",
+      "vi": "Mình xin số điện thoại của bạn được không?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Giữ liên lạc",
+      "examples": [
+        {
+          "id": "d29e01",
+          "en": "Nice to meet you! Can I get your number?",
+          "vi": "Rất vui được gặp bạn! Mình xin số điện thoại của bạn được không?"
+        }
+      ]
+    },
+    {
+      "id": "c170",
+      "text": "What's your email?",
+      "type": "fixed",
+      "vi": "Email của bạn là gì?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Giữ liên lạc",
+      "examples": [
+        {
+          "id": "d29e02",
+          "en": "What's your email? I'll send you the file.",
+          "vi": "Email của bạn là gì? Mình sẽ gửi bạn tập tin."
+        }
+      ]
+    },
+    {
+      "id": "c171",
+      "text": "Can you text me?",
+      "type": "fixed",
+      "vi": "Bạn nhắn tin cho mình được không?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Giữ liên lạc",
+      "examples": [
+        {
+          "id": "d29e03",
+          "en": "Can you text me when you get home?",
+          "vi": "Bạn nhắn tin cho mình khi về đến nhà được không?"
+        }
+      ]
+    },
+    {
+      "id": "c172",
+      "text": "I'll call you …",
+      "type": "stem",
+      "vi": "Mình sẽ gọi cho bạn …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Giữ liên lạc",
+      "examples": [
+        {
+          "id": "d29e04",
+          "en": "I'll call you tomorrow.",
+          "vi": "Mai mình sẽ gọi cho bạn."
+        },
+        {
+          "id": "d29e05",
+          "en": "I'll call you later.",
+          "vi": "Lát nữa mình sẽ gọi cho bạn."
+        }
+      ]
+    },
+    {
+      "id": "c173",
+      "text": "Talk to you soon.",
+      "type": "fixed",
+      "vi": "Hẹn nói chuyện sớm nhé.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Giữ liên lạc",
+      "examples": [
+        {
+          "id": "d29e06",
+          "en": "Bye! Talk to you soon.",
+          "vi": "Tạm biệt! Hẹn nói chuyện sớm nhé."
+        }
+      ]
+    },
+    {
+      "id": "c174",
+      "text": "Let's keep in touch.",
+      "type": "fixed",
+      "vi": "Mình giữ liên lạc nhé.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Giữ liên lạc",
+      "examples": [
+        {
+          "id": "d29e07",
+          "en": "It was great to meet you. Let's keep in touch.",
+          "vi": "Rất vui được gặp bạn. Mình giữ liên lạc nhé."
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Chia tay sau một buổi gặp mặt",
+    "lines": [
+      {
+        "id": "d29l01",
+        "speaker": "A",
+        "en": "I had a great time today. Let's keep in touch.",
+        "vi": "Hôm nay mình rất vui. Mình giữ liên lạc nhé.",
+        "chunks": [
+          "c119",
+          "c174"
+        ]
+      },
+      {
+        "id": "d29l02",
+        "speaker": "B",
+        "en": "Yes! Can I get your number?",
+        "vi": "Có! Mình xin số điện thoại của bạn được không?",
+        "chunks": [
+          "c169"
+        ]
+      },
+      {
+        "id": "d29l03",
+        "speaker": "A",
+        "en": "Of course. What's your email?",
+        "vi": "Dĩ nhiên rồi. Email của bạn là gì?",
+        "chunks": [
+          "c047",
+          "c170"
+        ]
+      },
+      {
+        "id": "d29l04",
+        "speaker": "B",
+        "en": "Sorry, I don't have a pen. Can you text me?",
+        "vi": "Xin lỗi, mình không có bút. Bạn nhắn tin cho mình được không?",
+        "chunks": [
+          "c063",
+          "c171"
+        ]
+      },
+      {
+        "id": "d29l05",
+        "speaker": "A",
+        "en": "Sure thing. What's your number?",
+        "vi": "Được thôi. Số của bạn là gì?",
+        "chunks": [
+          "c048"
+        ]
+      },
+      {
+        "id": "d29l06",
+        "speaker": "B",
+        "en": "It's five five five, one two three four.",
+        "vi": "Là năm năm năm, một hai ba bốn.",
+        "chunks": []
+      },
+      {
+        "id": "d29l07",
+        "speaker": "A",
+        "en": "Great. I'll call you tomorrow. Talk to you soon!",
+        "vi": "Tốt quá. Mai mình sẽ gọi cho bạn. Hẹn nói chuyện sớm nhé!",
+        "chunks": [
+          "c172",
+          "c173"
+        ]
+      },
+      {
+        "id": "d29l08",
+        "speaker": "B",
+        "en": "Have a good one!",
+        "vi": "Chúc bạn một ngày tốt lành!",
+        "chunks": [
+          "c161"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c172",
+      "cues": [
+        {
+          "id": "d29s01",
+          "cue_vi": "lát nữa sẽ gọi",
+          "answer": "I'll call you later.",
+          "accept": [
+            "I'll call you later"
+          ]
+        },
+        {
+          "id": "d29s02",
+          "cue_vi": "mai sẽ gọi",
+          "answer": "I'll call you tomorrow.",
+          "accept": [
+            "I'll call you tomorrow"
+          ]
+        },
+        {
+          "id": "d29s03",
+          "cue_vi": "sẽ gọi khi về đến nhà",
+          "answer": "I'll call you when I get home.",
+          "accept": [
+            "I'll call you when I get home"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Trao đổi liên lạc với một người mới quen.",
+    "turns": [
+      {
+        "id": "d29r01",
+        "role": "partner",
+        "en": "It was nice to meet you!",
+        "vi": "Rất vui được gặp bạn!"
+      },
+      {
+        "id": "d29r02",
+        "role": "you",
+        "cue_vi": "Nói bạn cũng rất vui được gặp họ.",
+        "model": "Nice to meet you, too.",
+        "uses": [
+          "c004"
+        ]
+      },
+      {
+        "id": "d29r03",
+        "role": "partner",
+        "en": "Can I get your number?",
+        "vi": "Mình xin số điện thoại của bạn được không?"
+      },
+      {
+        "id": "d29r04",
+        "role": "you",
+        "cue_vi": "Nói dĩ nhiên rồi và hỏi email của họ.",
+        "model": "Of course. What's your email?",
+        "uses": [
+          "c047",
+          "c170"
+        ]
+      },
+      {
+        "id": "d29r05",
+        "role": "partner",
+        "en": "It's sam at mail dot com.",
+        "vi": "Là sam a còng mail chấm com."
+      },
+      {
+        "id": "d29r06",
+        "role": "you",
+        "cue_vi": "Nói mai bạn sẽ gọi cho họ.",
+        "model": "I'll call you tomorrow.",
+        "uses": [
+          "c172"
+        ]
+      },
+      {
+        "id": "d29r07",
+        "role": "partner",
+        "en": "Great. Talk to you soon!",
+        "vi": "Tốt quá. Hẹn nói chuyện sớm nhé!"
+      },
+      {
+        "id": "d29r08",
+        "role": "you",
+        "cue_vi": "Nói mình giữ liên lạc nhé.",
+        "model": "Let's keep in touch.",
+        "uses": [
+          "c174"
+        ]
+      }
+    ]
+  }
+}

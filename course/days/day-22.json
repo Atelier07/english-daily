@@ -1,0 +1,367 @@
+{
+  "day": 22,
+  "level": "A1",
+  "function": "Kể chuyện đã xảy ra",
+  "title": "Kể một chuyện từ đầu đến cuối",
+  "intro_vi": "Hôm nay: mở đầu một câu chuyện, nối các phần bằng \"rồi\", \"sau đó\", \"cuối cùng\" và phản ứng khi nghe chuyện.",
+  "chunks": [
+    {
+      "id": "c127",
+      "text": "Guess what?",
+      "type": "fixed",
+      "vi": "Đoán xem?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Kể chuyện đã xảy ra",
+      "examples": [
+        {
+          "id": "d22e01",
+          "en": "Guess what? I got a new job!",
+          "vi": "Đoán xem? Mình có việc mới rồi!"
+        }
+      ]
+    },
+    {
+      "id": "c128",
+      "text": "What happened?",
+      "type": "fixed",
+      "vi": "Chuyện gì đã xảy ra?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Kể chuyện đã xảy ra",
+      "examples": [
+        {
+          "id": "d22e02",
+          "en": "You look upset. What happened?",
+          "vi": "Trông bạn buồn. Chuyện gì đã xảy ra?"
+        }
+      ]
+    },
+    {
+      "id": "c129",
+      "text": "And then …",
+      "type": "stem",
+      "vi": "Rồi sau đó …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Kể chuyện đã xảy ra",
+      "examples": [
+        {
+          "id": "d22e03",
+          "en": "And then I got lost.",
+          "vi": "Rồi mình bị lạc."
+        },
+        {
+          "id": "d22e04",
+          "en": "And then we had lunch.",
+          "vi": "Rồi tụi mình ăn trưa."
+        }
+      ]
+    },
+    {
+      "id": "c130",
+      "text": "After that, …",
+      "type": "stem",
+      "vi": "Sau đó, …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Kể chuyện đã xảy ra",
+      "examples": [
+        {
+          "id": "d22e05",
+          "en": "After that, I went home.",
+          "vi": "Sau đó, mình về nhà."
+        },
+        {
+          "id": "d22e06",
+          "en": "After that, I called a friend.",
+          "vi": "Sau đó, mình gọi cho một người bạn."
+        }
+      ]
+    },
+    {
+      "id": "c131",
+      "text": "In the end, …",
+      "type": "stem",
+      "vi": "Cuối cùng thì …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Kể chuyện đã xảy ra",
+      "examples": [
+        {
+          "id": "d22e07",
+          "en": "In the end, we took a taxi.",
+          "vi": "Cuối cùng thì tụi mình đi taxi."
+        },
+        {
+          "id": "d22e08",
+          "en": "In the end, everything was fine.",
+          "vi": "Cuối cùng thì mọi chuyện đều ổn."
+        }
+      ]
+    },
+    {
+      "id": "c132",
+      "text": "No way!",
+      "type": "fixed",
+      "vi": "Không thể nào!",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Kể chuyện đã xảy ra",
+      "examples": [
+        {
+          "id": "d22e09",
+          "en": "I won! — No way!",
+          "vi": "Mình thắng rồi! — Không thể nào!"
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Kể chuyện bị lạc",
+    "lines": [
+      {
+        "id": "d22l01",
+        "speaker": "A",
+        "en": "Guess what? I got lost yesterday!",
+        "vi": "Đoán xem? Hôm qua mình bị lạc!",
+        "chunks": [
+          "c127"
+        ]
+      },
+      {
+        "id": "d22l02",
+        "speaker": "B",
+        "en": "No way! What happened?",
+        "vi": "Không thể nào! Chuyện gì đã xảy ra?",
+        "chunks": [
+          "c132",
+          "c128"
+        ]
+      },
+      {
+        "id": "d22l03",
+        "speaker": "A",
+        "en": "I went to the museum. And then I got lost.",
+        "vi": "Mình đã đi bảo tàng. Rồi mình bị lạc.",
+        "chunks": [
+          "c115",
+          "c129"
+        ]
+      },
+      {
+        "id": "d22l04",
+        "speaker": "B",
+        "en": "Oh no! Did you call a friend?",
+        "vi": "Ôi không! Bạn có gọi cho bạn bè không?",
+        "chunks": [
+          "c122"
+        ]
+      },
+      {
+        "id": "d22l05",
+        "speaker": "A",
+        "en": "I didn't. I forgot to bring my phone.",
+        "vi": "Không. Mình quên mang điện thoại.",
+        "chunks": [
+          "c121",
+          "c125"
+        ]
+      },
+      {
+        "id": "d22l06",
+        "speaker": "B",
+        "en": "So what did you do?",
+        "vi": "Vậy bạn đã làm gì?",
+        "chunks": []
+      },
+      {
+        "id": "d22l07",
+        "speaker": "A",
+        "en": "After that, I asked a man. In the end, it was a five-minute walk!",
+        "vi": "Sau đó, mình hỏi một người đàn ông. Cuối cùng thì chỉ đi bộ năm phút!",
+        "chunks": [
+          "c130",
+          "c131",
+          "c059"
+        ]
+      },
+      {
+        "id": "d22l08",
+        "speaker": "B",
+        "en": "Haha! Are you okay?",
+        "vi": "Haha! Bạn ổn không?",
+        "chunks": [
+          "c087"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c129",
+      "cues": [
+        {
+          "id": "d22s01",
+          "cue_vi": "rồi mình bị lạc",
+          "answer": "And then I got lost.",
+          "accept": [
+            "And then I got lost"
+          ]
+        },
+        {
+          "id": "d22s02",
+          "cue_vi": "rồi tụi mình ăn trưa",
+          "answer": "And then we had lunch.",
+          "accept": [
+            "And then we had lunch"
+          ]
+        },
+        {
+          "id": "d22s03",
+          "cue_vi": "rồi trời mưa",
+          "answer": "And then it rained.",
+          "accept": [
+            "And then it rained"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c130",
+      "cues": [
+        {
+          "id": "d22s04",
+          "cue_vi": "sau đó mình về nhà",
+          "answer": "After that, I went home.",
+          "accept": [
+            "After that, I went home"
+          ]
+        },
+        {
+          "id": "d22s05",
+          "cue_vi": "sau đó mình gọi cho một người bạn",
+          "answer": "After that, I called a friend.",
+          "accept": [
+            "After that, I called a friend"
+          ]
+        },
+        {
+          "id": "d22s06",
+          "cue_vi": "sau đó mình đi ngủ",
+          "answer": "After that, I went to sleep.",
+          "accept": [
+            "After that, I went to sleep"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c131",
+      "cues": [
+        {
+          "id": "d22s07",
+          "cue_vi": "cuối cùng tụi mình đi taxi",
+          "answer": "In the end, we took a taxi.",
+          "accept": [
+            "In the end, we took a taxi"
+          ]
+        },
+        {
+          "id": "d22s08",
+          "cue_vi": "cuối cùng mình mua nó",
+          "answer": "In the end, I bought it.",
+          "accept": [
+            "In the end, I bought it"
+          ]
+        },
+        {
+          "id": "d22s09",
+          "cue_vi": "cuối cùng mọi chuyện đều ổn",
+          "answer": "In the end, everything was fine.",
+          "accept": [
+            "In the end, everything was fine"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Kể cho một người bạn nghe chuyện vừa xảy ra.",
+    "turns": [
+      {
+        "id": "d22r01",
+        "role": "partner",
+        "en": "Hey! You look happy. What happened?",
+        "vi": "Này! Trông bạn vui lắm. Chuyện gì vậy?"
+      },
+      {
+        "id": "d22r02",
+        "role": "you",
+        "cue_vi": "Nói \"Đoán xem?\".",
+        "model": "Guess what?",
+        "uses": [
+          "c127"
+        ]
+      },
+      {
+        "id": "d22r03",
+        "role": "partner",
+        "en": "What?",
+        "vi": "Gì vậy?"
+      },
+      {
+        "id": "d22r04",
+        "role": "you",
+        "cue_vi": "Nói bạn đã đi biển.",
+        "model": "I went to the beach!",
+        "uses": [
+          "c115"
+        ]
+      },
+      {
+        "id": "d22r05",
+        "role": "partner",
+        "en": "Nice! And?",
+        "vi": "Hay quá! Rồi sao?"
+      },
+      {
+        "id": "d22r06",
+        "role": "you",
+        "cue_vi": "Nói rồi bạn quên mang ví.",
+        "model": "And then I forgot to bring my wallet.",
+        "uses": [
+          "c129",
+          "c125"
+        ]
+      },
+      {
+        "id": "d22r07",
+        "role": "partner",
+        "en": "No way! Are you okay?",
+        "vi": "Không thể nào! Bạn ổn không?"
+      },
+      {
+        "id": "d22r08",
+        "role": "you",
+        "cue_vi": "Nói cuối cùng một người tốt đã giúp bạn.",
+        "model": "In the end, a nice man helped me.",
+        "uses": [
+          "c131"
+        ]
+      }
+    ]
+  }
+}

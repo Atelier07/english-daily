@@ -1,0 +1,444 @@
+{
+  "day": 26,
+  "level": "A1",
+  "function": "Cần và nên",
+  "title": "Cần, phải, nên",
+  "intro_vi": "Hôm nay: nói mình cần gì, phải làm gì, khuyên người khác nên làm gì và nói ai đó không cần phải làm gì.",
+  "chunks": [
+    {
+      "id": "c151",
+      "text": "I need to …",
+      "type": "stem",
+      "vi": "Mình cần …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Cần và nên",
+      "examples": [
+        {
+          "id": "d26e01",
+          "en": "I need to go.",
+          "vi": "Mình cần đi."
+        },
+        {
+          "id": "d26e02",
+          "en": "I need to buy a gift.",
+          "vi": "Mình cần mua một món quà."
+        }
+      ]
+    },
+    {
+      "id": "c152",
+      "text": "I have to …",
+      "type": "stem",
+      "vi": "Mình phải …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": "hafta",
+      "source": "core-inventory A1 / Cần và nên",
+      "examples": [
+        {
+          "id": "d26e03",
+          "en": "I have to work tomorrow.",
+          "vi": "Mai mình phải đi làm."
+        },
+        {
+          "id": "d26e04",
+          "en": "I have to go now.",
+          "vi": "Mình phải đi ngay bây giờ."
+        }
+      ]
+    },
+    {
+      "id": "c153",
+      "text": "You should …",
+      "type": "stem",
+      "vi": "Bạn nên …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Cần và nên",
+      "examples": [
+        {
+          "id": "d26e05",
+          "en": "You should try this.",
+          "vi": "Bạn nên thử cái này."
+        },
+        {
+          "id": "d26e06",
+          "en": "You should sleep more.",
+          "vi": "Bạn nên ngủ nhiều hơn."
+        }
+      ]
+    },
+    {
+      "id": "c154",
+      "text": "You don't have to …",
+      "type": "stem",
+      "vi": "Bạn không cần phải …",
+      "vi_equivalent": false,
+      "contrast_vi": "\"Don't have to\" nghĩa là không bắt buộc (muốn làm cũng được), khác với \"cấm\".",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Cần và nên",
+      "examples": [
+        {
+          "id": "d26e07",
+          "en": "You don't have to pay now.",
+          "vi": "Bạn không cần phải trả bây giờ."
+        },
+        {
+          "id": "d26e08",
+          "en": "You don't have to come early.",
+          "vi": "Bạn không cần phải đến sớm."
+        }
+      ]
+    },
+    {
+      "id": "c155",
+      "text": "I need a …",
+      "type": "stem",
+      "vi": "Mình cần một …",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh cần a/an trước danh từ đếm được số ít.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Cần và nên",
+      "examples": [
+        {
+          "id": "d26e09",
+          "en": "I need a taxi.",
+          "vi": "Mình cần một chiếc taxi."
+        },
+        {
+          "id": "d26e10",
+          "en": "I need a break.",
+          "vi": "Mình cần nghỉ một chút."
+        }
+      ]
+    },
+    {
+      "id": "c156",
+      "text": "I'd better …",
+      "type": "stem",
+      "vi": "Mình nên … thì hơn.",
+      "vi_equivalent": false,
+      "contrast_vi": "Nghe như \"mình nên … ngay thì hơn\", có chút gấp; không nói \"I'd better to\".",
+      "register": "casual",
+      "reduced": "I better",
+      "source": "core-inventory A1 / Cần và nên",
+      "examples": [
+        {
+          "id": "d26e11",
+          "en": "I'd better go.",
+          "vi": "Mình nên đi thì hơn."
+        },
+        {
+          "id": "d26e12",
+          "en": "I'd better call him.",
+          "vi": "Mình nên gọi anh ấy thì hơn."
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Một người bạn mệt cần về nhà",
+    "lines": [
+      {
+        "id": "d26l01",
+        "speaker": "A",
+        "en": "Hi! You look tired.",
+        "vi": "Chào! Trông bạn mệt đó.",
+        "chunks": []
+      },
+      {
+        "id": "d26l02",
+        "speaker": "B",
+        "en": "I'm so tired. I need a break.",
+        "vi": "Mình mệt quá. Mình cần nghỉ một chút.",
+        "chunks": [
+          "c085",
+          "c155"
+        ]
+      },
+      {
+        "id": "d26l03",
+        "speaker": "A",
+        "en": "You should go home.",
+        "vi": "Bạn nên về nhà.",
+        "chunks": [
+          "c153"
+        ]
+      },
+      {
+        "id": "d26l04",
+        "speaker": "B",
+        "en": "I don't have a car. I need to take a taxi.",
+        "vi": "Mình không có xe. Mình cần đi taxi.",
+        "chunks": [
+          "c063",
+          "c151"
+        ]
+      },
+      {
+        "id": "d26l05",
+        "speaker": "A",
+        "en": "I can take you. You don't have to take a taxi.",
+        "vi": "Mình đưa bạn được. Bạn không cần phải đi taxi.",
+        "chunks": [
+          "c043",
+          "c154"
+        ]
+      },
+      {
+        "id": "d26l06",
+        "speaker": "B",
+        "en": "Thank you so much. I have to go now.",
+        "vi": "Cảm ơn nhiều lắm. Mình phải đi ngay bây giờ.",
+        "chunks": [
+          "c016",
+          "c152"
+        ]
+      },
+      {
+        "id": "d26l07",
+        "speaker": "A",
+        "en": "No problem. I'd better go too.",
+        "vi": "Không có gì. Mình cũng nên đi thì hơn.",
+        "chunks": [
+          "c017",
+          "c156"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c151",
+      "cues": [
+        {
+          "id": "d26s01",
+          "cue_vi": "cần đi",
+          "answer": "I need to go.",
+          "accept": [
+            "I need to go"
+          ]
+        },
+        {
+          "id": "d26s02",
+          "cue_vi": "cần mua một món quà",
+          "answer": "I need to buy a gift.",
+          "accept": [
+            "I need to buy a gift"
+          ]
+        },
+        {
+          "id": "d26s03",
+          "cue_vi": "cần gọi một cuộc điện thoại",
+          "answer": "I need to make a call.",
+          "accept": [
+            "I need to make a call"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c152",
+      "cues": [
+        {
+          "id": "d26s04",
+          "cue_vi": "mai phải đi làm",
+          "answer": "I have to work tomorrow.",
+          "accept": [
+            "I have to work tomorrow"
+          ]
+        },
+        {
+          "id": "d26s05",
+          "cue_vi": "phải đi ngay bây giờ",
+          "answer": "I have to go now.",
+          "accept": [
+            "I have to go now"
+          ]
+        },
+        {
+          "id": "d26s06",
+          "cue_vi": "phải dậy sớm",
+          "answer": "I have to get up early.",
+          "accept": [
+            "I have to get up early"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c153",
+      "cues": [
+        {
+          "id": "d26s07",
+          "cue_vi": "khuyên thử cái này",
+          "answer": "You should try this.",
+          "accept": [
+            "You should try this"
+          ]
+        },
+        {
+          "id": "d26s08",
+          "cue_vi": "khuyên ngủ nhiều hơn",
+          "answer": "You should sleep more.",
+          "accept": [
+            "You should sleep more"
+          ]
+        },
+        {
+          "id": "d26s09",
+          "cue_vi": "khuyên hỏi anh ấy",
+          "answer": "You should ask him.",
+          "accept": [
+            "You should ask him"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c154",
+      "cues": [
+        {
+          "id": "d26s10",
+          "cue_vi": "không cần trả bây giờ",
+          "answer": "You don't have to pay now.",
+          "accept": [
+            "You don't have to pay now"
+          ]
+        },
+        {
+          "id": "d26s11",
+          "cue_vi": "không cần đến sớm",
+          "answer": "You don't have to come early.",
+          "accept": [
+            "You don't have to come early"
+          ]
+        },
+        {
+          "id": "d26s12",
+          "cue_vi": "không cần mang gì",
+          "answer": "You don't have to bring anything.",
+          "accept": [
+            "You don't have to bring anything"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c155",
+      "cues": [
+        {
+          "id": "d26s13",
+          "cue_vi": "cần một chiếc taxi",
+          "answer": "I need a taxi.",
+          "accept": [
+            "I need a taxi"
+          ]
+        },
+        {
+          "id": "d26s14",
+          "cue_vi": "cần nghỉ một chút",
+          "answer": "I need a break.",
+          "accept": [
+            "I need a break"
+          ]
+        },
+        {
+          "id": "d26s15",
+          "cue_vi": "cần một cái túi",
+          "answer": "I need a bag.",
+          "accept": [
+            "I need a bag"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c156",
+      "cues": [
+        {
+          "id": "d26s16",
+          "cue_vi": "nên đi",
+          "answer": "I'd better go.",
+          "accept": [
+            "I'd better go"
+          ]
+        },
+        {
+          "id": "d26s17",
+          "cue_vi": "nên gọi anh ấy",
+          "answer": "I'd better call him.",
+          "accept": [
+            "I'd better call him"
+          ]
+        },
+        {
+          "id": "d26s18",
+          "cue_vi": "nên về nhà",
+          "answer": "I'd better go home.",
+          "accept": [
+            "I'd better go home"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Sắp trễ và phải đi ngay.",
+    "turns": [
+      {
+        "id": "d26r01",
+        "role": "partner",
+        "en": "Hey! It's six. We're going to be late.",
+        "vi": "Này! Sáu giờ rồi. Mình sắp trễ rồi."
+      },
+      {
+        "id": "d26r02",
+        "role": "you",
+        "cue_vi": "Nói bạn phải đi ngay.",
+        "model": "I have to go now.",
+        "uses": [
+          "c152"
+        ]
+      },
+      {
+        "id": "d26r03",
+        "role": "partner",
+        "en": "Do you need a taxi?",
+        "vi": "Bạn có cần taxi không?"
+      },
+      {
+        "id": "d26r04",
+        "role": "you",
+        "cue_vi": "Nói đúng, bạn cần một chiếc taxi.",
+        "model": "Yes, I need a taxi.",
+        "uses": [
+          "c155"
+        ]
+      },
+      {
+        "id": "d26r05",
+        "role": "partner",
+        "en": "Don't worry. I'll call one.",
+        "vi": "Đừng lo. Mình gọi cho."
+      },
+      {
+        "id": "d26r06",
+        "role": "you",
+        "cue_vi": "Nói bạn nên đi ngay thôi.",
+        "model": "I'd better go.",
+        "uses": [
+          "c156"
+        ]
+      }
+    ]
+  }
+}

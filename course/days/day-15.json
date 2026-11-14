@@ -1,0 +1,320 @@
+{
+  "day": 15,
+  "level": "A1",
+  "function": "Cảm xúc và sức khỏe",
+  "title": "Hôm nay bạn thế nào?",
+  "intro_vi": "Hôm nay: nói mình đang cảm thấy thế nào, hỏi thăm khi ai đó không ổn và động viên họ.",
+  "chunks": [
+    {
+      "id": "c085",
+      "text": "I'm so …",
+      "type": "stem",
+      "vi": "Mình … quá.",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Việt dùng thẳng tính từ (\"mệt quá\"); tiếng Anh cần \"I'm\" trước tính từ.",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Cảm xúc và sức khỏe",
+      "examples": [
+        {
+          "id": "d15e01",
+          "en": "I'm so tired.",
+          "vi": "Mình mệt quá."
+        },
+        {
+          "id": "d15e02",
+          "en": "I'm so happy.",
+          "vi": "Mình vui quá."
+        }
+      ]
+    },
+    {
+      "id": "c086",
+      "text": "I feel …",
+      "type": "stem",
+      "vi": "Mình cảm thấy …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Cảm xúc và sức khỏe",
+      "examples": [
+        {
+          "id": "d15e03",
+          "en": "I feel great.",
+          "vi": "Mình thấy rất khỏe."
+        },
+        {
+          "id": "d15e04",
+          "en": "I feel a bit tired.",
+          "vi": "Mình thấy hơi mệt."
+        }
+      ]
+    },
+    {
+      "id": "c087",
+      "text": "Are you okay?",
+      "type": "fixed",
+      "vi": "Bạn ổn không?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Cảm xúc và sức khỏe",
+      "examples": [
+        {
+          "id": "d15e05",
+          "en": "You look tired. Are you okay?",
+          "vi": "Trông bạn mệt đó. Bạn ổn không?"
+        }
+      ]
+    },
+    {
+      "id": "c088",
+      "text": "What's wrong?",
+      "type": "fixed",
+      "vi": "Có chuyện gì vậy?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Cảm xúc và sức khỏe",
+      "examples": [
+        {
+          "id": "d15e06",
+          "en": "What's wrong? You look sad.",
+          "vi": "Có chuyện gì vậy? Trông bạn buồn."
+        }
+      ]
+    },
+    {
+      "id": "c089",
+      "text": "I'm not feeling well.",
+      "type": "fixed",
+      "vi": "Mình thấy không khỏe.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Cảm xúc và sức khỏe",
+      "examples": [
+        {
+          "id": "d15e07",
+          "en": "Sorry, I'm not feeling well.",
+          "vi": "Xin lỗi, mình thấy không khỏe."
+        }
+      ]
+    },
+    {
+      "id": "c090",
+      "text": "Don't worry.",
+      "type": "fixed",
+      "vi": "Đừng lo.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Cảm xúc và sức khỏe",
+      "examples": [
+        {
+          "id": "d15e08",
+          "en": "Don't worry. It's okay.",
+          "vi": "Đừng lo. Không sao đâu."
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Bạn bè hỏi thăm nhau",
+    "lines": [
+      {
+        "id": "d15l01",
+        "speaker": "A",
+        "en": "Hi! How are you?",
+        "vi": "Chào! Bạn khỏe không?",
+        "chunks": [
+          "c005"
+        ]
+      },
+      {
+        "id": "d15l02",
+        "speaker": "B",
+        "en": "I'm not feeling well.",
+        "vi": "Mình thấy không khỏe.",
+        "chunks": [
+          "c089"
+        ]
+      },
+      {
+        "id": "d15l03",
+        "speaker": "A",
+        "en": "Oh no. What's wrong?",
+        "vi": "Ôi không. Có chuyện gì vậy?",
+        "chunks": [
+          "c088"
+        ]
+      },
+      {
+        "id": "d15l04",
+        "speaker": "B",
+        "en": "I feel tired. I can't sleep.",
+        "vi": "Mình thấy mệt. Mình không ngủ được.",
+        "chunks": [
+          "c086",
+          "c044"
+        ]
+      },
+      {
+        "id": "d15l05",
+        "speaker": "A",
+        "en": "Are you okay? Can I help you?",
+        "vi": "Bạn ổn không? Mình giúp gì được không?",
+        "chunks": [
+          "c087"
+        ]
+      },
+      {
+        "id": "d15l06",
+        "speaker": "B",
+        "en": "I'm so tired. I want to go home.",
+        "vi": "Mình mệt quá. Mình muốn về nhà.",
+        "chunks": [
+          "c085",
+          "c013"
+        ]
+      },
+      {
+        "id": "d15l07",
+        "speaker": "A",
+        "en": "Don't worry. I can take you home.",
+        "vi": "Đừng lo. Mình đưa bạn về được.",
+        "chunks": [
+          "c090",
+          "c043"
+        ]
+      },
+      {
+        "id": "d15l08",
+        "speaker": "B",
+        "en": "Thank you so much.",
+        "vi": "Cảm ơn nhiều lắm.",
+        "chunks": [
+          "c016"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c085",
+      "cues": [
+        {
+          "id": "d15s01",
+          "cue_vi": "mệt quá",
+          "answer": "I'm so tired.",
+          "accept": [
+            "I'm so tired"
+          ]
+        },
+        {
+          "id": "d15s02",
+          "cue_vi": "vui quá",
+          "answer": "I'm so happy.",
+          "accept": [
+            "I'm so happy"
+          ]
+        },
+        {
+          "id": "d15s03",
+          "cue_vi": "bận quá",
+          "answer": "I'm so busy.",
+          "accept": [
+            "I'm so busy"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c086",
+      "cues": [
+        {
+          "id": "d15s04",
+          "cue_vi": "thấy rất khỏe",
+          "answer": "I feel great.",
+          "accept": [
+            "I feel great"
+          ]
+        },
+        {
+          "id": "d15s05",
+          "cue_vi": "thấy hơi mệt",
+          "answer": "I feel a bit tired.",
+          "accept": [
+            "I feel a bit tired",
+            "I feel a little tired"
+          ]
+        },
+        {
+          "id": "d15s06",
+          "cue_vi": "thấy hơi buồn",
+          "answer": "I feel a little sad.",
+          "accept": [
+            "I feel a little sad",
+            "I feel a bit sad"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Một người bạn thấy bạn trông mệt.",
+    "turns": [
+      {
+        "id": "d15r01",
+        "role": "partner",
+        "en": "Hey! You look tired. Are you okay?",
+        "vi": "Này! Trông bạn mệt đó. Bạn ổn không?"
+      },
+      {
+        "id": "d15r02",
+        "role": "you",
+        "cue_vi": "Nói bạn mệt quá.",
+        "model": "I'm so tired.",
+        "uses": [
+          "c085"
+        ]
+      },
+      {
+        "id": "d15r03",
+        "role": "partner",
+        "en": "Do you want to go home?",
+        "vi": "Bạn có muốn về nhà không?"
+      },
+      {
+        "id": "d15r04",
+        "role": "you",
+        "cue_vi": "Nói bạn muốn, nhưng bạn có rất nhiều việc.",
+        "model": "I want to, but I have a lot of work.",
+        "uses": [
+          "c013",
+          "c066"
+        ]
+      },
+      {
+        "id": "d15r05",
+        "role": "partner",
+        "en": "I can help you with the work.",
+        "vi": "Mình giúp bạn việc đó được."
+      },
+      {
+        "id": "d15r06",
+        "role": "you",
+        "cue_vi": "Cảm ơn nhiều lắm.",
+        "model": "Thank you so much.",
+        "uses": [
+          "c016"
+        ]
+      }
+    ]
+  }
+}

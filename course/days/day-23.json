@@ -1,0 +1,353 @@
+{
+  "day": 23,
+  "level": "A1",
+  "function": "Công việc thường ngày",
+  "title": "Trao đổi nhanh ở chỗ làm",
+  "intro_vi": "Hôm nay: những câu ngắn hay dùng ở chỗ làm: hỏi thăm công việc, nói mình bận, hẹn gọi lại, hứa gửi thứ gì đó.",
+  "chunks": [
+    {
+      "id": "c133",
+      "text": "How's work?",
+      "type": "fixed",
+      "vi": "Công việc dạo này thế nào?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Công việc thường ngày",
+      "examples": [
+        {
+          "id": "d23e01",
+          "en": "Hi! How's work?",
+          "vi": "Chào! Công việc dạo này thế nào?"
+        }
+      ]
+    },
+    {
+      "id": "c134",
+      "text": "I have a meeting at …",
+      "type": "stem",
+      "vi": "Mình có cuộc họp lúc …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "work",
+      "reduced": null,
+      "source": "core-inventory A1 / Công việc thường ngày",
+      "examples": [
+        {
+          "id": "d23e02",
+          "en": "I have a meeting at ten.",
+          "vi": "Mình có cuộc họp lúc mười giờ."
+        },
+        {
+          "id": "d23e03",
+          "en": "I have a meeting at two thirty.",
+          "vi": "Mình có cuộc họp lúc hai rưỡi."
+        }
+      ]
+    },
+    {
+      "id": "c135",
+      "text": "I'm busy …",
+      "type": "stem",
+      "vi": "Mình bận …",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh cần \"I'm\" trước \"busy\"; tiếng Việt nói thẳng \"mình bận\".",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Công việc thường ngày",
+      "examples": [
+        {
+          "id": "d23e04",
+          "en": "I'm busy today.",
+          "vi": "Hôm nay mình bận."
+        },
+        {
+          "id": "d23e05",
+          "en": "I'm busy until five.",
+          "vi": "Mình bận đến năm giờ."
+        }
+      ]
+    },
+    {
+      "id": "c136",
+      "text": "Can I call you back?",
+      "type": "fixed",
+      "vi": "Mình gọi lại cho bạn sau được không?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "work",
+      "reduced": null,
+      "source": "core-inventory A1 / Công việc thường ngày",
+      "examples": [
+        {
+          "id": "d23e06",
+          "en": "Sorry, can I call you back?",
+          "vi": "Xin lỗi, mình gọi lại cho bạn sau được không?"
+        }
+      ]
+    },
+    {
+      "id": "c137",
+      "text": "I'll send you …",
+      "type": "stem",
+      "vi": "Mình sẽ gửi cho bạn …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "work",
+      "reduced": null,
+      "source": "core-inventory A1 / Công việc thường ngày",
+      "examples": [
+        {
+          "id": "d23e07",
+          "en": "I'll send you the file.",
+          "vi": "Mình sẽ gửi cho bạn tập tin."
+        },
+        {
+          "id": "d23e08",
+          "en": "I'll send you a message.",
+          "vi": "Mình sẽ nhắn cho bạn."
+        }
+      ]
+    },
+    {
+      "id": "c138",
+      "text": "Let me know.",
+      "type": "fixed",
+      "vi": "Cho mình biết nhé.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": "lemme know",
+      "source": "core-inventory A1 / Công việc thường ngày",
+      "examples": [
+        {
+          "id": "d23e09",
+          "en": "Let me know if you need help.",
+          "vi": "Cần giúp gì thì cho mình biết nhé."
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Hai đồng nghiệp trao đổi",
+    "lines": [
+      {
+        "id": "d23l01",
+        "speaker": "A",
+        "en": "Hi! How's work?",
+        "vi": "Chào! Công việc dạo này thế nào?",
+        "chunks": [
+          "c133"
+        ]
+      },
+      {
+        "id": "d23l02",
+        "speaker": "B",
+        "en": "I'm busy today. I have a meeting at ten.",
+        "vi": "Hôm nay mình bận. Mình có cuộc họp lúc mười giờ.",
+        "chunks": [
+          "c135",
+          "c134"
+        ]
+      },
+      {
+        "id": "d23l03",
+        "speaker": "A",
+        "en": "Are you free at lunch?",
+        "vi": "Bữa trưa bạn rảnh không?",
+        "chunks": [
+          "c105"
+        ]
+      },
+      {
+        "id": "d23l04",
+        "speaker": "B",
+        "en": "Let me check. Yes, I'm free at twelve.",
+        "vi": "Để mình xem. Có, mười hai giờ mình rảnh.",
+        "chunks": [
+          "c113"
+        ]
+      },
+      {
+        "id": "d23l05",
+        "speaker": "A",
+        "en": "Great. Let's get lunch.",
+        "vi": "Tốt quá. Mình đi ăn trưa nhé.",
+        "chunks": [
+          "c106"
+        ]
+      },
+      {
+        "id": "d23l06",
+        "speaker": "B",
+        "en": "Sorry, I'm running late. Can I call you back?",
+        "vi": "Xin lỗi, mình sắp trễ rồi. Mình gọi lại cho bạn được không?",
+        "chunks": [
+          "c036",
+          "c136"
+        ]
+      },
+      {
+        "id": "d23l07",
+        "speaker": "A",
+        "en": "Sure thing. I'll send you a message.",
+        "vi": "Được thôi. Mình sẽ nhắn cho bạn.",
+        "chunks": [
+          "c048",
+          "c137"
+        ]
+      },
+      {
+        "id": "d23l08",
+        "speaker": "B",
+        "en": "Thank you so much. Let me know.",
+        "vi": "Cảm ơn nhiều lắm. Có gì cho mình biết nhé.",
+        "chunks": [
+          "c016",
+          "c138"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c134",
+      "cues": [
+        {
+          "id": "d23s01",
+          "cue_vi": "họp lúc mười giờ",
+          "answer": "I have a meeting at ten.",
+          "accept": [
+            "I have a meeting at ten"
+          ]
+        },
+        {
+          "id": "d23s02",
+          "cue_vi": "họp lúc hai rưỡi",
+          "answer": "I have a meeting at two thirty.",
+          "accept": [
+            "I have a meeting at two thirty"
+          ]
+        },
+        {
+          "id": "d23s03",
+          "cue_vi": "họp lúc chín giờ",
+          "answer": "I have a meeting at nine.",
+          "accept": [
+            "I have a meeting at nine"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c135",
+      "cues": [
+        {
+          "id": "d23s04",
+          "cue_vi": "bận hôm nay",
+          "answer": "I'm busy today.",
+          "accept": [
+            "I'm busy today"
+          ]
+        },
+        {
+          "id": "d23s05",
+          "cue_vi": "bận đến năm giờ",
+          "answer": "I'm busy until five.",
+          "accept": [
+            "I'm busy until five"
+          ]
+        },
+        {
+          "id": "d23s06",
+          "cue_vi": "bận cả tuần",
+          "answer": "I'm busy all week.",
+          "accept": [
+            "I'm busy all week"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c137",
+      "cues": [
+        {
+          "id": "d23s07",
+          "cue_vi": "gửi tập tin",
+          "answer": "I'll send you the file.",
+          "accept": [
+            "I'll send you the file"
+          ]
+        },
+        {
+          "id": "d23s08",
+          "cue_vi": "gửi tin nhắn",
+          "answer": "I'll send you a message.",
+          "accept": [
+            "I'll send you a message"
+          ]
+        },
+        {
+          "id": "d23s09",
+          "cue_vi": "gửi địa chỉ",
+          "answer": "I'll send you the address.",
+          "accept": [
+            "I'll send you the address"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Một cuộc gọi lúc bạn đang bận.",
+    "turns": [
+      {
+        "id": "d23r01",
+        "role": "partner",
+        "en": "Hi! Can you talk now?",
+        "vi": "Chào! Bạn nói chuyện được không?"
+      },
+      {
+        "id": "d23r02",
+        "role": "you",
+        "cue_vi": "Nói bạn đang bận, có họp lúc ba giờ.",
+        "model": "I'm busy now. I have a meeting at three.",
+        "uses": [
+          "c135",
+          "c134"
+        ]
+      },
+      {
+        "id": "d23r03",
+        "role": "partner",
+        "en": "No problem. What time are you free?",
+        "vi": "Không sao. Mấy giờ bạn rảnh?"
+      },
+      {
+        "id": "d23r04",
+        "role": "you",
+        "cue_vi": "Hỏi mình gọi lại cho họ được không.",
+        "model": "Can I call you back?",
+        "uses": [
+          "c136"
+        ]
+      },
+      {
+        "id": "d23r05",
+        "role": "partner",
+        "en": "Sure thing. I'll send you the file.",
+        "vi": "Được thôi. Mình sẽ gửi bạn tập tin."
+      },
+      {
+        "id": "d23r06",
+        "role": "you",
+        "cue_vi": "Nói họ cho bạn biết nhé.",
+        "model": "Let me know.",
+        "uses": [
+          "c138"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,317 @@
+{
+  "day": 27,
+  "level": "A1",
+  "function": "Trò chuyện xã giao",
+  "title": "Nói về thời tiết, chào tạm biệt",
+  "intro_vi": "Hôm nay: mở chuyện bằng thời tiết, nói trời hôm nay thế nào và chào tạm biệt tự nhiên.",
+  "chunks": [
+    {
+      "id": "c157",
+      "text": "What's the weather like?",
+      "type": "fixed",
+      "vi": "Thời tiết thế nào?",
+      "vi_equivalent": false,
+      "contrast_vi": "\"What's … like?\" dùng để hỏi mô tả về một thứ; không dịch từng chữ.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Trò chuyện xã giao",
+      "examples": [
+        {
+          "id": "d27e01",
+          "en": "What's the weather like tomorrow?",
+          "vi": "Ngày mai thời tiết thế nào?"
+        }
+      ]
+    },
+    {
+      "id": "c158",
+      "text": "It's … today.",
+      "type": "stem",
+      "vi": "Hôm nay trời …",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh cần \"It's\" làm chủ ngữ khi nói về thời tiết.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Trò chuyện xã giao",
+      "examples": [
+        {
+          "id": "d27e02",
+          "en": "It's really hot today.",
+          "vi": "Hôm nay trời nóng thật."
+        },
+        {
+          "id": "d27e03",
+          "en": "It's cold today.",
+          "vi": "Hôm nay trời lạnh."
+        }
+      ]
+    },
+    {
+      "id": "c159",
+      "text": "It looks like …",
+      "type": "stem",
+      "vi": "Có vẻ như …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Trò chuyện xã giao",
+      "examples": [
+        {
+          "id": "d27e04",
+          "en": "It looks like rain.",
+          "vi": "Có vẻ trời sắp mưa."
+        },
+        {
+          "id": "d27e05",
+          "en": "It looks like it's going to snow.",
+          "vi": "Có vẻ trời sắp có tuyết."
+        }
+      ]
+    },
+    {
+      "id": "c160",
+      "text": "Nice day, isn't it?",
+      "type": "fixed",
+      "vi": "Hôm nay đẹp trời nhỉ?",
+      "vi_equivalent": false,
+      "contrast_vi": "\"Isn't it?\" ở cuối câu như \"nhỉ\" trong tiếng Việt: mời người nghe đồng ý.",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Trò chuyện xã giao",
+      "examples": [
+        {
+          "id": "d27e06",
+          "en": "Nice day, isn't it?",
+          "vi": "Hôm nay đẹp trời nhỉ?"
+        }
+      ]
+    },
+    {
+      "id": "c161",
+      "text": "Have a good one.",
+      "type": "fixed",
+      "vi": "Chúc bạn một ngày tốt lành.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Trò chuyện xã giao",
+      "examples": [
+        {
+          "id": "d27e07",
+          "en": "See you! Have a good one!",
+          "vi": "Hẹn gặp lại! Chúc bạn một ngày tốt lành!"
+        }
+      ]
+    },
+    {
+      "id": "c162",
+      "text": "You too.",
+      "type": "fixed",
+      "vi": "Bạn cũng vậy nhé.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Trò chuyện xã giao",
+      "examples": [
+        {
+          "id": "d27e08",
+          "en": "Have a good one! — You too.",
+          "vi": "Chúc bạn một ngày tốt lành! — Bạn cũng vậy nhé."
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Bắt chuyện ở trạm xe buýt",
+    "lines": [
+      {
+        "id": "d27l01",
+        "speaker": "A",
+        "en": "Hi! Nice day, isn't it?",
+        "vi": "Chào! Hôm nay đẹp trời nhỉ?",
+        "chunks": [
+          "c160"
+        ]
+      },
+      {
+        "id": "d27l02",
+        "speaker": "B",
+        "en": "Yes! It's really warm today.",
+        "vi": "Đúng! Hôm nay ấm thật.",
+        "chunks": [
+          "c158"
+        ]
+      },
+      {
+        "id": "d27l03",
+        "speaker": "A",
+        "en": "I think it's a little too hot. What's the weather like tomorrow?",
+        "vi": "Mình nghĩ hơi nóng quá. Ngày mai thời tiết thế nào?",
+        "chunks": [
+          "c139",
+          "c157"
+        ]
+      },
+      {
+        "id": "d27l04",
+        "speaker": "B",
+        "en": "It looks like rain.",
+        "vi": "Có vẻ trời sắp mưa.",
+        "chunks": [
+          "c159"
+        ]
+      },
+      {
+        "id": "d27l05",
+        "speaker": "A",
+        "en": "Oh no. I'm going to go to the beach!",
+        "vi": "Ôi không. Mình định đi biển mà!",
+        "chunks": [
+          "c103"
+        ]
+      },
+      {
+        "id": "d27l06",
+        "speaker": "B",
+        "en": "Why don't we go on Sunday?",
+        "vi": "Sao mình không đi vào Chủ nhật nhỉ?",
+        "chunks": [
+          "c110"
+        ]
+      },
+      {
+        "id": "d27l07",
+        "speaker": "A",
+        "en": "That works for me. Have a good one!",
+        "vi": "Vậy được với mình. Chúc bạn một ngày tốt lành!",
+        "chunks": [
+          "c114",
+          "c161"
+        ]
+      },
+      {
+        "id": "d27l08",
+        "speaker": "B",
+        "en": "You too!",
+        "vi": "Bạn cũng vậy nhé!",
+        "chunks": [
+          "c162"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c158",
+      "cues": [
+        {
+          "id": "d27s01",
+          "cue_vi": "nóng thật",
+          "answer": "It's really hot today.",
+          "accept": [
+            "It's really hot today"
+          ]
+        },
+        {
+          "id": "d27s02",
+          "cue_vi": "lạnh",
+          "answer": "It's cold today.",
+          "accept": [
+            "It's cold today"
+          ]
+        },
+        {
+          "id": "d27s03",
+          "cue_vi": "đẹp trời",
+          "answer": "It's really nice today.",
+          "accept": [
+            "It's really nice today"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c159",
+      "cues": [
+        {
+          "id": "d27s04",
+          "cue_vi": "sắp mưa",
+          "answer": "It looks like rain.",
+          "accept": [
+            "It looks like rain"
+          ]
+        },
+        {
+          "id": "d27s05",
+          "cue_vi": "sắp có tuyết",
+          "answer": "It looks like it's going to snow.",
+          "accept": [
+            "It looks like it's going to snow"
+          ]
+        },
+        {
+          "id": "d27s06",
+          "cue_vi": "sắp có nắng",
+          "answer": "It looks like it's going to be sunny.",
+          "accept": [
+            "It looks like it's going to be sunny",
+            "It looks like it's going to be a sunny day"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Nói chuyện với một người ở hành lang.",
+    "turns": [
+      {
+        "id": "d27r01",
+        "role": "partner",
+        "en": "Hi! Nice day, isn't it?",
+        "vi": "Chào! Hôm nay đẹp trời nhỉ?"
+      },
+      {
+        "id": "d27r02",
+        "role": "you",
+        "cue_vi": "Nói hôm nay trời nóng thật.",
+        "model": "It's really hot today.",
+        "uses": [
+          "c158"
+        ]
+      },
+      {
+        "id": "d27r03",
+        "role": "partner",
+        "en": "Yes! What's the weather like tomorrow?",
+        "vi": "Đúng! Mai thời tiết thế nào nhỉ?"
+      },
+      {
+        "id": "d27r04",
+        "role": "you",
+        "cue_vi": "Nói có vẻ trời sắp mưa.",
+        "model": "It looks like rain.",
+        "uses": [
+          "c159"
+        ]
+      },
+      {
+        "id": "d27r05",
+        "role": "partner",
+        "en": "Oh no. Well, I have to go. Have a good one!",
+        "vi": "Ôi không. Thôi, mình phải đi rồi. Chúc bạn một ngày tốt lành!"
+      },
+      {
+        "id": "d27r06",
+        "role": "you",
+        "cue_vi": "Nói bạn cũng vậy.",
+        "model": "You too.",
+        "uses": [
+          "c162"
+        ]
+      }
+    ]
+  }
+}

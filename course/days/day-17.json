@@ -1,0 +1,454 @@
+{
+  "day": 17,
+  "level": "A1",
+  "function": "Nói về người khác",
+  "title": "Cô ấy, anh ấy, họ",
+  "intro_vi": "Hôm nay: nói về một người khác: cô ấy thích gì, anh ấy không làm gì, họ đến từ đâu.",
+  "chunks": [
+    {
+      "id": "c097",
+      "text": "He/She likes …",
+      "type": "stem",
+      "vi": "Anh ấy / Cô ấy thích …",
+      "vi_equivalent": false,
+      "contrast_vi": "Động từ thêm -s khi chủ ngữ là he/she/it (likes); tiếng Việt không đổi động từ.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Nói về người khác",
+      "examples": [
+        {
+          "id": "d17e01",
+          "en": "She likes tea.",
+          "vi": "Cô ấy thích trà."
+        },
+        {
+          "id": "d17e02",
+          "en": "He likes music.",
+          "vi": "Anh ấy thích âm nhạc."
+        }
+      ]
+    },
+    {
+      "id": "c098",
+      "text": "Does she …?",
+      "type": "stem",
+      "vi": "Cô ấy có … không?",
+      "vi_equivalent": false,
+      "contrast_vi": "Sau \"does\", động từ trở về nguyên mẫu (Does she like…, không phải likes).",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Nói về người khác",
+      "examples": [
+        {
+          "id": "d17e03",
+          "en": "Does she speak English?",
+          "vi": "Cô ấy có nói tiếng Anh không?"
+        },
+        {
+          "id": "d17e04",
+          "en": "Does he work today?",
+          "vi": "Hôm nay anh ấy có đi làm không?"
+        }
+      ]
+    },
+    {
+      "id": "c099",
+      "text": "He doesn't …",
+      "type": "stem",
+      "vi": "Anh ấy không …",
+      "vi_equivalent": false,
+      "contrast_vi": "Phủ định với he/she/it dùng \"doesn't\" + động từ nguyên mẫu (He doesn't like, không phải likes).",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Nói về người khác",
+      "examples": [
+        {
+          "id": "d17e05",
+          "en": "He doesn't like coffee.",
+          "vi": "Anh ấy không thích cà phê."
+        },
+        {
+          "id": "d17e06",
+          "en": "She doesn't have a car.",
+          "vi": "Cô ấy không có xe hơi."
+        }
+      ]
+    },
+    {
+      "id": "c100",
+      "text": "She's really …",
+      "type": "stem",
+      "vi": "Cô ấy rất …",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh cần \"She's\" (She is) trước tính từ; tiếng Việt nói thẳng \"cô ấy rất tốt\".",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Nói về người khác",
+      "examples": [
+        {
+          "id": "d17e07",
+          "en": "She's really nice.",
+          "vi": "Cô ấy rất tốt bụng."
+        },
+        {
+          "id": "d17e08",
+          "en": "He's really funny.",
+          "vi": "Anh ấy rất vui tính."
+        }
+      ]
+    },
+    {
+      "id": "c101",
+      "text": "They're …",
+      "type": "stem",
+      "vi": "Họ …",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh cần \"are\" (They're) trước tính từ hoặc nơi chốn.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Nói về người khác",
+      "examples": [
+        {
+          "id": "d17e09",
+          "en": "They're from Brazil.",
+          "vi": "Họ đến từ Brazil."
+        },
+        {
+          "id": "d17e10",
+          "en": "They're really nice.",
+          "vi": "Họ rất tốt bụng."
+        }
+      ]
+    },
+    {
+      "id": "c102",
+      "text": "My friend is …",
+      "type": "stem",
+      "vi": "Bạn mình …",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh cần \"is\" nối chủ ngữ với phần còn lại; tiếng Việt không cần.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Nói về người khác",
+      "examples": [
+        {
+          "id": "d17e11",
+          "en": "My friend is from Japan.",
+          "vi": "Bạn mình đến từ Nhật."
+        },
+        {
+          "id": "d17e12",
+          "en": "My friend is a doctor.",
+          "vi": "Bạn mình là bác sĩ."
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Nói về một người bạn",
+    "lines": [
+      {
+        "id": "d17l01",
+        "speaker": "A",
+        "en": "Do you have a friend here?",
+        "vi": "Bạn có người bạn nào ở đây không?",
+        "chunks": [
+          "c062"
+        ]
+      },
+      {
+        "id": "d17l02",
+        "speaker": "B",
+        "en": "Yes. My friend Lisa is from Canada.",
+        "vi": "Có. Bạn mình là Lisa, đến từ Canada.",
+        "chunks": [
+          "c102"
+        ]
+      },
+      {
+        "id": "d17l03",
+        "speaker": "A",
+        "en": "Really? Does she speak French?",
+        "vi": "Thật à? Cô ấy có nói tiếng Pháp không?",
+        "chunks": [
+          "c012",
+          "c098"
+        ]
+      },
+      {
+        "id": "d17l04",
+        "speaker": "B",
+        "en": "Yes, she does. She likes French movies.",
+        "vi": "Có. Cô ấy thích phim Pháp.",
+        "chunks": [
+          "c097"
+        ]
+      },
+      {
+        "id": "d17l05",
+        "speaker": "A",
+        "en": "I love French movies! Do you like them?",
+        "vi": "Mình rất thích phim Pháp! Bạn có thích không?",
+        "chunks": [
+          "c040",
+          "c039"
+        ]
+      },
+      {
+        "id": "d17l06",
+        "speaker": "B",
+        "en": "Yes. But Tom doesn't like them.",
+        "vi": "Có. Nhưng Tom không thích.",
+        "chunks": [
+          "c099"
+        ]
+      },
+      {
+        "id": "d17l07",
+        "speaker": "A",
+        "en": "Me too. Tom is a bit boring.",
+        "vi": "Mình cũng vậy. Tom hơi chán.",
+        "chunks": [
+          "c042"
+        ]
+      },
+      {
+        "id": "d17l08",
+        "speaker": "B",
+        "en": "Oh, really? He's really funny!",
+        "vi": "Ồ, thật à? Anh ấy rất vui tính mà!",
+        "chunks": [
+          "c012",
+          "c100"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c097",
+      "cues": [
+        {
+          "id": "d17s01",
+          "cue_vi": "cô ấy thích trà",
+          "answer": "She likes tea.",
+          "accept": [
+            "She likes tea"
+          ]
+        },
+        {
+          "id": "d17s02",
+          "cue_vi": "anh ấy thích âm nhạc",
+          "answer": "He likes music.",
+          "accept": [
+            "He likes music"
+          ]
+        },
+        {
+          "id": "d17s03",
+          "cue_vi": "cô ấy thích nấu ăn",
+          "answer": "She likes cooking.",
+          "accept": [
+            "She likes cooking"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c098",
+      "cues": [
+        {
+          "id": "d17s04",
+          "cue_vi": "hỏi cô ấy có nói tiếng Anh không",
+          "answer": "Does she speak English?",
+          "accept": [
+            "Does she speak English"
+          ]
+        },
+        {
+          "id": "d17s05",
+          "cue_vi": "hỏi anh ấy hôm nay có đi làm không",
+          "answer": "Does he work today?",
+          "accept": [
+            "Does he work today"
+          ]
+        },
+        {
+          "id": "d17s06",
+          "cue_vi": "hỏi cô ấy có thích phim không",
+          "answer": "Does she like movies?",
+          "accept": [
+            "Does she like movies"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c099",
+      "cues": [
+        {
+          "id": "d17s07",
+          "cue_vi": "anh ấy không thích cà phê",
+          "answer": "He doesn't like coffee.",
+          "accept": [
+            "He doesn't like coffee"
+          ]
+        },
+        {
+          "id": "d17s08",
+          "cue_vi": "cô ấy không có xe hơi",
+          "answer": "She doesn't have a car.",
+          "accept": [
+            "She doesn't have a car"
+          ]
+        },
+        {
+          "id": "d17s09",
+          "cue_vi": "anh ấy không nói tiếng Pháp",
+          "answer": "He doesn't speak French.",
+          "accept": [
+            "He doesn't speak French"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c100",
+      "cues": [
+        {
+          "id": "d17s10",
+          "cue_vi": "cô ấy rất tốt bụng",
+          "answer": "She's really nice.",
+          "accept": [
+            "She's really nice"
+          ]
+        },
+        {
+          "id": "d17s11",
+          "cue_vi": "anh ấy rất vui tính",
+          "answer": "He's really funny.",
+          "accept": [
+            "He's really funny"
+          ]
+        },
+        {
+          "id": "d17s12",
+          "cue_vi": "cô ấy rất bận",
+          "answer": "She's really busy.",
+          "accept": [
+            "She's really busy"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c101",
+      "cues": [
+        {
+          "id": "d17s13",
+          "cue_vi": "họ đến từ Brazil",
+          "answer": "They're from Brazil.",
+          "accept": [
+            "They're from Brazil"
+          ]
+        },
+        {
+          "id": "d17s14",
+          "cue_vi": "họ rất tốt bụng",
+          "answer": "They're really nice.",
+          "accept": [
+            "They're really nice"
+          ]
+        },
+        {
+          "id": "d17s15",
+          "cue_vi": "họ đang bận",
+          "answer": "They're busy.",
+          "accept": [
+            "They're busy"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c102",
+      "cues": [
+        {
+          "id": "d17s16",
+          "cue_vi": "bạn mình đến từ Nhật",
+          "answer": "My friend is from Japan.",
+          "accept": [
+            "My friend is from Japan"
+          ]
+        },
+        {
+          "id": "d17s17",
+          "cue_vi": "bạn mình là bác sĩ",
+          "answer": "My friend is a doctor.",
+          "accept": [
+            "My friend is a doctor"
+          ]
+        },
+        {
+          "id": "d17s18",
+          "cue_vi": "bạn mình rất vui tính",
+          "answer": "My friend is really funny.",
+          "accept": [
+            "My friend is really funny",
+            "My friend is really fun"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Hỏi và kể về một người bạn chung.",
+    "turns": [
+      {
+        "id": "d17r01",
+        "role": "partner",
+        "en": "Do you know Anna?",
+        "vi": "Bạn có biết Anna không?"
+      },
+      {
+        "id": "d17r02",
+        "role": "you",
+        "cue_vi": "Nói cô ấy rất tốt bụng.",
+        "model": "She's really nice.",
+        "uses": [
+          "c100"
+        ]
+      },
+      {
+        "id": "d17r03",
+        "role": "partner",
+        "en": "Does she like coffee?",
+        "vi": "Cô ấy có thích cà phê không?"
+      },
+      {
+        "id": "d17r04",
+        "role": "you",
+        "cue_vi": "Nói cô ấy không thích cà phê.",
+        "model": "She doesn't like coffee.",
+        "uses": [
+          "c099"
+        ]
+      },
+      {
+        "id": "d17r05",
+        "role": "partner",
+        "en": "What does she like?",
+        "vi": "Cô ấy thích gì?"
+      },
+      {
+        "id": "d17r06",
+        "role": "you",
+        "cue_vi": "Nói cô ấy thích trà.",
+        "model": "She likes tea.",
+        "uses": [
+          "c097"
+        ]
+      }
+    ]
+  }
+}

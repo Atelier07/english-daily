@@ -1,0 +1,377 @@
+{
+  "day": 6,
+  "level": "A0",
+  "function": "Giờ giấc",
+  "title": "Hỏi và nói giờ",
+  "intro_vi": "Hôm nay: hỏi giờ, nói giờ, hỏi một việc bắt đầu lúc mấy giờ và hẹn giờ gặp.",
+  "chunks": [
+    {
+      "id": "c031",
+      "text": "What time is it?",
+      "type": "fixed",
+      "vi": "Bây giờ là mấy giờ?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Giờ giấc",
+      "examples": [
+        {
+          "id": "d06e01",
+          "en": "Excuse me, what time is it?",
+          "vi": "Xin lỗi, bây giờ là mấy giờ?"
+        }
+      ]
+    },
+    {
+      "id": "c032",
+      "text": "It's about …",
+      "type": "stem",
+      "vi": "Khoảng … rồi.",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Việt có thể bỏ chủ ngữ; tiếng Anh luôn cần \"It's\" khi nói giờ.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Giờ giấc",
+      "examples": [
+        {
+          "id": "d06e02",
+          "en": "It's about three.",
+          "vi": "Khoảng ba giờ rồi."
+        },
+        {
+          "id": "d06e03",
+          "en": "It's about ten thirty.",
+          "vi": "Khoảng mười giờ rưỡi rồi."
+        }
+      ]
+    },
+    {
+      "id": "c033",
+      "text": "What time does … start?",
+      "type": "stem",
+      "vi": "… bắt đầu lúc mấy giờ?",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh đặt \"What time does\" lên đầu và động từ \"start\" ở cuối, không chia thêm -s.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Giờ giấc",
+      "examples": [
+        {
+          "id": "d06e04",
+          "en": "What time does the movie start?",
+          "vi": "Phim bắt đầu lúc mấy giờ?"
+        },
+        {
+          "id": "d06e05",
+          "en": "What time does the class start?",
+          "vi": "Lớp học bắt đầu lúc mấy giờ?"
+        }
+      ]
+    },
+    {
+      "id": "c034",
+      "text": "It starts at …",
+      "type": "stem",
+      "vi": "Nó bắt đầu lúc …",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh cần \"It\" làm chủ ngữ, \"starts\" thêm -s và \"at\" trước giờ.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Giờ giấc",
+      "examples": [
+        {
+          "id": "d06e06",
+          "en": "It starts at seven.",
+          "vi": "Nó bắt đầu lúc bảy giờ."
+        },
+        {
+          "id": "d06e07",
+          "en": "It starts at eight thirty.",
+          "vi": "Nó bắt đầu lúc tám rưỡi."
+        }
+      ]
+    },
+    {
+      "id": "c035",
+      "text": "See you at …",
+      "type": "stem",
+      "vi": "Hẹn gặp bạn lúc …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A0 / Giờ giấc",
+      "examples": [
+        {
+          "id": "d06e08",
+          "en": "See you at six.",
+          "vi": "Hẹn gặp bạn lúc sáu giờ."
+        },
+        {
+          "id": "d06e09",
+          "en": "See you at noon.",
+          "vi": "Hẹn gặp bạn lúc trưa."
+        }
+      ]
+    },
+    {
+      "id": "c036",
+      "text": "I'm running late.",
+      "type": "fixed",
+      "vi": "Mình sắp trễ rồi.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A0 / Giờ giấc",
+      "examples": [
+        {
+          "id": "d06e10",
+          "en": "Sorry, I'm running late.",
+          "vi": "Xin lỗi, mình sắp trễ rồi."
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Hẹn đi xem phim",
+    "lines": [
+      {
+        "id": "d06l01",
+        "speaker": "A",
+        "en": "Hi! How are you?",
+        "vi": "Chào! Bạn khỏe không?",
+        "chunks": [
+          "c005"
+        ]
+      },
+      {
+        "id": "d06l02",
+        "speaker": "B",
+        "en": "I'm good. Do you want to see a movie?",
+        "vi": "Mình khỏe. Bạn có muốn đi xem phim không?",
+        "chunks": [
+          "c015"
+        ]
+      },
+      {
+        "id": "d06l03",
+        "speaker": "A",
+        "en": "Yes! What time does it start?",
+        "vi": "Có! Mấy giờ phim bắt đầu?",
+        "chunks": [
+          "c033"
+        ]
+      },
+      {
+        "id": "d06l04",
+        "speaker": "B",
+        "en": "It starts at seven.",
+        "vi": "Bảy giờ bắt đầu.",
+        "chunks": [
+          "c034"
+        ]
+      },
+      {
+        "id": "d06l05",
+        "speaker": "A",
+        "en": "Sorry, can you say that again?",
+        "vi": "Xin lỗi, bạn nói lại được không?",
+        "chunks": [
+          "c019"
+        ]
+      },
+      {
+        "id": "d06l06",
+        "speaker": "B",
+        "en": "It starts at seven. See you at six thirty?",
+        "vi": "Bảy giờ bắt đầu. Hẹn gặp lúc sáu rưỡi nhé?",
+        "chunks": [
+          "c034",
+          "c035"
+        ]
+      },
+      {
+        "id": "d06l07",
+        "speaker": "A",
+        "en": "Oh, I see. See you at six thirty! Thank you so much.",
+        "vi": "À, mình hiểu rồi. Hẹn gặp lúc sáu rưỡi! Cảm ơn nhiều lắm.",
+        "chunks": [
+          "c024",
+          "c035",
+          "c016"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c032",
+      "cues": [
+        {
+          "id": "d06s01",
+          "cue_vi": "khoảng ba giờ",
+          "answer": "It's about three.",
+          "accept": [
+            "It's about three"
+          ]
+        },
+        {
+          "id": "d06s02",
+          "cue_vi": "khoảng mười giờ rưỡi",
+          "answer": "It's about ten thirty.",
+          "accept": [
+            "It's about ten thirty"
+          ]
+        },
+        {
+          "id": "d06s03",
+          "cue_vi": "khoảng mười hai giờ",
+          "answer": "It's about twelve.",
+          "accept": [
+            "It's about twelve"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c033",
+      "cues": [
+        {
+          "id": "d06s04",
+          "cue_vi": "hỏi phim mấy giờ bắt đầu",
+          "answer": "What time does the movie start?",
+          "accept": [
+            "What time does the movie start"
+          ]
+        },
+        {
+          "id": "d06s05",
+          "cue_vi": "hỏi lớp học mấy giờ bắt đầu",
+          "answer": "What time does the class start?",
+          "accept": [
+            "What time does the class start"
+          ]
+        },
+        {
+          "id": "d06s06",
+          "cue_vi": "hỏi buổi họp mấy giờ bắt đầu",
+          "answer": "What time does the meeting start?",
+          "accept": [
+            "What time does the meeting start"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c034",
+      "cues": [
+        {
+          "id": "d06s07",
+          "cue_vi": "bắt đầu lúc bảy giờ",
+          "answer": "It starts at seven.",
+          "accept": [
+            "It starts at seven"
+          ]
+        },
+        {
+          "id": "d06s08",
+          "cue_vi": "bắt đầu lúc tám rưỡi",
+          "answer": "It starts at eight thirty.",
+          "accept": [
+            "It starts at eight thirty"
+          ]
+        },
+        {
+          "id": "d06s09",
+          "cue_vi": "bắt đầu lúc chín giờ",
+          "answer": "It starts at nine.",
+          "accept": [
+            "It starts at nine"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c035",
+      "cues": [
+        {
+          "id": "d06s10",
+          "cue_vi": "hẹn lúc sáu giờ",
+          "answer": "See you at six.",
+          "accept": [
+            "See you at six"
+          ]
+        },
+        {
+          "id": "d06s11",
+          "cue_vi": "hẹn lúc trưa",
+          "answer": "See you at noon.",
+          "accept": [
+            "See you at noon"
+          ]
+        },
+        {
+          "id": "d06s12",
+          "cue_vi": "hẹn lúc năm rưỡi",
+          "answer": "See you at five thirty.",
+          "accept": [
+            "See you at five thirty"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Bạn đến trễ một buổi hẹn xem phim.",
+    "turns": [
+      {
+        "id": "d06r01",
+        "role": "partner",
+        "en": "Hey! The movie starts at seven.",
+        "vi": "Này! Phim bắt đầu lúc bảy giờ đó."
+      },
+      {
+        "id": "d06r02",
+        "role": "you",
+        "cue_vi": "Hỏi bây giờ là mấy giờ.",
+        "model": "What time is it?",
+        "uses": [
+          "c031"
+        ]
+      },
+      {
+        "id": "d06r03",
+        "role": "partner",
+        "en": "It's about six thirty. Where are you?",
+        "vi": "Khoảng sáu rưỡi rồi. Bạn đang ở đâu?"
+      },
+      {
+        "id": "d06r04",
+        "role": "you",
+        "cue_vi": "Nói bạn sắp trễ và hẹn gặp lúc bảy giờ.",
+        "model": "Sorry, I'm running late. See you at seven.",
+        "uses": [
+          "c036",
+          "c035"
+        ]
+      },
+      {
+        "id": "d06r05",
+        "role": "partner",
+        "en": "No problem. See you at seven.",
+        "vi": "Không sao. Hẹn gặp lúc bảy giờ."
+      },
+      {
+        "id": "d06r06",
+        "role": "you",
+        "cue_vi": "Cảm ơn thật nhiều.",
+        "model": "Thank you so much.",
+        "uses": [
+          "c016"
+        ]
+      }
+    ]
+  }
+}

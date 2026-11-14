@@ -1,0 +1,402 @@
+{
+  "day": 10,
+  "level": "A0",
+  "function": "Chỉ đường",
+  "title": "Hỏi và hiểu đường đi",
+  "intro_vi": "Hôm nay: hỏi đường đến một nơi và hiểu các chỉ dẫn: đi thẳng, rẽ trái, bao xa.",
+  "chunks": [
+    {
+      "id": "c055",
+      "text": "How do I get to …?",
+      "type": "stem",
+      "vi": "Làm sao để đến …?",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Việt nói \"đi … thế nào\"; tiếng Anh cần \"get to\" (đến) và \"I\" làm chủ ngữ.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Chỉ đường",
+      "examples": [
+        {
+          "id": "d10e01",
+          "en": "How do I get to the airport?",
+          "vi": "Làm sao để đến sân bay?"
+        },
+        {
+          "id": "d10e02",
+          "en": "How do I get to the museum?",
+          "vi": "Làm sao để đến bảo tàng?"
+        }
+      ]
+    },
+    {
+      "id": "c056",
+      "text": "Go straight for …",
+      "type": "stem",
+      "vi": "Đi thẳng … ",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Chỉ đường",
+      "examples": [
+        {
+          "id": "d10e03",
+          "en": "Go straight for two blocks.",
+          "vi": "Đi thẳng hai dãy nhà."
+        },
+        {
+          "id": "d10e04",
+          "en": "Go straight for five minutes.",
+          "vi": "Đi thẳng năm phút."
+        }
+      ]
+    },
+    {
+      "id": "c057",
+      "text": "Turn left at …",
+      "type": "stem",
+      "vi": "Rẽ trái ở …",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh dùng \"at\" trước nơi cần rẽ; đổi \"left\" thành \"right\" để rẽ phải.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Chỉ đường",
+      "examples": [
+        {
+          "id": "d10e05",
+          "en": "Turn left at the light.",
+          "vi": "Rẽ trái ở đèn giao thông."
+        },
+        {
+          "id": "d10e06",
+          "en": "Turn right at the corner.",
+          "vi": "Rẽ phải ở góc phố."
+        }
+      ]
+    },
+    {
+      "id": "c058",
+      "text": "Is it far?",
+      "type": "fixed",
+      "vi": "Có xa không?",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh cần \"it\" làm chủ ngữ.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Chỉ đường",
+      "examples": [
+        {
+          "id": "d10e07",
+          "en": "Excuse me, is it far?",
+          "vi": "Xin lỗi, có xa không?"
+        }
+      ]
+    },
+    {
+      "id": "c059",
+      "text": "It's a … minute walk.",
+      "type": "stem",
+      "vi": "Đi bộ khoảng … phút.",
+      "vi_equivalent": false,
+      "contrast_vi": "Nói \"a five-minute walk\": \"minute\" đứng trước \"walk\" và không thêm -s.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Chỉ đường",
+      "examples": [
+        {
+          "id": "d10e08",
+          "en": "It's a five-minute walk.",
+          "vi": "Đi bộ khoảng năm phút."
+        },
+        {
+          "id": "d10e09",
+          "en": "It's a ten-minute walk.",
+          "vi": "Đi bộ khoảng mười phút."
+        }
+      ]
+    },
+    {
+      "id": "c060",
+      "text": "You can't miss it.",
+      "type": "fixed",
+      "vi": "Bạn sẽ thấy ngay thôi.",
+      "vi_equivalent": false,
+      "contrast_vi": "Nghĩa đen là \"bạn không thể bỏ lỡ nó\"; người Việt thường nói \"thấy liền à\" hoặc \"dễ thấy lắm\".",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Chỉ đường",
+      "examples": [
+        {
+          "id": "d10e10",
+          "en": "It's big and red. You can't miss it.",
+          "vi": "Nó to và màu đỏ. Bạn sẽ thấy ngay."
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Hỏi đường đến bảo tàng",
+    "lines": [
+      {
+        "id": "d10l01",
+        "speaker": "A",
+        "en": "Excuse me, how do I get to the museum?",
+        "vi": "Xin lỗi, làm sao để đến bảo tàng?",
+        "chunks": [
+          "c054",
+          "c055"
+        ]
+      },
+      {
+        "id": "d10l02",
+        "speaker": "B",
+        "en": "Go straight for two blocks.",
+        "vi": "Đi thẳng hai dãy nhà.",
+        "chunks": [
+          "c056"
+        ]
+      },
+      {
+        "id": "d10l03",
+        "speaker": "A",
+        "en": "Sorry, can you say that again?",
+        "vi": "Xin lỗi, bạn nói lại được không?",
+        "chunks": [
+          "c019"
+        ]
+      },
+      {
+        "id": "d10l04",
+        "speaker": "B",
+        "en": "Go straight for two blocks. Then turn left at the light.",
+        "vi": "Đi thẳng hai dãy nhà. Rồi rẽ trái ở đèn giao thông.",
+        "chunks": [
+          "c056",
+          "c057"
+        ]
+      },
+      {
+        "id": "d10l05",
+        "speaker": "A",
+        "en": "Is it far?",
+        "vi": "Có xa không?",
+        "chunks": [
+          "c058"
+        ]
+      },
+      {
+        "id": "d10l06",
+        "speaker": "B",
+        "en": "No. It's a five-minute walk. You can't miss it.",
+        "vi": "Không. Đi bộ khoảng năm phút. Bạn sẽ thấy ngay.",
+        "chunks": [
+          "c059",
+          "c060"
+        ]
+      },
+      {
+        "id": "d10l07",
+        "speaker": "A",
+        "en": "Thank you so much!",
+        "vi": "Cảm ơn nhiều lắm!",
+        "chunks": [
+          "c016"
+        ]
+      },
+      {
+        "id": "d10l08",
+        "speaker": "B",
+        "en": "No problem.",
+        "vi": "Không có gì.",
+        "chunks": [
+          "c017"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c055",
+      "cues": [
+        {
+          "id": "d10s01",
+          "cue_vi": "hỏi đường đến sân bay",
+          "answer": "How do I get to the airport?",
+          "accept": [
+            "How do I get to the airport"
+          ]
+        },
+        {
+          "id": "d10s02",
+          "cue_vi": "hỏi đường đến bảo tàng",
+          "answer": "How do I get to the museum?",
+          "accept": [
+            "How do I get to the museum"
+          ]
+        },
+        {
+          "id": "d10s03",
+          "cue_vi": "hỏi đường đến khách sạn",
+          "answer": "How do I get to the hotel?",
+          "accept": [
+            "How do I get to the hotel"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c056",
+      "cues": [
+        {
+          "id": "d10s04",
+          "cue_vi": "đi thẳng hai dãy nhà",
+          "answer": "Go straight for two blocks.",
+          "accept": [
+            "Go straight for two blocks"
+          ]
+        },
+        {
+          "id": "d10s05",
+          "cue_vi": "đi thẳng năm phút",
+          "answer": "Go straight for five minutes.",
+          "accept": [
+            "Go straight for five minutes"
+          ]
+        },
+        {
+          "id": "d10s06",
+          "cue_vi": "đi thẳng một trăm mét",
+          "answer": "Go straight for a hundred meters.",
+          "accept": [
+            "Go straight for a hundred meters",
+            "Go straight for one hundred meters"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c057",
+      "cues": [
+        {
+          "id": "d10s07",
+          "cue_vi": "rẽ trái ở đèn giao thông",
+          "answer": "Turn left at the light.",
+          "accept": [
+            "Turn left at the light"
+          ]
+        },
+        {
+          "id": "d10s08",
+          "cue_vi": "rẽ phải ở góc phố",
+          "answer": "Turn right at the corner.",
+          "accept": [
+            "Turn right at the corner"
+          ]
+        },
+        {
+          "id": "d10s09",
+          "cue_vi": "rẽ trái ở ngân hàng",
+          "answer": "Turn left at the bank.",
+          "accept": [
+            "Turn left at the bank"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c059",
+      "cues": [
+        {
+          "id": "d10s10",
+          "cue_vi": "đi bộ năm phút",
+          "answer": "It's a five-minute walk.",
+          "accept": [
+            "It's a five-minute walk"
+          ]
+        },
+        {
+          "id": "d10s11",
+          "cue_vi": "đi bộ mười phút",
+          "answer": "It's a ten-minute walk.",
+          "accept": [
+            "It's a ten-minute walk"
+          ]
+        },
+        {
+          "id": "d10s12",
+          "cue_vi": "đi bộ hai phút",
+          "answer": "It's a two-minute walk.",
+          "accept": [
+            "It's a two-minute walk"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Hỏi đường đến ga tàu.",
+    "turns": [
+      {
+        "id": "d10r01",
+        "role": "partner",
+        "en": "Hi! Can I help you?",
+        "vi": "Chào! Bạn cần giúp gì không?"
+      },
+      {
+        "id": "d10r02",
+        "role": "you",
+        "cue_vi": "Hỏi đường đến ga tàu.",
+        "model": "How do I get to the station?",
+        "uses": [
+          "c055"
+        ]
+      },
+      {
+        "id": "d10r03",
+        "role": "partner",
+        "en": "Go straight for five minutes. Then turn right at the bank.",
+        "vi": "Đi thẳng năm phút. Rồi rẽ phải ở ngân hàng."
+      },
+      {
+        "id": "d10r04",
+        "role": "you",
+        "cue_vi": "Nói bạn không hiểu và xin nói chậm hơn.",
+        "model": "I don't understand. Can you speak more slowly?",
+        "uses": [
+          "c020",
+          "c021"
+        ]
+      },
+      {
+        "id": "d10r05",
+        "role": "partner",
+        "en": "Sure. Go... straight... for five minutes.",
+        "vi": "Được. Đi... thẳng... năm phút."
+      },
+      {
+        "id": "d10r06",
+        "role": "you",
+        "cue_vi": "Hỏi có xa không.",
+        "model": "Is it far?",
+        "uses": [
+          "c058"
+        ]
+      },
+      {
+        "id": "d10r07",
+        "role": "partner",
+        "en": "No. It's a ten-minute walk.",
+        "vi": "Không. Đi bộ khoảng mười phút."
+      },
+      {
+        "id": "d10r08",
+        "role": "you",
+        "cue_vi": "Cảm ơn thật nhiều.",
+        "model": "Thank you so much.",
+        "uses": [
+          "c016"
+        ]
+      }
+    ]
+  }
+}

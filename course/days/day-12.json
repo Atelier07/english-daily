@@ -1,0 +1,397 @@
+{
+  "day": 12,
+  "level": "A1",
+  "function": "Gọi món ở nhà hàng",
+  "title": "Gọi món",
+  "intro_vi": "Hôm nay: gọi món lịch sự, hỏi người phục vụ gợi ý, hỏi món có kèm gì và xin tính tiền.",
+  "chunks": [
+    {
+      "id": "c067",
+      "text": "I'd like …, please.",
+      "type": "stem",
+      "vi": "Cho mình … nhé.",
+      "vi_equivalent": false,
+      "contrast_vi": "\"I'd like\" (I would like) lịch sự hơn \"I want\"; tiếng Việt chỉ thêm \"cho mình … nhé\".",
+      "register": "polite",
+      "reduced": null,
+      "source": "core-inventory A1 / Gọi món ở nhà hàng",
+      "examples": [
+        {
+          "id": "d12e01",
+          "en": "I'd like a burger, please.",
+          "vi": "Cho mình một cái bánh mì kẹp nhé."
+        },
+        {
+          "id": "d12e02",
+          "en": "I'd like the soup, please.",
+          "vi": "Cho mình món súp nhé."
+        }
+      ]
+    },
+    {
+      "id": "c068",
+      "text": "Can I get …?",
+      "type": "stem",
+      "vi": "Cho mình … được không?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Gọi món ở nhà hàng",
+      "examples": [
+        {
+          "id": "d12e03",
+          "en": "Can I get a coffee?",
+          "vi": "Cho mình một ly cà phê được không?"
+        },
+        {
+          "id": "d12e04",
+          "en": "Can I get the check?",
+          "vi": "Cho mình tính tiền được không?"
+        }
+      ]
+    },
+    {
+      "id": "c069",
+      "text": "What do you recommend?",
+      "type": "fixed",
+      "vi": "Bạn gợi ý món nào?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Gọi món ở nhà hàng",
+      "examples": [
+        {
+          "id": "d12e05",
+          "en": "What do you recommend?",
+          "vi": "Bạn gợi ý món nào?"
+        }
+      ]
+    },
+    {
+      "id": "c070",
+      "text": "I'll have …",
+      "type": "stem",
+      "vi": "Mình sẽ dùng …",
+      "vi_equivalent": false,
+      "contrast_vi": "Dùng \"I'll have\" khi chốt món; tiếng Việt thường chỉ nói tên món.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Gọi món ở nhà hàng",
+      "examples": [
+        {
+          "id": "d12e06",
+          "en": "I'll have the chicken.",
+          "vi": "Mình sẽ dùng món gà."
+        },
+        {
+          "id": "d12e07",
+          "en": "I'll have a salad.",
+          "vi": "Mình sẽ dùng một đĩa salad."
+        }
+      ]
+    },
+    {
+      "id": "c071",
+      "text": "Does it come with …?",
+      "type": "stem",
+      "vi": "Món này có kèm … không?",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh dùng \"come with\" (đi kèm) và \"does\", động từ \"come\" không thêm -s.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Gọi món ở nhà hàng",
+      "examples": [
+        {
+          "id": "d12e08",
+          "en": "Does it come with fries?",
+          "vi": "Món này có kèm khoai chiên không?"
+        },
+        {
+          "id": "d12e09",
+          "en": "Does it come with rice?",
+          "vi": "Món này có kèm cơm không?"
+        }
+      ]
+    },
+    {
+      "id": "c072",
+      "text": "Could we have the check, please?",
+      "type": "fixed",
+      "vi": "Cho chúng mình tính tiền nhé.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "polite",
+      "reduced": null,
+      "source": "core-inventory A1 / Gọi món ở nhà hàng",
+      "examples": [
+        {
+          "id": "d12e10",
+          "en": "Excuse me, could we have the check, please?",
+          "vi": "Xin lỗi, cho chúng mình tính tiền nhé."
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Gọi món ở một nhà hàng",
+    "lines": [
+      {
+        "id": "d12l01",
+        "speaker": "B",
+        "en": "Hi! What can I get you?",
+        "vi": "Chào! Bạn dùng gì ạ?",
+        "chunks": []
+      },
+      {
+        "id": "d12l02",
+        "speaker": "A",
+        "en": "What do you recommend?",
+        "vi": "Bạn gợi ý món nào?",
+        "chunks": [
+          "c069"
+        ]
+      },
+      {
+        "id": "d12l03",
+        "speaker": "B",
+        "en": "The chicken is very good today.",
+        "vi": "Hôm nay món gà rất ngon.",
+        "chunks": []
+      },
+      {
+        "id": "d12l04",
+        "speaker": "A",
+        "en": "Sorry, can you say that again?",
+        "vi": "Xin lỗi, bạn nói lại được không?",
+        "chunks": [
+          "c019"
+        ]
+      },
+      {
+        "id": "d12l05",
+        "speaker": "B",
+        "en": "The chicken. It's very good.",
+        "vi": "Món gà. Rất ngon.",
+        "chunks": []
+      },
+      {
+        "id": "d12l06",
+        "speaker": "A",
+        "en": "Does it come with rice?",
+        "vi": "Món này có kèm cơm không?",
+        "chunks": [
+          "c071"
+        ]
+      },
+      {
+        "id": "d12l07",
+        "speaker": "B",
+        "en": "Yes, it does.",
+        "vi": "Có.",
+        "chunks": []
+      },
+      {
+        "id": "d12l08",
+        "speaker": "A",
+        "en": "I'll have the chicken. Can I have some water, please?",
+        "vi": "Mình sẽ dùng món gà. Cho mình ít nước nhé?",
+        "chunks": [
+          "c070",
+          "c014"
+        ]
+      },
+      {
+        "id": "d12l09",
+        "speaker": "B",
+        "en": "Sure. Here you go.",
+        "vi": "Được. Của bạn đây.",
+        "chunks": [
+          "c018"
+        ]
+      },
+      {
+        "id": "d12l10",
+        "speaker": "A",
+        "en": "Thank you so much.",
+        "vi": "Cảm ơn nhiều lắm.",
+        "chunks": [
+          "c016"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c067",
+      "cues": [
+        {
+          "id": "d12s01",
+          "cue_vi": "gọi món gà",
+          "answer": "I'd like the chicken, please.",
+          "accept": [
+            "I'd like the chicken, please"
+          ]
+        },
+        {
+          "id": "d12s02",
+          "cue_vi": "gọi một cái bánh mì kẹp",
+          "answer": "I'd like a burger, please.",
+          "accept": [
+            "I'd like a burger, please"
+          ]
+        },
+        {
+          "id": "d12s03",
+          "cue_vi": "gọi món súp",
+          "answer": "I'd like the soup, please.",
+          "accept": [
+            "I'd like the soup, please"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c068",
+      "cues": [
+        {
+          "id": "d12s04",
+          "cue_vi": "xin một ly cà phê",
+          "answer": "Can I get a coffee?",
+          "accept": [
+            "Can I get a coffee"
+          ]
+        },
+        {
+          "id": "d12s05",
+          "cue_vi": "xin tính tiền",
+          "answer": "Can I get the check?",
+          "accept": [
+            "Can I get the check"
+          ]
+        },
+        {
+          "id": "d12s06",
+          "cue_vi": "xin thêm nước",
+          "answer": "Can I get some more water?",
+          "accept": [
+            "Can I get some more water",
+            "Can I get more water"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c070",
+      "cues": [
+        {
+          "id": "d12s07",
+          "cue_vi": "chốt món gà",
+          "answer": "I'll have the chicken.",
+          "accept": [
+            "I'll have the chicken"
+          ]
+        },
+        {
+          "id": "d12s08",
+          "cue_vi": "chốt một đĩa salad",
+          "answer": "I'll have a salad.",
+          "accept": [
+            "I'll have a salad"
+          ]
+        },
+        {
+          "id": "d12s09",
+          "cue_vi": "chốt cái này",
+          "answer": "I'll have this.",
+          "accept": [
+            "I'll have this",
+            "I'll have this one"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c071",
+      "cues": [
+        {
+          "id": "d12s10",
+          "cue_vi": "hỏi có kèm khoai chiên không",
+          "answer": "Does it come with fries?",
+          "accept": [
+            "Does it come with fries"
+          ]
+        },
+        {
+          "id": "d12s11",
+          "cue_vi": "hỏi có kèm cơm không",
+          "answer": "Does it come with rice?",
+          "accept": [
+            "Does it come with rice"
+          ]
+        },
+        {
+          "id": "d12s12",
+          "cue_vi": "hỏi có kèm salad không",
+          "answer": "Does it come with a salad?",
+          "accept": [
+            "Does it come with a salad",
+            "Does it come with salad"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Gọi món và tính tiền.",
+    "turns": [
+      {
+        "id": "d12r01",
+        "role": "partner",
+        "en": "Hi! Are you ready to order?",
+        "vi": "Chào! Bạn sẵn sàng gọi món chưa?"
+      },
+      {
+        "id": "d12r02",
+        "role": "you",
+        "cue_vi": "Gọi món gà, lịch sự.",
+        "model": "I'd like the chicken, please.",
+        "uses": [
+          "c067"
+        ]
+      },
+      {
+        "id": "d12r03",
+        "role": "partner",
+        "en": "Sure. Do you want anything to drink?",
+        "vi": "Được. Bạn có muốn uống gì không?"
+      },
+      {
+        "id": "d12r04",
+        "role": "you",
+        "cue_vi": "Xin một ly nước.",
+        "model": "Can I get some water?",
+        "uses": [
+          "c068"
+        ]
+      },
+      {
+        "id": "d12r05",
+        "role": "partner",
+        "en": "Here you go. Enjoy!",
+        "vi": "Của bạn đây. Chúc ngon miệng!"
+      },
+      {
+        "id": "d12r06",
+        "role": "you",
+        "cue_vi": "Cảm ơn, rồi xin tính tiền.",
+        "model": "Thank you so much. Could we have the check, please?",
+        "uses": [
+          "c016",
+          "c072"
+        ]
+      }
+    ]
+  }
+}

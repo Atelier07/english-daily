@@ -1,0 +1,385 @@
+{
+  "day": 18,
+  "level": "A1",
+  "function": "Kế hoạch",
+  "title": "Mình định làm gì",
+  "intro_vi": "Hôm nay: nói điều mình định làm, hỏi người khác định làm gì, hỏi họ có rảnh không và rủ họ cùng đi.",
+  "chunks": [
+    {
+      "id": "c103",
+      "text": "I'm going to …",
+      "type": "stem",
+      "vi": "Mình định …",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Việt dùng \"định/sẽ\"; tiếng Anh dùng \"be going to\" + động từ nguyên mẫu.",
+      "register": "neutral",
+      "reduced": "gonna",
+      "source": "core-inventory A1 / Kế hoạch",
+      "examples": [
+        {
+          "id": "d18e01",
+          "en": "I'm going to cook tonight.",
+          "vi": "Tối nay mình định nấu ăn."
+        },
+        {
+          "id": "d18e02",
+          "en": "I'm going to call a friend.",
+          "vi": "Mình định gọi cho một người bạn."
+        }
+      ]
+    },
+    {
+      "id": "c104",
+      "text": "What are you going to do …?",
+      "type": "stem",
+      "vi": "Bạn định làm gì …?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": "what're you gonna do",
+      "source": "core-inventory A1 / Kế hoạch",
+      "examples": [
+        {
+          "id": "d18e03",
+          "en": "What are you going to do tonight?",
+          "vi": "Tối nay bạn định làm gì?"
+        },
+        {
+          "id": "d18e04",
+          "en": "What are you going to do this weekend?",
+          "vi": "Cuối tuần này bạn định làm gì?"
+        }
+      ]
+    },
+    {
+      "id": "c105",
+      "text": "Are you free …?",
+      "type": "stem",
+      "vi": "Bạn rảnh … không?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Kế hoạch",
+      "examples": [
+        {
+          "id": "d18e05",
+          "en": "Are you free tonight?",
+          "vi": "Tối nay bạn rảnh không?"
+        },
+        {
+          "id": "d18e06",
+          "en": "Are you free on Saturday?",
+          "vi": "Thứ Bảy bạn rảnh không?"
+        }
+      ]
+    },
+    {
+      "id": "c106",
+      "text": "Let's …",
+      "type": "stem",
+      "vi": "Mình … đi.",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh đặt \"Let's\" ở đầu câu; tiếng Việt thường đặt \"đi\" ở cuối.",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Kế hoạch",
+      "examples": [
+        {
+          "id": "d18e07",
+          "en": "Let's get lunch.",
+          "vi": "Mình đi ăn trưa đi."
+        },
+        {
+          "id": "d18e08",
+          "en": "Let's go!",
+          "vi": "Đi thôi!"
+        }
+      ]
+    },
+    {
+      "id": "c107",
+      "text": "Sounds good.",
+      "type": "fixed",
+      "vi": "Nghe hay đó.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Kế hoạch",
+      "examples": [
+        {
+          "id": "d18e09",
+          "en": "Let's get lunch. — Sounds good.",
+          "vi": "Mình đi ăn trưa đi. — Nghe hay đó."
+        }
+      ]
+    },
+    {
+      "id": "c108",
+      "text": "I'm not sure yet.",
+      "type": "fixed",
+      "vi": "Mình chưa chắc.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Kế hoạch",
+      "examples": [
+        {
+          "id": "d18e10",
+          "en": "What are you going to do? — I'm not sure yet.",
+          "vi": "Bạn định làm gì? — Mình chưa chắc."
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Rủ nhau đi biển cuối tuần",
+    "lines": [
+      {
+        "id": "d18l01",
+        "speaker": "A",
+        "en": "Hi! What are you going to do on Saturday?",
+        "vi": "Chào! Thứ Bảy bạn định làm gì?",
+        "chunks": [
+          "c104"
+        ]
+      },
+      {
+        "id": "d18l02",
+        "speaker": "B",
+        "en": "I'm not sure yet. Do you have an idea?",
+        "vi": "Mình chưa chắc. Bạn có ý gì không?",
+        "chunks": [
+          "c108",
+          "c061"
+        ]
+      },
+      {
+        "id": "d18l03",
+        "speaker": "A",
+        "en": "Are you free? Let's go to the beach.",
+        "vi": "Bạn có rảnh không? Mình đi biển đi.",
+        "chunks": [
+          "c105",
+          "c106"
+        ]
+      },
+      {
+        "id": "d18l04",
+        "speaker": "B",
+        "en": "Sorry, can you say that again?",
+        "vi": "Xin lỗi, bạn nói lại được không?",
+        "chunks": [
+          "c019"
+        ]
+      },
+      {
+        "id": "d18l05",
+        "speaker": "A",
+        "en": "Let's go to the beach on Saturday. Do you want to go?",
+        "vi": "Thứ Bảy mình đi biển đi. Bạn có muốn đi không?",
+        "chunks": [
+          "c106",
+          "c015"
+        ]
+      },
+      {
+        "id": "d18l06",
+        "speaker": "B",
+        "en": "Sounds good! What time?",
+        "vi": "Nghe hay đó! Mấy giờ?",
+        "chunks": [
+          "c107"
+        ]
+      },
+      {
+        "id": "d18l07",
+        "speaker": "A",
+        "en": "I'm going to leave at ten. See you at nine thirty!",
+        "vi": "Mình định đi lúc mười giờ. Hẹn gặp lúc chín rưỡi!",
+        "chunks": [
+          "c103",
+          "c035"
+        ]
+      },
+      {
+        "id": "d18l08",
+        "speaker": "B",
+        "en": "Great. I'll bring some water.",
+        "vi": "Hay quá. Mình sẽ mang theo nước.",
+        "chunks": []
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c103",
+      "cues": [
+        {
+          "id": "d18s01",
+          "cue_vi": "định nấu ăn tối nay",
+          "answer": "I'm going to cook tonight.",
+          "accept": [
+            "I'm going to cook tonight"
+          ]
+        },
+        {
+          "id": "d18s02",
+          "cue_vi": "định đi ngủ sớm",
+          "answer": "I'm going to go to bed early.",
+          "accept": [
+            "I'm going to go to bed early"
+          ]
+        },
+        {
+          "id": "d18s03",
+          "cue_vi": "định gọi cho một người bạn",
+          "answer": "I'm going to call a friend.",
+          "accept": [
+            "I'm going to call a friend"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c104",
+      "cues": [
+        {
+          "id": "d18s04",
+          "cue_vi": "hỏi tối nay định làm gì",
+          "answer": "What are you going to do tonight?",
+          "accept": [
+            "What are you going to do tonight"
+          ]
+        },
+        {
+          "id": "d18s05",
+          "cue_vi": "hỏi ngày mai định làm gì",
+          "answer": "What are you going to do tomorrow?",
+          "accept": [
+            "What are you going to do tomorrow"
+          ]
+        },
+        {
+          "id": "d18s06",
+          "cue_vi": "hỏi cuối tuần này định làm gì",
+          "answer": "What are you going to do this weekend?",
+          "accept": [
+            "What are you going to do this weekend"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c105",
+      "cues": [
+        {
+          "id": "d18s07",
+          "cue_vi": "hỏi tối nay rảnh không",
+          "answer": "Are you free tonight?",
+          "accept": [
+            "Are you free tonight"
+          ]
+        },
+        {
+          "id": "d18s08",
+          "cue_vi": "hỏi thứ Bảy rảnh không",
+          "answer": "Are you free on Saturday?",
+          "accept": [
+            "Are you free on Saturday"
+          ]
+        },
+        {
+          "id": "d18s09",
+          "cue_vi": "hỏi ngày mai rảnh không",
+          "answer": "Are you free tomorrow?",
+          "accept": [
+            "Are you free tomorrow"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c106",
+      "cues": [
+        {
+          "id": "d18s10",
+          "cue_vi": "rủ đi ăn trưa",
+          "answer": "Let's get lunch.",
+          "accept": [
+            "Let's get lunch"
+          ]
+        },
+        {
+          "id": "d18s11",
+          "cue_vi": "rủ đi thôi",
+          "answer": "Let's go.",
+          "accept": [
+            "Let's go"
+          ]
+        },
+        {
+          "id": "d18s12",
+          "cue_vi": "rủ bắt đầu",
+          "answer": "Let's start.",
+          "accept": [
+            "Let's start"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Hẹn đi xem phim.",
+    "turns": [
+      {
+        "id": "d18r01",
+        "role": "partner",
+        "en": "Hi! Are you free on Saturday?",
+        "vi": "Chào! Thứ Bảy bạn rảnh không?"
+      },
+      {
+        "id": "d18r02",
+        "role": "you",
+        "cue_vi": "Nói bạn chưa chắc.",
+        "model": "I'm not sure yet.",
+        "uses": [
+          "c108"
+        ]
+      },
+      {
+        "id": "d18r03",
+        "role": "partner",
+        "en": "Let's go to a movie!",
+        "vi": "Mình đi xem phim đi!"
+      },
+      {
+        "id": "d18r04",
+        "role": "you",
+        "cue_vi": "Hỏi mấy giờ phim bắt đầu.",
+        "model": "What time does it start?",
+        "uses": [
+          "c033"
+        ]
+      },
+      {
+        "id": "d18r05",
+        "role": "partner",
+        "en": "It starts at seven.",
+        "vi": "Bảy giờ bắt đầu."
+      },
+      {
+        "id": "d18r06",
+        "role": "you",
+        "cue_vi": "Nói nghe hay, hẹn lúc sáu rưỡi.",
+        "model": "Sounds good. See you at six thirty.",
+        "uses": [
+          "c107",
+          "c035"
+        ]
+      }
+    ]
+  }
+}

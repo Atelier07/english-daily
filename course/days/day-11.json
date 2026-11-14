@@ -1,0 +1,441 @@
+{
+  "day": 11,
+  "level": "A1",
+  "function": "Có và không có",
+  "title": "Mình có, bạn có không?",
+  "intro_vi": "Hôm nay: nói mình có hoặc không có gì, hỏi người khác có không, và nói \"có một …\", \"có nhiều …\".",
+  "chunks": [
+    {
+      "id": "c061",
+      "text": "I have …",
+      "type": "stem",
+      "vi": "Mình có …",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh cần a/an trước danh từ đếm được số ít (a pen, an idea); tiếng Việt không cần.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Có và không có",
+      "examples": [
+        {
+          "id": "d11e01",
+          "en": "I have a question.",
+          "vi": "Mình có một câu hỏi."
+        },
+        {
+          "id": "d11e02",
+          "en": "I have an idea.",
+          "vi": "Mình có một ý tưởng."
+        }
+      ]
+    },
+    {
+      "id": "c062",
+      "text": "Do you have …?",
+      "type": "stem",
+      "vi": "Bạn có … không?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Có và không có",
+      "examples": [
+        {
+          "id": "d11e03",
+          "en": "Do you have a pen?",
+          "vi": "Bạn có cây bút không?"
+        },
+        {
+          "id": "d11e04",
+          "en": "Do you have a room?",
+          "vi": "Bạn có phòng trống không?"
+        }
+      ]
+    },
+    {
+      "id": "c063",
+      "text": "I don't have …",
+      "type": "stem",
+      "vi": "Mình không có …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Có và không có",
+      "examples": [
+        {
+          "id": "d11e05",
+          "en": "I don't have a car.",
+          "vi": "Mình không có xe hơi."
+        },
+        {
+          "id": "d11e06",
+          "en": "I don't have time today.",
+          "vi": "Hôm nay mình không có thời gian."
+        }
+      ]
+    },
+    {
+      "id": "c064",
+      "text": "There's a …",
+      "type": "stem",
+      "vi": "Có một …",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Việt chỉ cần \"có\"; tiếng Anh cần \"there\" làm chủ ngữ và \"a\" trước danh từ.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Có và không có",
+      "examples": [
+        {
+          "id": "d11e07",
+          "en": "There's a café on the corner.",
+          "vi": "Có một quán cà phê ở góc phố."
+        },
+        {
+          "id": "d11e08",
+          "en": "There's a problem.",
+          "vi": "Có một vấn đề."
+        }
+      ]
+    },
+    {
+      "id": "c065",
+      "text": "There are …",
+      "type": "stem",
+      "vi": "Có … (nhiều)",
+      "vi_equivalent": false,
+      "contrast_vi": "Danh từ số nhiều thêm -s (two beds); tiếng Việt không đổi hình dạng từ.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Có và không có",
+      "examples": [
+        {
+          "id": "d11e09",
+          "en": "There are two beds.",
+          "vi": "Có hai cái giường."
+        },
+        {
+          "id": "d11e10",
+          "en": "There are a lot of people here.",
+          "vi": "Ở đây có rất nhiều người."
+        }
+      ]
+    },
+    {
+      "id": "c066",
+      "text": "I have a lot of …",
+      "type": "stem",
+      "vi": "Mình có rất nhiều …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Có và không có",
+      "examples": [
+        {
+          "id": "d11e11",
+          "en": "I have a lot of work.",
+          "vi": "Mình có rất nhiều việc."
+        },
+        {
+          "id": "d11e12",
+          "en": "I have a lot of friends.",
+          "vi": "Mình có rất nhiều bạn."
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Hỏi thuê phòng ở một khách sạn nhỏ",
+    "lines": [
+      {
+        "id": "d11l01",
+        "speaker": "A",
+        "en": "Excuse me, do you have a room?",
+        "vi": "Xin lỗi, bạn có phòng trống không?",
+        "chunks": [
+          "c054",
+          "c062"
+        ]
+      },
+      {
+        "id": "d11l02",
+        "speaker": "B",
+        "en": "Yes. There's a room on the second floor.",
+        "vi": "Có. Có một phòng ở tầng hai.",
+        "chunks": [
+          "c064"
+        ]
+      },
+      {
+        "id": "d11l03",
+        "speaker": "A",
+        "en": "Sorry, can you say that again?",
+        "vi": "Xin lỗi, bạn nói lại được không?",
+        "chunks": [
+          "c019"
+        ]
+      },
+      {
+        "id": "d11l04",
+        "speaker": "B",
+        "en": "There's a room on the second floor. There are two beds.",
+        "vi": "Có một phòng ở tầng hai. Có hai cái giường.",
+        "chunks": [
+          "c064",
+          "c065"
+        ]
+      },
+      {
+        "id": "d11l05",
+        "speaker": "A",
+        "en": "Great! How much is it?",
+        "vi": "Hay quá! Bao nhiêu tiền vậy?",
+        "chunks": [
+          "c025"
+        ]
+      },
+      {
+        "id": "d11l06",
+        "speaker": "B",
+        "en": "It's eighty dollars.",
+        "vi": "Tám mươi đô.",
+        "chunks": [
+          "c026"
+        ]
+      },
+      {
+        "id": "d11l07",
+        "speaker": "A",
+        "en": "I'll take it. Can I pay by card?",
+        "vi": "Mình lấy phòng này. Mình trả bằng thẻ được không?",
+        "chunks": [
+          "c029",
+          "c030"
+        ]
+      },
+      {
+        "id": "d11l08",
+        "speaker": "B",
+        "en": "Sure.",
+        "vi": "Được.",
+        "chunks": []
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c061",
+      "cues": [
+        {
+          "id": "d11s01",
+          "cue_vi": "có một câu hỏi",
+          "answer": "I have a question.",
+          "accept": [
+            "I have a question"
+          ]
+        },
+        {
+          "id": "d11s02",
+          "cue_vi": "có một ý tưởng",
+          "answer": "I have an idea.",
+          "accept": [
+            "I have an idea"
+          ]
+        },
+        {
+          "id": "d11s03",
+          "cue_vi": "có hai cái túi",
+          "answer": "I have two bags.",
+          "accept": [
+            "I have two bags"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c062",
+      "cues": [
+        {
+          "id": "d11s04",
+          "cue_vi": "hỏi có cây bút không",
+          "answer": "Do you have a pen?",
+          "accept": [
+            "Do you have a pen"
+          ]
+        },
+        {
+          "id": "d11s05",
+          "cue_vi": "hỏi có phòng trống không",
+          "answer": "Do you have a room?",
+          "accept": [
+            "Do you have a room"
+          ]
+        },
+        {
+          "id": "d11s06",
+          "cue_vi": "hỏi có nước không",
+          "answer": "Do you have any water?",
+          "accept": [
+            "Do you have any water",
+            "Do you have water"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c063",
+      "cues": [
+        {
+          "id": "d11s07",
+          "cue_vi": "không có xe hơi",
+          "answer": "I don't have a car.",
+          "accept": [
+            "I don't have a car"
+          ]
+        },
+        {
+          "id": "d11s08",
+          "cue_vi": "không có thời gian hôm nay",
+          "answer": "I don't have time today.",
+          "accept": [
+            "I don't have time today"
+          ]
+        },
+        {
+          "id": "d11s09",
+          "cue_vi": "không có tiền mặt",
+          "answer": "I don't have any cash.",
+          "accept": [
+            "I don't have any cash",
+            "I don't have cash"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c064",
+      "cues": [
+        {
+          "id": "d11s10",
+          "cue_vi": "có một quán cà phê ở góc phố",
+          "answer": "There's a café on the corner.",
+          "accept": [
+            "There's a café on the corner",
+            "There's a cafe on the corner"
+          ]
+        },
+        {
+          "id": "d11s11",
+          "cue_vi": "có một vấn đề",
+          "answer": "There's a problem.",
+          "accept": [
+            "There's a problem"
+          ]
+        },
+        {
+          "id": "d11s12",
+          "cue_vi": "có một chỗ trống",
+          "answer": "There's a seat.",
+          "accept": [
+            "There's a seat",
+            "There's an empty seat"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c065",
+      "cues": [
+        {
+          "id": "d11s13",
+          "cue_vi": "có hai cái giường",
+          "answer": "There are two beds.",
+          "accept": [
+            "There are two beds"
+          ]
+        },
+        {
+          "id": "d11s14",
+          "cue_vi": "ở đây có nhiều người",
+          "answer": "There are a lot of people here.",
+          "accept": [
+            "There are a lot of people here"
+          ]
+        },
+        {
+          "id": "d11s15",
+          "cue_vi": "có ba phòng",
+          "answer": "There are three rooms.",
+          "accept": [
+            "There are three rooms"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c066",
+      "cues": [
+        {
+          "id": "d11s16",
+          "cue_vi": "có rất nhiều việc",
+          "answer": "I have a lot of work.",
+          "accept": [
+            "I have a lot of work"
+          ]
+        },
+        {
+          "id": "d11s17",
+          "cue_vi": "có rất nhiều bạn",
+          "answer": "I have a lot of friends.",
+          "accept": [
+            "I have a lot of friends"
+          ]
+        },
+        {
+          "id": "d11s18",
+          "cue_vi": "có rất nhiều câu hỏi",
+          "answer": "I have a lot of questions.",
+          "accept": [
+            "I have a lot of questions"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Bạn bè rủ đi ăn trưa nhưng bạn bận.",
+    "turns": [
+      {
+        "id": "d11r01",
+        "role": "partner",
+        "en": "Hey! Do you want to get lunch?",
+        "vi": "Này! Bạn có muốn đi ăn trưa không?"
+      },
+      {
+        "id": "d11r02",
+        "role": "you",
+        "cue_vi": "Nói xin lỗi, hôm nay bạn không có thời gian vì có nhiều việc.",
+        "model": "Sorry, I don't have time today. I have a lot of work.",
+        "uses": [
+          "c063",
+          "c066"
+        ]
+      },
+      {
+        "id": "d11r03",
+        "role": "partner",
+        "en": "That's okay. Do you have time tomorrow?",
+        "vi": "Không sao. Mai bạn có thời gian không?"
+      },
+      {
+        "id": "d11r04",
+        "role": "you",
+        "cue_vi": "Nói có, mai bạn có thời gian.",
+        "model": "Yes, I have time tomorrow.",
+        "uses": [
+          "c061"
+        ]
+      }
+    ]
+  }
+}

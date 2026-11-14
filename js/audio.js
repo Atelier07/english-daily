@@ -1,22 +1,31 @@
 // Âm thanh: dùng course/audio/<id>.mp3 nếu có (danh sách trong course/audio/index.json),
 // không thì đọc bằng giọng máy en-US, chọn giọng tự nhiên nhất có sẵn.
 
-let manifest = null;      // Promise<Set<string>>
+let manifest = null;      // Promise<{ids:Set, byText:Map}>
 let current = null;       // Audio đang phát
 let voice = null;
 
+const norm = (t) => String(t || '').replace(/’/g, "'").replace(/\s+/g, ' ').trim().toLowerCase();
 function loadManifest() {
   if (manifest) return manifest;
   manifest = fetch('course/audio/index.json', { cache: 'no-cache' })
     .then((r) => (r.ok ? r.json() : []))
-    .then((j) => new Set(Array.isArray(j) ? j : (j && Array.isArray(j.ids) ? j.ids : [])))
-    .catch(() => new Set());
+    .then((j) => ({
+      ids: new Set(Array.isArray(j) ? j : (j && Array.isArray(j.ids) ? j.ids : [])),
+      byText: new Map(Object.entries((j && j.byText) || {})),
+    }))
+    .catch(() => ({ ids: new Set(), byText: new Map() }));
   return manifest;
+}
+// trả về id file mp3 cho một dòng: theo id, không có thì theo nội dung câu
+async function mp3Id(line) {
+  const m = await loadManifest();
+  if (line.id && m.ids.has(line.id)) return line.id;
+  return m.byText.get(norm(line.text || line.en)) || null;
 }
 export async function hasMp3(id) {
   if (!id) return false;
-  const set = await loadManifest();
-  return set.has(id);
+  return (await loadManifest()).ids.has(id);
 }
 
 const GOOD = /(natural|neural|premium|enhanced|online|google us english|samantha|aria|jenny|ava|allison|alex)/i;
@@ -62,9 +71,11 @@ function speak(text, rate) {
 export async function play(line, { slow = false } = {}) {
   stop();
   const rate = slow ? 0.8 : 1.0;
-  if (await hasMp3(line.id)) {
+  const fid = await mp3Id(line);
+  if (fid) {
     return new Promise((resolve) => {
-      const a = new Audio(`course/audio/${line.id}.mp3`);
+      const a = new Audio(`course/audio/${fid}.mp3`);
+      a.preservesPitch = true;
       a.playbackRate = rate;
       current = a;
       a.onended = () => resolve();

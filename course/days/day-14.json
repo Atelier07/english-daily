@@ -1,0 +1,334 @@
+{
+  "day": 14,
+  "level": "A1",
+  "function": "Mua sắm",
+  "title": "Ở cửa hàng quần áo",
+  "intro_vi": "Hôm nay: nói mình chỉ xem, tìm một món cụ thể, hỏi màu hoặc cỡ khác, thử đồ và nói đồ không vừa.",
+  "chunks": [
+    {
+      "id": "c079",
+      "text": "I'm just looking.",
+      "type": "fixed",
+      "vi": "Mình chỉ xem thôi.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Mua sắm",
+      "examples": [
+        {
+          "id": "d14e01",
+          "en": "I'm just looking, thanks.",
+          "vi": "Mình chỉ xem thôi, cảm ơn."
+        }
+      ]
+    },
+    {
+      "id": "c080",
+      "text": "I'm looking for …",
+      "type": "stem",
+      "vi": "Mình đang tìm …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Mua sắm",
+      "examples": [
+        {
+          "id": "d14e02",
+          "en": "I'm looking for a jacket.",
+          "vi": "Mình đang tìm một cái áo khoác."
+        },
+        {
+          "id": "d14e03",
+          "en": "I'm looking for a gift.",
+          "vi": "Mình đang tìm một món quà."
+        }
+      ]
+    },
+    {
+      "id": "c081",
+      "text": "Can I try this on?",
+      "type": "fixed",
+      "vi": "Mình thử cái này được không?",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh dùng cụm \"try … on\" (thử mặc), \"on\" đứng sau \"this\".",
+      "register": "polite",
+      "reduced": null,
+      "source": "core-inventory A1 / Mua sắm",
+      "examples": [
+        {
+          "id": "d14e04",
+          "en": "Can I try this on?",
+          "vi": "Mình thử cái này được không?"
+        },
+        {
+          "id": "d14e05",
+          "en": "Can I try these on?",
+          "vi": "Mình thử mấy cái này được không?"
+        }
+      ]
+    },
+    {
+      "id": "c082",
+      "text": "Do you have this in …?",
+      "type": "stem",
+      "vi": "Cái này có … không?",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Việt chỉ nói \"có màu xanh không\"; tiếng Anh nói \"có cái này trong màu xanh không\" (in blue).",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Mua sắm",
+      "examples": [
+        {
+          "id": "d14e06",
+          "en": "Do you have this in blue?",
+          "vi": "Cái này có màu xanh không?"
+        },
+        {
+          "id": "d14e07",
+          "en": "Do you have this in a bigger size?",
+          "vi": "Cái này có cỡ lớn hơn không?"
+        }
+      ]
+    },
+    {
+      "id": "c083",
+      "text": "It doesn't fit.",
+      "type": "fixed",
+      "vi": "Nó không vừa.",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh cần chủ ngữ \"It\" và \"doesn't\" (nó không); tiếng Việt chỉ nói \"không vừa\".",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Mua sắm",
+      "examples": [
+        {
+          "id": "d14e08",
+          "en": "It doesn't fit. It's too small.",
+          "vi": "Nó không vừa. Nhỏ quá."
+        }
+      ]
+    },
+    {
+      "id": "c084",
+      "text": "How does it look?",
+      "type": "fixed",
+      "vi": "Trông thế nào?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Mua sắm",
+      "examples": [
+        {
+          "id": "d14e09",
+          "en": "How does it look on me?",
+          "vi": "Mình mặc trông thế nào?"
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Mua một cái áo khoác",
+    "lines": [
+      {
+        "id": "d14l01",
+        "speaker": "A",
+        "en": "Hi! Can I help you?",
+        "vi": "Chào! Bạn cần gì ạ?",
+        "chunks": []
+      },
+      {
+        "id": "d14l02",
+        "speaker": "B",
+        "en": "I'm looking for a jacket.",
+        "vi": "Mình đang tìm một cái áo khoác.",
+        "chunks": [
+          "c080"
+        ]
+      },
+      {
+        "id": "d14l03",
+        "speaker": "A",
+        "en": "Sure. This one is nice.",
+        "vi": "Được. Cái này đẹp đó.",
+        "chunks": []
+      },
+      {
+        "id": "d14l04",
+        "speaker": "B",
+        "en": "Do you have this in blue? Can I try this on?",
+        "vi": "Cái này có màu xanh không? Mình thử được không?",
+        "chunks": [
+          "c082",
+          "c081"
+        ]
+      },
+      {
+        "id": "d14l05",
+        "speaker": "A",
+        "en": "Of course. Here you go.",
+        "vi": "Dĩ nhiên rồi. Của bạn đây.",
+        "chunks": [
+          "c047",
+          "c018"
+        ]
+      },
+      {
+        "id": "d14l06",
+        "speaker": "B",
+        "en": "It doesn't fit. It's too small.",
+        "vi": "Nó không vừa. Nhỏ quá.",
+        "chunks": [
+          "c083"
+        ]
+      },
+      {
+        "id": "d14l07",
+        "speaker": "A",
+        "en": "I can get a bigger one.",
+        "vi": "Mình lấy cái lớn hơn được.",
+        "chunks": [
+          "c043"
+        ]
+      },
+      {
+        "id": "d14l08",
+        "speaker": "B",
+        "en": "Great. How much is it?",
+        "vi": "Tốt quá. Cái này bao nhiêu tiền?",
+        "chunks": [
+          "c025"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c080",
+      "cues": [
+        {
+          "id": "d14s01",
+          "cue_vi": "tìm áo khoác",
+          "answer": "I'm looking for a jacket.",
+          "accept": [
+            "I'm looking for a jacket"
+          ]
+        },
+        {
+          "id": "d14s02",
+          "cue_vi": "tìm một món quà",
+          "answer": "I'm looking for a gift.",
+          "accept": [
+            "I'm looking for a gift"
+          ]
+        },
+        {
+          "id": "d14s03",
+          "cue_vi": "tìm một đôi giày",
+          "answer": "I'm looking for a pair of shoes.",
+          "accept": [
+            "I'm looking for a pair of shoes",
+            "I'm looking for shoes"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c082",
+      "cues": [
+        {
+          "id": "d14s04",
+          "cue_vi": "hỏi có màu xanh không",
+          "answer": "Do you have this in blue?",
+          "accept": [
+            "Do you have this in blue"
+          ]
+        },
+        {
+          "id": "d14s05",
+          "cue_vi": "hỏi có cỡ lớn hơn không",
+          "answer": "Do you have this in a bigger size?",
+          "accept": [
+            "Do you have this in a bigger size",
+            "Do you have this in a larger size"
+          ]
+        },
+        {
+          "id": "d14s06",
+          "cue_vi": "hỏi có màu đen không",
+          "answer": "Do you have this in black?",
+          "accept": [
+            "Do you have this in black"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Đi xem đồ nhưng chưa quyết định mua.",
+    "turns": [
+      {
+        "id": "d14r01",
+        "role": "partner",
+        "en": "Hi! Can I help you?",
+        "vi": "Chào! Bạn cần gì ạ?"
+      },
+      {
+        "id": "d14r02",
+        "role": "you",
+        "cue_vi": "Nói bạn chỉ xem thôi.",
+        "model": "I'm just looking.",
+        "uses": [
+          "c079"
+        ]
+      },
+      {
+        "id": "d14r03",
+        "role": "partner",
+        "en": "Sure. Take your time.",
+        "vi": "Được. Bạn cứ xem thoải mái."
+      },
+      {
+        "id": "d14r04",
+        "role": "you",
+        "cue_vi": "Hỏi cái này có màu xanh không.",
+        "model": "Do you have this in blue?",
+        "uses": [
+          "c082"
+        ]
+      },
+      {
+        "id": "d14r05",
+        "role": "partner",
+        "en": "Yes. It's thirty dollars.",
+        "vi": "Có. Giá ba mươi đô."
+      },
+      {
+        "id": "d14r06",
+        "role": "you",
+        "cue_vi": "Nói đắt quá.",
+        "model": "That's too expensive.",
+        "uses": [
+          "c027"
+        ]
+      },
+      {
+        "id": "d14r07",
+        "role": "partner",
+        "en": "I see. This one is twenty.",
+        "vi": "Mình hiểu. Cái này hai mươi đô."
+      },
+      {
+        "id": "d14r08",
+        "role": "you",
+        "cue_vi": "Nói bạn lấy cái này.",
+        "model": "I'll take it.",
+        "uses": [
+          "c029"
+        ]
+      }
+    ]
+  }
+}

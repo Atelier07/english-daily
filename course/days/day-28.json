@@ -1,0 +1,430 @@
+{
+  "day": 28,
+  "level": "A1",
+  "function": "Đi lại",
+  "title": "Đi xe buýt và hỏi đường đi",
+  "intro_vi": "Hôm nay: hỏi xe nào đi đâu, mất bao lâu, mua vé ở đâu, hỏi có đúng đường không và nói mình bị lạc.",
+  "chunks": [
+    {
+      "id": "c163",
+      "text": "How long does it take to …?",
+      "type": "stem",
+      "vi": "Mất bao lâu để …?",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh dùng động từ \"take\" (mất) cho thời gian; \"does it\" làm chủ ngữ giả.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Đi lại",
+      "examples": [
+        {
+          "id": "d28e01",
+          "en": "How long does it take to get there?",
+          "vi": "Mất bao lâu để đến đó?"
+        },
+        {
+          "id": "d28e02",
+          "en": "How long does it take to walk?",
+          "vi": "Đi bộ mất bao lâu?"
+        }
+      ]
+    },
+    {
+      "id": "c164",
+      "text": "It takes about …",
+      "type": "stem",
+      "vi": "Mất khoảng …",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh cần \"It\" làm chủ ngữ và \"takes\" (mất).",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Đi lại",
+      "examples": [
+        {
+          "id": "d28e03",
+          "en": "It takes about ten minutes.",
+          "vi": "Mất khoảng mười phút."
+        },
+        {
+          "id": "d28e04",
+          "en": "It takes about an hour.",
+          "vi": "Mất khoảng một tiếng."
+        }
+      ]
+    },
+    {
+      "id": "c165",
+      "text": "Where can I buy …?",
+      "type": "stem",
+      "vi": "Mình mua … ở đâu?",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh đưa \"Where\" lên đầu câu; tiếng Việt đặt \"ở đâu\" cuối câu.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Đi lại",
+      "examples": [
+        {
+          "id": "d28e05",
+          "en": "Where can I buy a ticket?",
+          "vi": "Mình mua vé ở đâu?"
+        },
+        {
+          "id": "d28e06",
+          "en": "Where can I buy water?",
+          "vi": "Mình mua nước ở đâu?"
+        }
+      ]
+    },
+    {
+      "id": "c166",
+      "text": "Which bus goes to …?",
+      "type": "stem",
+      "vi": "Xe buýt nào đi …?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Đi lại",
+      "examples": [
+        {
+          "id": "d28e07",
+          "en": "Which bus goes to the airport?",
+          "vi": "Xe buýt nào đi sân bay?"
+        },
+        {
+          "id": "d28e08",
+          "en": "Which bus goes downtown?",
+          "vi": "Xe buýt nào đi vào trung tâm?"
+        }
+      ]
+    },
+    {
+      "id": "c167",
+      "text": "Is this the way to …?",
+      "type": "stem",
+      "vi": "Đây có phải đường đến … không?",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh cần \"the way to\" (đường đến); tiếng Việt nói \"đây có phải đường đến\".",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Đi lại",
+      "examples": [
+        {
+          "id": "d28e09",
+          "en": "Is this the way to the station?",
+          "vi": "Đây có phải đường đến ga không?"
+        },
+        {
+          "id": "d28e10",
+          "en": "Is this the way to the beach?",
+          "vi": "Đây có phải đường đến bãi biển không?"
+        }
+      ]
+    },
+    {
+      "id": "c168",
+      "text": "I'm lost.",
+      "type": "fixed",
+      "vi": "Mình bị lạc rồi.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Đi lại",
+      "examples": [
+        {
+          "id": "d28e11",
+          "en": "Excuse me, I'm lost.",
+          "vi": "Xin lỗi, mình bị lạc rồi."
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Ở bến xe buýt",
+    "lines": [
+      {
+        "id": "d28l01",
+        "speaker": "A",
+        "en": "Excuse me, which bus goes to the airport?",
+        "vi": "Xin lỗi, xe buýt nào đi sân bay?",
+        "chunks": [
+          "c054",
+          "c166"
+        ]
+      },
+      {
+        "id": "d28l02",
+        "speaker": "B",
+        "en": "The number five.",
+        "vi": "Số năm.",
+        "chunks": []
+      },
+      {
+        "id": "d28l03",
+        "speaker": "A",
+        "en": "Sorry, can you say that again?",
+        "vi": "Xin lỗi, bạn nói lại được không?",
+        "chunks": [
+          "c019"
+        ]
+      },
+      {
+        "id": "d28l04",
+        "speaker": "B",
+        "en": "The number five. It takes about forty minutes.",
+        "vi": "Số năm. Mất khoảng bốn mươi phút.",
+        "chunks": [
+          "c164"
+        ]
+      },
+      {
+        "id": "d28l05",
+        "speaker": "A",
+        "en": "Okay. Where can I buy a ticket?",
+        "vi": "Được. Mình mua vé ở đâu?",
+        "chunks": [
+          "c165"
+        ]
+      },
+      {
+        "id": "d28l06",
+        "speaker": "B",
+        "en": "It's over there.",
+        "vi": "Ở đằng kia.",
+        "chunks": [
+          "c051"
+        ]
+      },
+      {
+        "id": "d28l07",
+        "speaker": "A",
+        "en": "Thank you so much.",
+        "vi": "Cảm ơn nhiều lắm.",
+        "chunks": [
+          "c016"
+        ]
+      },
+      {
+        "id": "d28l08",
+        "speaker": "B",
+        "en": "You're welcome. Have a good one!",
+        "vi": "Không có gì. Chúc bạn một ngày tốt lành!",
+        "chunks": [
+          "c161"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c163",
+      "cues": [
+        {
+          "id": "d28s01",
+          "cue_vi": "hỏi mất bao lâu để đến đó",
+          "answer": "How long does it take to get there?",
+          "accept": [
+            "How long does it take to get there"
+          ]
+        },
+        {
+          "id": "d28s02",
+          "cue_vi": "hỏi đi bộ mất bao lâu",
+          "answer": "How long does it take to walk?",
+          "accept": [
+            "How long does it take to walk"
+          ]
+        },
+        {
+          "id": "d28s03",
+          "cue_vi": "hỏi mất bao lâu để đến sân bay",
+          "answer": "How long does it take to get to the airport?",
+          "accept": [
+            "How long does it take to get to the airport"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c164",
+      "cues": [
+        {
+          "id": "d28s04",
+          "cue_vi": "mất khoảng mười phút",
+          "answer": "It takes about ten minutes.",
+          "accept": [
+            "It takes about ten minutes"
+          ]
+        },
+        {
+          "id": "d28s05",
+          "cue_vi": "mất khoảng một tiếng",
+          "answer": "It takes about an hour.",
+          "accept": [
+            "It takes about an hour"
+          ]
+        },
+        {
+          "id": "d28s06",
+          "cue_vi": "mất khoảng hai mươi phút",
+          "answer": "It takes about twenty minutes.",
+          "accept": [
+            "It takes about twenty minutes"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c165",
+      "cues": [
+        {
+          "id": "d28s07",
+          "cue_vi": "hỏi mua vé ở đâu",
+          "answer": "Where can I buy a ticket?",
+          "accept": [
+            "Where can I buy a ticket"
+          ]
+        },
+        {
+          "id": "d28s08",
+          "cue_vi": "hỏi mua nước ở đâu",
+          "answer": "Where can I buy water?",
+          "accept": [
+            "Where can I buy water"
+          ]
+        },
+        {
+          "id": "d28s09",
+          "cue_vi": "hỏi mua thẻ SIM ở đâu",
+          "answer": "Where can I buy a SIM card?",
+          "accept": [
+            "Where can I buy a SIM card"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c166",
+      "cues": [
+        {
+          "id": "d28s10",
+          "cue_vi": "hỏi xe nào đi sân bay",
+          "answer": "Which bus goes to the airport?",
+          "accept": [
+            "Which bus goes to the airport"
+          ]
+        },
+        {
+          "id": "d28s11",
+          "cue_vi": "hỏi xe nào vào trung tâm",
+          "answer": "Which bus goes downtown?",
+          "accept": [
+            "Which bus goes downtown"
+          ]
+        },
+        {
+          "id": "d28s12",
+          "cue_vi": "hỏi xe nào đi bãi biển",
+          "answer": "Which bus goes to the beach?",
+          "accept": [
+            "Which bus goes to the beach"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c167",
+      "cues": [
+        {
+          "id": "d28s13",
+          "cue_vi": "hỏi đây có phải đường đến ga",
+          "answer": "Is this the way to the station?",
+          "accept": [
+            "Is this the way to the station"
+          ]
+        },
+        {
+          "id": "d28s14",
+          "cue_vi": "hỏi đây có phải đường đến bãi biển",
+          "answer": "Is this the way to the beach?",
+          "accept": [
+            "Is this the way to the beach"
+          ]
+        },
+        {
+          "id": "d28s15",
+          "cue_vi": "hỏi đây có phải đường đến bảo tàng",
+          "answer": "Is this the way to the museum?",
+          "accept": [
+            "Is this the way to the museum"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Bị lạc và hỏi đường.",
+    "turns": [
+      {
+        "id": "d28r01",
+        "role": "partner",
+        "en": "Hi! Can I help you?",
+        "vi": "Chào! Bạn cần giúp gì không?"
+      },
+      {
+        "id": "d28r02",
+        "role": "you",
+        "cue_vi": "Nói bạn bị lạc.",
+        "model": "I'm lost.",
+        "uses": [
+          "c168"
+        ]
+      },
+      {
+        "id": "d28r03",
+        "role": "partner",
+        "en": "Where do you want to go?",
+        "vi": "Bạn muốn đi đâu?"
+      },
+      {
+        "id": "d28r04",
+        "role": "you",
+        "cue_vi": "Hỏi đây có phải đường đến ga không.",
+        "model": "Is this the way to the station?",
+        "uses": [
+          "c167"
+        ]
+      },
+      {
+        "id": "d28r05",
+        "role": "partner",
+        "en": "Yes. Go straight for five minutes.",
+        "vi": "Đúng. Đi thẳng năm phút."
+      },
+      {
+        "id": "d28r06",
+        "role": "you",
+        "cue_vi": "Hỏi mất bao lâu để đến đó.",
+        "model": "How long does it take to get there?",
+        "uses": [
+          "c163"
+        ]
+      },
+      {
+        "id": "d28r07",
+        "role": "partner",
+        "en": "It takes about ten minutes.",
+        "vi": "Mất khoảng mười phút."
+      },
+      {
+        "id": "d28r08",
+        "role": "you",
+        "cue_vi": "Cảm ơn thật nhiều.",
+        "model": "Thank you so much.",
+        "uses": [
+          "c016"
+        ]
+      }
+    ]
+  }
+}

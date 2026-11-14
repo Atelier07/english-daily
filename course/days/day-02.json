@@ -1,0 +1,370 @@
+{
+  "day": 2,
+  "level": "A0",
+  "function": "Chào hỏi và giới thiệu",
+  "title": "Bạn từ đâu đến?",
+  "intro_vi": "Hôm nay: nói mình đến từ đâu, sống ở đâu và nói được ngôn ngữ nào.",
+  "chunks": [
+    {
+      "id": "c007",
+      "text": "I'm from …",
+      "type": "stem",
+      "vi": "Mình đến từ …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Chào hỏi và giới thiệu",
+      "examples": [
+        {
+          "id": "d02e01",
+          "en": "I'm from Vietnam.",
+          "vi": "Mình đến từ Việt Nam."
+        },
+        {
+          "id": "d02e02",
+          "en": "I'm from Texas.",
+          "vi": "Mình đến từ Texas."
+        }
+      ]
+    },
+    {
+      "id": "c008",
+      "text": "Where are you from?",
+      "type": "fixed",
+      "vi": "Bạn đến từ đâu?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Chào hỏi và giới thiệu",
+      "examples": [
+        {
+          "id": "d02e03",
+          "en": "Where are you from?",
+          "vi": "Bạn đến từ đâu?"
+        }
+      ]
+    },
+    {
+      "id": "c009",
+      "text": "I live in …",
+      "type": "stem",
+      "vi": "Mình sống ở …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Chào hỏi và giới thiệu",
+      "examples": [
+        {
+          "id": "d02e04",
+          "en": "I live in Seattle.",
+          "vi": "Mình sống ở Seattle."
+        },
+        {
+          "id": "d02e05",
+          "en": "I live in a big city.",
+          "vi": "Mình sống ở một thành phố lớn."
+        }
+      ]
+    },
+    {
+      "id": "c010",
+      "text": "Do you speak …?",
+      "type": "stem",
+      "vi": "Bạn có nói được … không?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Chào hỏi và giới thiệu",
+      "examples": [
+        {
+          "id": "d02e06",
+          "en": "Do you speak English?",
+          "vi": "Bạn có nói tiếng Anh không?"
+        },
+        {
+          "id": "d02e07",
+          "en": "Do you speak Spanish?",
+          "vi": "Bạn có nói tiếng Tây Ban Nha không?"
+        }
+      ]
+    },
+    {
+      "id": "c011",
+      "text": "I speak a little …",
+      "type": "stem",
+      "vi": "Mình nói được một chút …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Chào hỏi và giới thiệu",
+      "examples": [
+        {
+          "id": "d02e08",
+          "en": "I speak a little English.",
+          "vi": "Mình nói được một chút tiếng Anh."
+        },
+        {
+          "id": "d02e09",
+          "en": "I speak a little French.",
+          "vi": "Mình nói được một chút tiếng Pháp."
+        }
+      ]
+    },
+    {
+      "id": "c012",
+      "text": "Really? That's great!",
+      "type": "fixed",
+      "vi": "Thật à? Hay quá!",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A0 / Chào hỏi và giới thiệu",
+      "examples": [
+        {
+          "id": "d02e10",
+          "en": "Really? That's great!",
+          "vi": "Thật à? Hay quá!"
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Trò chuyện với một người mới quen",
+    "lines": [
+      {
+        "id": "d02l01",
+        "speaker": "A",
+        "en": "Hi, I'm Anna. How are you?",
+        "vi": "Chào, mình là Anna. Bạn khỏe không?",
+        "chunks": [
+          "c001",
+          "c005"
+        ]
+      },
+      {
+        "id": "d02l02",
+        "speaker": "B",
+        "en": "I'm good, thanks. Where are you from?",
+        "vi": "Mình khỏe, cảm ơn. Bạn đến từ đâu?",
+        "chunks": [
+          "c006",
+          "c008"
+        ]
+      },
+      {
+        "id": "d02l03",
+        "speaker": "A",
+        "en": "I'm from Canada. And you?",
+        "vi": "Mình đến từ Canada. Còn bạn?",
+        "chunks": [
+          "c007"
+        ]
+      },
+      {
+        "id": "d02l04",
+        "speaker": "B",
+        "en": "I'm from Vietnam. I live in Texas now.",
+        "vi": "Mình đến từ Việt Nam. Bây giờ mình sống ở Texas.",
+        "chunks": [
+          "c007",
+          "c009"
+        ]
+      },
+      {
+        "id": "d02l05",
+        "speaker": "A",
+        "en": "Really? That's great! Do you speak French?",
+        "vi": "Thật à? Hay quá! Bạn có nói tiếng Pháp không?",
+        "chunks": [
+          "c012",
+          "c010"
+        ]
+      },
+      {
+        "id": "d02l06",
+        "speaker": "B",
+        "en": "I speak a little French. Nice to meet you.",
+        "vi": "Mình nói được một chút tiếng Pháp. Rất vui được gặp bạn.",
+        "chunks": [
+          "c011",
+          "c004"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c007",
+      "cues": [
+        {
+          "id": "d02s01",
+          "cue_vi": "đến từ Canada",
+          "answer": "I'm from Canada.",
+          "accept": [
+            "I'm from Canada"
+          ]
+        },
+        {
+          "id": "d02s02",
+          "cue_vi": "đến từ Úc",
+          "answer": "I'm from Australia.",
+          "accept": [
+            "I'm from Australia"
+          ]
+        },
+        {
+          "id": "d02s03",
+          "cue_vi": "đến từ một thị trấn nhỏ",
+          "answer": "I'm from a small town.",
+          "accept": [
+            "I'm from a small town"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c009",
+      "cues": [
+        {
+          "id": "d02s04",
+          "cue_vi": "sống ở New York",
+          "answer": "I live in New York.",
+          "accept": [
+            "I live in New York"
+          ]
+        },
+        {
+          "id": "d02s05",
+          "cue_vi": "sống ở một thị trấn nhỏ",
+          "answer": "I live in a small town.",
+          "accept": [
+            "I live in a small town"
+          ]
+        },
+        {
+          "id": "d02s06",
+          "cue_vi": "sống ở London",
+          "answer": "I live in London.",
+          "accept": [
+            "I live in London"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c010",
+      "cues": [
+        {
+          "id": "d02s07",
+          "cue_vi": "hỏi họ có nói tiếng Anh không",
+          "answer": "Do you speak English?",
+          "accept": [
+            "Do you speak English"
+          ]
+        },
+        {
+          "id": "d02s08",
+          "cue_vi": "hỏi họ có nói tiếng Nhật không",
+          "answer": "Do you speak Japanese?",
+          "accept": [
+            "Do you speak Japanese"
+          ]
+        },
+        {
+          "id": "d02s09",
+          "cue_vi": "hỏi họ có nói tiếng Tây Ban Nha không",
+          "answer": "Do you speak Spanish?",
+          "accept": [
+            "Do you speak Spanish"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c011",
+      "cues": [
+        {
+          "id": "d02s10",
+          "cue_vi": "nói được chút tiếng Anh",
+          "answer": "I speak a little English.",
+          "accept": [
+            "I speak a little English"
+          ]
+        },
+        {
+          "id": "d02s11",
+          "cue_vi": "nói được chút tiếng Hàn",
+          "answer": "I speak a little Korean.",
+          "accept": [
+            "I speak a little Korean"
+          ]
+        },
+        {
+          "id": "d02s12",
+          "cue_vi": "nói được chút tiếng Pháp",
+          "answer": "I speak a little French.",
+          "accept": [
+            "I speak a little French"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Nói chuyện với một người mới ở quán cà phê.",
+    "turns": [
+      {
+        "id": "d02r01",
+        "role": "partner",
+        "en": "Hi! I'm Sam. Where are you from?",
+        "vi": "Chào! Mình là Sam. Bạn đến từ đâu?"
+      },
+      {
+        "id": "d02r02",
+        "role": "you",
+        "cue_vi": "Nói bạn đến từ Việt Nam.",
+        "model": "I'm from Vietnam.",
+        "uses": [
+          "c007"
+        ]
+      },
+      {
+        "id": "d02r03",
+        "role": "partner",
+        "en": "Really? That's great! I live in London.",
+        "vi": "Thật à? Hay quá! Mình sống ở London."
+      },
+      {
+        "id": "d02r04",
+        "role": "you",
+        "cue_vi": "Hỏi họ có nói tiếng Việt không.",
+        "model": "Do you speak Vietnamese?",
+        "uses": [
+          "c010"
+        ]
+      },
+      {
+        "id": "d02r05",
+        "role": "partner",
+        "en": "No, I don't. Do you speak English?",
+        "vi": "Không. Bạn có nói tiếng Anh không?"
+      },
+      {
+        "id": "d02r06",
+        "role": "you",
+        "cue_vi": "Nói bạn nói được một chút, và rất vui được gặp họ.",
+        "model": "I speak a little English. Nice to meet you.",
+        "uses": [
+          "c011",
+          "c004"
+        ]
+      }
+    ]
+  }
+}

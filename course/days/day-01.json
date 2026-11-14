@@ -1,0 +1,304 @@
+{
+  "day": 1,
+  "level": "A0",
+  "function": "Chào hỏi và giới thiệu",
+  "title": "Chào và nói tên",
+  "intro_vi": "Hôm nay: chào một người mới gặp, nói tên mình và hỏi thăm nhau một câu.",
+  "chunks": [
+    {
+      "id": "c001",
+      "text": "Hi, I'm …",
+      "type": "stem",
+      "vi": "Chào, mình là …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Chào hỏi và giới thiệu",
+      "examples": [
+        {
+          "id": "d01e01",
+          "en": "Hi, I'm Mai.",
+          "vi": "Chào, mình là Mai."
+        },
+        {
+          "id": "d01e02",
+          "en": "Hi, I'm Jack.",
+          "vi": "Chào, mình là Jack."
+        }
+      ]
+    },
+    {
+      "id": "c002",
+      "text": "My name is …",
+      "type": "stem",
+      "vi": "Tên mình là …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Chào hỏi và giới thiệu",
+      "examples": [
+        {
+          "id": "d01e03",
+          "en": "My name is Linh.",
+          "vi": "Tên mình là Linh."
+        },
+        {
+          "id": "d01e04",
+          "en": "My name is Chris.",
+          "vi": "Tên mình là Chris."
+        }
+      ]
+    },
+    {
+      "id": "c003",
+      "text": "What's your name?",
+      "type": "fixed",
+      "vi": "Bạn tên là gì?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Chào hỏi và giới thiệu",
+      "examples": [
+        {
+          "id": "d01e05",
+          "en": "Hi! What's your name?",
+          "vi": "Chào! Bạn tên là gì?"
+        }
+      ]
+    },
+    {
+      "id": "c004",
+      "text": "Nice to meet you.",
+      "type": "fixed",
+      "vi": "Rất vui được gặp bạn.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Chào hỏi và giới thiệu",
+      "examples": [
+        {
+          "id": "d01e06",
+          "en": "Nice to meet you.",
+          "vi": "Rất vui được gặp bạn."
+        },
+        {
+          "id": "d01e07",
+          "en": "Nice to meet you, too.",
+          "vi": "Mình cũng rất vui được gặp bạn."
+        }
+      ]
+    },
+    {
+      "id": "c005",
+      "text": "How are you?",
+      "type": "fixed",
+      "vi": "Bạn khỏe không?",
+      "vi_equivalent": false,
+      "contrast_vi": "Người Mỹ dùng câu này như một lời chào, không phải câu hỏi thật về sức khỏe. Trả lời ngắn là đủ.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Chào hỏi và giới thiệu",
+      "examples": [
+        {
+          "id": "d01e08",
+          "en": "Hi, Tom! How are you?",
+          "vi": "Chào Tom! Bạn khỏe không?"
+        }
+      ]
+    },
+    {
+      "id": "c006",
+      "text": "I'm good, thanks. And you?",
+      "type": "fixed",
+      "vi": "Mình khỏe, cảm ơn. Còn bạn?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A0 / Chào hỏi và giới thiệu",
+      "examples": [
+        {
+          "id": "d01e09",
+          "en": "I'm good, thanks. And you?",
+          "vi": "Mình khỏe, cảm ơn. Còn bạn?"
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Gặp một người mới ở buổi tiệc",
+    "lines": [
+      {
+        "id": "d01l01",
+        "speaker": "A",
+        "en": "Hi! My name is Anna. What's your name?",
+        "vi": "Chào! Tên mình là Anna. Bạn tên là gì?",
+        "chunks": [
+          "c002",
+          "c003"
+        ]
+      },
+      {
+        "id": "d01l02",
+        "speaker": "B",
+        "en": "Hi, I'm Tom. Nice to meet you.",
+        "vi": "Chào, mình là Tom. Rất vui được gặp bạn.",
+        "chunks": [
+          "c001",
+          "c004"
+        ]
+      },
+      {
+        "id": "d01l03",
+        "speaker": "A",
+        "en": "Nice to meet you, too. How are you?",
+        "vi": "Mình cũng rất vui được gặp bạn. Bạn khỏe không?",
+        "chunks": [
+          "c004",
+          "c005"
+        ]
+      },
+      {
+        "id": "d01l04",
+        "speaker": "B",
+        "en": "I'm good, thanks. And you?",
+        "vi": "Mình khỏe, cảm ơn. Còn bạn?",
+        "chunks": [
+          "c006"
+        ]
+      },
+      {
+        "id": "d01l05",
+        "speaker": "A",
+        "en": "I'm good, too. Thanks!",
+        "vi": "Mình cũng khỏe. Cảm ơn nhé!",
+        "chunks": [
+          "c006"
+        ]
+      },
+      {
+        "id": "d01l06",
+        "speaker": "B",
+        "en": "Great! Nice to meet you, Anna.",
+        "vi": "Hay quá! Rất vui được gặp bạn, Anna.",
+        "chunks": [
+          "c004"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c001",
+      "cues": [
+        {
+          "id": "d01s01",
+          "cue_vi": "nói tên là Lan",
+          "answer": "Hi, I'm Lan.",
+          "accept": [
+            "Hi, I'm Lan"
+          ]
+        },
+        {
+          "id": "d01s02",
+          "cue_vi": "nói tên là David",
+          "answer": "Hi, I'm David.",
+          "accept": [
+            "Hi, I'm David"
+          ]
+        },
+        {
+          "id": "d01s03",
+          "cue_vi": "nói tên là Nam",
+          "answer": "Hi, I'm Nam.",
+          "accept": [
+            "Hi, I'm Nam"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c002",
+      "cues": [
+        {
+          "id": "d01s04",
+          "cue_vi": "nói tên là Mai",
+          "answer": "My name is Mai.",
+          "accept": [
+            "My name is Mai"
+          ]
+        },
+        {
+          "id": "d01s05",
+          "cue_vi": "nói tên là Peter",
+          "answer": "My name is Peter.",
+          "accept": [
+            "My name is Peter"
+          ]
+        },
+        {
+          "id": "d01s06",
+          "cue_vi": "nói tên là Hoa",
+          "answer": "My name is Hoa.",
+          "accept": [
+            "My name is Hoa"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Gặp một người mới ở lớp học hoặc một sự kiện.",
+    "turns": [
+      {
+        "id": "d01r01",
+        "role": "partner",
+        "en": "Hi! I'm Sam. What's your name?",
+        "vi": "Chào! Mình là Sam. Bạn tên là gì?"
+      },
+      {
+        "id": "d01r02",
+        "role": "you",
+        "cue_vi": "Chào lại và nói tên bạn.",
+        "model": "Hi, I'm Mai.",
+        "uses": [
+          "c001"
+        ]
+      },
+      {
+        "id": "d01r03",
+        "role": "partner",
+        "en": "Nice to meet you, Mai. How are you?",
+        "vi": "Rất vui được gặp bạn, Mai. Bạn khỏe không?"
+      },
+      {
+        "id": "d01r04",
+        "role": "you",
+        "cue_vi": "Nói bạn khỏe, cảm ơn, và hỏi lại.",
+        "model": "I'm good, thanks. And you?",
+        "uses": [
+          "c006"
+        ]
+      },
+      {
+        "id": "d01r05",
+        "role": "partner",
+        "en": "I'm great, thanks!",
+        "vi": "Mình rất khỏe, cảm ơn!"
+      },
+      {
+        "id": "d01r06",
+        "role": "you",
+        "cue_vi": "Nói rất vui được gặp họ.",
+        "model": "Nice to meet you.",
+        "uses": [
+          "c004"
+        ]
+      }
+    ]
+  }
+}

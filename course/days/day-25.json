@@ -1,0 +1,380 @@
+{
+  "day": 25,
+  "level": "A1",
+  "function": "Lịch sự và xin phép",
+  "title": "Xin phép, nhờ vả lịch sự",
+  "intro_vi": "Hôm nay: nhờ ai đó điều gì cho lịch sự, xin phép làm gì, mời người khác và đáp khi ai đó xin lỗi.",
+  "chunks": [
+    {
+      "id": "c145",
+      "text": "Could you …, please?",
+      "type": "stem",
+      "vi": "Bạn … giúp mình được không?",
+      "vi_equivalent": false,
+      "contrast_vi": "\"Could\" lịch sự hơn \"can\"; tiếng Việt thêm \"giúp\", \"được không\" để lịch sự.",
+      "register": "polite",
+      "reduced": null,
+      "source": "core-inventory A1 / Lịch sự và xin phép",
+      "examples": [
+        {
+          "id": "d25e01",
+          "en": "Could you open the window, please?",
+          "vi": "Bạn mở cửa sổ giúp mình được không?"
+        },
+        {
+          "id": "d25e02",
+          "en": "Could you say that again, please?",
+          "vi": "Bạn nói lại giúp mình được không?"
+        }
+      ]
+    },
+    {
+      "id": "c146",
+      "text": "Do you mind if I …?",
+      "type": "stem",
+      "vi": "Mình … có phiền bạn không?",
+      "vi_equivalent": false,
+      "contrast_vi": "Hỏi \"bạn có phiền không\": trả lời \"No\" nghĩa là không phiền, đồng ý; tiếng Việt thì trả lời \"không sao\".",
+      "register": "polite",
+      "reduced": null,
+      "source": "core-inventory A1 / Lịch sự và xin phép",
+      "examples": [
+        {
+          "id": "d25e03",
+          "en": "Do you mind if I sit here?",
+          "vi": "Mình ngồi đây có phiền bạn không?"
+        },
+        {
+          "id": "d25e04",
+          "en": "Do you mind if I open the window?",
+          "vi": "Mình mở cửa sổ có phiền bạn không?"
+        }
+      ]
+    },
+    {
+      "id": "c147",
+      "text": "Would you like …?",
+      "type": "stem",
+      "vi": "Bạn có muốn … không?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "polite",
+      "reduced": null,
+      "source": "core-inventory A1 / Lịch sự và xin phép",
+      "examples": [
+        {
+          "id": "d25e05",
+          "en": "Would you like some coffee?",
+          "vi": "Bạn có muốn uống chút cà phê không?"
+        },
+        {
+          "id": "d25e06",
+          "en": "Would you like to sit down?",
+          "vi": "Bạn có muốn ngồi xuống không?"
+        }
+      ]
+    },
+    {
+      "id": "c148",
+      "text": "Sorry to bother you, but …",
+      "type": "stem",
+      "vi": "Xin lỗi làm phiền bạn, nhưng …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "polite",
+      "reduced": null,
+      "source": "core-inventory A1 / Lịch sự và xin phép",
+      "examples": [
+        {
+          "id": "d25e07",
+          "en": "Sorry to bother you, but can you help me?",
+          "vi": "Xin lỗi làm phiền bạn, bạn giúp mình được không?"
+        },
+        {
+          "id": "d25e08",
+          "en": "Sorry to bother you, but what time is it?",
+          "vi": "Xin lỗi làm phiền bạn, bây giờ mấy giờ rồi ạ?"
+        }
+      ]
+    },
+    {
+      "id": "c149",
+      "text": "Sorry about that.",
+      "type": "fixed",
+      "vi": "Xin lỗi về chuyện đó.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Lịch sự và xin phép",
+      "examples": [
+        {
+          "id": "d25e09",
+          "en": "Oh, sorry about that.",
+          "vi": "Ôi, xin lỗi về chuyện đó."
+        }
+      ]
+    },
+    {
+      "id": "c150",
+      "text": "No worries.",
+      "type": "fixed",
+      "vi": "Không sao đâu.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Lịch sự và xin phép",
+      "examples": [
+        {
+          "id": "d25e10",
+          "en": "Sorry I'm late. — No worries.",
+          "vi": "Xin lỗi mình đến trễ. — Không sao đâu."
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Ngồi cạnh nhau trên xe buýt",
+    "lines": [
+      {
+        "id": "d25l01",
+        "speaker": "A",
+        "en": "Excuse me, is this seat taken?",
+        "vi": "Xin lỗi, chỗ này có ai ngồi chưa?",
+        "chunks": [
+          "c054",
+          "c077"
+        ]
+      },
+      {
+        "id": "d25l02",
+        "speaker": "B",
+        "en": "No, go ahead.",
+        "vi": "Chưa, bạn cứ ngồi.",
+        "chunks": []
+      },
+      {
+        "id": "d25l03",
+        "speaker": "A",
+        "en": "Do you mind if I open the window?",
+        "vi": "Mình mở cửa sổ có phiền bạn không?",
+        "chunks": [
+          "c146"
+        ]
+      },
+      {
+        "id": "d25l04",
+        "speaker": "B",
+        "en": "Not at all. It's hot today.",
+        "vi": "Không phiền đâu. Hôm nay nóng.",
+        "chunks": []
+      },
+      {
+        "id": "d25l05",
+        "speaker": "A",
+        "en": "Thank you so much. Would you like some water?",
+        "vi": "Cảm ơn nhiều lắm. Bạn có muốn uống chút nước không?",
+        "chunks": [
+          "c016",
+          "c147"
+        ]
+      },
+      {
+        "id": "d25l06",
+        "speaker": "B",
+        "en": "Sorry, could you say that again, please?",
+        "vi": "Xin lỗi, bạn nói lại giúp mình được không?",
+        "chunks": [
+          "c145"
+        ]
+      },
+      {
+        "id": "d25l07",
+        "speaker": "A",
+        "en": "Would you like some water?",
+        "vi": "Bạn có muốn uống chút nước không?",
+        "chunks": [
+          "c147"
+        ]
+      },
+      {
+        "id": "d25l08",
+        "speaker": "B",
+        "en": "Oh, I see. Yes, please. Thank you.",
+        "vi": "À, mình hiểu rồi. Có, cảm ơn bạn.",
+        "chunks": [
+          "c024"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c145",
+      "cues": [
+        {
+          "id": "d25s01",
+          "cue_vi": "nhờ mở cửa sổ",
+          "answer": "Could you open the window, please?",
+          "accept": [
+            "Could you open the window, please"
+          ]
+        },
+        {
+          "id": "d25s02",
+          "cue_vi": "nhờ nói lại",
+          "answer": "Could you say that again, please?",
+          "accept": [
+            "Could you say that again, please"
+          ]
+        },
+        {
+          "id": "d25s03",
+          "cue_vi": "nhờ giúp mình",
+          "answer": "Could you help me, please?",
+          "accept": [
+            "Could you help me, please"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c146",
+      "cues": [
+        {
+          "id": "d25s04",
+          "cue_vi": "xin phép ngồi đây",
+          "answer": "Do you mind if I sit here?",
+          "accept": [
+            "Do you mind if I sit here"
+          ]
+        },
+        {
+          "id": "d25s05",
+          "cue_vi": "xin phép mở cửa sổ",
+          "answer": "Do you mind if I open the window?",
+          "accept": [
+            "Do you mind if I open the window"
+          ]
+        },
+        {
+          "id": "d25s06",
+          "cue_vi": "xin phép ngồi xuống",
+          "answer": "Do you mind if I sit down?",
+          "accept": [
+            "Do you mind if I sit down"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c147",
+      "cues": [
+        {
+          "id": "d25s07",
+          "cue_vi": "mời một ít cà phê",
+          "answer": "Would you like some coffee?",
+          "accept": [
+            "Would you like some coffee"
+          ]
+        },
+        {
+          "id": "d25s08",
+          "cue_vi": "mời ngồi xuống",
+          "answer": "Would you like to sit down?",
+          "accept": [
+            "Would you like to sit down"
+          ]
+        },
+        {
+          "id": "d25s09",
+          "cue_vi": "mời một ít nước",
+          "answer": "Would you like some water?",
+          "accept": [
+            "Would you like some water"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c148",
+      "cues": [
+        {
+          "id": "d25s10",
+          "cue_vi": "nhờ giúp",
+          "answer": "Sorry to bother you, but can you help me?",
+          "accept": [
+            "Sorry to bother you, but can you help me"
+          ]
+        },
+        {
+          "id": "d25s11",
+          "cue_vi": "hỏi mấy giờ",
+          "answer": "Sorry to bother you, but what time is it?",
+          "accept": [
+            "Sorry to bother you, but what time is it"
+          ]
+        },
+        {
+          "id": "d25s12",
+          "cue_vi": "hỏi nhà vệ sinh ở đâu",
+          "answer": "Sorry to bother you, but where is the bathroom?",
+          "accept": [
+            "Sorry to bother you, but where is the bathroom"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Chờ bàn ở một nhà hàng đông khách.",
+    "turns": [
+      {
+        "id": "d25r01",
+        "role": "partner",
+        "en": "Hi! Sorry about that. Your table is not ready.",
+        "vi": "Chào! Xin lỗi bạn. Bàn của bạn chưa sẵn sàng."
+      },
+      {
+        "id": "d25r02",
+        "role": "you",
+        "cue_vi": "Nói không sao đâu.",
+        "model": "No worries.",
+        "uses": [
+          "c150"
+        ]
+      },
+      {
+        "id": "d25r03",
+        "role": "partner",
+        "en": "Would you like to wait here?",
+        "vi": "Bạn có muốn chờ ở đây không?"
+      },
+      {
+        "id": "d25r04",
+        "role": "you",
+        "cue_vi": "Hỏi bạn ngồi đây có phiền không.",
+        "model": "Do you mind if I sit here?",
+        "uses": [
+          "c146"
+        ]
+      },
+      {
+        "id": "d25r05",
+        "role": "partner",
+        "en": "Not at all.",
+        "vi": "Không phiền đâu."
+      },
+      {
+        "id": "d25r06",
+        "role": "you",
+        "cue_vi": "Nhờ họ báo khi bàn sẵn sàng.",
+        "model": "Could you tell me when it's ready, please?",
+        "uses": [
+          "c145"
+        ]
+      }
+    ]
+  }
+}

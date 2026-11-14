@@ -1,0 +1,422 @@
+{
+  "day": 16,
+  "level": "A1",
+  "function": "Thói quen",
+  "title": "Mình thường làm gì",
+  "intro_vi": "Hôm nay: nói về thói quen: thường, luôn, không bao giờ, bao lâu một lần.",
+  "chunks": [
+    {
+      "id": "c091",
+      "text": "I usually …",
+      "type": "stem",
+      "vi": "Mình thường …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Thói quen",
+      "examples": [
+        {
+          "id": "d16e01",
+          "en": "I usually get up at six.",
+          "vi": "Mình thường dậy lúc sáu giờ."
+        },
+        {
+          "id": "d16e02",
+          "en": "I usually walk to work.",
+          "vi": "Mình thường đi bộ đi làm."
+        }
+      ]
+    },
+    {
+      "id": "c092",
+      "text": "I always …",
+      "type": "stem",
+      "vi": "Mình luôn …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Thói quen",
+      "examples": [
+        {
+          "id": "d16e03",
+          "en": "I always have coffee in the morning.",
+          "vi": "Mình luôn uống cà phê buổi sáng."
+        },
+        {
+          "id": "d16e04",
+          "en": "I always come early.",
+          "vi": "Mình luôn đến sớm."
+        }
+      ]
+    },
+    {
+      "id": "c093",
+      "text": "I never …",
+      "type": "stem",
+      "vi": "Mình không bao giờ …",
+      "vi_equivalent": false,
+      "contrast_vi": "\"Never\" đã mang nghĩa phủ định nên không thêm \"don't\"; tiếng Việt thì có \"không bao giờ\".",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Thói quen",
+      "examples": [
+        {
+          "id": "d16e05",
+          "en": "I never drink coffee at night.",
+          "vi": "Mình không bao giờ uống cà phê buổi tối."
+        },
+        {
+          "id": "d16e06",
+          "en": "I never eat breakfast.",
+          "vi": "Mình không bao giờ ăn sáng."
+        }
+      ]
+    },
+    {
+      "id": "c094",
+      "text": "How often do you …?",
+      "type": "stem",
+      "vi": "Bạn … bao lâu một lần?",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh đặt \"How often do you\" lên đầu câu; tiếng Việt đặt \"bao lâu một lần\" ở cuối.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Thói quen",
+      "examples": [
+        {
+          "id": "d16e07",
+          "en": "How often do you go out?",
+          "vi": "Bạn ra ngoài chơi bao lâu một lần?"
+        },
+        {
+          "id": "d16e08",
+          "en": "How often do you cook?",
+          "vi": "Bạn nấu ăn bao lâu một lần?"
+        }
+      ]
+    },
+    {
+      "id": "c095",
+      "text": "… once a week.",
+      "type": "stem",
+      "vi": "… mỗi tuần một lần.",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh dùng \"a\" (mỗi) trong once a week, twice a month; tiếng Việt dùng \"mỗi\".",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Thói quen",
+      "examples": [
+        {
+          "id": "d16e09",
+          "en": "I go to the gym once a week.",
+          "vi": "Mình đi tập gym mỗi tuần một lần."
+        },
+        {
+          "id": "d16e10",
+          "en": "I clean the house twice a month.",
+          "vi": "Mình dọn nhà mỗi tháng hai lần."
+        }
+      ]
+    },
+    {
+      "id": "c096",
+      "text": "What do you do on weekends?",
+      "type": "fixed",
+      "vi": "Cuối tuần bạn làm gì?",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh dùng \"on weekends\" (có on); tiếng Việt chỉ nói \"cuối tuần\".",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Thói quen",
+      "examples": [
+        {
+          "id": "d16e11",
+          "en": "Hi! What do you do on weekends?",
+          "vi": "Chào! Cuối tuần bạn làm gì?"
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Hỏi nhau cuối tuần làm gì",
+    "lines": [
+      {
+        "id": "d16l01",
+        "speaker": "A",
+        "en": "Hi! What do you do on weekends?",
+        "vi": "Chào! Cuối tuần bạn làm gì?",
+        "chunks": [
+          "c096"
+        ]
+      },
+      {
+        "id": "d16l02",
+        "speaker": "B",
+        "en": "I usually sleep a lot. I love sleeping!",
+        "vi": "Mình thường ngủ nhiều. Mình rất thích ngủ!",
+        "chunks": [
+          "c091",
+          "c040"
+        ]
+      },
+      {
+        "id": "d16l03",
+        "speaker": "A",
+        "en": "Really? That's great! Do you like walking?",
+        "vi": "Thật à? Hay quá! Bạn có thích đi bộ không?",
+        "chunks": [
+          "c012",
+          "c039"
+        ]
+      },
+      {
+        "id": "d16l04",
+        "speaker": "B",
+        "en": "Yes. I walk once a week.",
+        "vi": "Có. Mình đi bộ mỗi tuần một lần.",
+        "chunks": [
+          "c095"
+        ]
+      },
+      {
+        "id": "d16l05",
+        "speaker": "A",
+        "en": "How often do you go to the gym?",
+        "vi": "Bạn đi tập gym bao lâu một lần?",
+        "chunks": [
+          "c094"
+        ]
+      },
+      {
+        "id": "d16l06",
+        "speaker": "B",
+        "en": "I never go. I don't like it.",
+        "vi": "Mình không bao giờ đi. Mình không thích.",
+        "chunks": [
+          "c093",
+          "c038"
+        ]
+      },
+      {
+        "id": "d16l07",
+        "speaker": "A",
+        "en": "Me too!",
+        "vi": "Mình cũng vậy!",
+        "chunks": [
+          "c042"
+        ]
+      },
+      {
+        "id": "d16l08",
+        "speaker": "B",
+        "en": "Do you want to go for a walk this weekend?",
+        "vi": "Cuối tuần này bạn có muốn đi dạo không?",
+        "chunks": [
+          "c015"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c091",
+      "cues": [
+        {
+          "id": "d16s01",
+          "cue_vi": "thường dậy lúc sáu giờ",
+          "answer": "I usually get up at six.",
+          "accept": [
+            "I usually get up at six"
+          ]
+        },
+        {
+          "id": "d16s02",
+          "cue_vi": "thường đi bộ đi làm",
+          "answer": "I usually walk to work.",
+          "accept": [
+            "I usually walk to work"
+          ]
+        },
+        {
+          "id": "d16s03",
+          "cue_vi": "thường ăn trưa ở nhà",
+          "answer": "I usually have lunch at home.",
+          "accept": [
+            "I usually have lunch at home"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c092",
+      "cues": [
+        {
+          "id": "d16s04",
+          "cue_vi": "luôn uống cà phê buổi sáng",
+          "answer": "I always have coffee in the morning.",
+          "accept": [
+            "I always have coffee in the morning"
+          ]
+        },
+        {
+          "id": "d16s05",
+          "cue_vi": "luôn đến sớm",
+          "answer": "I always come early.",
+          "accept": [
+            "I always come early"
+          ]
+        },
+        {
+          "id": "d16s06",
+          "cue_vi": "luôn mang theo nước",
+          "answer": "I always bring water.",
+          "accept": [
+            "I always bring water"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c093",
+      "cues": [
+        {
+          "id": "d16s07",
+          "cue_vi": "không bao giờ ăn khuya",
+          "answer": "I never eat late at night.",
+          "accept": [
+            "I never eat late at night"
+          ]
+        },
+        {
+          "id": "d16s08",
+          "cue_vi": "không bao giờ uống cà phê buổi tối",
+          "answer": "I never drink coffee at night.",
+          "accept": [
+            "I never drink coffee at night"
+          ]
+        },
+        {
+          "id": "d16s09",
+          "cue_vi": "không bao giờ đến trễ",
+          "answer": "I never run late.",
+          "accept": [
+            "I never run late",
+            "I never come late",
+            "I'm never late"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c094",
+      "cues": [
+        {
+          "id": "d16s10",
+          "cue_vi": "hỏi bao lâu thì ra ngoài chơi",
+          "answer": "How often do you go out?",
+          "accept": [
+            "How often do you go out"
+          ]
+        },
+        {
+          "id": "d16s11",
+          "cue_vi": "hỏi bao lâu thì nấu ăn",
+          "answer": "How often do you cook?",
+          "accept": [
+            "How often do you cook"
+          ]
+        },
+        {
+          "id": "d16s12",
+          "cue_vi": "hỏi bao lâu thì tập thể dục",
+          "answer": "How often do you exercise?",
+          "accept": [
+            "How often do you exercise"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c095",
+      "cues": [
+        {
+          "id": "d16s13",
+          "cue_vi": "đi gym mỗi tuần một lần",
+          "answer": "I go to the gym once a week.",
+          "accept": [
+            "I go to the gym once a week"
+          ]
+        },
+        {
+          "id": "d16s14",
+          "cue_vi": "dọn nhà mỗi tháng hai lần",
+          "answer": "I clean the house twice a month.",
+          "accept": [
+            "I clean the house twice a month"
+          ]
+        },
+        {
+          "id": "d16s15",
+          "cue_vi": "tập thể dục mỗi tuần ba lần",
+          "answer": "I exercise three times a week.",
+          "accept": [
+            "I exercise three times a week"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Nói chuyện về cà phê và thói quen.",
+    "turns": [
+      {
+        "id": "d16r01",
+        "role": "partner",
+        "en": "Hi! Do you like coffee?",
+        "vi": "Chào! Bạn có thích cà phê không?"
+      },
+      {
+        "id": "d16r02",
+        "role": "you",
+        "cue_vi": "Nói bạn rất thích cà phê và luôn uống buổi sáng.",
+        "model": "I love coffee. I always have it in the morning.",
+        "uses": [
+          "c040",
+          "c092"
+        ]
+      },
+      {
+        "id": "d16r03",
+        "role": "partner",
+        "en": "How about tea?",
+        "vi": "Còn trà thì sao?"
+      },
+      {
+        "id": "d16r04",
+        "role": "you",
+        "cue_vi": "Nói bạn không bao giờ uống trà.",
+        "model": "I never drink tea.",
+        "uses": [
+          "c093"
+        ]
+      },
+      {
+        "id": "d16r05",
+        "role": "partner",
+        "en": "Me too! It's too sweet.",
+        "vi": "Mình cũng vậy! Nó ngọt quá."
+      },
+      {
+        "id": "d16r06",
+        "role": "you",
+        "cue_vi": "Hỏi họ cuối tuần làm gì.",
+        "model": "What do you do on weekends?",
+        "uses": [
+          "c096"
+        ]
+      }
+    ]
+  }
+}

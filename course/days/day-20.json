@@ -1,0 +1,456 @@
+{
+  "day": 20,
+  "level": "A1",
+  "function": "Kể chuyện đã xảy ra",
+  "title": "Mình đã đi, mình đã ăn",
+  "intro_vi": "Hôm nay: bắt đầu nói về quá khứ: hỏi \"cuối tuần thế nào\", kể mình đã đi đâu, đã ăn gì.",
+  "chunks": [
+    {
+      "id": "c115",
+      "text": "I went to …",
+      "type": "stem",
+      "vi": "Mình đã đi …",
+      "vi_equivalent": false,
+      "contrast_vi": "\"Went\" là quá khứ của \"go\" (đi); tiếng Việt chỉ cần nói \"hôm qua\" hay \"đã\".",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Kể chuyện đã xảy ra",
+      "examples": [
+        {
+          "id": "d20e01",
+          "en": "I went to the beach.",
+          "vi": "Mình đã đi biển."
+        },
+        {
+          "id": "d20e02",
+          "en": "I went to a concert.",
+          "vi": "Mình đã đi xem hòa nhạc."
+        }
+      ]
+    },
+    {
+      "id": "c116",
+      "text": "Yesterday, I …",
+      "type": "stem",
+      "vi": "Hôm qua, mình …",
+      "vi_equivalent": false,
+      "contrast_vi": "Động từ đổi sang quá khứ (cooked, went); tiếng Việt giữ nguyên động từ.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Kể chuyện đã xảy ra",
+      "examples": [
+        {
+          "id": "d20e03",
+          "en": "Yesterday, I cooked dinner.",
+          "vi": "Hôm qua mình nấu bữa tối."
+        },
+        {
+          "id": "d20e04",
+          "en": "Yesterday, I stayed home all day.",
+          "vi": "Hôm qua mình ở nhà cả ngày."
+        }
+      ]
+    },
+    {
+      "id": "c117",
+      "text": "How was your …?",
+      "type": "stem",
+      "vi": "… của bạn thế nào?",
+      "vi_equivalent": false,
+      "contrast_vi": "\"Was\" là quá khứ của \"is\"; tiếng Việt không đổi.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Kể chuyện đã xảy ra",
+      "examples": [
+        {
+          "id": "d20e05",
+          "en": "How was your weekend?",
+          "vi": "Cuối tuần của bạn thế nào?"
+        },
+        {
+          "id": "d20e06",
+          "en": "How was your day?",
+          "vi": "Hôm nay của bạn thế nào?"
+        }
+      ]
+    },
+    {
+      "id": "c118",
+      "text": "It was …",
+      "type": "stem",
+      "vi": "Nó … (đã qua)",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh cần \"It\" và \"was\" (quá khứ của is).",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Kể chuyện đã xảy ra",
+      "examples": [
+        {
+          "id": "d20e07",
+          "en": "It was great.",
+          "vi": "Tuyệt lắm."
+        },
+        {
+          "id": "d20e08",
+          "en": "It was really fun.",
+          "vi": "Vui thật sự."
+        }
+      ]
+    },
+    {
+      "id": "c119",
+      "text": "I had …",
+      "type": "stem",
+      "vi": "Mình đã ăn / uống / có …",
+      "vi_equivalent": false,
+      "contrast_vi": "\"Had\" là quá khứ của \"have\"; nói \"I had pizza\" nghĩa là mình đã ăn pizza.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Kể chuyện đã xảy ra",
+      "examples": [
+        {
+          "id": "d20e09",
+          "en": "I had pizza for lunch.",
+          "vi": "Mình đã ăn pizza vào bữa trưa."
+        },
+        {
+          "id": "d20e10",
+          "en": "I had a great time.",
+          "vi": "Mình đã có khoảng thời gian rất vui."
+        }
+      ]
+    },
+    {
+      "id": "c120",
+      "text": "What did you do …?",
+      "type": "stem",
+      "vi": "Bạn đã làm gì …?",
+      "vi_equivalent": false,
+      "contrast_vi": "Sau \"did\", động từ trở về nguyên mẫu (do, không phải did).",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Kể chuyện đã xảy ra",
+      "examples": [
+        {
+          "id": "d20e11",
+          "en": "What did you do last night?",
+          "vi": "Tối qua bạn đã làm gì?"
+        },
+        {
+          "id": "d20e12",
+          "en": "What did you do yesterday?",
+          "vi": "Hôm qua bạn đã làm gì?"
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Hỏi chuyện cuối tuần",
+    "lines": [
+      {
+        "id": "d20l01",
+        "speaker": "A",
+        "en": "Hi! How was your weekend?",
+        "vi": "Chào! Cuối tuần của bạn thế nào?",
+        "chunks": [
+          "c117"
+        ]
+      },
+      {
+        "id": "d20l02",
+        "speaker": "B",
+        "en": "It was great! I went to the beach.",
+        "vi": "Tuyệt lắm! Mình đã đi biển.",
+        "chunks": [
+          "c118",
+          "c115"
+        ]
+      },
+      {
+        "id": "d20l03",
+        "speaker": "A",
+        "en": "Really? That's great! What did you do there?",
+        "vi": "Thật à? Hay quá! Bạn đã làm gì ở đó?",
+        "chunks": [
+          "c012",
+          "c120"
+        ]
+      },
+      {
+        "id": "d20l04",
+        "speaker": "B",
+        "en": "I had lunch and I went for a walk.",
+        "vi": "Mình đã ăn trưa và đi dạo.",
+        "chunks": [
+          "c119",
+          "c115"
+        ]
+      },
+      {
+        "id": "d20l05",
+        "speaker": "A",
+        "en": "Sorry, can you say that again?",
+        "vi": "Xin lỗi, bạn nói lại được không?",
+        "chunks": [
+          "c019"
+        ]
+      },
+      {
+        "id": "d20l06",
+        "speaker": "B",
+        "en": "I had lunch. Then I went for a walk.",
+        "vi": "Mình đã ăn trưa. Rồi mình đi dạo.",
+        "chunks": [
+          "c119"
+        ]
+      },
+      {
+        "id": "d20l07",
+        "speaker": "A",
+        "en": "Nice! I love the beach.",
+        "vi": "Hay quá! Mình rất thích biển.",
+        "chunks": [
+          "c040"
+        ]
+      },
+      {
+        "id": "d20l08",
+        "speaker": "B",
+        "en": "Me too. Do you want to go next time?",
+        "vi": "Mình cũng vậy. Lần sau bạn có muốn đi không?",
+        "chunks": [
+          "c042",
+          "c015"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c115",
+      "cues": [
+        {
+          "id": "d20s01",
+          "cue_vi": "đã đi biển",
+          "answer": "I went to the beach.",
+          "accept": [
+            "I went to the beach"
+          ]
+        },
+        {
+          "id": "d20s02",
+          "cue_vi": "đã đi xem hòa nhạc",
+          "answer": "I went to a concert.",
+          "accept": [
+            "I went to a concert"
+          ]
+        },
+        {
+          "id": "d20s03",
+          "cue_vi": "đã đi chợ",
+          "answer": "I went to the market.",
+          "accept": [
+            "I went to the market"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c116",
+      "cues": [
+        {
+          "id": "d20s04",
+          "cue_vi": "hôm qua nấu bữa tối",
+          "answer": "Yesterday, I cooked dinner.",
+          "accept": [
+            "Yesterday, I cooked dinner"
+          ]
+        },
+        {
+          "id": "d20s05",
+          "cue_vi": "hôm qua dậy sớm",
+          "answer": "Yesterday, I got up early.",
+          "accept": [
+            "Yesterday, I got up early"
+          ]
+        },
+        {
+          "id": "d20s06",
+          "cue_vi": "hôm qua ở nhà cả ngày",
+          "answer": "Yesterday, I stayed home all day.",
+          "accept": [
+            "Yesterday, I stayed home all day"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c117",
+      "cues": [
+        {
+          "id": "d20s07",
+          "cue_vi": "hỏi cuối tuần thế nào",
+          "answer": "How was your weekend?",
+          "accept": [
+            "How was your weekend"
+          ]
+        },
+        {
+          "id": "d20s08",
+          "cue_vi": "hỏi hôm nay thế nào",
+          "answer": "How was your day?",
+          "accept": [
+            "How was your day"
+          ]
+        },
+        {
+          "id": "d20s09",
+          "cue_vi": "hỏi chuyến đi thế nào",
+          "answer": "How was your trip?",
+          "accept": [
+            "How was your trip"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c118",
+      "cues": [
+        {
+          "id": "d20s10",
+          "cue_vi": "tuyệt lắm",
+          "answer": "It was great.",
+          "accept": [
+            "It was great"
+          ]
+        },
+        {
+          "id": "d20s11",
+          "cue_vi": "vui thật sự",
+          "answer": "It was really fun.",
+          "accept": [
+            "It was really fun"
+          ]
+        },
+        {
+          "id": "d20s12",
+          "cue_vi": "hơi chán",
+          "answer": "It was a little boring.",
+          "accept": [
+            "It was a little boring",
+            "It was a bit boring"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c119",
+      "cues": [
+        {
+          "id": "d20s13",
+          "cue_vi": "đã ăn pizza bữa trưa",
+          "answer": "I had pizza for lunch.",
+          "accept": [
+            "I had pizza for lunch"
+          ]
+        },
+        {
+          "id": "d20s14",
+          "cue_vi": "đã có khoảng thời gian rất vui",
+          "answer": "I had a great time.",
+          "accept": [
+            "I had a great time"
+          ]
+        },
+        {
+          "id": "d20s15",
+          "cue_vi": "đã uống một ly cà phê",
+          "answer": "I had a coffee.",
+          "accept": [
+            "I had a coffee"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c120",
+      "cues": [
+        {
+          "id": "d20s16",
+          "cue_vi": "hỏi tối qua đã làm gì",
+          "answer": "What did you do last night?",
+          "accept": [
+            "What did you do last night"
+          ]
+        },
+        {
+          "id": "d20s17",
+          "cue_vi": "hỏi hôm qua đã làm gì",
+          "answer": "What did you do yesterday?",
+          "accept": [
+            "What did you do yesterday"
+          ]
+        },
+        {
+          "id": "d20s18",
+          "cue_vi": "hỏi cuối tuần trước đã làm gì",
+          "answer": "What did you do last weekend?",
+          "accept": [
+            "What did you do last weekend"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Kể về một ngày hôm qua.",
+    "turns": [
+      {
+        "id": "d20r01",
+        "role": "partner",
+        "en": "Hi! What did you do yesterday?",
+        "vi": "Chào! Hôm qua bạn đã làm gì?"
+      },
+      {
+        "id": "d20r02",
+        "role": "you",
+        "cue_vi": "Nói hôm qua bạn đã đi chợ.",
+        "model": "Yesterday, I went to the market.",
+        "uses": [
+          "c116",
+          "c115"
+        ]
+      },
+      {
+        "id": "d20r03",
+        "role": "partner",
+        "en": "Nice! How was it?",
+        "vi": "Hay quá! Thế nào?"
+      },
+      {
+        "id": "d20r04",
+        "role": "you",
+        "cue_vi": "Nói nó rất vui.",
+        "model": "It was really fun.",
+        "uses": [
+          "c118"
+        ]
+      },
+      {
+        "id": "d20r05",
+        "role": "partner",
+        "en": "What did you have for lunch?",
+        "vi": "Bạn đã ăn gì vào bữa trưa?"
+      },
+      {
+        "id": "d20r06",
+        "role": "you",
+        "cue_vi": "Nói bạn đã ăn pizza.",
+        "model": "I had pizza.",
+        "uses": [
+          "c119"
+        ]
+      }
+    ]
+  }
+}

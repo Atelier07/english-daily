@@ -1,0 +1,351 @@
+{
+  "day": 8,
+  "level": "A0",
+  "function": "Khả năng",
+  "title": "Mình có thể, mình không thể",
+  "intro_vi": "Hôm nay: nói mình làm được gì, không làm được gì, nhờ giúp một việc và đáp lại lời nhờ.",
+  "chunks": [
+    {
+      "id": "c043",
+      "text": "I can …",
+      "type": "stem",
+      "vi": "Mình có thể …",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Việt dùng \"có thể\", \"biết\" hoặc \"được\"; tiếng Anh chỉ dùng \"can\" + động từ, không chia.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Khả năng",
+      "examples": [
+        {
+          "id": "d08e01",
+          "en": "I can help you.",
+          "vi": "Mình có thể giúp bạn."
+        },
+        {
+          "id": "d08e02",
+          "en": "I can swim.",
+          "vi": "Mình biết bơi."
+        }
+      ]
+    },
+    {
+      "id": "c044",
+      "text": "I can't …",
+      "type": "stem",
+      "vi": "Mình không thể …",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh nói \"can't\" rõ và hơi dài để khác với \"can\"; tiếng Việt chỉ thêm \"không\".",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Khả năng",
+      "examples": [
+        {
+          "id": "d08e03",
+          "en": "I can't come tonight.",
+          "vi": "Tối nay mình không đến được."
+        },
+        {
+          "id": "d08e04",
+          "en": "I can't find my keys.",
+          "vi": "Mình không tìm thấy chìa khóa."
+        }
+      ]
+    },
+    {
+      "id": "c045",
+      "text": "Can you …?",
+      "type": "stem",
+      "vi": "Bạn … được không?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Khả năng",
+      "examples": [
+        {
+          "id": "d08e05",
+          "en": "Can you open the door?",
+          "vi": "Bạn mở cửa giúp được không?"
+        },
+        {
+          "id": "d08e06",
+          "en": "Can you wait a minute?",
+          "vi": "Bạn chờ một chút được không?"
+        }
+      ]
+    },
+    {
+      "id": "c046",
+      "text": "Can you help me?",
+      "type": "fixed",
+      "vi": "Bạn giúp mình được không?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Khả năng",
+      "examples": [
+        {
+          "id": "d08e07",
+          "en": "Excuse me, can you help me?",
+          "vi": "Xin lỗi, bạn giúp mình được không?"
+        }
+      ]
+    },
+    {
+      "id": "c047",
+      "text": "Of course.",
+      "type": "fixed",
+      "vi": "Dĩ nhiên rồi.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Khả năng",
+      "examples": [
+        {
+          "id": "d08e08",
+          "en": "Can you help me? — Of course.",
+          "vi": "Bạn giúp mình được không? — Dĩ nhiên rồi."
+        }
+      ]
+    },
+    {
+      "id": "c048",
+      "text": "Sure thing.",
+      "type": "fixed",
+      "vi": "Được thôi.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A0 / Khả năng",
+      "examples": [
+        {
+          "id": "d08e09",
+          "en": "Can you wait a minute? — Sure thing.",
+          "vi": "Bạn chờ một chút được không? — Được thôi."
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Nhờ một người giúp ở trạm xe",
+    "lines": [
+      {
+        "id": "d08l01",
+        "speaker": "A",
+        "en": "Hi! Can you help me?",
+        "vi": "Chào! Bạn giúp mình được không?",
+        "chunks": [
+          "c046"
+        ]
+      },
+      {
+        "id": "d08l02",
+        "speaker": "B",
+        "en": "Of course. What do you need?",
+        "vi": "Dĩ nhiên rồi. Bạn cần gì?",
+        "chunks": [
+          "c047"
+        ]
+      },
+      {
+        "id": "d08l03",
+        "speaker": "A",
+        "en": "I want to buy a ticket. I can't read this machine.",
+        "vi": "Mình muốn mua vé. Mình không đọc được cái máy này.",
+        "chunks": [
+          "c013",
+          "c044"
+        ]
+      },
+      {
+        "id": "d08l04",
+        "speaker": "B",
+        "en": "Sure thing. I can show you.",
+        "vi": "Được thôi. Mình chỉ cho bạn được.",
+        "chunks": [
+          "c048",
+          "c043"
+        ]
+      },
+      {
+        "id": "d08l05",
+        "speaker": "A",
+        "en": "Thank you so much.",
+        "vi": "Cảm ơn nhiều lắm.",
+        "chunks": [
+          "c016"
+        ]
+      },
+      {
+        "id": "d08l06",
+        "speaker": "B",
+        "en": "No problem. Do you speak English?",
+        "vi": "Không có gì. Bạn có nói tiếng Anh không?",
+        "chunks": [
+          "c017",
+          "c010"
+        ]
+      },
+      {
+        "id": "d08l07",
+        "speaker": "A",
+        "en": "I speak a little English.",
+        "vi": "Mình nói được một chút tiếng Anh.",
+        "chunks": [
+          "c011"
+        ]
+      },
+      {
+        "id": "d08l08",
+        "speaker": "B",
+        "en": "Really? That's great!",
+        "vi": "Thật à? Hay quá!",
+        "chunks": [
+          "c012"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c043",
+      "cues": [
+        {
+          "id": "d08s01",
+          "cue_vi": "có thể giúp bạn",
+          "answer": "I can help you.",
+          "accept": [
+            "I can help you"
+          ]
+        },
+        {
+          "id": "d08s02",
+          "cue_vi": "biết bơi",
+          "answer": "I can swim.",
+          "accept": [
+            "I can swim"
+          ]
+        },
+        {
+          "id": "d08s03",
+          "cue_vi": "có thể đến lúc sáu giờ",
+          "answer": "I can come at six.",
+          "accept": [
+            "I can come at six"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c044",
+      "cues": [
+        {
+          "id": "d08s04",
+          "cue_vi": "tối nay không đến được",
+          "answer": "I can't come tonight.",
+          "accept": [
+            "I can't come tonight"
+          ]
+        },
+        {
+          "id": "d08s05",
+          "cue_vi": "không tìm thấy chìa khóa",
+          "answer": "I can't find my keys.",
+          "accept": [
+            "I can't find my keys"
+          ]
+        },
+        {
+          "id": "d08s06",
+          "cue_vi": "không nghe rõ bạn",
+          "answer": "I can't hear you.",
+          "accept": [
+            "I can't hear you"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c045",
+      "cues": [
+        {
+          "id": "d08s07",
+          "cue_vi": "nhờ mở cửa",
+          "answer": "Can you open the door?",
+          "accept": [
+            "Can you open the door"
+          ]
+        },
+        {
+          "id": "d08s08",
+          "cue_vi": "nhờ chờ một phút",
+          "answer": "Can you wait a minute?",
+          "accept": [
+            "Can you wait a minute"
+          ]
+        },
+        {
+          "id": "d08s09",
+          "cue_vi": "nhờ chỉ cho mình",
+          "answer": "Can you show me?",
+          "accept": [
+            "Can you show me"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Nhờ một người lạ chỉ giúp.",
+    "turns": [
+      {
+        "id": "d08r01",
+        "role": "partner",
+        "en": "Hi! Can I help you?",
+        "vi": "Chào! Bạn cần giúp gì không?"
+      },
+      {
+        "id": "d08r02",
+        "role": "you",
+        "cue_vi": "Nhờ họ giúp.",
+        "model": "Can you help me?",
+        "uses": [
+          "c046"
+        ]
+      },
+      {
+        "id": "d08r03",
+        "role": "partner",
+        "en": "Of course. What do you need?",
+        "vi": "Dĩ nhiên rồi. Bạn cần gì?"
+      },
+      {
+        "id": "d08r04",
+        "role": "you",
+        "cue_vi": "Nói bạn không tìm thấy trạm xe buýt.",
+        "model": "I can't find the bus stop.",
+        "uses": [
+          "c044"
+        ]
+      },
+      {
+        "id": "d08r05",
+        "role": "partner",
+        "en": "No problem. I can show you.",
+        "vi": "Không sao. Mình chỉ cho bạn được."
+      },
+      {
+        "id": "d08r06",
+        "role": "you",
+        "cue_vi": "Cảm ơn thật nhiều.",
+        "model": "Thank you so much.",
+        "uses": [
+          "c016"
+        ]
+      }
+    ]
+  }
+}

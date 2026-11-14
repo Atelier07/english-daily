@@ -1,0 +1,290 @@
+{
+  "day": 13,
+  "level": "A1",
+  "function": "Gọi món ở nhà hàng",
+  "title": "Ở quầy cà phê",
+  "intro_vi": "Hôm nay: hiểu và trả lời các câu quen thuộc ở quầy: dùng tại chỗ hay mang đi, cần thêm gì không, chỗ này có ai ngồi chưa.",
+  "chunks": [
+    {
+      "id": "c073",
+      "text": "For here or to go?",
+      "type": "fixed",
+      "vi": "Dùng tại chỗ hay mang đi?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Gọi món ở nhà hàng",
+      "examples": [
+        {
+          "id": "d13e01",
+          "en": "For here or to go?",
+          "vi": "Dùng tại chỗ hay mang đi?"
+        }
+      ]
+    },
+    {
+      "id": "c074",
+      "text": "… to go, please.",
+      "type": "stem",
+      "vi": "… mang đi nhé.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Gọi món ở nhà hàng",
+      "examples": [
+        {
+          "id": "d13e02",
+          "en": "A coffee to go, please.",
+          "vi": "Cho mình một cà phê mang đi nhé."
+        },
+        {
+          "id": "d13e03",
+          "en": "Two sandwiches to go, please.",
+          "vi": "Cho mình hai cái bánh mì mang đi nhé."
+        }
+      ]
+    },
+    {
+      "id": "c075",
+      "text": "Anything else?",
+      "type": "fixed",
+      "vi": "Bạn cần gì thêm không?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Gọi món ở nhà hàng",
+      "examples": [
+        {
+          "id": "d13e04",
+          "en": "Anything else? — No, that's it.",
+          "vi": "Bạn cần gì thêm không? — Không, vậy thôi."
+        }
+      ]
+    },
+    {
+      "id": "c076",
+      "text": "That's all, thanks.",
+      "type": "fixed",
+      "vi": "Vậy thôi, cảm ơn.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Gọi món ở nhà hàng",
+      "examples": [
+        {
+          "id": "d13e05",
+          "en": "That's all, thanks.",
+          "vi": "Vậy thôi, cảm ơn."
+        }
+      ]
+    },
+    {
+      "id": "c077",
+      "text": "Is this seat taken?",
+      "type": "fixed",
+      "vi": "Chỗ này có ai ngồi chưa?",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Việt hỏi \"có ai ngồi chưa\"; tiếng Anh hỏi \"chỗ này bị lấy rồi à?\" (taken).",
+      "register": "polite",
+      "reduced": null,
+      "source": "core-inventory A1 / Gọi món ở nhà hàng",
+      "examples": [
+        {
+          "id": "d13e06",
+          "en": "Excuse me, is this seat taken?",
+          "vi": "Xin lỗi, chỗ này có ai ngồi chưa?"
+        }
+      ]
+    },
+    {
+      "id": "c078",
+      "text": "Enjoy!",
+      "type": "fixed",
+      "vi": "Chúc ngon miệng!",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Gọi món ở nhà hàng",
+      "examples": [
+        {
+          "id": "d13e07",
+          "en": "Here's your coffee. Enjoy!",
+          "vi": "Cà phê của bạn đây. Chúc ngon miệng!"
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Mua cà phê mang đi",
+    "lines": [
+      {
+        "id": "d13l01",
+        "speaker": "A",
+        "en": "Hi! What can I get you?",
+        "vi": "Chào! Bạn dùng gì ạ?",
+        "chunks": []
+      },
+      {
+        "id": "d13l02",
+        "speaker": "B",
+        "en": "Can I get a coffee, please?",
+        "vi": "Cho mình một ly cà phê được không?",
+        "chunks": [
+          "c068"
+        ]
+      },
+      {
+        "id": "d13l03",
+        "speaker": "A",
+        "en": "Sure. For here or to go?",
+        "vi": "Được. Dùng tại chỗ hay mang đi?",
+        "chunks": [
+          "c073"
+        ]
+      },
+      {
+        "id": "d13l04",
+        "speaker": "B",
+        "en": "Sorry, can you say that again?",
+        "vi": "Xin lỗi, bạn nói lại được không?",
+        "chunks": [
+          "c019"
+        ]
+      },
+      {
+        "id": "d13l05",
+        "speaker": "A",
+        "en": "For here or to go?",
+        "vi": "Dùng tại chỗ hay mang đi?",
+        "chunks": [
+          "c073"
+        ]
+      },
+      {
+        "id": "d13l06",
+        "speaker": "B",
+        "en": "To go, please.",
+        "vi": "Mang đi nhé.",
+        "chunks": [
+          "c074"
+        ]
+      },
+      {
+        "id": "d13l07",
+        "speaker": "A",
+        "en": "Anything else?",
+        "vi": "Bạn cần gì thêm không?",
+        "chunks": [
+          "c075"
+        ]
+      },
+      {
+        "id": "d13l08",
+        "speaker": "B",
+        "en": "That's all, thanks.",
+        "vi": "Vậy thôi, cảm ơn.",
+        "chunks": [
+          "c076"
+        ]
+      },
+      {
+        "id": "d13l09",
+        "speaker": "A",
+        "en": "It's four dollars. Enjoy!",
+        "vi": "Bốn đô. Chúc ngon miệng!",
+        "chunks": [
+          "c026",
+          "c078"
+        ]
+      },
+      {
+        "id": "d13l10",
+        "speaker": "B",
+        "en": "Thank you so much.",
+        "vi": "Cảm ơn nhiều lắm.",
+        "chunks": [
+          "c016"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c074",
+      "cues": [
+        {
+          "id": "d13s01",
+          "cue_vi": "một cà phê mang đi",
+          "answer": "A coffee to go, please.",
+          "accept": [
+            "A coffee to go, please"
+          ]
+        },
+        {
+          "id": "d13s02",
+          "cue_vi": "hai cái bánh mì mang đi",
+          "answer": "Two sandwiches to go, please.",
+          "accept": [
+            "Two sandwiches to go, please"
+          ]
+        },
+        {
+          "id": "d13s03",
+          "cue_vi": "một ly trà mang đi",
+          "answer": "A tea to go, please.",
+          "accept": [
+            "A tea to go, please"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Tìm chỗ ngồi trong một quán đông khách.",
+    "turns": [
+      {
+        "id": "d13r01",
+        "role": "partner",
+        "en": "Hi! This café is very busy today.",
+        "vi": "Chào! Hôm nay quán này rất đông."
+      },
+      {
+        "id": "d13r02",
+        "role": "you",
+        "cue_vi": "Gọi lịch sự và hỏi chỗ này có ai ngồi chưa.",
+        "model": "Excuse me, is this seat taken?",
+        "uses": [
+          "c054",
+          "c077"
+        ]
+      },
+      {
+        "id": "d13r03",
+        "role": "partner",
+        "en": "No, go ahead.",
+        "vi": "Chưa, bạn cứ ngồi."
+      },
+      {
+        "id": "d13r04",
+        "role": "you",
+        "cue_vi": "Cảm ơn và nói bạn muốn ngồi xuống.",
+        "model": "Thank you so much. I want to sit down.",
+        "uses": [
+          "c016",
+          "c013"
+        ]
+      },
+      {
+        "id": "d13r05",
+        "role": "partner",
+        "en": "No problem. Enjoy your coffee!",
+        "vi": "Không có gì. Chúc bạn uống cà phê ngon!"
+      }
+    ]
+  }
+}

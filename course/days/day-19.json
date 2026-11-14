@@ -1,0 +1,319 @@
+{
+  "day": 19,
+  "level": "A1",
+  "function": "Rủ rê và hẹn",
+  "title": "Rủ đi chơi, từ chối khéo",
+  "intro_vi": "Hôm nay: đề xuất một việc hay một giờ, từ chối nhẹ nhàng và chốt lịch.",
+  "chunks": [
+    {
+      "id": "c109",
+      "text": "How about …?",
+      "type": "stem",
+      "vi": "… thì sao? / Hay là …?",
+      "vi_equivalent": false,
+      "contrast_vi": "Sau \"How about\" là danh từ hoặc động từ thêm -ing (How about Friday? How about going…?).",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Rủ rê và hẹn",
+      "examples": [
+        {
+          "id": "d19e01",
+          "en": "How about Friday?",
+          "vi": "Thứ Sáu thì sao?"
+        },
+        {
+          "id": "d19e02",
+          "en": "How about going for a walk?",
+          "vi": "Hay là mình đi dạo?"
+        }
+      ]
+    },
+    {
+      "id": "c110",
+      "text": "Why don't we …?",
+      "type": "stem",
+      "vi": "Sao mình không … nhỉ?",
+      "vi_equivalent": false,
+      "contrast_vi": "Nghĩa là đề nghị cùng làm, không phải hỏi lý do; tiếng Việt dùng \"sao mình không …\".",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Rủ rê và hẹn",
+      "examples": [
+        {
+          "id": "d19e03",
+          "en": "Why don't we get lunch?",
+          "vi": "Sao mình không đi ăn trưa nhỉ?"
+        },
+        {
+          "id": "d19e04",
+          "en": "Why don't we go tomorrow?",
+          "vi": "Sao mình không đi ngày mai nhỉ?"
+        }
+      ]
+    },
+    {
+      "id": "c111",
+      "text": "I can't make it.",
+      "type": "fixed",
+      "vi": "Mình không đến được.",
+      "vi_equivalent": false,
+      "contrast_vi": "\"Make it\" ở đây nghĩa là đến được, tham dự được; không dịch từng chữ.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Rủ rê và hẹn",
+      "examples": [
+        {
+          "id": "d19e05",
+          "en": "Sorry, I can't make it tonight.",
+          "vi": "Xin lỗi, tối nay mình không đến được."
+        }
+      ]
+    },
+    {
+      "id": "c112",
+      "text": "Maybe next time.",
+      "type": "fixed",
+      "vi": "Để lần sau nhé.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Rủ rê và hẹn",
+      "examples": [
+        {
+          "id": "d19e06",
+          "en": "I can't go. Maybe next time.",
+          "vi": "Mình không đi được. Để lần sau nhé."
+        }
+      ]
+    },
+    {
+      "id": "c113",
+      "text": "Let me check.",
+      "type": "fixed",
+      "vi": "Để mình xem lại đã.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": "lemme check",
+      "source": "core-inventory A1 / Rủ rê và hẹn",
+      "examples": [
+        {
+          "id": "d19e07",
+          "en": "Let me check my schedule.",
+          "vi": "Để mình xem lịch đã."
+        }
+      ]
+    },
+    {
+      "id": "c114",
+      "text": "That works for me.",
+      "type": "fixed",
+      "vi": "Vậy được với mình.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Rủ rê và hẹn",
+      "examples": [
+        {
+          "id": "d19e08",
+          "en": "Eight o'clock? That works for me.",
+          "vi": "Tám giờ à? Vậy được với mình."
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Hẹn ăn tối",
+    "lines": [
+      {
+        "id": "d19l01",
+        "speaker": "A",
+        "en": "Hey! Are you free on Friday?",
+        "vi": "Này! Thứ Sáu bạn rảnh không?",
+        "chunks": [
+          "c105"
+        ]
+      },
+      {
+        "id": "d19l02",
+        "speaker": "B",
+        "en": "Let me check. Yes, I'm free.",
+        "vi": "Để mình xem đã. Có, mình rảnh.",
+        "chunks": [
+          "c113"
+        ]
+      },
+      {
+        "id": "d19l03",
+        "speaker": "A",
+        "en": "Why don't we get dinner?",
+        "vi": "Sao mình không đi ăn tối nhỉ?",
+        "chunks": [
+          "c110"
+        ]
+      },
+      {
+        "id": "d19l04",
+        "speaker": "B",
+        "en": "Sounds good! What time?",
+        "vi": "Nghe hay đó! Mấy giờ?",
+        "chunks": [
+          "c107"
+        ]
+      },
+      {
+        "id": "d19l05",
+        "speaker": "A",
+        "en": "How about seven?",
+        "vi": "Bảy giờ thì sao?",
+        "chunks": [
+          "c109"
+        ]
+      },
+      {
+        "id": "d19l06",
+        "speaker": "B",
+        "en": "Sorry, I can't make it at seven. I have a meeting.",
+        "vi": "Xin lỗi, bảy giờ mình không đến được. Mình có một cuộc họp.",
+        "chunks": [
+          "c111",
+          "c061"
+        ]
+      },
+      {
+        "id": "d19l07",
+        "speaker": "A",
+        "en": "No problem. How about eight?",
+        "vi": "Không sao. Tám giờ thì sao?",
+        "chunks": [
+          "c017",
+          "c109"
+        ]
+      },
+      {
+        "id": "d19l08",
+        "speaker": "B",
+        "en": "That works for me. See you at eight!",
+        "vi": "Vậy được với mình. Hẹn gặp lúc tám giờ!",
+        "chunks": [
+          "c114",
+          "c035"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c109",
+      "cues": [
+        {
+          "id": "d19s01",
+          "cue_vi": "đề nghị thứ Sáu",
+          "answer": "How about Friday?",
+          "accept": [
+            "How about Friday"
+          ]
+        },
+        {
+          "id": "d19s02",
+          "cue_vi": "đề nghị đi dạo",
+          "answer": "How about going for a walk?",
+          "accept": [
+            "How about going for a walk",
+            "How about a walk"
+          ]
+        },
+        {
+          "id": "d19s03",
+          "cue_vi": "đề nghị chỗ này",
+          "answer": "How about this place?",
+          "accept": [
+            "How about this place"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c110",
+      "cues": [
+        {
+          "id": "d19s04",
+          "cue_vi": "đề nghị đi ăn trưa",
+          "answer": "Why don't we get lunch?",
+          "accept": [
+            "Why don't we get lunch"
+          ]
+        },
+        {
+          "id": "d19s05",
+          "cue_vi": "đề nghị đi vào ngày mai",
+          "answer": "Why don't we go tomorrow?",
+          "accept": [
+            "Why don't we go tomorrow"
+          ]
+        },
+        {
+          "id": "d19s06",
+          "cue_vi": "đề nghị ngồi ở ngoài",
+          "answer": "Why don't we sit outside?",
+          "accept": [
+            "Why don't we sit outside"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Từ chối một lời rủ và hẹn lại.",
+    "turns": [
+      {
+        "id": "d19r01",
+        "role": "partner",
+        "en": "Hey! Why don't we see a movie tonight?",
+        "vi": "Này! Sao mình không đi xem phim tối nay nhỉ?"
+      },
+      {
+        "id": "d19r02",
+        "role": "you",
+        "cue_vi": "Nói tối nay bạn không đến được, để lần sau.",
+        "model": "Sorry, I can't make it. Maybe next time.",
+        "uses": [
+          "c111",
+          "c112"
+        ]
+      },
+      {
+        "id": "d19r03",
+        "role": "partner",
+        "en": "No problem. How about Sunday?",
+        "vi": "Không sao. Chủ nhật thì sao?"
+      },
+      {
+        "id": "d19r04",
+        "role": "you",
+        "cue_vi": "Nói để bạn xem lại đã.",
+        "model": "Let me check.",
+        "uses": [
+          "c113"
+        ]
+      },
+      {
+        "id": "d19r05",
+        "role": "partner",
+        "en": "Sure. Take your time.",
+        "vi": "Được. Bạn cứ từ từ."
+      },
+      {
+        "id": "d19r06",
+        "role": "you",
+        "cue_vi": "Nói vậy được với bạn.",
+        "model": "That works for me.",
+        "uses": [
+          "c114"
+        ]
+      }
+    ]
+  }
+}

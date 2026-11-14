@@ -1,0 +1,316 @@
+{
+  "day": 24,
+  "level": "A1",
+  "function": "Ý kiến",
+  "title": "Bạn nghĩ sao?",
+  "intro_vi": "Hôm nay: nói điều mình nghĩ, đồng ý hoặc không, trả lời \"còn tùy\" và hỏi ý kiến người khác.",
+  "chunks": [
+    {
+      "id": "c139",
+      "text": "I think …",
+      "type": "stem",
+      "vi": "Mình nghĩ là …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Ý kiến",
+      "examples": [
+        {
+          "id": "d24e01",
+          "en": "I think it's a good idea.",
+          "vi": "Mình nghĩ đó là ý hay."
+        },
+        {
+          "id": "d24e02",
+          "en": "I think he's right.",
+          "vi": "Mình nghĩ anh ấy đúng."
+        }
+      ]
+    },
+    {
+      "id": "c140",
+      "text": "I don't think …",
+      "type": "stem",
+      "vi": "Mình không nghĩ là …",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh phủ định ở \"think\" (I don't think it's…), không phủ định mệnh đề phía sau.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Ý kiến",
+      "examples": [
+        {
+          "id": "d24e03",
+          "en": "I don't think it's expensive.",
+          "vi": "Mình không nghĩ là nó đắt."
+        },
+        {
+          "id": "d24e04",
+          "en": "I don't think he's coming.",
+          "vi": "Mình không nghĩ anh ấy sẽ đến."
+        }
+      ]
+    },
+    {
+      "id": "c141",
+      "text": "I agree.",
+      "type": "fixed",
+      "vi": "Mình đồng ý.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Ý kiến",
+      "examples": [
+        {
+          "id": "d24e05",
+          "en": "I agree with you.",
+          "vi": "Mình đồng ý với bạn."
+        }
+      ]
+    },
+    {
+      "id": "c142",
+      "text": "That's a good idea.",
+      "type": "fixed",
+      "vi": "Ý hay đó.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Ý kiến",
+      "examples": [
+        {
+          "id": "d24e06",
+          "en": "That's a good idea. Let's do it.",
+          "vi": "Ý hay đó. Mình làm thôi."
+        }
+      ]
+    },
+    {
+      "id": "c143",
+      "text": "It depends.",
+      "type": "fixed",
+      "vi": "Còn tùy.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Ý kiến",
+      "examples": [
+        {
+          "id": "d24e07",
+          "en": "Do you like spicy food? — It depends.",
+          "vi": "Bạn có thích đồ cay không? — Còn tùy."
+        }
+      ]
+    },
+    {
+      "id": "c144",
+      "text": "What do you think?",
+      "type": "fixed",
+      "vi": "Bạn nghĩ sao?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Ý kiến",
+      "examples": [
+        {
+          "id": "d24e08",
+          "en": "I like this one. What do you think?",
+          "vi": "Mình thích cái này. Bạn nghĩ sao?"
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Chọn chỗ ăn tối",
+    "lines": [
+      {
+        "id": "d24l01",
+        "speaker": "A",
+        "en": "Let's get dinner. What do you think?",
+        "vi": "Mình đi ăn tối nhé. Bạn nghĩ sao?",
+        "chunks": [
+          "c106",
+          "c144"
+        ]
+      },
+      {
+        "id": "d24l02",
+        "speaker": "B",
+        "en": "That's a good idea. How about the Italian place?",
+        "vi": "Ý hay đó. Quán Ý thì sao?",
+        "chunks": [
+          "c142",
+          "c109"
+        ]
+      },
+      {
+        "id": "d24l03",
+        "speaker": "A",
+        "en": "I think it's too expensive.",
+        "vi": "Mình nghĩ nó đắt quá.",
+        "chunks": [
+          "c139"
+        ]
+      },
+      {
+        "id": "d24l04",
+        "speaker": "B",
+        "en": "I don't think so. It's twenty dollars.",
+        "vi": "Mình không nghĩ vậy. Hai mươi đô thôi.",
+        "chunks": [
+          "c140"
+        ]
+      },
+      {
+        "id": "d24l05",
+        "speaker": "A",
+        "en": "It depends. What do you want to eat?",
+        "vi": "Còn tùy. Bạn muốn ăn gì?",
+        "chunks": [
+          "c143"
+        ]
+      },
+      {
+        "id": "d24l06",
+        "speaker": "B",
+        "en": "I want pizza.",
+        "vi": "Mình muốn ăn pizza.",
+        "chunks": []
+      },
+      {
+        "id": "d24l07",
+        "speaker": "A",
+        "en": "I agree! Pizza is great.",
+        "vi": "Mình đồng ý! Pizza tuyệt lắm.",
+        "chunks": [
+          "c141"
+        ]
+      },
+      {
+        "id": "d24l08",
+        "speaker": "B",
+        "en": "Sounds good. See you at seven.",
+        "vi": "Nghe hay đó. Hẹn gặp lúc bảy giờ.",
+        "chunks": [
+          "c107",
+          "c035"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c139",
+      "cues": [
+        {
+          "id": "d24s01",
+          "cue_vi": "nghĩ đó là ý hay",
+          "answer": "I think it's a good idea.",
+          "accept": [
+            "I think it's a good idea"
+          ]
+        },
+        {
+          "id": "d24s02",
+          "cue_vi": "nghĩ anh ấy đúng",
+          "answer": "I think he's right.",
+          "accept": [
+            "I think he's right"
+          ]
+        },
+        {
+          "id": "d24s03",
+          "cue_vi": "nghĩ nó hơi nhỏ",
+          "answer": "I think it's a little small.",
+          "accept": [
+            "I think it's a little small",
+            "I think it's a bit small"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c140",
+      "cues": [
+        {
+          "id": "d24s04",
+          "cue_vi": "không nghĩ là đắt",
+          "answer": "I don't think it's expensive.",
+          "accept": [
+            "I don't think it's expensive"
+          ]
+        },
+        {
+          "id": "d24s05",
+          "cue_vi": "không nghĩ đó là ý hay",
+          "answer": "I don't think it's a good idea.",
+          "accept": [
+            "I don't think it's a good idea"
+          ]
+        },
+        {
+          "id": "d24s06",
+          "cue_vi": "không nghĩ anh ấy sẽ đến",
+          "answer": "I don't think he's coming.",
+          "accept": [
+            "I don't think he's coming"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Hai người bạn xem một cái áo khoác.",
+    "turns": [
+      {
+        "id": "d24r01",
+        "role": "partner",
+        "en": "I like this jacket. What do you think?",
+        "vi": "Mình thích cái áo khoác này. Bạn nghĩ sao?"
+      },
+      {
+        "id": "d24r02",
+        "role": "you",
+        "cue_vi": "Nói bạn nghĩ nó rất đẹp.",
+        "model": "I think it's really nice.",
+        "uses": [
+          "c139"
+        ]
+      },
+      {
+        "id": "d24r03",
+        "role": "partner",
+        "en": "It's thirty dollars. Is that too expensive?",
+        "vi": "Ba mươi đô. Vậy có đắt quá không?"
+      },
+      {
+        "id": "d24r04",
+        "role": "you",
+        "cue_vi": "Nói bạn không nghĩ vậy.",
+        "model": "I don't think so.",
+        "uses": [
+          "c140"
+        ]
+      },
+      {
+        "id": "d24r05",
+        "role": "partner",
+        "en": "Okay. Let's get it!",
+        "vi": "Được. Mình mua nó nhé!"
+      },
+      {
+        "id": "d24r06",
+        "role": "you",
+        "cue_vi": "Nói bạn đồng ý.",
+        "model": "I agree.",
+        "uses": [
+          "c141"
+        ]
+      }
+    ]
+  }
+}

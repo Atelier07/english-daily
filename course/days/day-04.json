@@ -1,0 +1,311 @@
+{
+  "day": 4,
+  "level": "A0",
+  "function": "Nghe chưa rõ và xin giúp",
+  "title": "Xin nói lại, nói chậm",
+  "intro_vi": "Hôm nay: khi nghe chưa kịp, biết xin người ta nói lại hoặc nói chậm hơn, và hỏi nghĩa một từ.",
+  "chunks": [
+    {
+      "id": "c019",
+      "text": "Sorry, can you say that again?",
+      "type": "fixed",
+      "vi": "Xin lỗi, bạn nói lại được không?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "polite",
+      "reduced": null,
+      "source": "core-inventory A0 / Nghe chưa rõ và xin giúp",
+      "examples": [
+        {
+          "id": "d04e01",
+          "en": "Sorry, can you say that again?",
+          "vi": "Xin lỗi, bạn nói lại được không?"
+        }
+      ]
+    },
+    {
+      "id": "c020",
+      "text": "I don't understand.",
+      "type": "fixed",
+      "vi": "Mình không hiểu.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Nghe chưa rõ và xin giúp",
+      "examples": [
+        {
+          "id": "d04e02",
+          "en": "Sorry, I don't understand.",
+          "vi": "Xin lỗi, mình không hiểu."
+        }
+      ]
+    },
+    {
+      "id": "c021",
+      "text": "Can you speak more slowly?",
+      "type": "fixed",
+      "vi": "Bạn nói chậm hơn được không?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "polite",
+      "reduced": null,
+      "source": "core-inventory A0 / Nghe chưa rõ và xin giúp",
+      "examples": [
+        {
+          "id": "d04e03",
+          "en": "Can you speak more slowly, please?",
+          "vi": "Bạn nói chậm hơn một chút được không?"
+        }
+      ]
+    },
+    {
+      "id": "c022",
+      "text": "What does … mean?",
+      "type": "stem",
+      "vi": "… nghĩa là gì?",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Việt đặt \"nghĩa là gì\" ở cuối; tiếng Anh đưa \"What does\" lên đầu, \"mean\" ở cuối.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Nghe chưa rõ và xin giúp",
+      "examples": [
+        {
+          "id": "d04e04",
+          "en": "What does \"busy\" mean?",
+          "vi": "\"Busy\" nghĩa là gì?"
+        },
+        {
+          "id": "d04e05",
+          "en": "What does this word mean?",
+          "vi": "Từ này nghĩa là gì?"
+        }
+      ]
+    },
+    {
+      "id": "c023",
+      "text": "How do you say … in English?",
+      "type": "stem",
+      "vi": "Nói … bằng tiếng Anh thế nào?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Nghe chưa rõ và xin giúp",
+      "examples": [
+        {
+          "id": "d04e06",
+          "en": "How do you say \"cảm ơn\" in English?",
+          "vi": "\"Cảm ơn\" nói bằng tiếng Anh thế nào?"
+        },
+        {
+          "id": "d04e07",
+          "en": "How do you say this in English?",
+          "vi": "Cái này nói bằng tiếng Anh thế nào?"
+        }
+      ]
+    },
+    {
+      "id": "c024",
+      "text": "I see.",
+      "type": "fixed",
+      "vi": "À, mình hiểu rồi.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A0 / Nghe chưa rõ và xin giúp",
+      "examples": [
+        {
+          "id": "d04e08",
+          "en": "Oh, I see. Thanks.",
+          "vi": "À, mình hiểu rồi. Cảm ơn."
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Ai đó nói nhanh với bạn",
+    "lines": [
+      {
+        "id": "d04l01",
+        "speaker": "A",
+        "en": "Hi! How are you? Do you want to get a coffee?",
+        "vi": "Chào! Bạn khỏe không? Bạn có muốn đi uống cà phê không?",
+        "chunks": [
+          "c005",
+          "c015"
+        ]
+      },
+      {
+        "id": "d04l02",
+        "speaker": "B",
+        "en": "Sorry, can you say that again?",
+        "vi": "Xin lỗi, bạn nói lại được không?",
+        "chunks": [
+          "c019"
+        ]
+      },
+      {
+        "id": "d04l03",
+        "speaker": "A",
+        "en": "Do you want to get a coffee?",
+        "vi": "Bạn có muốn đi uống cà phê không?",
+        "chunks": [
+          "c015"
+        ]
+      },
+      {
+        "id": "d04l04",
+        "speaker": "B",
+        "en": "Oh, I see. Can you speak more slowly, please?",
+        "vi": "À, mình hiểu rồi. Bạn nói chậm hơn một chút được không?",
+        "chunks": [
+          "c024",
+          "c021"
+        ]
+      },
+      {
+        "id": "d04l05",
+        "speaker": "A",
+        "en": "Sure. Do... you... want... a coffee?",
+        "vi": "Được. Bạn... có... muốn... một ly cà phê... không?",
+        "chunks": [
+          "c015"
+        ]
+      },
+      {
+        "id": "d04l06",
+        "speaker": "B",
+        "en": "Yes! I want to get a coffee. Thank you so much.",
+        "vi": "Có! Mình muốn đi uống cà phê. Cảm ơn nhiều lắm.",
+        "chunks": [
+          "c013",
+          "c016"
+        ]
+      },
+      {
+        "id": "d04l07",
+        "speaker": "A",
+        "en": "No problem.",
+        "vi": "Không có gì.",
+        "chunks": [
+          "c017"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c022",
+      "cues": [
+        {
+          "id": "d04s01",
+          "cue_vi": "hỏi \"busy\" nghĩa là gì",
+          "answer": "What does busy mean?",
+          "accept": [
+            "What does busy mean"
+          ]
+        },
+        {
+          "id": "d04s02",
+          "cue_vi": "hỏi \"borrow\" nghĩa là gì",
+          "answer": "What does borrow mean?",
+          "accept": [
+            "What does borrow mean"
+          ]
+        },
+        {
+          "id": "d04s03",
+          "cue_vi": "hỏi từ này nghĩa là gì",
+          "answer": "What does this word mean?",
+          "accept": [
+            "What does this word mean",
+            "What does this mean"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c023",
+      "cues": [
+        {
+          "id": "d04s04",
+          "cue_vi": "hỏi \"cảm ơn\" nói tiếng Anh thế nào",
+          "answer": "How do you say \"cảm ơn\" in English?",
+          "accept": [
+            "How do you say \"cảm ơn\" in English",
+            "How do you say cảm ơn in English"
+          ]
+        },
+        {
+          "id": "d04s05",
+          "cue_vi": "hỏi \"đũa\" nói tiếng Anh thế nào",
+          "answer": "How do you say \"đũa\" in English?",
+          "accept": [
+            "How do you say \"đũa\" in English",
+            "How do you say đũa in English"
+          ]
+        },
+        {
+          "id": "d04s06",
+          "cue_vi": "hỏi cái này nói tiếng Anh thế nào",
+          "answer": "How do you say this in English?",
+          "accept": [
+            "How do you say this in English"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Có người nói nhanh khi rủ bạn đi ăn.",
+    "turns": [
+      {
+        "id": "d04r01",
+        "role": "partner",
+        "en": "Hi! Do you want to get lunch with me?",
+        "vi": "Chào! Bạn có muốn đi ăn trưa với mình không?"
+      },
+      {
+        "id": "d04r02",
+        "role": "you",
+        "cue_vi": "Xin họ nói chậm hơn.",
+        "model": "Can you speak more slowly?",
+        "uses": [
+          "c021"
+        ]
+      },
+      {
+        "id": "d04r03",
+        "role": "partner",
+        "en": "Do... you... want... lunch... with me?",
+        "vi": "Bạn... có... muốn... ăn trưa... với mình... không?"
+      },
+      {
+        "id": "d04r04",
+        "role": "you",
+        "cue_vi": "Nói bạn muốn.",
+        "model": "Yes! I want to get lunch.",
+        "uses": [
+          "c013"
+        ]
+      },
+      {
+        "id": "d04r05",
+        "role": "partner",
+        "en": "Great! I know a good place.",
+        "vi": "Hay quá! Mình biết một chỗ ngon."
+      },
+      {
+        "id": "d04r06",
+        "role": "you",
+        "cue_vi": "Cảm ơn thật nhiều.",
+        "model": "Thank you so much.",
+        "uses": [
+          "c016"
+        ]
+      }
+    ]
+  }
+}

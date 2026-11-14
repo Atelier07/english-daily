@@ -1,0 +1,447 @@
+{
+  "day": 21,
+  "level": "A1",
+  "function": "Kể chuyện đã xảy ra",
+  "title": "Mình đã thấy, mình đã gặp",
+  "intro_vi": "Hôm nay: kể thêm chuyện quá khứ: đã thấy, đã gặp, đã quên, không làm gì, và hỏi \"Bạn có … không?\" về chuyện đã qua.",
+  "chunks": [
+    {
+      "id": "c121",
+      "text": "I didn't …",
+      "type": "stem",
+      "vi": "Mình đã không …",
+      "vi_equivalent": false,
+      "contrast_vi": "Sau \"didn't\", động từ trở về nguyên mẫu (I didn't go, không phải went).",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Kể chuyện đã xảy ra",
+      "examples": [
+        {
+          "id": "d21e01",
+          "en": "I didn't sleep well.",
+          "vi": "Mình đã ngủ không ngon."
+        },
+        {
+          "id": "d21e02",
+          "en": "I didn't go out.",
+          "vi": "Mình đã không đi đâu."
+        }
+      ]
+    },
+    {
+      "id": "c122",
+      "text": "Did you …?",
+      "type": "stem",
+      "vi": "Bạn có … không? (chuyện đã qua)",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh dùng \"Did\" để hỏi chuyện đã qua; động từ sau đó giữ nguyên mẫu.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Kể chuyện đã xảy ra",
+      "examples": [
+        {
+          "id": "d21e03",
+          "en": "Did you see the game?",
+          "vi": "Bạn có xem trận đấu không?"
+        },
+        {
+          "id": "d21e04",
+          "en": "Did you have fun?",
+          "vi": "Bạn có vui không?"
+        }
+      ]
+    },
+    {
+      "id": "c123",
+      "text": "I saw …",
+      "type": "stem",
+      "vi": "Mình đã thấy / đã xem …",
+      "vi_equivalent": false,
+      "contrast_vi": "\"Saw\" là quá khứ của \"see\".",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Kể chuyện đã xảy ra",
+      "examples": [
+        {
+          "id": "d21e05",
+          "en": "I saw a great movie.",
+          "vi": "Mình đã xem một bộ phim hay."
+        },
+        {
+          "id": "d21e06",
+          "en": "I saw Tom yesterday.",
+          "vi": "Hôm qua mình đã gặp Tom."
+        }
+      ]
+    },
+    {
+      "id": "c124",
+      "text": "I met …",
+      "type": "stem",
+      "vi": "Mình đã gặp …",
+      "vi_equivalent": false,
+      "contrast_vi": "\"Met\" là quá khứ của \"meet\".",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Kể chuyện đã xảy ra",
+      "examples": [
+        {
+          "id": "d21e07",
+          "en": "I met a nice person.",
+          "vi": "Mình đã gặp một người rất tốt."
+        },
+        {
+          "id": "d21e08",
+          "en": "I met some friends.",
+          "vi": "Mình đã gặp vài người bạn."
+        }
+      ]
+    },
+    {
+      "id": "c125",
+      "text": "I forgot to …",
+      "type": "stem",
+      "vi": "Mình quên … mất.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Kể chuyện đã xảy ra",
+      "examples": [
+        {
+          "id": "d21e09",
+          "en": "I forgot to call you.",
+          "vi": "Mình quên gọi cho bạn mất."
+        },
+        {
+          "id": "d21e10",
+          "en": "I forgot to buy milk.",
+          "vi": "Mình quên mua sữa mất."
+        }
+      ]
+    },
+    {
+      "id": "c126",
+      "text": "I was …",
+      "type": "stem",
+      "vi": "Mình đã (ở) …",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh cần \"was\" (quá khứ của am); tiếng Việt không có động từ nối.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A1 / Kể chuyện đã xảy ra",
+      "examples": [
+        {
+          "id": "d21e11",
+          "en": "I was at home.",
+          "vi": "Mình đã ở nhà."
+        },
+        {
+          "id": "d21e12",
+          "en": "I was really tired.",
+          "vi": "Mình đã rất mệt."
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Hỏi chuyện tối qua",
+    "lines": [
+      {
+        "id": "d21l01",
+        "speaker": "A",
+        "en": "Hi! What did you do last night?",
+        "vi": "Chào! Tối qua bạn đã làm gì?",
+        "chunks": [
+          "c120"
+        ]
+      },
+      {
+        "id": "d21l02",
+        "speaker": "B",
+        "en": "I saw a movie. Did you see it?",
+        "vi": "Mình đã xem phim. Bạn có xem chưa?",
+        "chunks": [
+          "c123",
+          "c122"
+        ]
+      },
+      {
+        "id": "d21l03",
+        "speaker": "A",
+        "en": "No, I didn't. I was at home. I forgot to buy a ticket.",
+        "vi": "Chưa. Mình đã ở nhà. Mình quên mua vé mất.",
+        "chunks": [
+          "c121",
+          "c126",
+          "c125"
+        ]
+      },
+      {
+        "id": "d21l04",
+        "speaker": "B",
+        "en": "Oh, I see. I met Tom there.",
+        "vi": "À, mình hiểu rồi. Mình đã gặp Tom ở đó.",
+        "chunks": [
+          "c024",
+          "c124"
+        ]
+      },
+      {
+        "id": "d21l05",
+        "speaker": "A",
+        "en": "Really? How was it?",
+        "vi": "Thật à? Phim thế nào?",
+        "chunks": [
+          "c012"
+        ]
+      },
+      {
+        "id": "d21l06",
+        "speaker": "B",
+        "en": "It was great! Let's go together.",
+        "vi": "Hay lắm! Mình đi cùng nhau đi.",
+        "chunks": [
+          "c118",
+          "c106"
+        ]
+      },
+      {
+        "id": "d21l07",
+        "speaker": "A",
+        "en": "Sounds good!",
+        "vi": "Nghe hay đó!",
+        "chunks": [
+          "c107"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c121",
+      "cues": [
+        {
+          "id": "d21s01",
+          "cue_vi": "đã ngủ không ngon",
+          "answer": "I didn't sleep well.",
+          "accept": [
+            "I didn't sleep well"
+          ]
+        },
+        {
+          "id": "d21s02",
+          "cue_vi": "đã không đi đâu",
+          "answer": "I didn't go out.",
+          "accept": [
+            "I didn't go out"
+          ]
+        },
+        {
+          "id": "d21s03",
+          "cue_vi": "đã không hiểu",
+          "answer": "I didn't understand.",
+          "accept": [
+            "I didn't understand"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c122",
+      "cues": [
+        {
+          "id": "d21s04",
+          "cue_vi": "hỏi có xem trận đấu không",
+          "answer": "Did you see the game?",
+          "accept": [
+            "Did you see the game"
+          ]
+        },
+        {
+          "id": "d21s05",
+          "cue_vi": "hỏi có vui không",
+          "answer": "Did you have fun?",
+          "accept": [
+            "Did you have fun"
+          ]
+        },
+        {
+          "id": "d21s06",
+          "cue_vi": "hỏi có nhận tin nhắn không",
+          "answer": "Did you get my message?",
+          "accept": [
+            "Did you get my message"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c123",
+      "cues": [
+        {
+          "id": "d21s07",
+          "cue_vi": "đã xem một bộ phim hay",
+          "answer": "I saw a great movie.",
+          "accept": [
+            "I saw a great movie"
+          ]
+        },
+        {
+          "id": "d21s08",
+          "cue_vi": "hôm qua đã thấy Tom",
+          "answer": "I saw Tom yesterday.",
+          "accept": [
+            "I saw Tom yesterday"
+          ]
+        },
+        {
+          "id": "d21s09",
+          "cue_vi": "đã xem một video vui",
+          "answer": "I saw a funny video.",
+          "accept": [
+            "I saw a funny video"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c124",
+      "cues": [
+        {
+          "id": "d21s10",
+          "cue_vi": "đã gặp một người tốt",
+          "answer": "I met a nice person.",
+          "accept": [
+            "I met a nice person"
+          ]
+        },
+        {
+          "id": "d21s11",
+          "cue_vi": "đã gặp vài người bạn",
+          "answer": "I met some friends.",
+          "accept": [
+            "I met some friends"
+          ]
+        },
+        {
+          "id": "d21s12",
+          "cue_vi": "đã gặp một người bạn cũ",
+          "answer": "I met an old friend.",
+          "accept": [
+            "I met an old friend"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c125",
+      "cues": [
+        {
+          "id": "d21s13",
+          "cue_vi": "quên gọi cho bạn",
+          "answer": "I forgot to call you.",
+          "accept": [
+            "I forgot to call you"
+          ]
+        },
+        {
+          "id": "d21s14",
+          "cue_vi": "quên mua sữa",
+          "answer": "I forgot to buy milk.",
+          "accept": [
+            "I forgot to buy milk"
+          ]
+        },
+        {
+          "id": "d21s15",
+          "cue_vi": "quên mang ví",
+          "answer": "I forgot to bring my wallet.",
+          "accept": [
+            "I forgot to bring my wallet"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c126",
+      "cues": [
+        {
+          "id": "d21s16",
+          "cue_vi": "đã ở nhà",
+          "answer": "I was at home.",
+          "accept": [
+            "I was at home"
+          ]
+        },
+        {
+          "id": "d21s17",
+          "cue_vi": "đã rất mệt",
+          "answer": "I was really tired.",
+          "accept": [
+            "I was really tired"
+          ]
+        },
+        {
+          "id": "d21s18",
+          "cue_vi": "đã ở chỗ làm",
+          "answer": "I was at work.",
+          "accept": [
+            "I was at work"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Giải thích vì sao bạn không gọi lại.",
+    "turns": [
+      {
+        "id": "d21r01",
+        "role": "partner",
+        "en": "Hey! Why didn't you call me?",
+        "vi": "Này! Sao bạn không gọi cho mình?"
+      },
+      {
+        "id": "d21r02",
+        "role": "you",
+        "cue_vi": "Nói bạn quên gọi.",
+        "model": "Sorry, I forgot to call you.",
+        "uses": [
+          "c125"
+        ]
+      },
+      {
+        "id": "d21r03",
+        "role": "partner",
+        "en": "That's okay. What did you do?",
+        "vi": "Không sao. Bạn đã làm gì?"
+      },
+      {
+        "id": "d21r04",
+        "role": "you",
+        "cue_vi": "Nói bạn đã gặp một người bạn.",
+        "model": "I met a friend.",
+        "uses": [
+          "c124"
+        ]
+      },
+      {
+        "id": "d21r05",
+        "role": "partner",
+        "en": "Nice! Did you have fun?",
+        "vi": "Hay quá! Bạn có vui không?"
+      },
+      {
+        "id": "d21r06",
+        "role": "you",
+        "cue_vi": "Nói rất vui, bạn đã xem một bộ phim hay.",
+        "model": "Yes! It was great. I saw a good movie.",
+        "uses": [
+          "c118",
+          "c123"
+        ]
+      }
+    ]
+  }
+}

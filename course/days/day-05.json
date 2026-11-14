@@ -1,0 +1,373 @@
+{
+  "day": 5,
+  "level": "A0",
+  "function": "Số và giá tiền",
+  "title": "Hỏi giá và trả tiền",
+  "intro_vi": "Hôm nay: hỏi giá, nghe giá, nói đắt quá, hỏi cái rẻ hơn và nói mình lấy.",
+  "chunks": [
+    {
+      "id": "c025",
+      "text": "How much is …?",
+      "type": "stem",
+      "vi": "… bao nhiêu tiền?",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Việt đặt \"bao nhiêu tiền\" ở cuối; tiếng Anh đưa \"How much\" lên đầu câu.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Số và giá tiền",
+      "examples": [
+        {
+          "id": "d05e01",
+          "en": "How much is this?",
+          "vi": "Cái này bao nhiêu tiền?"
+        },
+        {
+          "id": "d05e02",
+          "en": "How much is the coffee?",
+          "vi": "Ly cà phê này bao nhiêu tiền?"
+        }
+      ]
+    },
+    {
+      "id": "c026",
+      "text": "It's … dollars.",
+      "type": "stem",
+      "vi": "Giá … đô.",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Việt chỉ nói \"mười đô\"; tiếng Anh cần \"It's\" làm chủ ngữ.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Số và giá tiền",
+      "examples": [
+        {
+          "id": "d05e03",
+          "en": "It's ten dollars.",
+          "vi": "Mười đô."
+        },
+        {
+          "id": "d05e04",
+          "en": "It's fifteen dollars.",
+          "vi": "Mười lăm đô."
+        }
+      ]
+    },
+    {
+      "id": "c027",
+      "text": "That's too expensive.",
+      "type": "fixed",
+      "vi": "Đắt quá.",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Việt nói \"đắt quá\"; tiếng Anh cần \"That's\" (cái đó là) làm chủ ngữ.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Số và giá tiền",
+      "examples": [
+        {
+          "id": "d05e05",
+          "en": "Oh, that's too expensive.",
+          "vi": "Ôi, đắt quá."
+        }
+      ]
+    },
+    {
+      "id": "c028",
+      "text": "Do you have anything cheaper?",
+      "type": "fixed",
+      "vi": "Có cái nào rẻ hơn không?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "polite",
+      "reduced": null,
+      "source": "core-inventory A0 / Số và giá tiền",
+      "examples": [
+        {
+          "id": "d05e06",
+          "en": "Do you have anything cheaper?",
+          "vi": "Có cái nào rẻ hơn không?"
+        }
+      ]
+    },
+    {
+      "id": "c029",
+      "text": "I'll take …",
+      "type": "stem",
+      "vi": "Mình lấy …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Số và giá tiền",
+      "examples": [
+        {
+          "id": "d05e07",
+          "en": "I'll take this one.",
+          "vi": "Mình lấy cái này."
+        },
+        {
+          "id": "d05e08",
+          "en": "I'll take two.",
+          "vi": "Mình lấy hai cái."
+        }
+      ]
+    },
+    {
+      "id": "c030",
+      "text": "Can I pay by card?",
+      "type": "fixed",
+      "vi": "Mình trả bằng thẻ được không?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "polite",
+      "reduced": null,
+      "source": "core-inventory A0 / Số và giá tiền",
+      "examples": [
+        {
+          "id": "d05e09",
+          "en": "Can I pay by card?",
+          "vi": "Mình trả bằng thẻ được không?"
+        },
+        {
+          "id": "d05e10",
+          "en": "Can I pay in cash?",
+          "vi": "Mình trả bằng tiền mặt được không?"
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Ở một cửa hàng nhỏ",
+    "lines": [
+      {
+        "id": "d05l01",
+        "speaker": "A",
+        "en": "Hi! How are you?",
+        "vi": "Chào! Bạn khỏe không?",
+        "chunks": [
+          "c005"
+        ]
+      },
+      {
+        "id": "d05l02",
+        "speaker": "B",
+        "en": "I'm good, thanks. How much is this bag?",
+        "vi": "Mình khỏe, cảm ơn. Cái túi này bao nhiêu tiền?",
+        "chunks": [
+          "c006",
+          "c025"
+        ]
+      },
+      {
+        "id": "d05l03",
+        "speaker": "A",
+        "en": "It's forty dollars.",
+        "vi": "Bốn mươi đô.",
+        "chunks": [
+          "c026"
+        ]
+      },
+      {
+        "id": "d05l04",
+        "speaker": "B",
+        "en": "Oh, that's too expensive. Do you have anything cheaper?",
+        "vi": "Ôi, đắt quá. Có cái nào rẻ hơn không?",
+        "chunks": [
+          "c027",
+          "c028"
+        ]
+      },
+      {
+        "id": "d05l05",
+        "speaker": "A",
+        "en": "Yes. This one is twenty dollars.",
+        "vi": "Có. Cái này hai mươi đô.",
+        "chunks": []
+      },
+      {
+        "id": "d05l06",
+        "speaker": "B",
+        "en": "Great. I'll take it. Can I pay by card?",
+        "vi": "Tốt quá. Mình lấy cái này. Mình trả bằng thẻ được không?",
+        "chunks": [
+          "c029",
+          "c030"
+        ]
+      },
+      {
+        "id": "d05l07",
+        "speaker": "A",
+        "en": "Sure. Here you go.",
+        "vi": "Được. Của bạn đây.",
+        "chunks": [
+          "c018"
+        ]
+      },
+      {
+        "id": "d05l08",
+        "speaker": "B",
+        "en": "Thank you so much.",
+        "vi": "Cảm ơn nhiều lắm.",
+        "chunks": [
+          "c016"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c025",
+      "cues": [
+        {
+          "id": "d05s01",
+          "cue_vi": "hỏi giá cái áo khoác",
+          "answer": "How much is this jacket?",
+          "accept": [
+            "How much is this jacket"
+          ]
+        },
+        {
+          "id": "d05s02",
+          "cue_vi": "hỏi giá ly cà phê",
+          "answer": "How much is the coffee?",
+          "accept": [
+            "How much is the coffee"
+          ]
+        },
+        {
+          "id": "d05s03",
+          "cue_vi": "hỏi giá vé",
+          "answer": "How much is the ticket?",
+          "accept": [
+            "How much is the ticket"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c026",
+      "cues": [
+        {
+          "id": "d05s04",
+          "cue_vi": "mười đô",
+          "answer": "It's ten dollars.",
+          "accept": [
+            "It's ten dollars"
+          ]
+        },
+        {
+          "id": "d05s05",
+          "cue_vi": "mười lăm đô",
+          "answer": "It's fifteen dollars.",
+          "accept": [
+            "It's fifteen dollars"
+          ]
+        },
+        {
+          "id": "d05s06",
+          "cue_vi": "hai mươi lăm đô",
+          "answer": "It's twenty-five dollars.",
+          "accept": [
+            "It's twenty-five dollars",
+            "It's twenty five dollars"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c029",
+      "cues": [
+        {
+          "id": "d05s07",
+          "cue_vi": "lấy hai cái",
+          "answer": "I'll take two.",
+          "accept": [
+            "I'll take two"
+          ]
+        },
+        {
+          "id": "d05s08",
+          "cue_vi": "lấy cái màu xanh",
+          "answer": "I'll take the blue one.",
+          "accept": [
+            "I'll take the blue one"
+          ]
+        },
+        {
+          "id": "d05s09",
+          "cue_vi": "lấy cái này",
+          "answer": "I'll take this one.",
+          "accept": [
+            "I'll take this one"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Mua một món đồ ở cửa hàng.",
+    "turns": [
+      {
+        "id": "d05r01",
+        "role": "partner",
+        "en": "Hi! Can I help you?",
+        "vi": "Chào! Bạn cần gì ạ?"
+      },
+      {
+        "id": "d05r02",
+        "role": "you",
+        "cue_vi": "Hỏi cái áo này giá bao nhiêu.",
+        "model": "How much is this shirt?",
+        "uses": [
+          "c025"
+        ]
+      },
+      {
+        "id": "d05r03",
+        "role": "partner",
+        "en": "It's thirty dollars.",
+        "vi": "Ba mươi đô."
+      },
+      {
+        "id": "d05r04",
+        "role": "you",
+        "cue_vi": "Nói đắt quá, hỏi có cái nào rẻ hơn không.",
+        "model": "That's too expensive. Do you have anything cheaper?",
+        "uses": [
+          "c027",
+          "c028"
+        ]
+      },
+      {
+        "id": "d05r05",
+        "role": "partner",
+        "en": "Yes. This one is twenty dollars.",
+        "vi": "Có. Cái này hai mươi đô."
+      },
+      {
+        "id": "d05r06",
+        "role": "you",
+        "cue_vi": "Nói bạn lấy cái này và hỏi trả bằng thẻ được không.",
+        "model": "I'll take it. Can I pay by card?",
+        "uses": [
+          "c029",
+          "c030"
+        ]
+      },
+      {
+        "id": "d05r07",
+        "role": "partner",
+        "en": "Sure. Do you want a bag?",
+        "vi": "Được. Bạn có cần túi không?"
+      },
+      {
+        "id": "d05r08",
+        "role": "you",
+        "cue_vi": "Xin một cái túi và cảm ơn.",
+        "model": "Can I have a bag, please? Thank you so much.",
+        "uses": [
+          "c014",
+          "c016"
+        ]
+      }
+    ]
+  }
+}

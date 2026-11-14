@@ -1,0 +1,277 @@
+{
+  "day": 30,
+  "level": "A1",
+  "function": "Câu trám và kéo dài thời gian",
+  "title": "Chờ một chút, từ từ thôi",
+  "intro_vi": "Hôm nay: những câu ngắn để xin người ta chờ, nói mình sắp xong và bảo người khác cứ từ từ. Rất hay dùng khi nói chuyện.",
+  "chunks": [
+    {
+      "id": "c175",
+      "text": "Wait a second.",
+      "type": "fixed",
+      "vi": "Chờ một chút.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Câu trám và kéo dài thời gian",
+      "examples": [
+        {
+          "id": "d30e01",
+          "en": "Wait a second. I'm almost ready.",
+          "vi": "Chờ một chút. Mình sắp xong rồi."
+        }
+      ]
+    },
+    {
+      "id": "c176",
+      "text": "Hold on.",
+      "type": "fixed",
+      "vi": "Chờ chút nhé. / Đợi máy chút.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Câu trám và kéo dài thời gian",
+      "examples": [
+        {
+          "id": "d30e02",
+          "en": "Hold on. Someone's at the door.",
+          "vi": "Chờ chút nhé. Có người ở cửa."
+        }
+      ]
+    },
+    {
+      "id": "c177",
+      "text": "I'll be right back.",
+      "type": "fixed",
+      "vi": "Mình quay lại ngay.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Câu trám và kéo dài thời gian",
+      "examples": [
+        {
+          "id": "d30e03",
+          "en": "Wait here. I'll be right back.",
+          "vi": "Chờ ở đây nhé. Mình quay lại ngay."
+        }
+      ]
+    },
+    {
+      "id": "c178",
+      "text": "Take your time.",
+      "type": "fixed",
+      "vi": "Bạn cứ từ từ.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "polite",
+      "reduced": null,
+      "source": "core-inventory A1 / Câu trám và kéo dài thời gian",
+      "examples": [
+        {
+          "id": "d30e04",
+          "en": "No rush. Take your time.",
+          "vi": "Không gấp đâu. Bạn cứ từ từ."
+        }
+      ]
+    },
+    {
+      "id": "c179",
+      "text": "No rush.",
+      "type": "fixed",
+      "vi": "Không gấp đâu.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Câu trám và kéo dài thời gian",
+      "examples": [
+        {
+          "id": "d30e05",
+          "en": "Send it tomorrow. No rush.",
+          "vi": "Mai gửi cũng được. Không gấp đâu."
+        }
+      ]
+    },
+    {
+      "id": "c180",
+      "text": "I'm almost …",
+      "type": "stem",
+      "vi": "Mình sắp …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A1 / Câu trám và kéo dài thời gian",
+      "examples": [
+        {
+          "id": "d30e06",
+          "en": "I'm almost ready.",
+          "vi": "Mình sắp sẵn sàng rồi."
+        },
+        {
+          "id": "d30e07",
+          "en": "I'm almost there.",
+          "vi": "Mình sắp đến rồi."
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Chờ một người bạn chuẩn bị đi",
+    "lines": [
+      {
+        "id": "d30l01",
+        "speaker": "A",
+        "en": "Hey! Are you ready? Let's go!",
+        "vi": "Này! Bạn xong chưa? Mình đi thôi!",
+        "chunks": [
+          "c106"
+        ]
+      },
+      {
+        "id": "d30l02",
+        "speaker": "B",
+        "en": "Wait a second. I'm almost ready.",
+        "vi": "Chờ một chút. Mình sắp xong rồi.",
+        "chunks": [
+          "c175",
+          "c180"
+        ]
+      },
+      {
+        "id": "d30l03",
+        "speaker": "A",
+        "en": "No rush. Take your time.",
+        "vi": "Không gấp đâu. Bạn cứ từ từ.",
+        "chunks": [
+          "c179",
+          "c178"
+        ]
+      },
+      {
+        "id": "d30l04",
+        "speaker": "B",
+        "en": "Sorry about that. I forgot my keys.",
+        "vi": "Xin lỗi nhé. Mình quên chìa khóa mất.",
+        "chunks": [
+          "c149",
+          "c125"
+        ]
+      },
+      {
+        "id": "d30l05",
+        "speaker": "A",
+        "en": "No worries. Would you like some water?",
+        "vi": "Không sao đâu. Bạn có muốn uống nước không?",
+        "chunks": [
+          "c150",
+          "c147"
+        ]
+      },
+      {
+        "id": "d30l06",
+        "speaker": "B",
+        "en": "Oh, my phone! Hold on. I'll be right back.",
+        "vi": "Ôi, điện thoại của mình! Chờ chút nhé. Mình quay lại ngay.",
+        "chunks": [
+          "c176",
+          "c177"
+        ]
+      },
+      {
+        "id": "d30l07",
+        "speaker": "A",
+        "en": "Sure thing. I'll be here.",
+        "vi": "Được thôi. Mình ở đây.",
+        "chunks": [
+          "c048"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c180",
+      "cues": [
+        {
+          "id": "d30s01",
+          "cue_vi": "sắp sẵn sàng",
+          "answer": "I'm almost ready.",
+          "accept": [
+            "I'm almost ready"
+          ]
+        },
+        {
+          "id": "d30s02",
+          "cue_vi": "sắp xong",
+          "answer": "I'm almost done.",
+          "accept": [
+            "I'm almost done"
+          ]
+        },
+        {
+          "id": "d30s03",
+          "cue_vi": "sắp đến",
+          "answer": "I'm almost there.",
+          "accept": [
+            "I'm almost there"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Đang nói chuyện thì phải chạy đi lấy đồ.",
+    "turns": [
+      {
+        "id": "d30r01",
+        "role": "partner",
+        "en": "Hi! Can you talk now?",
+        "vi": "Chào! Bạn nói chuyện được không?"
+      },
+      {
+        "id": "d30r02",
+        "role": "you",
+        "cue_vi": "Nói chờ chút, bạn quay lại ngay.",
+        "model": "Hold on. I'll be right back.",
+        "uses": [
+          "c176",
+          "c177"
+        ]
+      },
+      {
+        "id": "d30r03",
+        "role": "partner",
+        "en": "No rush. Take your time.",
+        "vi": "Không gấp đâu. Bạn cứ từ từ."
+      },
+      {
+        "id": "d30r04",
+        "role": "you",
+        "cue_vi": "Nói bạn sắp xong rồi.",
+        "model": "I'm almost done.",
+        "uses": [
+          "c180"
+        ]
+      },
+      {
+        "id": "d30r05",
+        "role": "partner",
+        "en": "No worries.",
+        "vi": "Không sao đâu."
+      },
+      {
+        "id": "d30r06",
+        "role": "you",
+        "cue_vi": "Xin lỗi về chuyện đó.",
+        "model": "Sorry about that.",
+        "uses": [
+          "c149"
+        ]
+      }
+    ]
+  }
+}

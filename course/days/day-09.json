@@ -1,0 +1,393 @@
+{
+  "day": 9,
+  "level": "A0",
+  "function": "Hỏi vị trí",
+  "title": "Chỗ đó ở đâu?",
+  "intro_vi": "Hôm nay: bắt chuyện lịch sự với người lạ, hỏi một nơi ở đâu và hiểu câu trả lời \"bên trái\", \"cạnh\", \"đằng kia\".",
+  "chunks": [
+    {
+      "id": "c049",
+      "text": "Where is …?",
+      "type": "stem",
+      "vi": "… ở đâu?",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Việt đặt \"ở đâu\" cuối câu; tiếng Anh đưa \"Where is\" lên đầu và thường cần \"the\" trước danh từ đã biết.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Hỏi vị trí",
+      "examples": [
+        {
+          "id": "d09e01",
+          "en": "Where is the bathroom?",
+          "vi": "Nhà vệ sinh ở đâu?"
+        },
+        {
+          "id": "d09e02",
+          "en": "Where is the bus stop?",
+          "vi": "Trạm xe buýt ở đâu?"
+        }
+      ]
+    },
+    {
+      "id": "c050",
+      "text": "Is there a … near here?",
+      "type": "stem",
+      "vi": "Gần đây có … không?",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Việt chỉ cần \"có … không\"; tiếng Anh cần \"there\" làm chủ ngữ và \"a\" trước danh từ đếm được.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Hỏi vị trí",
+      "examples": [
+        {
+          "id": "d09e03",
+          "en": "Is there a bank near here?",
+          "vi": "Gần đây có ngân hàng nào không?"
+        },
+        {
+          "id": "d09e04",
+          "en": "Is there a supermarket near here?",
+          "vi": "Gần đây có siêu thị nào không?"
+        }
+      ]
+    },
+    {
+      "id": "c051",
+      "text": "It's over there.",
+      "type": "fixed",
+      "vi": "Ở đằng kia.",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh cần \"It's\"; tiếng Việt bỏ chủ ngữ.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Hỏi vị trí",
+      "examples": [
+        {
+          "id": "d09e05",
+          "en": "It's over there, next to the door.",
+          "vi": "Ở đằng kia, cạnh cửa."
+        }
+      ]
+    },
+    {
+      "id": "c052",
+      "text": "It's next to …",
+      "type": "stem",
+      "vi": "Nó ở cạnh …",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh cần \"It's\" làm chủ ngữ.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Hỏi vị trí",
+      "examples": [
+        {
+          "id": "d09e06",
+          "en": "It's next to the bank.",
+          "vi": "Nó ở cạnh ngân hàng."
+        },
+        {
+          "id": "d09e07",
+          "en": "It's next to the station.",
+          "vi": "Nó ở cạnh nhà ga."
+        }
+      ]
+    },
+    {
+      "id": "c053",
+      "text": "It's on the left.",
+      "type": "fixed",
+      "vi": "Ở bên trái.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Hỏi vị trí",
+      "examples": [
+        {
+          "id": "d09e08",
+          "en": "It's on the left.",
+          "vi": "Ở bên trái."
+        },
+        {
+          "id": "d09e09",
+          "en": "It's on the right.",
+          "vi": "Ở bên phải."
+        }
+      ]
+    },
+    {
+      "id": "c054",
+      "text": "Excuse me, …",
+      "type": "stem",
+      "vi": "Xin lỗi, … (để gọi ai đó)",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Anh dùng \"Excuse me\" để gọi hoặc hỏi người lạ, còn \"Sorry\" để xin lỗi vì lỗi của mình.",
+      "register": "polite",
+      "reduced": null,
+      "source": "core-inventory A0 / Hỏi vị trí",
+      "examples": [
+        {
+          "id": "d09e10",
+          "en": "Excuse me, where is the bathroom?",
+          "vi": "Xin lỗi, nhà vệ sinh ở đâu ạ?"
+        },
+        {
+          "id": "d09e11",
+          "en": "Excuse me, do you speak English?",
+          "vi": "Xin lỗi, bạn có nói tiếng Anh không?"
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Hỏi đường ở một khu phố",
+    "lines": [
+      {
+        "id": "d09l01",
+        "speaker": "A",
+        "en": "Excuse me, is there a bank near here?",
+        "vi": "Xin lỗi, gần đây có ngân hàng nào không?",
+        "chunks": [
+          "c054",
+          "c050"
+        ]
+      },
+      {
+        "id": "d09l02",
+        "speaker": "B",
+        "en": "Yes. It's over there.",
+        "vi": "Có. Ở đằng kia.",
+        "chunks": [
+          "c051"
+        ]
+      },
+      {
+        "id": "d09l03",
+        "speaker": "A",
+        "en": "Sorry, can you say that again?",
+        "vi": "Xin lỗi, bạn nói lại được không?",
+        "chunks": [
+          "c019"
+        ]
+      },
+      {
+        "id": "d09l04",
+        "speaker": "B",
+        "en": "It's over there. It's next to the café.",
+        "vi": "Ở đằng kia. Nó ở cạnh quán cà phê.",
+        "chunks": [
+          "c051",
+          "c052"
+        ]
+      },
+      {
+        "id": "d09l05",
+        "speaker": "A",
+        "en": "Oh, I see. Is it on the left?",
+        "vi": "À, mình hiểu rồi. Có phải bên trái không?",
+        "chunks": [
+          "c024",
+          "c053"
+        ]
+      },
+      {
+        "id": "d09l06",
+        "speaker": "B",
+        "en": "Yes, it's on the left.",
+        "vi": "Đúng, ở bên trái.",
+        "chunks": [
+          "c053"
+        ]
+      },
+      {
+        "id": "d09l07",
+        "speaker": "A",
+        "en": "Thank you so much.",
+        "vi": "Cảm ơn nhiều lắm.",
+        "chunks": [
+          "c016"
+        ]
+      },
+      {
+        "id": "d09l08",
+        "speaker": "B",
+        "en": "No problem.",
+        "vi": "Không có gì.",
+        "chunks": [
+          "c017"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c049",
+      "cues": [
+        {
+          "id": "d09s01",
+          "cue_vi": "hỏi nhà vệ sinh",
+          "answer": "Where is the bathroom?",
+          "accept": [
+            "Where is the bathroom"
+          ]
+        },
+        {
+          "id": "d09s02",
+          "cue_vi": "hỏi trạm xe buýt",
+          "answer": "Where is the bus stop?",
+          "accept": [
+            "Where is the bus stop"
+          ]
+        },
+        {
+          "id": "d09s03",
+          "cue_vi": "hỏi nhà ga",
+          "answer": "Where is the station?",
+          "accept": [
+            "Where is the station"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c050",
+      "cues": [
+        {
+          "id": "d09s04",
+          "cue_vi": "hỏi có ngân hàng không",
+          "answer": "Is there a bank near here?",
+          "accept": [
+            "Is there a bank near here"
+          ]
+        },
+        {
+          "id": "d09s05",
+          "cue_vi": "hỏi có siêu thị không",
+          "answer": "Is there a supermarket near here?",
+          "accept": [
+            "Is there a supermarket near here"
+          ]
+        },
+        {
+          "id": "d09s06",
+          "cue_vi": "hỏi có hiệu thuốc không",
+          "answer": "Is there a pharmacy near here?",
+          "accept": [
+            "Is there a pharmacy near here"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c052",
+      "cues": [
+        {
+          "id": "d09s07",
+          "cue_vi": "cạnh ngân hàng",
+          "answer": "It's next to the bank.",
+          "accept": [
+            "It's next to the bank"
+          ]
+        },
+        {
+          "id": "d09s08",
+          "cue_vi": "cạnh nhà ga",
+          "answer": "It's next to the station.",
+          "accept": [
+            "It's next to the station"
+          ]
+        },
+        {
+          "id": "d09s09",
+          "cue_vi": "cạnh quán cà phê",
+          "answer": "It's next to the café.",
+          "accept": [
+            "It's next to the café",
+            "It's next to the cafe"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c054",
+      "cues": [
+        {
+          "id": "d09s10",
+          "cue_vi": "gọi họ và hỏi mấy giờ",
+          "answer": "Excuse me, what time is it?",
+          "accept": [
+            "Excuse me, what time is it"
+          ]
+        },
+        {
+          "id": "d09s11",
+          "cue_vi": "gọi họ và hỏi có nói tiếng Anh không",
+          "answer": "Excuse me, do you speak English?",
+          "accept": [
+            "Excuse me, do you speak English"
+          ]
+        },
+        {
+          "id": "d09s12",
+          "cue_vi": "gọi họ và nhờ giúp",
+          "answer": "Excuse me, can you help me?",
+          "accept": [
+            "Excuse me, can you help me"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Tìm nhà vệ sinh ở một trung tâm thương mại.",
+    "turns": [
+      {
+        "id": "d09r01",
+        "role": "partner",
+        "en": "Hi! Can I help you?",
+        "vi": "Chào! Bạn cần giúp gì không?"
+      },
+      {
+        "id": "d09r02",
+        "role": "you",
+        "cue_vi": "Gọi lịch sự và hỏi nhà vệ sinh ở đâu.",
+        "model": "Excuse me, where is the bathroom?",
+        "uses": [
+          "c054",
+          "c049"
+        ]
+      },
+      {
+        "id": "d09r03",
+        "role": "partner",
+        "en": "It's next to the stairs.",
+        "vi": "Nó ở cạnh cầu thang."
+      },
+      {
+        "id": "d09r04",
+        "role": "you",
+        "cue_vi": "Nói bạn không hiểu, xin nói chậm hơn.",
+        "model": "Sorry, I don't understand. Can you speak more slowly?",
+        "uses": [
+          "c020",
+          "c021"
+        ]
+      },
+      {
+        "id": "d09r05",
+        "role": "partner",
+        "en": "Sure. It's... over there. On... the left.",
+        "vi": "Được. Nó... ở đằng kia. Bên... trái."
+      },
+      {
+        "id": "d09r06",
+        "role": "you",
+        "cue_vi": "Cảm ơn thật nhiều.",
+        "model": "Thank you so much.",
+        "uses": [
+          "c016"
+        ]
+      }
+    ]
+  }
+}

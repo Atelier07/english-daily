@@ -1,0 +1,212 @@
+[
+  {
+    "day": 1,
+    "file": "days/day-01.json",
+    "level": "A0",
+    "function": "Chào hỏi và giới thiệu",
+    "title": "Chào và nói tên"
+  },
+  {
+    "day": 2,
+    "file": "days/day-02.json",
+    "level": "A0",
+    "function": "Chào hỏi và giới thiệu",
+    "title": "Bạn từ đâu đến?"
+  },
+  {
+    "day": 3,
+    "file": "days/day-03.json",
+    "level": "A0",
+    "function": "Muốn và xin",
+    "title": "Nói điều mình muốn"
+  },
+  {
+    "day": 4,
+    "file": "days/day-04.json",
+    "level": "A0",
+    "function": "Nghe chưa rõ và xin giúp",
+    "title": "Xin nói lại, nói chậm"
+  },
+  {
+    "day": 5,
+    "file": "days/day-05.json",
+    "level": "A0",
+    "function": "Số và giá tiền",
+    "title": "Hỏi giá và trả tiền"
+  },
+  {
+    "day": 6,
+    "file": "days/day-06.json",
+    "level": "A0",
+    "function": "Giờ giấc",
+    "title": "Hỏi và nói giờ"
+  },
+  {
+    "day": 7,
+    "file": "days/day-07.json",
+    "level": "A0",
+    "function": "Thích và không thích",
+    "title": "Nói mình thích gì"
+  },
+  {
+    "day": 8,
+    "file": "days/day-08.json",
+    "level": "A0",
+    "function": "Khả năng",
+    "title": "Mình có thể, mình không thể"
+  },
+  {
+    "day": 9,
+    "file": "days/day-09.json",
+    "level": "A0",
+    "function": "Hỏi vị trí",
+    "title": "Chỗ đó ở đâu?"
+  },
+  {
+    "day": 10,
+    "file": "days/day-10.json",
+    "level": "A0",
+    "function": "Chỉ đường",
+    "title": "Hỏi và hiểu đường đi"
+  },
+  {
+    "day": 11,
+    "file": "days/day-11.json",
+    "level": "A1",
+    "function": "Có và không có",
+    "title": "Mình có, bạn có không?"
+  },
+  {
+    "day": 12,
+    "file": "days/day-12.json",
+    "level": "A1",
+    "function": "Gọi món ở nhà hàng",
+    "title": "Gọi món"
+  },
+  {
+    "day": 13,
+    "file": "days/day-13.json",
+    "level": "A1",
+    "function": "Gọi món ở nhà hàng",
+    "title": "Ở quầy cà phê"
+  },
+  {
+    "day": 14,
+    "file": "days/day-14.json",
+    "level": "A1",
+    "function": "Mua sắm",
+    "title": "Ở cửa hàng quần áo"
+  },
+  {
+    "day": 15,
+    "file": "days/day-15.json",
+    "level": "A1",
+    "function": "Cảm xúc và sức khỏe",
+    "title": "Hôm nay bạn thế nào?"
+  },
+  {
+    "day": 16,
+    "file": "days/day-16.json",
+    "level": "A1",
+    "function": "Thói quen",
+    "title": "Mình thường làm gì"
+  },
+  {
+    "day": 17,
+    "file": "days/day-17.json",
+    "level": "A1",
+    "function": "Nói về người khác",
+    "title": "Cô ấy, anh ấy, họ"
+  },
+  {
+    "day": 18,
+    "file": "days/day-18.json",
+    "level": "A1",
+    "function": "Kế hoạch",
+    "title": "Mình định làm gì"
+  },
+  {
+    "day": 19,
+    "file": "days/day-19.json",
+    "level": "A1",
+    "function": "Rủ rê và hẹn",
+    "title": "Rủ đi chơi, từ chối khéo"
+  },
+  {
+    "day": 20,
+    "file": "days/day-20.json",
+    "level": "A1",
+    "function": "Kể chuyện đã xảy ra",
+    "title": "Mình đã đi, mình đã ăn"
+  },
+  {
+    "day": 21,
+    "file": "days/day-21.json",
+    "level": "A1",
+    "function": "Kể chuyện đã xảy ra",
+    "title": "Mình đã thấy, mình đã gặp"
+  },
+  {
+    "day": 22,
+    "file": "days/day-22.json",
+    "level": "A1",
+    "function": "Kể chuyện đã xảy ra",
+    "title": "Kể một chuyện từ đầu đến cuối"
+  },
+  {
+    "day": 23,
+    "file": "days/day-23.json",
+    "level": "A1",
+    "function": "Công việc thường ngày",
+    "title": "Trao đổi nhanh ở chỗ làm"
+  },
+  {
+    "day": 24,
+    "file": "days/day-24.json",
+    "level": "A1",
+    "function": "Ý kiến",
+    "title": "Bạn nghĩ sao?"
+  },
+  {
+    "day": 25,
+    "file": "days/day-25.json",
+    "level": "A1",
+    "function": "Lịch sự và xin phép",
+    "title": "Xin phép, nhờ vả lịch sự"
+  },
+  {
+    "day": 26,
+    "file": "days/day-26.json",
+    "level": "A1",
+    "function": "Cần và nên",
+    "title": "Cần, phải, nên"
+  },
+  {
+    "day": 27,
+    "file": "days/day-27.json",
+    "level": "A1",
+    "function": "Trò chuyện xã giao",
+    "title": "Nói về thời tiết, chào tạm biệt"
+  },
+  {
+    "day": 28,
+    "file": "days/day-28.json",
+    "level": "A1",
+    "function": "Đi lại",
+    "title": "Đi xe buýt và hỏi đường đi"
+  },
+  {
+    "day": 29,
+    "file": "days/day-29.json",
+    "level": "A1",
+    "function": "Giữ liên lạc",
+    "title": "Xin số, xin email, giữ liên lạc"
+  },
+  {
+    "day": 30,
+    "file": "days/day-30.json",
+    "level": "A1",
+    "function": "Câu trám và kéo dài thời gian",
+    "title": "Chờ một chút, từ từ thôi"
+  }
+]

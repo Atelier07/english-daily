@@ -1,0 +1,371 @@
+{
+  "day": 3,
+  "level": "A0",
+  "function": "Muốn và xin",
+  "title": "Nói điều mình muốn",
+  "intro_vi": "Hôm nay: nói mình muốn gì, xin một thứ lịch sự và cảm ơn.",
+  "chunks": [
+    {
+      "id": "c013",
+      "text": "I want to …",
+      "type": "stem",
+      "vi": "Mình muốn …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": "wanna",
+      "source": "core-inventory A0 / Muốn và xin",
+      "examples": [
+        {
+          "id": "d03e01",
+          "en": "I want to sleep.",
+          "vi": "Mình muốn ngủ."
+        },
+        {
+          "id": "d03e02",
+          "en": "I want to go home.",
+          "vi": "Mình muốn về nhà."
+        }
+      ]
+    },
+    {
+      "id": "c014",
+      "text": "Can I have …, please?",
+      "type": "stem",
+      "vi": "Cho mình … nhé?",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Việt nói \"cho mình\"; tiếng Anh hỏi \"mình có thể có … không\" và thêm please.",
+      "register": "polite",
+      "reduced": null,
+      "source": "core-inventory A0 / Muốn và xin",
+      "examples": [
+        {
+          "id": "d03e03",
+          "en": "Can I have a coffee, please?",
+          "vi": "Cho mình một ly cà phê nhé."
+        },
+        {
+          "id": "d03e04",
+          "en": "Can I have some water, please?",
+          "vi": "Cho mình ít nước nhé."
+        }
+      ]
+    },
+    {
+      "id": "c015",
+      "text": "Do you want to …?",
+      "type": "stem",
+      "vi": "Bạn có muốn … không?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": "d'you wanna",
+      "source": "core-inventory A0 / Muốn và xin",
+      "examples": [
+        {
+          "id": "d03e05",
+          "en": "Do you want to sit here?",
+          "vi": "Bạn có muốn ngồi đây không?"
+        },
+        {
+          "id": "d03e06",
+          "en": "Do you want to get lunch?",
+          "vi": "Bạn có muốn đi ăn trưa không?"
+        }
+      ]
+    },
+    {
+      "id": "c016",
+      "text": "Thank you so much.",
+      "type": "fixed",
+      "vi": "Cảm ơn nhiều lắm.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Muốn và xin",
+      "examples": [
+        {
+          "id": "d03e07",
+          "en": "Thank you so much. That's very kind.",
+          "vi": "Cảm ơn nhiều lắm. Bạn tốt quá."
+        }
+      ]
+    },
+    {
+      "id": "c017",
+      "text": "No problem.",
+      "type": "fixed",
+      "vi": "Không có gì.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A0 / Muốn và xin",
+      "examples": [
+        {
+          "id": "d03e08",
+          "en": "No problem. Any time.",
+          "vi": "Không có gì. Lúc nào cũng được."
+        }
+      ]
+    },
+    {
+      "id": "c018",
+      "text": "Here you go.",
+      "type": "fixed",
+      "vi": "Của bạn đây.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Muốn và xin",
+      "examples": [
+        {
+          "id": "d03e09",
+          "en": "Here you go. Your coffee.",
+          "vi": "Của bạn đây. Cà phê của bạn."
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Gọi đồ ở một quán cà phê",
+    "lines": [
+      {
+        "id": "d03l01",
+        "speaker": "B",
+        "en": "Hi! How are you?",
+        "vi": "Chào! Bạn khỏe không?",
+        "chunks": [
+          "c005"
+        ]
+      },
+      {
+        "id": "d03l02",
+        "speaker": "A",
+        "en": "I'm good, thanks. And you?",
+        "vi": "Mình khỏe, cảm ơn. Còn bạn?",
+        "chunks": [
+          "c006"
+        ]
+      },
+      {
+        "id": "d03l03",
+        "speaker": "B",
+        "en": "Good! What do you want?",
+        "vi": "Khỏe! Bạn muốn dùng gì?",
+        "chunks": []
+      },
+      {
+        "id": "d03l04",
+        "speaker": "A",
+        "en": "Can I have a coffee, please?",
+        "vi": "Cho mình một ly cà phê nhé?",
+        "chunks": [
+          "c014"
+        ]
+      },
+      {
+        "id": "d03l05",
+        "speaker": "B",
+        "en": "Sure. Here you go.",
+        "vi": "Vâng. Của bạn đây.",
+        "chunks": [
+          "c018"
+        ]
+      },
+      {
+        "id": "d03l06",
+        "speaker": "A",
+        "en": "Thank you so much.",
+        "vi": "Cảm ơn nhiều lắm.",
+        "chunks": [
+          "c016"
+        ]
+      },
+      {
+        "id": "d03l07",
+        "speaker": "B",
+        "en": "No problem. Do you want to sit here?",
+        "vi": "Không có gì. Bạn có muốn ngồi đây không?",
+        "chunks": [
+          "c017",
+          "c015"
+        ]
+      },
+      {
+        "id": "d03l08",
+        "speaker": "A",
+        "en": "Yes. I want to sit by the window.",
+        "vi": "Có. Mình muốn ngồi cạnh cửa sổ.",
+        "chunks": [
+          "c013"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c013",
+      "cues": [
+        {
+          "id": "d03s01",
+          "cue_vi": "muốn ăn gì đó",
+          "answer": "I want to eat something.",
+          "accept": [
+            "I want to eat something",
+            "I want to eat"
+          ]
+        },
+        {
+          "id": "d03s02",
+          "cue_vi": "muốn ngồi ở ngoài",
+          "answer": "I want to sit outside.",
+          "accept": [
+            "I want to sit outside"
+          ]
+        },
+        {
+          "id": "d03s03",
+          "cue_vi": "muốn uống nước",
+          "answer": "I want to drink some water.",
+          "accept": [
+            "I want to drink some water",
+            "I want to drink water"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c014",
+      "cues": [
+        {
+          "id": "d03s04",
+          "cue_vi": "xin một ly cà phê",
+          "answer": "Can I have a coffee, please?",
+          "accept": [
+            "Can I have a coffee, please"
+          ]
+        },
+        {
+          "id": "d03s05",
+          "cue_vi": "xin một ly nước",
+          "answer": "Can I have some water, please?",
+          "accept": [
+            "Can I have some water, please",
+            "Can I have water, please",
+            "Can I have a water, please"
+          ]
+        },
+        {
+          "id": "d03s06",
+          "cue_vi": "xin hoá đơn",
+          "answer": "Can I have the check, please?",
+          "accept": [
+            "Can I have the check, please",
+            "Can I have the bill, please"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c015",
+      "cues": [
+        {
+          "id": "d03s07",
+          "cue_vi": "rủ đi ăn trưa",
+          "answer": "Do you want to get lunch?",
+          "accept": [
+            "Do you want to get lunch",
+            "Do you want to have lunch"
+          ]
+        },
+        {
+          "id": "d03s08",
+          "cue_vi": "rủ đi dạo",
+          "answer": "Do you want to go for a walk?",
+          "accept": [
+            "Do you want to go for a walk",
+            "Do you want to take a walk"
+          ]
+        },
+        {
+          "id": "d03s09",
+          "cue_vi": "hỏi họ có muốn ngồi không",
+          "answer": "Do you want to sit down?",
+          "accept": [
+            "Do you want to sit down",
+            "Do you want to sit"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Gặp người mới rồi rủ họ đi uống cà phê.",
+    "turns": [
+      {
+        "id": "d03r01",
+        "role": "partner",
+        "en": "Hi, I'm Sam. Nice to meet you.",
+        "vi": "Chào, mình là Sam. Rất vui được gặp bạn."
+      },
+      {
+        "id": "d03r02",
+        "role": "you",
+        "cue_vi": "Chào, nói tên bạn và nói mình cũng rất vui.",
+        "model": "Hi, I'm Mai. Nice to meet you, too.",
+        "uses": [
+          "c001",
+          "c004"
+        ]
+      },
+      {
+        "id": "d03r03",
+        "role": "partner",
+        "en": "Do you want to get a coffee?",
+        "vi": "Bạn có muốn đi uống cà phê không?"
+      },
+      {
+        "id": "d03r04",
+        "role": "you",
+        "cue_vi": "Nói bạn muốn.",
+        "model": "Yes! I want to get a coffee.",
+        "uses": [
+          "c013"
+        ]
+      },
+      {
+        "id": "d03r05",
+        "role": "partner",
+        "en": "Hi! What do you want?",
+        "vi": "Chào! Bạn muốn dùng gì?"
+      },
+      {
+        "id": "d03r06",
+        "role": "you",
+        "cue_vi": "Xin một ly cà phê.",
+        "model": "Can I have a coffee, please?",
+        "uses": [
+          "c014"
+        ]
+      },
+      {
+        "id": "d03r07",
+        "role": "partner",
+        "en": "Sure. Here you go.",
+        "vi": "Vâng. Của bạn đây."
+      },
+      {
+        "id": "d03r08",
+        "role": "you",
+        "cue_vi": "Cảm ơn thật nhiều.",
+        "model": "Thank you so much.",
+        "uses": [
+          "c016"
+        ]
+      }
+    ]
+  }
+}

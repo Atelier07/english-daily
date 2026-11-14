@@ -1,0 +1,390 @@
+{
+  "day": 7,
+  "level": "A0",
+  "function": "Thích và không thích",
+  "title": "Nói mình thích gì",
+  "intro_vi": "Hôm nay: nói mình thích, không thích hoặc rất thích điều gì, và hỏi người khác.",
+  "chunks": [
+    {
+      "id": "c037",
+      "text": "I like …",
+      "type": "stem",
+      "vi": "Mình thích …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Thích và không thích",
+      "examples": [
+        {
+          "id": "d07e01",
+          "en": "I like coffee.",
+          "vi": "Mình thích cà phê."
+        },
+        {
+          "id": "d07e02",
+          "en": "I like this song.",
+          "vi": "Mình thích bài hát này."
+        }
+      ]
+    },
+    {
+      "id": "c038",
+      "text": "I don't like …",
+      "type": "stem",
+      "vi": "Mình không thích …",
+      "vi_equivalent": false,
+      "contrast_vi": "Tiếng Việt chỉ cần thêm \"không\"; tiếng Anh cần \"don't\" đứng trước động từ.",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Thích và không thích",
+      "examples": [
+        {
+          "id": "d07e03",
+          "en": "I don't like cold weather.",
+          "vi": "Mình không thích trời lạnh."
+        },
+        {
+          "id": "d07e04",
+          "en": "I don't like spicy food.",
+          "vi": "Mình không thích đồ cay."
+        }
+      ]
+    },
+    {
+      "id": "c039",
+      "text": "Do you like …?",
+      "type": "stem",
+      "vi": "Bạn có thích … không?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Thích và không thích",
+      "examples": [
+        {
+          "id": "d07e05",
+          "en": "Do you like pizza?",
+          "vi": "Bạn có thích pizza không?"
+        },
+        {
+          "id": "d07e06",
+          "en": "Do you like movies?",
+          "vi": "Bạn có thích xem phim không?"
+        }
+      ]
+    },
+    {
+      "id": "c040",
+      "text": "I love …",
+      "type": "stem",
+      "vi": "Mình rất thích …",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Thích và không thích",
+      "examples": [
+        {
+          "id": "d07e07",
+          "en": "I love this place.",
+          "vi": "Mình rất thích chỗ này."
+        },
+        {
+          "id": "d07e08",
+          "en": "I love this song.",
+          "vi": "Mình rất thích bài hát này."
+        }
+      ]
+    },
+    {
+      "id": "c041",
+      "text": "What do you like to do?",
+      "type": "fixed",
+      "vi": "Bạn thích làm gì?",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "neutral",
+      "reduced": null,
+      "source": "core-inventory A0 / Thích và không thích",
+      "examples": [
+        {
+          "id": "d07e09",
+          "en": "What do you like to do on weekends?",
+          "vi": "Cuối tuần bạn thích làm gì?"
+        }
+      ]
+    },
+    {
+      "id": "c042",
+      "text": "Me too.",
+      "type": "fixed",
+      "vi": "Mình cũng vậy.",
+      "vi_equivalent": true,
+      "contrast_vi": "",
+      "register": "casual",
+      "reduced": null,
+      "source": "core-inventory A0 / Thích và không thích",
+      "examples": [
+        {
+          "id": "d07e10",
+          "en": "I love music. — Me too!",
+          "vi": "Mình rất thích âm nhạc. — Mình cũng vậy!"
+        }
+      ]
+    }
+  ],
+  "dialogue": {
+    "setting_vi": "Hỏi nhau về sở thích",
+    "lines": [
+      {
+        "id": "d07l01",
+        "speaker": "A",
+        "en": "Hi! Nice to meet you. What do you like to do?",
+        "vi": "Chào! Rất vui được gặp bạn. Bạn thích làm gì?",
+        "chunks": [
+          "c004",
+          "c041"
+        ]
+      },
+      {
+        "id": "d07l02",
+        "speaker": "B",
+        "en": "I like music. Do you like music?",
+        "vi": "Mình thích âm nhạc. Bạn có thích âm nhạc không?",
+        "chunks": [
+          "c037",
+          "c039"
+        ]
+      },
+      {
+        "id": "d07l03",
+        "speaker": "A",
+        "en": "Yes! I love music.",
+        "vi": "Có! Mình rất thích âm nhạc.",
+        "chunks": [
+          "c040"
+        ]
+      },
+      {
+        "id": "d07l04",
+        "speaker": "B",
+        "en": "Me too! Do you want to go to a show?",
+        "vi": "Mình cũng vậy! Bạn có muốn đi xem một buổi diễn không?",
+        "chunks": [
+          "c042",
+          "c015"
+        ]
+      },
+      {
+        "id": "d07l05",
+        "speaker": "A",
+        "en": "Sorry, can you say that again?",
+        "vi": "Xin lỗi, bạn nói lại được không?",
+        "chunks": [
+          "c019"
+        ]
+      },
+      {
+        "id": "d07l06",
+        "speaker": "B",
+        "en": "Do you want to go to a show with me?",
+        "vi": "Bạn có muốn đi xem diễn với mình không?",
+        "chunks": [
+          "c015"
+        ]
+      },
+      {
+        "id": "d07l07",
+        "speaker": "A",
+        "en": "Yes, I want to go. Thank you so much.",
+        "vi": "Có, mình muốn đi. Cảm ơn nhiều lắm.",
+        "chunks": [
+          "c013",
+          "c016"
+        ]
+      },
+      {
+        "id": "d07l08",
+        "speaker": "B",
+        "en": "No problem.",
+        "vi": "Không có gì.",
+        "chunks": [
+          "c017"
+        ]
+      }
+    ]
+  },
+  "substitution": [
+    {
+      "chunk": "c037",
+      "cues": [
+        {
+          "id": "d07s01",
+          "cue_vi": "thích cà phê",
+          "answer": "I like coffee.",
+          "accept": [
+            "I like coffee"
+          ]
+        },
+        {
+          "id": "d07s02",
+          "cue_vi": "thích đi dạo",
+          "answer": "I like walking.",
+          "accept": [
+            "I like walking",
+            "I like to walk"
+          ]
+        },
+        {
+          "id": "d07s03",
+          "cue_vi": "thích bài hát này",
+          "answer": "I like this song.",
+          "accept": [
+            "I like this song"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c038",
+      "cues": [
+        {
+          "id": "d07s04",
+          "cue_vi": "không thích trời lạnh",
+          "answer": "I don't like cold weather.",
+          "accept": [
+            "I don't like cold weather"
+          ]
+        },
+        {
+          "id": "d07s05",
+          "cue_vi": "không thích đồ cay",
+          "answer": "I don't like spicy food.",
+          "accept": [
+            "I don't like spicy food"
+          ]
+        },
+        {
+          "id": "d07s06",
+          "cue_vi": "không thích dậy sớm",
+          "answer": "I don't like getting up early.",
+          "accept": [
+            "I don't like getting up early",
+            "I don't like to get up early"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c039",
+      "cues": [
+        {
+          "id": "d07s07",
+          "cue_vi": "hỏi có thích pizza không",
+          "answer": "Do you like pizza?",
+          "accept": [
+            "Do you like pizza"
+          ]
+        },
+        {
+          "id": "d07s08",
+          "cue_vi": "hỏi có thích xem phim không",
+          "answer": "Do you like movies?",
+          "accept": [
+            "Do you like movies"
+          ]
+        },
+        {
+          "id": "d07s09",
+          "cue_vi": "hỏi có thích nấu ăn không",
+          "answer": "Do you like cooking?",
+          "accept": [
+            "Do you like cooking"
+          ]
+        }
+      ]
+    },
+    {
+      "chunk": "c040",
+      "cues": [
+        {
+          "id": "d07s10",
+          "cue_vi": "rất thích chỗ này",
+          "answer": "I love this place.",
+          "accept": [
+            "I love this place"
+          ]
+        },
+        {
+          "id": "d07s11",
+          "cue_vi": "rất thích bài hát này",
+          "answer": "I love this song.",
+          "accept": [
+            "I love this song"
+          ]
+        },
+        {
+          "id": "d07s12",
+          "cue_vi": "rất thích món này",
+          "answer": "I love this dish.",
+          "accept": [
+            "I love this dish",
+            "I love this food"
+          ]
+        }
+      ]
+    }
+  ],
+  "roleplay": {
+    "situation_vi": "Làm quen và hỏi sở thích.",
+    "turns": [
+      {
+        "id": "d07r01",
+        "role": "partner",
+        "en": "Hi! I'm Sam. What do you like to do?",
+        "vi": "Chào! Mình là Sam. Bạn thích làm gì?"
+      },
+      {
+        "id": "d07r02",
+        "role": "you",
+        "cue_vi": "Nói bạn thích âm nhạc.",
+        "model": "I like music.",
+        "uses": [
+          "c037"
+        ]
+      },
+      {
+        "id": "d07r03",
+        "role": "partner",
+        "en": "Do you like coffee?",
+        "vi": "Bạn có thích cà phê không?"
+      },
+      {
+        "id": "d07r04",
+        "role": "you",
+        "cue_vi": "Nói bạn không thích cà phê, bạn thích trà.",
+        "model": "I don't like coffee. I like tea.",
+        "uses": [
+          "c038",
+          "c037"
+        ]
+      },
+      {
+        "id": "d07r05",
+        "role": "partner",
+        "en": "Me too!",
+        "vi": "Mình cũng vậy!"
+      },
+      {
+        "id": "d07r06",
+        "role": "you",
+        "cue_vi": "Hỏi họ thích làm gì.",
+        "model": "What do you like to do?",
+        "uses": [
+          "c041"
+        ]
+      }
+    ]
+  }
+}
