@@ -4,6 +4,7 @@ import { today, addDays, totalMinutes, weekMinutes, streakInfo, dueCount, dayMin
 import { currentPhase, phaseHours, nextCheckpoint, trend, phases, checkState, goalHours, planSentence } from './roadmap.js';
 import { getProfile, budget, weeklyHours, currentDay, dayDoneMap } from './profile.js';
 import { stats as itemStats } from './items.js';
+import { allChecks } from './weekly.js';
 
 const COMP = { lt70: '<70%', '70-90': '70–90%', '90-95': '90–95%', gt95: '>95%' };
 
@@ -46,6 +47,14 @@ export function progressMarkdown(now = new Date()) {
   if (comps.length) {
     lines.push('## Mức hiểu khi nghe/đọc (gần nhất trước)');
     lines.push(comps.map((s) => `${s.date}: ${COMP[s.comp] || s.comp}`).join(' · '));
+    lines.push('');
+  }
+  const wks = allChecks().slice(-4).reverse();
+  if (wks.length) {
+    lines.push('## Kiểm tra tuần (gần nhất trước)');
+    for (const c of wks) {
+      lines.push(`- Tuần ${c.week} (sau Ngày ${c.lastDay}, ${c.date}): ${c.score}/100, ${c.pass ? 'ĐẠT' : 'CHƯA ĐẠT'}${c.source === 'offline' ? ' (chấm offline)' : ''}. ${c.summary_vi || ''}${c.fix && c.fix.length ? ` Cần sửa: ${c.fix.map((f) => f.chunkId).join(', ')}.` : ''}`);
+    }
     lines.push('');
   }
   lines.push('## Lỗi đang sửa (gặp nhiều nhất)');

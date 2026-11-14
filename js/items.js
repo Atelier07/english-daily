@@ -15,15 +15,21 @@ export const getItem = (id) => db().items.find((i) => i.id === id);
 function baseCard(due) { return { ef: 2.5, reps: 0, interval: 0, due, lapses: 0, lastReview: null }; }
 
 // Thêm cụm + câu ví dụ của một ngày vào SRS (gọi khi học xong ngày). encounters: {chunkId: n}
-export function addDayItems(day, encounters = {}, { due = addDays(today(), 1), skipped = false } = {}) {
+// known: tập id cụm người học đã tự báo "Biết rồi" ở bước Kiểm tra nhanh → vào SRS với khoảng cách đầu dài (7 ngày),
+// sau đó tăng như thường; nếu quên khi ôn thì rơi về học bình thường (lapse).
+export const KNOWN_FIRST_INTERVAL = 7;
+export function addDayItems(day, encounters = {}, { due = addDays(today(), 1), skipped = false, known = null } = {}) {
   let added = 0;
   for (const c of day.chunks) {
+    const isKnown = !!(known && known.has(c.id));
+    const cdue = isKnown ? addDays(today(), KNOWN_FIRST_INTERVAL) : due;
+    const kn = isKnown ? { interval: KNOWN_FIRST_INTERVAL, reps: 2, knownAtScan: true } : {};
     let it = getItem(c.id);
     if (!it) {
       it = {
         id: c.id, kind: 'chunk', chunkId: c.id, type: c.type || 'fixed', day: day.day, cue: c.vi, en: c.text,
         audio: (c.examples[0] && c.examples[0].id) || null, hard: c.vi_equivalent === false,
-        encounters: 0, okCues: [], roleplayOk: false, mastered: false, skipped, ...baseCard(due),
+        encounters: 0, okCues: [], roleplayOk: false, mastered: false, skipped, ...baseCard(cdue), ...kn,
       };
       db().items.push(it);
       added++;
@@ -34,7 +40,7 @@ export function addDayItems(day, encounters = {}, { due = addDays(today(), 1), s
       if (getItem(ex.id)) continue;
       db().items.push({
         id: ex.id, kind: 'example', chunkId: c.id, day: day.day, cue: ex.vi, en: ex.en, audio: ex.id,
-        hard: c.vi_equivalent === false, encounters: 0, ...baseCard(addDays(due, 1)),
+        hard: c.vi_equivalent === false, encounters: 0, ...baseCard(addDays(cdue, 1)), ...kn,
       });
       added++;
     }
@@ -130,4 +136,19 @@ export function stats() {
     reviewed7: reviewed.length,
     lapsed7: reviewed.filter((i) => i.lapses).length,
   };
+}
+
+// Đẩy cụm vào SRS "đến hạn sớm" (kiểm tra tuần: cụm nói sai). Cụm chưa có thẻ thì bỏ qua.
+export function dueSoon(chunkIds, days = 1) {
+  let n = 0;
+  for (const id of chunkIds || []) {
+    for (const it of db().items.filter((i) => i.id === id || (i.kind === 'example' && i.chunkId === id))) {
+      const d = addDays(today(), days);
+      if (!it.due || it.due > d) { it.due = d; it.interval = Math.min(it.interval || 1, days); }
+      if (it.kind === 'chunk') { it.lapses = (it.lapses || 0) + 1; it.reps = 0; it.ef = Math.max(1.3, (it.ef || 2.5) - 0.2); }
+      n++;
+    }
+  }
+  if (n) { updateMastery(); save(); }
+  return n;
 }

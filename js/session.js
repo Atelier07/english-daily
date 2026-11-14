@@ -1,5 +1,5 @@
 // Buổi học có hướng dẫn: mỗi lúc chỉ một bước trên màn hình.
-// S1 Ôn → S2 Nghe hội thoại → S3 Cụm mới → S4 Nhại theo → S5 Thay ô bằng miệng → S6 Đóng vai (→ SX Ôn thêm)
+// S1 Ôn → S0 Kiểm tra nhanh (quét lỗ hổng, chỉ ngày mới) → S2 Nghe hội thoại → S3 Cụm mới → S4 Nhại theo → S5 Thay ô bằng miệng → S6 Đóng vai (→ SX Ôn thêm)
 import { db, save } from './store.js';
 import { esc, today, fmtClock } from './util.js';
 import { toast } from './ui.js';
@@ -8,13 +8,14 @@ import { loadIndex, loadDay, chunkMap, chunkFragments, nextDayAfter } from './co
 import { play, playAll, stop as stopAudio } from './audio.js';
 import { sttSupported, listenOnce, compare } from './stt.js';
 import { createRecorder } from './recorder.js';
-import { getProfile, saveProfile, budget, currentDay } from './profile.js';
+import { getProfile, saveProfile, budget, currentDay, dayDoneMap } from './profile.js';
 import {
   dueItems, weakestItems, getItem, rate, intervalText, addDayItems, bumpEncounters, updateMastery,
 } from './items.js';
 import { hasAI, askJSON } from './ai.js';
 
 export const STEPS = {
+  S0: { name: 'Kiểm tra nhanh', block: 'review', hint: 'Nhìn nghĩa, nói to cả câu tiếng Anh, nghe đáp án, rồi tự chấm. Cụm nào biết rồi thì khỏi học lại.' },
   S1: { name: 'Ôn', block: 'review', hint: 'Nhìn nghĩa, nói tiếng Anh thành tiếng trước, rồi mới nghe đáp án.' },
   S2: { name: 'Nghe hội thoại', block: 'input', hint: 'Nghe trước khi nhìn chữ. Nghe cả bài 1–2 lần, rồi mới hiện chữ.' },
   S3: { name: 'Cụm mới', block: 'input', hint: 'Hiểu nghĩa cả cụm, nghe, rồi nói theo.' },
@@ -33,18 +34,31 @@ export const PLANS = {
 };
 export const planFor = (b) => PLANS[b] || PLANS[30];
 
-// Các bước thật sự chạy cho một ngày (bỏ S1 nếu không có thẻ đến hạn, bỏ bước không có dữ liệu)
-export function buildSteps(day, b = budget(), due = dueItems().length) {
+// Cụm chưa chắc sau bước quét (null nếu chưa quét xong → coi như chưa biết cụm nào)
+export function unknownIds(d, scan) {
+  if (!scan || !scan.done) return null;
+  return d.chunks.filter((c) => scan.known[c.id] !== true).map((c) => c.id);
+}
+
+// Các bước thật sự chạy cho một ngày (bỏ S1 nếu không có thẻ đến hạn, bỏ bước không có dữ liệu).
+// isNew: ngày mới → thêm S0 quét lỗ hổng. scan (đã xong): biết hết → chỉ S6; còn cụm chưa chắc → S3/S5/S4 chỉ cho các cụm đó.
+export function buildSteps(day, b = budget(), due = dueItems().length, { isNew = false, scan = null } = {}) {
   const p = planFor(b);
-  return p.steps.filter((s) => {
+  const unk = unknownIds(day, scan);
+  const allKnown = unk && unk.length === 0 && day.chunks.length > 0;
+  let base = p.steps.slice();
+  if (allKnown) base = ['S1', 'S6'];
+  const out = base.filter((s) => {
     if (s === 'S1') return due > 0;
     if (s === 'S2' || s === 'S4') return day.dialogue.lines.length > 0;
     if (s === 'S3') return day.chunks.length > 0;
-    if (s === 'S5') return day.substitution.length > 0;
+    if (s === 'S5') return day.substitution.length > 0 && (!unk || day.substitution.some((x) => unk.includes(x.chunk)));
     if (s === 'S6') return day.roleplay.turns.length > 0;
     if (s === 'SX') return db().items.length > 0;
     return true;
   });
+  if (isNew && day.chunks.length) out.splice(out[0] === 'S1' ? 1 : 0, 0, 'S0');
+  return out;
 }
 
 let host = null;      // phần tử chứa
@@ -66,9 +80,19 @@ export async function startSession(n) {
   const d = await loadDay(n, idx);
   const p = planFor(budget());
   const queue = dueItems().slice(0, p.rev).map((i) => i.id);
+  const isNew = !dayDoneMap()[n] && d.chunks.length > 0;
   db().session = {
-    day: n, steps: buildSteps(d, budget(), queue.length), i: 0, stepStart: Date.now(), startedDate: today(),
+    day: n, steps: buildSteps(d, budget(), queue.length, { isNew }), scan: isNew ? { known: {}, done: false } : null, i: 0, stepStart: Date.now(), startedDate: today(),
     queue, pos: {}, flags: {}, enc: {}, s5ok: {}, s6ok: [], said: {}, again: [], extra: [], aiCues: [], minutes: 0,
+  };
+  persist();
+}
+
+// Buổi chỉ ôn (không học ngày mới): vd ôn lại tuần sau khi kiểm tra tuần chưa đạt
+export function startReviewSession(itemIds, { label = 'Ôn lại', day: n = currentDay(), weekReview = null } = {}) {
+  db().session = {
+    day: n, label, reviewOnly: true, weekReview, steps: ['S1'], scan: null, i: 0, stepStart: Date.now(), startedDate: today(),
+    queue: itemIds.slice(), pos: {}, flags: {}, enc: {}, s5ok: {}, s6ok: [], said: {}, again: [], extra: [], aiCues: [], minutes: 0,
   };
   persist();
 }
@@ -101,7 +125,7 @@ function draw() {
     <div class="sess">
       <div class="sess-top">
         <div>
-          <div class="eyebrow">Ngày ${s.day} · Bước ${s.i + 1}/${s.steps.length}</div>
+          <div class="eyebrow">${esc(s.label || `Ngày ${s.day}`)} · Bước ${s.i + 1}/${s.steps.length}</div>
           <h1 class="sess-title">${esc(meta.name)}</h1>
         </div>
         <div class="sess-clock num" id="stepClock">00:00</div>
@@ -121,7 +145,7 @@ function draw() {
   host.querySelector('#pauseBtn').addEventListener('click', pause);
   host.querySelector('#doneStep').addEventListener('click', nextStep);
   const body = host.querySelector('#stepBody');
-  ({ S1: s1, S2: s2, S3: s3, S4: s4, S5: s5, S6: s6, SX: sx })[key](body);
+  ({ S0: s0, S1: s1, S2: s2, S3: s3, S4: s4, S5: s5, S6: s6, SX: sx })[key](body);
   window.scrollTo(0, 0);
 }
 
@@ -154,6 +178,12 @@ export function resumeClock() {
 function nextStep() {
   const s = S();
   logStep();
+  if (s.steps[s.i] === 'S0' && s.scan && !s.scan.done) {
+    // quét xong: dựng lại các bước còn lại theo kết quả
+    s.scan.done = true;
+    const rest = buildSteps(day, budget(), 0, { scan: s.scan }).filter((k) => k !== 'S1');
+    s.steps = s.steps.slice(0, s.i + 1).concat(rest);
+  }
   s.i++;
   s.stepStart = Date.now();
   if (s.i >= s.steps.length) { finishDay(); return; }
@@ -164,11 +194,20 @@ function nextStep() {
 async function finishDay() {
   const s = S();
   clearInterval(clockT);
+  if (s.reviewOnly) {
+    updateMastery();
+    if (s.weekReview) saveProfile({ reviewWeek: null });
+    db().session = { finished: { day: s.day, reviewOnly: true, label: s.label, minutes: Math.round(s.minutes), chunks: 0, date: today() } };
+    persist();
+    if (onExit) onExit();
+    return;
+  }
   // gặp lại các cụm cũ trong hội thoại/đóng vai
   const old = {}, fresh = {};
   for (const [id, n] of Object.entries(s.enc)) (getItem(id) ? old : fresh)[id] = n;
   bumpEncounters(old);
-  const newCount = addDayItems(day, fresh);
+  const known = new Set(s.scan && s.scan.done ? day.chunks.filter((c) => s.scan.known[c.id] === true).map((c) => c.id) : []);
+  const newCount = addDayItems(day, fresh, { known });
   // lượt đã đếm gặp ở trên; ở đây chỉ ghi nhận lượt thay ô đúng và đóng vai đúng
   for (const [cid, cues] of Object.entries(s.s5ok)) {
     const it = getItem(cid);
@@ -182,7 +221,7 @@ async function finishDay() {
   let next = s.day + 1;
   try { next = nextDayAfter(s.day, await loadIndex()) || s.day; } catch (e) { /* giữ s.day + 1 */ }
   saveProfile({ daysDone: done, currentDay: next, lastDay: s.day });
-  db().session = { finished: { day: s.day, minutes: Math.round(s.minutes), newItems: newCount, chunks: day.chunks.length, date: today() } };
+  db().session = { finished: { day: s.day, minutes: Math.round(s.minutes), newItems: newCount, chunks: day.chunks.length, known: known.size, date: today() } };
   persist();
   if (onExit) onExit();
 }
@@ -291,6 +330,68 @@ function reviewStep(body, listKey) {
 const s1 = (b) => reviewStep(b, 'queue');
 const sx = (b) => reviewStep(b, 'extra');
 
+// ---------- S0: kiểm tra nhanh (quét lỗ hổng) ----------
+function s0Prompt(c) {
+  const sub = day.substitution.find((x) => x.chunk === c.id);
+  const cue = sub && sub.cues && sub.cues[0];
+  return { cue, answerLine: cue ? { id: cue.id, text: cue.answer } : { id: c.id, text: c.text } };
+}
+function s0(body) {
+  const s = S();
+  const list = day.chunks;
+  const known = s.scan.known;
+  const pos = list.findIndex((c) => known[c.id] === undefined);
+  const doneBtn = host.querySelector('#doneStep');
+  if (doneBtn) doneBtn.disabled = pos !== -1;
+  if (pos === -1) {
+    const yes = list.filter((c) => known[c.id] === true);
+    const no = list.filter((c) => known[c.id] !== true);
+    body.innerHTML = `
+      <div class="card sess-card">
+        <p class="big-line">Biết rồi ${yes.length} / ${list.length} cụm.</p>
+        ${no.length ? `<p class="muted">Hôm nay học kỹ ${no.length} cụm chưa chắc:</p>
+          <ul class="stem-sum">${no.map((c) => `<li><span lang="en">${esc(c.text)}</span><span class="muted">${esc(c.vi)}</span></li>`).join('')}</ul>
+          ${yes.length ? `<p class="muted small">${yes.length} cụm đã biết vào thẻ ôn với khoảng cách dài (7 ngày). Quên thì sẽ quay lại học bình thường.</p>` : ''}`
+        : `<p class="muted">Bạn nói được hết. Hôm nay chỉ còn một đoạn đóng vai ngắn (khoảng 5 phút). Các cụm vào thẻ ôn, nhắc lại sau 7 ngày.</p>`}
+      </div>`;
+    return;
+  }
+  const c = list[pos];
+  const { cue, answerLine } = s0Prompt(c);
+  const revealed = !!s.flags.s0rev;
+  const stem = c.type === 'stem';
+  body.innerHTML = `
+    <div class="sess-progress">${pos + 1} / ${list.length}</div>
+    <div class="card sess-card">
+      <div class="row" style="gap:8px"><span class="tag">${stem ? 'khung câu' : 'cụm'}</span></div>
+      <p class="cue">${esc(c.vi)}</p>
+      ${stem && cue ? `<p class="muted">Ý cần nói: “${esc(cue.cue_vi)}”</p>` : ''}
+      ${revealed ? `
+        <p class="answer" lang="en">${esc(answerLine.text)}</p>
+        ${stem ? `<p class="frame" lang="en">${esc(c.text)}</p>` : ''}
+        <div class="row">${playBtn(answerLine, 'Nghe lại')}</div>
+        <div class="rate-row two">
+          <button type="button" class="btn rate-forgot" data-k="0">Chưa chắc</button>
+          <button type="button" class="btn rate-good" data-k="1">Biết rồi</button>
+        </div>` : `
+        <p class="muted">Nói to cả câu tiếng Anh, rồi nghe đáp án.</p>
+        <div id="heard"></div>
+        <div class="row">${sayButton()}<button type="button" class="btn btn-primary" id="revealBtn">Nghe đáp án</button></div>`}
+    </div>`;
+  wirePlay(body);
+  const say = body.querySelector('#sayBtn');
+  if (say) say.addEventListener('click', () => trySay(say, [answerLine.text, c.text, ...(cue ? cue.accept || [] : [])], body.querySelector('#heard')));
+  const rv = body.querySelector('#revealBtn');
+  if (rv) rv.addEventListener('click', () => { s.flags.s0rev = true; persist(); s0(body); play(answerLine); });
+  body.querySelectorAll('[data-k]').forEach((b) => b.addEventListener('click', () => {
+    known[c.id] = b.dataset.k === '1';
+    countEnc([c.id]);
+    s.flags.s0rev = false;
+    persist();
+    s0(body);
+  }));
+}
+
 // ---------- S2: nghe hội thoại ----------
 function s2(body) {
   const s = S();
@@ -324,7 +425,9 @@ function s2(body) {
 // ---------- S3: cụm mới ----------
 function s3(body) {
   const s = S();
-  const list = day.chunks;
+  const unk = unknownIds(day, s.scan);
+  const list = unk ? day.chunks.filter((c) => unk.includes(c.id)) : day.chunks;
+  if (!list.length) { body.innerHTML = '<div class="card sess-card"><p class="big-line">Không còn cụm nào cần học kỹ.</p></div>'; return; }
   const pos = Math.min(s.pos.S3 || 0, list.length - 1);
   const c = list[pos];
   if (!s.flags[`s3-${c.id}`]) { s.flags[`s3-${c.id}`] = true; countEnc([c.id]); persist(); }
@@ -366,9 +469,18 @@ function s3(body) {
 }
 
 // ---------- S4: nhại theo ----------
+// Sau khi quét: chỉ các câu chứa cụm chưa chắc (tối thiểu 2 câu, bù thêm câu đầu hội thoại)
+export function s4Lines(d = day, scan = S() && S().scan) {
+  const all = d.dialogue.lines;
+  const unk = unknownIds(d, scan);
+  if (!unk) return all;
+  const keep = new Set(all.filter((l) => (l.chunks || []).some((c) => unk.includes(c))).map((l) => l.id));
+  for (const l of all) { if (keep.size >= Math.min(2, all.length)) break; keep.add(l.id); }
+  return all.filter((l) => keep.has(l.id));
+}
 function s4(body) {
   const s = S();
-  const lines = day.dialogue.lines;
+  const lines = s4Lines();
   const pos = Math.min(s.pos.S4 || 0, lines.length - 1);
   const l = lines[pos];
   if (!s.flags[`s4-${l.id}`]) { s.flags[`s4-${l.id}`] = true; countEnc(l.chunks); persist(); }
@@ -404,15 +516,15 @@ function s4(body) {
 }
 
 // ---------- S5: thay ô bằng miệng ----------
-export function s5List(d, b = budget()) {
+export function s5List(d, b = budget(), only = null) {
   const p = planFor(b);
   const out = [];
-  d.substitution.slice(0, p.stems).forEach((sub) => sub.cues.slice(0, p.cues).forEach((cue) => out.push({ chunk: sub.chunk, cue })));
+  d.substitution.filter((x) => !only || only.includes(x.chunk)).slice(0, p.stems).forEach((sub) => sub.cues.slice(0, p.cues).forEach((cue) => out.push({ chunk: sub.chunk, cue })));
   return out;
 }
 function s5(body) {
   const s = S();
-  const list = s5List(day).concat(s.aiCues || []);
+  const list = s5List(day, budget(), unknownIds(day, s.scan)).concat(s.aiCues || []);
   const pos = s.pos.S5 || 0;
   if (pos >= list.length) {
     const stems = [...new Set(list.map((x) => x.chunk))];

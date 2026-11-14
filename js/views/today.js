@@ -7,7 +7,10 @@ import { openModal, toast, confirmModal } from '../ui.js';
 import { openDoubt } from '../doubt.js';
 import { goalHours, levelMarks, planSentence } from '../roadmap.js';
 import { loadIndex, loadDay } from '../course.js';
-import { budget, currentDay, dayDoneMap, needsPlacement, skipPlacement, weeklyHours } from '../profile.js';
+import { budget, currentDay, dayDoneMap, needsPlacement, skipPlacement, weeklyHours, saveProfile } from '../profile.js';
+import {
+  pendingWeek, snoozed, snooze, reviewWeek, renderCheck, startWeekReview, weekCardHtml, weekRange,
+} from '../weekly.js';
 import { dueItems } from '../items.js';
 import { startSession, renderSession, hasSession, resumeClock, stopSession, buildSteps, planFor, STEPS } from '../session.js';
 
@@ -47,7 +50,18 @@ function quietSection() {
     </details>`;
 }
 
+function wireWeek() {
+  root.querySelectorAll('[data-wk]').forEach((b) => b.addEventListener('click', () => startCheck(Number(b.dataset.wk))));
+}
+function startCheck(w) {
+  stopSession();
+  ++renderToken;
+  root.innerHTML = '<div id="wkHost"></div>';
+  renderCheck(root.querySelector('#wkHost'), w, () => render());
+}
+
 function wireQuiet() {
+  wireWeek();
   const mb = root.querySelector('#manualBtn');
   if (mb) mb.addEventListener('click', manualEntry);
   const db2 = root.querySelector('#doubtBtn');
@@ -101,11 +115,13 @@ async function render() {
     root.innerHTML = `
       <div class="hero">
         ${head}
-        <h1>Xong Ngày ${fin.day}.</h1>
-        <p class="lede">${fin.minutes ? `${fin.minutes} phút. ` : ''}${fin.chunks} cụm mới đã vào thẻ ôn, sẽ quay lại từ ngày mai.</p>
+        <h1>${fin.reviewOnly ? `Xong phần ${esc((fin.label || 'ôn lại').toLowerCase())}.` : `Xong Ngày ${fin.day}.`}</h1>
+        <p class="lede">${fin.minutes ? `${fin.minutes} phút. ` : ''}${fin.reviewOnly ? 'Các thẻ đã được ôn.' : `${fin.chunks} cụm mới đã vào thẻ ôn${fin.known ? ` (${fin.known} cụm đã biết nhắc lại sau 7 ngày)` : ''}, sẽ quay lại từ ngày mai.`}</p>
+        ${pendingWeek() ? `<button type="button" class="btn btn-primary" data-wk="${pendingWeek()}">Làm kiểm tra tuần ${pendingWeek()} ngay</button>` : ''}
         <p class="small">Mai học tiếp ${nextEntry ? `Ngày ${next}: ${esc(nextEntry.title || nextEntry.function || '')}` : 'phần ôn'}.</p>
-        ${nextEntry ? `<button type="button" class="btn btn-quiet" id="moreDay">Học luôn Ngày ${next}</button>` : ''}
+        ${nextEntry && !pendingWeek() ? `<button type="button" class="btn btn-quiet" id="moreDay">Học luôn Ngày ${next}</button>` : ''}
       </div>
+      ${weekCardHtml()}
       ${quietSection()}`;
     const md = root.querySelector('#moreDay');
     if (md) md.addEventListener('click', async () => { db().session = null; save(); await startSession(next); render(); });
@@ -114,6 +130,38 @@ async function render() {
   }
 
   const paused = hasSession() && db().session.paused ? db().session : null;
+  const pw = pendingWeek();
+  if (!paused && pw && !snoozed()) {
+    const { from, to } = weekRange(pw);
+    root.innerHTML = `
+      <div class="hero">
+        ${head}
+        <h1>Kiểm tra tuần ${pw}</h1>
+        <p class="lede">Bạn vừa học xong Ngày ${to}. Khoảng 10 tình huống từ Ngày ${from}–${to}: đọc ý tiếng Việt, nói hoặc gõ câu tiếng Anh. Khoảng 5 phút. Chưa đạt cũng không sao, chỉ ôn lại tuần đó.</p>
+        <button type="button" class="btn btn-primary btn-xl" data-wk="${pw}">Bắt đầu kiểm tra</button>
+        <button type="button" class="btn btn-quiet" id="wkLater">Để sau, học bài mới</button>
+      </div>
+      ${weekCardHtml({ hero: true })}${quietSection()}`;
+    root.querySelector('#wkLater').addEventListener('click', () => { snooze(); render(); });
+    wireQuiet();
+    return;
+  }
+  const rw = reviewWeek();
+  if (!paused && rw && !pw) {
+    root.innerHTML = `
+      <div class="hero">
+        ${head}
+        <h1>Ôn lại tuần ${rw}</h1>
+        <p class="lede">Kiểm tra tuần ${rw} chưa đạt. Hôm nay ôn lại các cụm của tuần đó trước, rồi mới học bài mới.</p>
+        <button type="button" class="btn btn-primary btn-xl" id="wkReview">Bắt đầu ôn tuần ${rw}</button>
+        <button type="button" class="btn btn-quiet" id="wkSkip">Bỏ qua, học bài mới</button>
+      </div>
+      ${weekCardHtml()}${quietSection()}`;
+    root.querySelector('#wkReview').addEventListener('click', async () => { if (await startWeekReview(rw)) render(); else { toast('Chưa có thẻ nào của tuần này.'); render(); } });
+    root.querySelector('#wkSkip').addEventListener('click', () => { saveProfile({ reviewWeek: null }); render(); });
+    wireQuiet();
+    return;
+  }
   const n = paused ? paused.day : currentDay();
   if (!idx.length) {
     root.innerHTML = `<div class="hero">${head}<h1>Khoá học chưa có bài nào</h1><p class="lede">course/index.json đang trống. Bài sẽ được thêm dần.</p></div>${quietSection()}`;
@@ -147,7 +195,8 @@ async function render() {
   try { day = await loadDay(entry.day, idx); } catch (e) { /* hiện tối thiểu */ }
   if (token !== renderToken) return;
   const b = budget();
-  const steps = day ? buildSteps(day, b, Math.min(due, planFor(b).rev)) : [];
+  const isNew = !!day && !paused && !dayDoneMap()[entry.day];
+  const steps = day ? (paused ? paused.steps : buildSteps(day, b, Math.min(due, planFor(b).rev), { isNew })) : [];
   root.innerHTML = `
     <div class="hero">
       ${head}
@@ -155,8 +204,10 @@ async function render() {
       ${day && day.intro_vi ? `<p class="lede">${esc(day.intro_vi)}</p>` : ''}
       ${!day ? `<p class="notice" id="dayMissing">Chưa tải được bài của Ngày ${entry.day} (file course/${esc(entry.file || '')} thiếu hoặc lỗi). Kiểm tra mạng rồi mở lại; nếu vẫn vậy, bài này chưa được thêm vào khoá.</p>` : ''}
       <button type="button" class="btn btn-primary btn-xl" id="startBtn" ${!day ? 'disabled' : ''}>${paused ? `Tiếp tục Ngày ${entry.day} · bước ${paused.i + 1}/${paused.steps.length}` : `Bắt đầu Ngày ${entry.day} · ${b} phút`}</button>
-      ${steps.length ? `<ol class="step-preview">${steps.map((k) => `<li>${esc(STEPS[k].name)}${k === 'S1' ? ` · ${Math.min(due, planFor(b).rev)} thẻ` : ''}${k === 'S3' && day ? ` · ${day.chunks.length} cụm` : ''}</li>`).join('')}</ol>` : ''}
+      ${steps.length ? `<ol class="step-preview">${steps.map((k) => `<li>${esc(STEPS[k].name)}${k === 'S1' ? ` · ${Math.min(due, planFor(b).rev)} thẻ` : ''}${k === 'S0' && day ? ` · ${day.chunks.length} cụm` : ''}${k === 'S3' && day ? ` · ${day.chunks.length} cụm` : ''}</li>`).join('')}</ol>` : ''}
+      ${steps.includes('S0') ? '<p class="small muted scan-note">Sau Kiểm tra nhanh: biết hết thì chỉ còn Đóng vai (khoảng 5 phút); cụm nào chưa chắc thì chỉ học kỹ cụm đó.</p>' : ''}
     </div>
+    ${weekCardHtml()}
     ${quietSection()}`;
   root.querySelector('#startBtn').addEventListener('click', async (e) => {
     e.currentTarget.disabled = true;

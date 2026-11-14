@@ -9,7 +9,7 @@
 const KEY = 'englishDaily.v1';
 const listeners = new Set();
 
-export const COLLECTIONS = ['sessions', 'phrases', 'errors', 'toeic', 'videos', 'speakLog', 'doubts', 'checks', 'pronLog', 'dictLog', 'profile', 'items'];
+export const COLLECTIONS = ['sessions', 'phrases', 'errors', 'toeic', 'videos', 'speakLog', 'doubts', 'checks', 'pronLog', 'dictLog', 'profile', 'items', 'weekChecks'];
 
 export const BLOCKS = {
   input:  { name: 'Nghe/đọc thứ bạn thích', short: 'Nghe/đọc', min: 30, max: 45 },

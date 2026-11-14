@@ -168,3 +168,8 @@ sw.js                 cache khung ứng dụng (không bao giờ cache YouTube)
 manifest.webmanifest  cài lên màn hình chính
 icons/                biểu tượng
 ```
+
+
+## Quét lỗ hổng và kiểm tra tuần
+- **Kiểm tra nhanh** (đầu mỗi ngày MỚI, sau phần ôn): với từng cụm, nhìn nghĩa, nói to, nghe đáp án, tự chấm "Biết rồi" / "Chưa chắc". Biết hết: chỉ còn Đóng vai (khoảng 5 phút). Chưa chắc cụm nào: Cụm mới, Thay ô chỉ gồm cụm đó; Nhại theo chỉ các câu chứa cụm đó (tối thiểu 2 câu). Cụm "Biết rồi" vào SRS với khoảng cách đầu 7 ngày, quên khi ôn thì học lại như thường. Kết quả quét nằm trong `db().session.scan` (tạm dừng/tiếp tục an toàn).
+- **Kiểm tra tuần** sau Ngày 7, 14, 21, 30 (`js/weekly.js`): 8–10 tình huống tiếng Việt, nói (nếu trình duyệt có nhận giọng) hoặc gõ tiếng Anh; Gemini chấm (`weeklyCheckPrompt` trong `js/ai.js`), không có khoá thì chấm offline bằng so khớp mờ với câu mẫu/`accept`. Đạt từ 70. Cụm sai được đẩy vào thẻ ôn ngày mai; chưa đạt thì buổi sau ôn lại tuần đó trước khi học bài mới. Kết quả lưu ở bộ sưu tập `weekChecks` (đồng bộ) và ghi vào progress.md.

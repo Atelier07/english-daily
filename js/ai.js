@@ -166,3 +166,20 @@ Hãy giải thích bằng tiếng Việt, thật ngắn:
 Không chấm điểm, không cho điểm số.
 Chỉ trả về JSON: {"cause":"","tip":""}`;
 }
+
+// Kiểm tra tuần: chấm các câu người học tự nói/gõ theo tình huống tiếng Việt.
+export function weeklyCheckPrompt(rows, week) {
+  return `${LEARNER}
+Đây là bài KIỂM TRA TUẦN ${week} (tiếng Anh rất cơ bản). Mỗi dòng: một tình huống tiếng Việt, câu mẫu (chỉ là MỘT cách đúng), và câu người học tự nói hoặc gõ. Câu nói có thể do máy chép lời nên nghe nhầm; bỏ qua lỗi chính tả, dấu câu, viết hoa.
+Chấm khoan dung: câu đúng nghĩa và tự nhiên thì ĐÚNG dù khác câu mẫu. Chỉ tính là cần sửa khi sai nghĩa, sai ngữ pháp làm khó hiểu, thiếu ý, hoặc để trống.
+Trả về:
+- "score": điểm 0-100 cho cả bài (tỉ lệ ý nói được, làm tròn)
+- "pass": true nếu score >= 70
+- "good": 1–3 điều làm tốt, mỗi điều một câu ngắn tiếng Việt
+- "fix": các câu cần sửa, mỗi mục {"chunkId": "<id>", "note_vi": "1 câu tiếng Việt: sai gì, nên nói gì"}
+- "summary_vi": 1–2 câu ngắn tiếng Việt đơn giản, giọng bình tĩnh, không khen quá
+Chỉ trả về JSON: {"score":0,"pass":false,"good":[],"fix":[{"chunkId":"","note_vi":""}],"summary_vi":""}
+
+Các dòng:
+${rows.map((r, i) => `${i + 1}. chunkId=${r.chunkId} | tình huống: ${r.vi} | câu mẫu: ${r.model} | người học: ${r.answer || '(để trống)'}`).join('\n')}`;
+}
