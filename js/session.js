@@ -832,7 +832,7 @@ function s7(body) {
       <div class="card sess-card">
         <p class="cue">${esc(q.q_vi)}</p>
         <div class="opts">${q.options_vi.map((o, k) => `<button type="button" class="opt ${answered ? (k === q.answer ? 'ok' : k === picked ? 'soft' : '') : ''}" data-opt="${k}" ${answered ? 'disabled' : ''}>${esc(o)}</button>`).join('')}</div>
-        ${answered ? `<p class="${picked === q.answer ? 'self-ok' : 'muted'}">${picked === q.answer ? 'Đúng rồi.' : `Gần đúng. Đáp án là “${esc(q.options_vi[q.answer])}”. Lúc nghe lại có chữ sẽ rõ hơn.`}</p>` : '<p class="muted small">Chọn một đáp án. Không tính điểm.</p>'}
+        ${answered ? `<p class="${picked === q.answer ? 'self-ok' : 'muted'}">${picked === q.answer ? 'Đúng rồi.' : `Chưa đúng. Đáp án là “${esc(q.options_vi[q.answer])}”. Lúc nghe lại có chữ sẽ rõ hơn.`}</p>` : '<p class="muted small">Chọn một đáp án. Không tính điểm.</p>'}
         <div class="row"><button type="button" class="btn" id="stAgain">Nghe lại câu chuyện</button></div>
       </div>
       <div class="row pager"><span class="spacer"></span>${answered ? `<button type="button" class="btn btn-primary" id="stQNext">${last ? (full ? 'Nghe lại có chữ →' : 'Xong câu hỏi →') : 'Câu tiếp →'}</button>` : ''}</div>`;
