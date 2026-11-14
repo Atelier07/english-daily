@@ -7,10 +7,12 @@ import { toast, confirmModal } from '../ui.js';
 import { hasAI, askJSON, weeklyPrompt } from '../ai.js';
 import { progressMarkdown } from '../summary.js';
 import { goalHours, planSentence } from '../roadmap.js';
-import { weeklyHours } from '../profile.js';
+import { weeklyHours, currentDay, dayDoneMap } from '../profile.js';
+import { loadIndex } from '../course.js';
 import { stats as itemStats } from '../items.js';
 import { renderRoadmapInto } from './roadmap.js';
 
+let idxCache = null;
 const WEEKLY_KEY = 'englishDaily.weekly';
 function lastWeekly() { try { return JSON.parse(localStorage.getItem(WEEKLY_KEY) || 'null'); } catch (e) { return null; } }
 
@@ -119,22 +121,24 @@ function render() {
   const openErr = db().errors.filter((e) => !e.fixed).length;
 
   const its = itemStats();
+  const idxLen = idxCache ? idxCache.length : 0;
+  const daysDone = Object.keys(dayDoneMap()).length;
+  if (!idxCache) loadIndex().then((l) => { idxCache = l || []; if (!root.hidden) render(); }).catch(() => { idxCache = []; });
   const goal = goalHours();
   root.innerHTML = `
     <div class="page-head">
       <div class="eyebrow">Tiến độ</div>
-      <h1>Đường dài, đo bằng giờ</h1>
-      <p class="lede">${esc(planSentence())}</p>
+      <h1>Ngày ${daysDone} / ${idxLen || '—'}</h1>
+      <p class="lede">${daysDone ? `Đã học ${daysDone} ngày của khoá. Đang ở Ngày ${currentDay()}.` : 'Chưa học ngày nào. Bắt đầu ở tab Hôm nay.'}</p>
+      ${idxLen ? `<div class="progress-bar thin" style="margin-top:14px"><i style="width:${Math.min(100, (daysDone / idxLen) * 100)}%"></i></div>` : ''}
     </div>
 
     <div class="kpis">
-      <div class="stat"><span class="num">${fmtHours(total)}</span><span class="k">/ ${goal} giờ</span></div>
+      <div class="stat"><span class="num">${its.mastered}</span><span class="k">cụm đã thuộc · ${its.learning} đang học</span></div>
       <div class="stat"><span class="num">${st.current}</span><span class="k">ngày liên tiếp · dài nhất ${st.best}</span></div>
-      <div class="stat"><span class="num">${its.mastered}</span><span class="k">cụm thuộc · ${its.learning} đang học</span></div>
-      <div class="stat"><span class="num">${its.reviewed7}</span><span class="k">thẻ đã ôn 7 ngày</span></div>
+      <div class="stat"><span class="num">${fmtHours(total)}</span><span class="k">giờ đã học</span></div>
+      <div class="stat"><span class="num">${its.reviewed7}</span><span class="k">lượt ôn 7 ngày qua</span></div>
     </div>
-
-    <div id="roadmapPart"></div>
 
     <section class="section">
       <div class="row" style="margin-bottom:10px"><h2>Giờ mỗi tuần</h2><span class="spacer"></span><span class="small">tuần này ${fmtHours(week)} / ${weeklyHours().toLocaleString('vi-VN', { maximumFractionDigits: 1 })} giờ</span></div>
@@ -142,6 +146,10 @@ function render() {
       <div class="card"><ul class="session-list">${byBlock}</ul><p class="muted small" style="margin:6px 0 0">Phân bổ tuần này theo từng phần.</p></div>
     </section>
 
+    <details class="section more-details">
+      <summary>Lộ trình dài hạn · thi thử · tổng kết tuần</summary>
+      <p class="lede" style="margin-top:12px">${esc(planSentence())}</p>
+      <div id="roadmapPart"></div>
     <section class="section">
       <h2>TOEIC thi thử</h2>
       <p class="muted small">Thi thử 3 tháng một lần, đủ 2 kỹ năng Nghe–Đọc, bấm giờ thật. ${nextTest ? `Lần tới nên vào khoảng <b>${viShortDate(nextTest)}/${nextTest.slice(0, 4)}</b>.` : 'Chưa có lần nào: làm một bài ngay để có mốc xuất phát.'}</p>
@@ -168,6 +176,8 @@ function render() {
         <div class="row" style="margin-top:12px"><button type="button" class="btn" id="weeklyBtn">AI tổng kết tuần</button></div>
       </div>
     </section>
+
+    </details>
 
     <p class="muted small section">Xem thêm: <a href="#/errors">Lỗi của tôi</a> · <a href="#/why">Vì sao cách này hiệu quả</a> · <a href="#/data">Xuất / nhập dữ liệu</a></p>
   `;

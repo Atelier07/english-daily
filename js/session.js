@@ -343,7 +343,7 @@ function s3(body) {
       <div class="row sess-actions">
         ${ex0 ? playBtn({ id: ex0.id, text: ex0.en }, 'Nghe', false, 'btn-primary') : playBtn({ text: c.text }, 'Nghe', false, 'btn-primary')}
         <button type="button" class="btn" id="recBtn">Nói theo</button>
-        <button type="button" class="btn btn-quiet" id="cmpBtn" ${rec.url ? '' : 'disabled'}>So sánh</button>
+        <button type="button" class="btn" id="cmpBtn" ${rec.url ? '' : 'hidden'}>So sánh giọng</button>
       </div>
     </div>
     <div class="row pager">
@@ -355,7 +355,7 @@ function s3(body) {
   const model = ex0 ? { id: ex0.id, text: ex0.en } : { text: c.text };
   body.querySelector('#recBtn').addEventListener('click', async (e) => {
     const b = e.currentTarget;
-    if (rec.recording) { await rec.stop(); b.textContent = 'Nói theo'; b.classList.remove('on'); body.querySelector('#cmpBtn').disabled = false; }
+    if (rec.recording) { await rec.stop(); b.textContent = 'Nói theo'; b.classList.remove('on'); body.querySelector('#cmpBtn').hidden = false; }
     else if (await rec.start()) { b.textContent = 'Dừng ghi'; b.classList.add('on'); }
   });
   body.querySelector('#cmpBtn').addEventListener('click', async () => { await play(model); await rec.play(); });
@@ -381,8 +381,8 @@ function s4(body) {
       <div class="row sess-actions">
         ${playBtn({ id: l.id, text: l.en }, 'Chậm', true, 'btn-primary')}
         ${playBtn({ id: l.id, text: l.en }, 'Thường')}
-        <button type="button" class="btn" id="recBtn">Ghi</button>
-        <button type="button" class="btn btn-quiet" id="cmpBtn" ${rec.url ? '' : 'disabled'}>So sánh</button>
+        <button type="button" class="btn" id="recBtn">Nói theo</button>
+        <button type="button" class="btn" id="cmpBtn" ${rec.url ? '' : 'hidden'}>So sánh giọng</button>
       </div>
     </div>
     <div class="row pager">
@@ -393,8 +393,8 @@ function s4(body) {
   wirePlay(body);
   body.querySelector('#recBtn').addEventListener('click', async (e) => {
     const b = e.currentTarget;
-    if (rec.recording) { await rec.stop(); b.textContent = 'Ghi'; b.classList.remove('on'); body.querySelector('#cmpBtn').disabled = false; }
-    else if (await rec.start()) { b.textContent = 'Dừng'; b.classList.add('on'); }
+    if (rec.recording) { await rec.stop(); b.textContent = 'Nói theo'; b.classList.remove('on'); body.querySelector('#cmpBtn').hidden = false; }
+    else if (await rec.start()) { b.textContent = 'Dừng ghi'; b.classList.add('on'); }
   });
   body.querySelector('#cmpBtn').addEventListener('click', async () => { await play({ id: l.id, text: l.en }); await rec.play(); });
   const go = (d) => { s.pos.S4 = pos + d; persist(); s4(body); };
