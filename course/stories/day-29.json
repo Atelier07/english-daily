@@ -1,0 +1,175 @@
+{
+  "day": 29,
+  "story_id": "t29",
+  "title_vi": "Người bạn mới ở bảo tàng",
+  "lines": [
+    {
+      "id": "t29l01",
+      "speaker": "N",
+      "en": "At the museum, Anna sits next to a young man. He is reading a map.",
+      "vi": "Ở bảo tàng, Anna ngồi cạnh một chàng trai. Anh đang xem bản đồ."
+    },
+    {
+      "id": "t29l02",
+      "speaker": "N",
+      "en": "His name is Ben.",
+      "vi": "Anh tên là Ben."
+    },
+    {
+      "id": "t29l03",
+      "speaker": "A",
+      "en": "Hi! Where are you from?",
+      "vi": "Chào bạn! Bạn từ đâu đến?",
+      "who": "Ben",
+      "gender": "m"
+    },
+    {
+      "id": "t29l04",
+      "speaker": "B",
+      "en": "I'm from Canada. I live in Denver now. And you?",
+      "vi": "Tôi đến từ Canada. Bây giờ tôi sống ở Denver. Còn bạn?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t29l05",
+      "speaker": "A",
+      "en": "I live in Seattle. I come to Chicago once a year for work.",
+      "vi": "Tôi sống ở Seattle. Mỗi năm tôi đến Chicago một lần để làm việc.",
+      "who": "Ben",
+      "gender": "m"
+    },
+    {
+      "id": "t29l06",
+      "speaker": "B",
+      "en": "Nice. Do you like this museum?",
+      "vi": "Hay quá. Bạn có thích bảo tàng này không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t29l07",
+      "speaker": "A",
+      "en": "I love it! I'm going to come again tomorrow.",
+      "vi": "Tôi rất thích! Ngày mai tôi sẽ đến nữa.",
+      "who": "Ben",
+      "gender": "m"
+    },
+    {
+      "id": "t29l08",
+      "speaker": "B",
+      "en": "That's great. What are you going to do after this?",
+      "vi": "Tuyệt quá. Sau đây bạn định làm gì?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t29l09",
+      "speaker": "A",
+      "en": "I'm going to have lunch at a small café. Do you want to come?",
+      "vi": "Tôi định đi ăn trưa ở một quán cà phê nhỏ. Bạn có muốn đi không?",
+      "who": "Ben",
+      "gender": "m"
+    },
+    {
+      "id": "t29l10",
+      "speaker": "B",
+      "en": "Thanks, but I can't make it. I'm going to meet my friend. Maybe next time.",
+      "vi": "Cảm ơn, nhưng tôi không đi được. Tôi định gặp bạn. Để lần sau nhé.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t29l11",
+      "speaker": "A",
+      "en": "Sure. Can I get your number?",
+      "vi": "Được. Cho tôi xin số của bạn nhé?",
+      "who": "Ben",
+      "gender": "m"
+    },
+    {
+      "id": "t29l12",
+      "speaker": "B",
+      "en": "Of course. And what's your email?",
+      "vi": "Dĩ nhiên. Còn email của bạn là gì?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t29l13",
+      "speaker": "A",
+      "en": "It's ben at mail dot com. Can you text me?",
+      "vi": "Là ben a còng mail chấm com. Bạn nhắn tin cho tôi được không?",
+      "who": "Ben",
+      "gender": "m"
+    },
+    {
+      "id": "t29l14",
+      "speaker": "B",
+      "en": "Yes, I'll text you tonight. I'll call you next week, too. Talk to you soon.",
+      "vi": "Được, tối nay tôi sẽ nhắn bạn. Tuần sau tôi cũng sẽ gọi bạn. Nói chuyện với bạn sớm nhé.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t29l15",
+      "speaker": "A",
+      "en": "Let's keep in touch. Maybe we can have coffee in Denver!",
+      "vi": "Mình giữ liên lạc nhé. Biết đâu mình đi uống cà phê ở Denver!",
+      "who": "Ben",
+      "gender": "m"
+    },
+    {
+      "id": "t29l16",
+      "speaker": "N",
+      "en": "Anna smiles. She has a new friend.",
+      "vi": "Anna mỉm cười. Cô có thêm một người bạn mới."
+    }
+  ],
+  "chunks": [
+    "c007",
+    "c008",
+    "c009",
+    "c015",
+    "c039",
+    "c040",
+    "c044",
+    "c045",
+    "c047",
+    "c068",
+    "c097",
+    "c103",
+    "c104",
+    "c106",
+    "c111",
+    "c112",
+    "c169",
+    "c170",
+    "c171",
+    "c172",
+    "c173",
+    "c174"
+  ],
+  "questions": [
+    {
+      "id": "t29q1",
+      "q_vi": "Ben sống ở đâu?",
+      "options_vi": [
+        "Seattle",
+        "Denver",
+        "Chicago"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t29q2",
+      "q_vi": "Anna và Ben làm gì trước khi chia tay?",
+      "options_vi": [
+        "Trao số điện thoại và email",
+        "Đi ăn trưa cùng nhau",
+        "Mua vé bảo tàng"
+      ],
+      "answer": 0
+    }
+  ]
+}

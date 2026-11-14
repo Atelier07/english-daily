@@ -1,0 +1,166 @@
+{
+  "day": 28,
+  "story_id": "t28",
+  "title_vi": "Lạc đường ở Chicago",
+  "lines": [
+    {
+      "id": "t28l01",
+      "speaker": "N",
+      "en": "Anna and Lisa want to go to the art museum. But they don't know the way.",
+      "vi": "Anna và Lisa muốn đến bảo tàng nghệ thuật. Nhưng họ không biết đường."
+    },
+    {
+      "id": "t28l02",
+      "speaker": "A",
+      "en": "Excuse me. Which bus goes to the museum?",
+      "vi": "Xin lỗi. Xe buýt nào đi đến bảo tàng?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t28l03",
+      "speaker": "B",
+      "en": "The number twelve goes there. Is this your first time here?",
+      "vi": "Xe số mười hai đi đến đó. Đây là lần đầu bạn tới đây à?",
+      "who": "bus driver",
+      "gender": "m"
+    },
+    {
+      "id": "t28l04",
+      "speaker": "A",
+      "en": "Yes, it is. How long does it take to get there?",
+      "vi": "Vâng. Đi đến đó mất bao lâu?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t28l05",
+      "speaker": "B",
+      "en": "It takes about twenty minutes.",
+      "vi": "Mất khoảng hai mươi phút.",
+      "who": "bus driver",
+      "gender": "m"
+    },
+    {
+      "id": "t28l06",
+      "speaker": "A",
+      "en": "Thank you. Where can I buy a ticket?",
+      "vi": "Cảm ơn bạn. Tôi mua vé ở đâu?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t28l07",
+      "speaker": "B",
+      "en": "You can buy one on the bus. It's three dollars.",
+      "vi": "Bạn mua trên xe được. Ba đô la.",
+      "who": "bus driver",
+      "gender": "m"
+    },
+    {
+      "id": "t28l08",
+      "speaker": "N",
+      "en": "The bus comes. They get on, and Lisa buys two tickets. Later, they get off.",
+      "vi": "Xe buýt đến. Họ lên xe và Lisa mua hai vé. Sau đó họ xuống xe."
+    },
+    {
+      "id": "t28l09",
+      "speaker": "A",
+      "en": "Anna, is this the way to the museum?",
+      "vi": "Anna, đây có phải đường đến bảo tàng không?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t28l10",
+      "speaker": "B",
+      "en": "I'm not sure. I think we need to turn left. Wait, I'm lost.",
+      "vi": "Tôi không chắc. Tôi nghĩ mình cần rẽ trái. Khoan, tôi lạc rồi.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t28l11",
+      "speaker": "A",
+      "en": "Me too. Let's ask someone.",
+      "vi": "Tôi cũng vậy. Mình hỏi ai đó đi.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t28l12",
+      "speaker": "N",
+      "en": "A young woman walks by. Anna asks her for help.",
+      "vi": "Một cô gái trẻ đi ngang qua. Anna nhờ cô giúp."
+    },
+    {
+      "id": "t28l13",
+      "speaker": "A",
+      "en": "Sorry to bother you. Is this the way to the museum?",
+      "vi": "Xin lỗi làm phiền. Đây có phải đường đến bảo tàng không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t28l14",
+      "speaker": "B",
+      "en": "Almost! Go straight for two blocks, then turn right. It's a big white building.",
+      "vi": "Gần đúng rồi! Đi thẳng hai dãy phố rồi rẽ phải. Đó là toà nhà trắng lớn.",
+      "who": "young woman",
+      "gender": "f"
+    },
+    {
+      "id": "t28l15",
+      "speaker": "A",
+      "en": "Thanks so much. You can't miss it, right?",
+      "vi": "Cảm ơn bạn nhiều. Không thể nhầm được, đúng không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t28l16",
+      "speaker": "B",
+      "en": "Right! It takes about five minutes.",
+      "vi": "Đúng vậy! Mất khoảng năm phút.",
+      "who": "young woman",
+      "gender": "f"
+    }
+  ],
+  "chunks": [
+    "c026",
+    "c042",
+    "c054",
+    "c056",
+    "c060",
+    "c106",
+    "c139",
+    "c163",
+    "c164",
+    "c165",
+    "c166",
+    "c167",
+    "c168"
+  ],
+  "questions": [
+    {
+      "id": "t28q1",
+      "q_vi": "Xe buýt nào đi đến bảo tàng?",
+      "options_vi": [
+        "Số mười hai",
+        "Số năm",
+        "Số hai mươi"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t28q2",
+      "q_vi": "Khi Anna lạc, cô làm gì?",
+      "options_vi": [
+        "Hỏi một cô gái",
+        "Gọi taxi",
+        "Quay về khách sạn"
+      ],
+      "answer": 0
+    }
+  ]
+}

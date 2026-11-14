@@ -1,0 +1,129 @@
+{
+  "day": 1,
+  "story_id": "t01",
+  "title_vi": "Gặp hàng xóm mới",
+  "lines": [
+    {
+      "id": "t01l01",
+      "speaker": "N",
+      "en": "Anna is a new neighbor. Mike lives next door.",
+      "vi": "Anna là hàng xóm mới. Mike sống ngay bên cạnh."
+    },
+    {
+      "id": "t01l02",
+      "speaker": "A",
+      "en": "Hi, I'm Mike.",
+      "vi": "Chào, tôi là Mike.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t01l03",
+      "speaker": "B",
+      "en": "Hi, I'm Anna.",
+      "vi": "Chào, tôi là Anna.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t01l04",
+      "speaker": "A",
+      "en": "Nice to meet you.",
+      "vi": "Rất vui được gặp bạn.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t01l05",
+      "speaker": "B",
+      "en": "Nice to meet you, too.",
+      "vi": "Tôi cũng rất vui được gặp bạn.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t01l06",
+      "speaker": "A",
+      "en": "How are you?",
+      "vi": "Bạn khoẻ không?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t01l07",
+      "speaker": "B",
+      "en": "I'm good, thanks. And you?",
+      "vi": "Tôi khoẻ, cảm ơn. Còn bạn?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t01l08",
+      "speaker": "A",
+      "en": "I'm good, thanks.",
+      "vi": "Tôi khoẻ, cảm ơn.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t01l09",
+      "speaker": "N",
+      "en": "A small dog comes to the door. Anna smiles.",
+      "vi": "Một chú chó nhỏ chạy ra cửa. Anna mỉm cười."
+    },
+    {
+      "id": "t01l10",
+      "speaker": "B",
+      "en": "Hi! What's your name?",
+      "vi": "Chào cưng! Tên em là gì?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t01l11",
+      "speaker": "A",
+      "en": "His name is Max. He's my dog.",
+      "vi": "Tên nó là Max. Nó là chó của tôi.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t01l12",
+      "speaker": "B",
+      "en": "Hi, Max. My name is Anna.",
+      "vi": "Chào Max. Tên chị là Anna.",
+      "who": "Anna",
+      "gender": "f"
+    }
+  ],
+  "chunks": [
+    "c001",
+    "c002",
+    "c003",
+    "c004",
+    "c005",
+    "c006"
+  ],
+  "questions": [
+    {
+      "id": "t01q1",
+      "q_vi": "Anna và Mike là gì của nhau?",
+      "options_vi": [
+        "Hàng xóm",
+        "Anh em",
+        "Đồng nghiệp"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t01q2",
+      "q_vi": "Max là ai?",
+      "options_vi": [
+        "Con trai của Mike",
+        "Chó của Mike",
+        "Bạn của Anna"
+      ],
+      "answer": 1
+    }
+  ]
+}

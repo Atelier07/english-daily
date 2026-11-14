@@ -1,0 +1,158 @@
+{
+  "day": 8,
+  "story_id": "t08",
+  "title_vi": "Chuyển đồ vào nhà",
+  "lines": [
+    {
+      "id": "t08l01",
+      "speaker": "N",
+      "en": "It is Saturday. Anna is moving a big table into her room.",
+      "vi": "Hôm nay là thứ Bảy. Anna đang chuyển một cái bàn lớn vào phòng."
+    },
+    {
+      "id": "t08l02",
+      "speaker": "B",
+      "en": "Oh no. I can't do this.",
+      "vi": "Ôi không. Tôi không làm nổi việc này.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t08l03",
+      "speaker": "N",
+      "en": "Mike walks by. He sees Anna.",
+      "vi": "Mike đi ngang qua. Anh thấy Anna."
+    },
+    {
+      "id": "t08l04",
+      "speaker": "A",
+      "en": "Hi, Anna. Can I help?",
+      "vi": "Chào Anna. Tôi giúp được không?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t08l05",
+      "speaker": "B",
+      "en": "Yes! Can you help me, please?",
+      "vi": "Có! Bạn giúp tôi được không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t08l06",
+      "speaker": "A",
+      "en": "Sure thing. I can lift this side.",
+      "vi": "Được thôi. Tôi nhấc được bên này.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t08l07",
+      "speaker": "B",
+      "en": "Great. I can lift this side. One, two, three!",
+      "vi": "Tuyệt. Tôi nhấc bên này. Một, hai, ba!",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t08l08",
+      "speaker": "A",
+      "en": "Oh, it's heavy. Can you stop for a minute?",
+      "vi": "Ồ, nặng quá. Bạn dừng một chút được không?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t08l09",
+      "speaker": "B",
+      "en": "Of course. Is Lisa home? Can she help?",
+      "vi": "Dĩ nhiên. Lisa có nhà không? Cô ấy giúp được không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t08l10",
+      "speaker": "A",
+      "en": "I don't know. I can call her.",
+      "vi": "Tôi không biết. Tôi gọi cô ấy được.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t08l11",
+      "speaker": "N",
+      "en": "Lisa comes in five minutes. Now they are three.",
+      "vi": "Năm phút sau Lisa đến. Giờ họ có ba người."
+    },
+    {
+      "id": "t08l12",
+      "speaker": "A",
+      "en": "Hi, Anna! Can I help you?",
+      "vi": "Chào Anna! Tôi giúp bạn được không?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t08l13",
+      "speaker": "B",
+      "en": "Yes, please! Thank you so much.",
+      "vi": "Có, làm ơn! Cảm ơn bạn nhiều.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t08l14",
+      "speaker": "N",
+      "en": "The table is in the room. Anna is happy.",
+      "vi": "Cái bàn đã vào phòng. Anna rất vui."
+    },
+    {
+      "id": "t08l15",
+      "speaker": "B",
+      "en": "I can't cook for you today. But I can make coffee.",
+      "vi": "Hôm nay tôi không nấu cho mọi người được. Nhưng tôi pha cà phê được.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t08l16",
+      "speaker": "A",
+      "en": "Great. We can drink coffee!",
+      "vi": "Hay quá. Mình uống cà phê thôi!",
+      "who": "Mike",
+      "gender": "m"
+    }
+  ],
+  "chunks": [
+    "c016",
+    "c043",
+    "c044",
+    "c045",
+    "c046",
+    "c047",
+    "c048"
+  ],
+  "questions": [
+    {
+      "id": "t08q1",
+      "q_vi": "Anna cần giúp việc gì?",
+      "options_vi": [
+        "Chuyển cái bàn",
+        "Nấu ăn",
+        "Tìm con chó"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t08q2",
+      "q_vi": "Ai đến giúp sau khi Mike gọi?",
+      "options_vi": [
+        "Tom",
+        "Lisa",
+        "Joe"
+      ],
+      "answer": 1
+    }
+  ]
+}

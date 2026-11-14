@@ -1,0 +1,130 @@
+{
+  "day": 2,
+  "story_id": "t02",
+  "title_vi": "Anna đến từ đâu?",
+  "lines": [
+    {
+      "id": "t02l01",
+      "speaker": "N",
+      "en": "Mike and Anna are in the yard. Lisa comes over.",
+      "vi": "Mike và Anna đang ở ngoài sân. Lisa đi tới."
+    },
+    {
+      "id": "t02l02",
+      "speaker": "A",
+      "en": "Hi, I'm Lisa. Nice to meet you.",
+      "vi": "Chào, tôi là Lisa. Rất vui được gặp bạn.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t02l03",
+      "speaker": "B",
+      "en": "Hi, Lisa. My name is Anna.",
+      "vi": "Chào Lisa. Tên tôi là Anna.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t02l04",
+      "speaker": "A",
+      "en": "Where are you from, Anna?",
+      "vi": "Bạn từ đâu đến vậy, Anna?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t02l05",
+      "speaker": "B",
+      "en": "I'm from Canada. I live in Denver now.",
+      "vi": "Tôi đến từ Canada. Bây giờ tôi sống ở Denver.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t02l06",
+      "speaker": "A",
+      "en": "Do you speak Spanish?",
+      "vi": "Bạn có nói tiếng Tây Ban Nha không?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t02l07",
+      "speaker": "B",
+      "en": "I speak a little Spanish.",
+      "vi": "Tôi nói được một chút tiếng Tây Ban Nha.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t02l08",
+      "speaker": "A",
+      "en": "Really? That's great! I'm from Mexico.",
+      "vi": "Thật sao? Tuyệt quá! Tôi đến từ Mexico.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t02l09",
+      "speaker": "N",
+      "en": "Mike laughs. He is from Texas.",
+      "vi": "Mike bật cười. Anh ấy đến từ Texas."
+    },
+    {
+      "id": "t02l10",
+      "speaker": "B",
+      "en": "Mike, where are you from?",
+      "vi": "Mike, bạn từ đâu đến?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t02l11",
+      "speaker": "A",
+      "en": "I'm from Texas. I live next door.",
+      "vi": "Tôi từ Texas. Tôi sống ngay bên cạnh.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t02l12",
+      "speaker": "N",
+      "en": "Three people, three places. Now they are friends.",
+      "vi": "Ba người, ba nơi khác nhau. Giờ họ là bạn."
+    }
+  ],
+  "chunks": [
+    "c001",
+    "c002",
+    "c004",
+    "c007",
+    "c008",
+    "c009",
+    "c010",
+    "c011",
+    "c012"
+  ],
+  "questions": [
+    {
+      "id": "t02q1",
+      "q_vi": "Anna đến từ đâu?",
+      "options_vi": [
+        "Canada",
+        "Mexico",
+        "Texas"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t02q2",
+      "q_vi": "Lisa đến từ đâu?",
+      "options_vi": [
+        "Canada",
+        "Mexico",
+        "Texas"
+      ],
+      "answer": 1
+    }
+  ]
+}

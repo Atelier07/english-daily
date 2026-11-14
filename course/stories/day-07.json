@@ -1,0 +1,156 @@
+{
+  "day": 7,
+  "story_id": "t07",
+  "title_vi": "Bạn thích làm gì?",
+  "lines": [
+    {
+      "id": "t07l01",
+      "speaker": "N",
+      "en": "Anna and Lisa are at the café. Tom brings two coffees.",
+      "vi": "Anna và Lisa đang ở quán cà phê. Tom mang ra hai ly cà phê."
+    },
+    {
+      "id": "t07l02",
+      "speaker": "A",
+      "en": "Here you go. Two coffees.",
+      "vi": "Của hai bạn đây. Hai ly cà phê.",
+      "who": "Tom",
+      "gender": "m"
+    },
+    {
+      "id": "t07l03",
+      "speaker": "B",
+      "en": "Thank you so much, Tom.",
+      "vi": "Cảm ơn Tom nhiều.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t07l04",
+      "speaker": "A",
+      "en": "No problem. I love this music. Do you like it?",
+      "vi": "Không có gì. Tôi rất thích bản nhạc này. Hai bạn có thích không?",
+      "who": "Tom",
+      "gender": "m"
+    },
+    {
+      "id": "t07l05",
+      "speaker": "B",
+      "en": "Yes, I like it. Me too.",
+      "vi": "Có, tôi thích. Tôi cũng vậy.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t07l06",
+      "speaker": "N",
+      "en": "Tom goes back to work. Lisa looks at Anna.",
+      "vi": "Tom quay lại làm việc. Lisa nhìn Anna."
+    },
+    {
+      "id": "t07l07",
+      "speaker": "A",
+      "en": "Anna, what do you like to do?",
+      "vi": "Anna, bạn thích làm gì?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t07l08",
+      "speaker": "B",
+      "en": "I like to walk in the park. I love dogs, too.",
+      "vi": "Tôi thích đi dạo trong công viên. Tôi cũng rất thích chó.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t07l09",
+      "speaker": "A",
+      "en": "Me too! Do you like Max?",
+      "vi": "Tôi cũng vậy! Bạn có thích Max không?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t07l10",
+      "speaker": "B",
+      "en": "I love Max! He's a good dog.",
+      "vi": "Tôi rất thích Max! Nó là chú chó ngoan.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t07l11",
+      "speaker": "A",
+      "en": "Do you like to cook?",
+      "vi": "Bạn có thích nấu ăn không?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t07l12",
+      "speaker": "B",
+      "en": "No, I don't like to cook. I like to eat!",
+      "vi": "Không, tôi không thích nấu ăn. Tôi thích ăn!",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t07l13",
+      "speaker": "A",
+      "en": "Me too! Do you like Mexican food?",
+      "vi": "Tôi cũng vậy! Bạn có thích đồ ăn Mexico không?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t07l14",
+      "speaker": "B",
+      "en": "I love Mexican food. Can I come to your house?",
+      "vi": "Tôi rất thích đồ ăn Mexico. Tôi đến nhà bạn được không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t07l15",
+      "speaker": "A",
+      "en": "Sure. Come on Saturday.",
+      "vi": "Dĩ nhiên rồi. Thứ Bảy đến nhé.",
+      "who": "Lisa",
+      "gender": "f"
+    }
+  ],
+  "chunks": [
+    "c016",
+    "c017",
+    "c018",
+    "c037",
+    "c038",
+    "c039",
+    "c040",
+    "c041",
+    "c042"
+  ],
+  "questions": [
+    {
+      "id": "t07q1",
+      "q_vi": "Anna thích làm gì?",
+      "options_vi": [
+        "Đi dạo trong công viên",
+        "Nấu ăn",
+        "Xem phim"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t07q2",
+      "q_vi": "Anna không thích làm gì?",
+      "options_vi": [
+        "Ăn uống",
+        "Nấu ăn",
+        "Nuôi chó"
+      ],
+      "answer": 1
+    }
+  ]
+}

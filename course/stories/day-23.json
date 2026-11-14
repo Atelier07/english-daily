@@ -1,0 +1,189 @@
+{
+  "day": 23,
+  "story_id": "t23",
+  "title_vi": "Ngày đầu đi làm",
+  "lines": [
+    {
+      "id": "t23l01",
+      "speaker": "N",
+      "en": "Anna has a new job at a small office. Today is her first day.",
+      "vi": "Anna có công việc mới ở một văn phòng nhỏ. Hôm nay là ngày đầu tiên."
+    },
+    {
+      "id": "t23l02",
+      "speaker": "N",
+      "en": "Mike calls her at lunch.",
+      "vi": "Mike gọi cho cô vào giờ ăn trưa."
+    },
+    {
+      "id": "t23l03",
+      "speaker": "A",
+      "en": "Hi, Anna! How's work?",
+      "vi": "Chào Anna! Công việc thế nào?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t23l04",
+      "speaker": "B",
+      "en": "It's good, but I'm very busy. I have a meeting at two.",
+      "vi": "Tốt, nhưng tôi rất bận. Hai giờ tôi có một cuộc họp.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t23l05",
+      "speaker": "A",
+      "en": "What time is it now?",
+      "vi": "Bây giờ là mấy giờ?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t23l06",
+      "speaker": "B",
+      "en": "It's about one thirty. I'm busy until five.",
+      "vi": "Khoảng một rưỡi. Tôi bận đến năm giờ.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t23l07",
+      "speaker": "A",
+      "en": "Oh, sorry. Can I call you back later?",
+      "vi": "Ồ, xin lỗi. Tôi gọi lại cho bạn sau được không?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t23l08",
+      "speaker": "B",
+      "en": "Yes, please. I can talk after work.",
+      "vi": "Được, làm ơn. Tôi nói chuyện được sau giờ làm.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t23l09",
+      "speaker": "A",
+      "en": "Sure thing. Do you like your boss?",
+      "vi": "Được thôi. Bạn có thích sếp không?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t23l10",
+      "speaker": "B",
+      "en": "She's really nice. Her name is Ms. Park. She always smiles.",
+      "vi": "Cô ấy rất tốt. Tên cô ấy là bà Park. Cô ấy luôn mỉm cười.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t23l11",
+      "speaker": "A",
+      "en": "That's great! Did you meet your team?",
+      "vi": "Tuyệt quá! Bạn gặp nhóm của mình chưa?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t23l12",
+      "speaker": "B",
+      "en": "Yes, I met three people today. I forgot to bring lunch, but a woman gave me a sandwich.",
+      "vi": "Rồi, hôm nay tôi gặp ba người. Tôi quên mang bữa trưa nhưng một chị đã cho tôi cái bánh mì kẹp.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t23l13",
+      "speaker": "A",
+      "en": "Do you like the office?",
+      "vi": "Bạn có thích văn phòng không?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t23l14",
+      "speaker": "B",
+      "en": "I love it. There's a big window and a small kitchen.",
+      "vi": "Tôi rất thích. Có một cửa sổ lớn và một gian bếp nhỏ.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t23l15",
+      "speaker": "A",
+      "en": "Nice. I'll send you a photo of Max. He misses you.",
+      "vi": "Hay quá. Tôi sẽ gửi bạn ảnh của Max. Nó nhớ bạn.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t23l16",
+      "speaker": "B",
+      "en": "Thank you! Let me know when you are free. We can have dinner.",
+      "vi": "Cảm ơn bạn! Khi nào rảnh thì báo tôi. Mình đi ăn tối nhé.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t23l17",
+      "speaker": "A",
+      "en": "Sounds good. Let me know what you like.",
+      "vi": "Nghe hay đó. Cho tôi biết bạn thích món gì nhé.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t23l18",
+      "speaker": "N",
+      "en": "Anna goes back to her desk. She has a big smile.",
+      "vi": "Anna quay lại bàn làm việc. Cô cười thật tươi."
+    }
+  ],
+  "chunks": [
+    "c031",
+    "c032",
+    "c039",
+    "c040",
+    "c043",
+    "c048",
+    "c061",
+    "c064",
+    "c097",
+    "c100",
+    "c107",
+    "c122",
+    "c124",
+    "c125",
+    "c133",
+    "c134",
+    "c135",
+    "c136",
+    "c137",
+    "c138"
+  ],
+  "questions": [
+    {
+      "id": "t23q1",
+      "q_vi": "Hôm nay là ngày gì của Anna?",
+      "options_vi": [
+        "Ngày đầu đi làm",
+        "Ngày nghỉ",
+        "Ngày đi du lịch"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t23q2",
+      "q_vi": "Vì sao Mike gọi lại sau?",
+      "options_vi": [
+        "Anna đang bận",
+        "Mike quên điện thoại",
+        "Anna ngủ rồi"
+      ],
+      "answer": 0
+    }
+  ]
+}

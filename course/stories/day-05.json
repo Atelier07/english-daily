@@ -1,0 +1,144 @@
+{
+  "day": 5,
+  "story_id": "t05",
+  "title_vi": "Mua đèn ở chợ",
+  "lines": [
+    {
+      "id": "t05l01",
+      "speaker": "N",
+      "en": "Anna is at a small market. She wants a lamp for her room.",
+      "vi": "Anna ở một khu chợ nhỏ. Cô muốn mua một cái đèn cho phòng mình."
+    },
+    {
+      "id": "t05l02",
+      "speaker": "B",
+      "en": "Hi! How much is this lamp?",
+      "vi": "Chào! Cái đèn này giá bao nhiêu?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t05l03",
+      "speaker": "A",
+      "en": "It's forty dollars.",
+      "vi": "Bốn mươi đô la.",
+      "who": "vendor",
+      "gender": "m"
+    },
+    {
+      "id": "t05l04",
+      "speaker": "B",
+      "en": "That's too expensive. Do you have anything cheaper?",
+      "vi": "Mắc quá. Bạn có cái nào rẻ hơn không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t05l05",
+      "speaker": "A",
+      "en": "Yes. This one is twenty dollars.",
+      "vi": "Có. Cái này hai mươi đô.",
+      "who": "vendor",
+      "gender": "m"
+    },
+    {
+      "id": "t05l06",
+      "speaker": "B",
+      "en": "It's nice. I'll take it.",
+      "vi": "Đẹp đó. Tôi lấy cái này.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t05l07",
+      "speaker": "A",
+      "en": "Great. Do you want a bag?",
+      "vi": "Tuyệt. Bạn có muốn lấy túi không?",
+      "who": "vendor",
+      "gender": "m"
+    },
+    {
+      "id": "t05l08",
+      "speaker": "B",
+      "en": "Yes, please. Can I pay by card?",
+      "vi": "Có, làm ơn. Tôi trả bằng thẻ được không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t05l09",
+      "speaker": "A",
+      "en": "Sorry, can you say that again?",
+      "vi": "Xin lỗi, bạn nói lại được không?",
+      "who": "vendor",
+      "gender": "m"
+    },
+    {
+      "id": "t05l10",
+      "speaker": "B",
+      "en": "Can I pay by card?",
+      "vi": "Tôi trả bằng thẻ được không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t05l11",
+      "speaker": "A",
+      "en": "Yes, you can. Here you go.",
+      "vi": "Được chứ. Của bạn đây.",
+      "who": "vendor",
+      "gender": "m"
+    },
+    {
+      "id": "t05l12",
+      "speaker": "B",
+      "en": "Thank you so much.",
+      "vi": "Cảm ơn bạn nhiều.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t05l13",
+      "speaker": "A",
+      "en": "No problem. Nice to meet you!",
+      "vi": "Không có gì. Rất vui được gặp bạn!",
+      "who": "vendor",
+      "gender": "m"
+    }
+  ],
+  "chunks": [
+    "c004",
+    "c016",
+    "c017",
+    "c018",
+    "c019",
+    "c025",
+    "c026",
+    "c027",
+    "c028",
+    "c029",
+    "c030"
+  ],
+  "questions": [
+    {
+      "id": "t05q1",
+      "q_vi": "Anna mua gì?",
+      "options_vi": [
+        "Một cái đèn",
+        "Một cái túi",
+        "Một cái bàn"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t05q2",
+      "q_vi": "Vì sao Anna không mua cái đèn đầu tiên?",
+      "options_vi": [
+        "Nó xấu",
+        "Nó quá mắc",
+        "Nó quá nhỏ"
+      ],
+      "answer": 1
+    }
+  ]
+}

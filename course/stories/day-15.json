@@ -1,0 +1,159 @@
+{
+  "day": 15,
+  "story_id": "t15",
+  "title_vi": "Mike bị ốm",
+  "lines": [
+    {
+      "id": "t15l01",
+      "speaker": "N",
+      "en": "Anna meets Lisa on Tuesday. Lisa looks sad.",
+      "vi": "Anna gặp Lisa vào thứ Ba. Lisa trông buồn."
+    },
+    {
+      "id": "t15l02",
+      "speaker": "B",
+      "en": "Hi, Lisa. Are you okay?",
+      "vi": "Chào Lisa. Bạn ổn không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t15l03",
+      "speaker": "A",
+      "en": "Not really. I'm so tired.",
+      "vi": "Không hẳn. Tôi mệt quá.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t15l04",
+      "speaker": "B",
+      "en": "What's wrong?",
+      "vi": "Có chuyện gì vậy?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t15l05",
+      "speaker": "A",
+      "en": "It's Mike. He's not feeling well. He has a bad cold.",
+      "vi": "Là Mike. Anh ấy không khoẻ. Anh ấy bị cảm nặng.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t15l06",
+      "speaker": "B",
+      "en": "Oh no. I'm so sorry. Does he need help?",
+      "vi": "Ôi không. Tôi rất tiếc. Anh ấy có cần giúp không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t15l07",
+      "speaker": "A",
+      "en": "I don't know. I feel bad. I can't go there today.",
+      "vi": "Tôi không biết. Tôi thấy áy náy. Hôm nay tôi không đến chỗ anh ấy được.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t15l08",
+      "speaker": "B",
+      "en": "Don't worry. I can go. I have a lot of time today.",
+      "vi": "Đừng lo. Tôi đi được. Hôm nay tôi có nhiều thời gian.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t15l09",
+      "speaker": "A",
+      "en": "Thank you so much, Anna.",
+      "vi": "Cảm ơn bạn nhiều, Anna.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t15l10",
+      "speaker": "N",
+      "en": "Anna goes to the store. She takes soup, tea, and an orange.",
+      "vi": "Anna đi đến cửa hàng. Cô mua súp, trà và một quả cam."
+    },
+    {
+      "id": "t15l11",
+      "speaker": "N",
+      "en": "Mike opens the door. He looks very tired.",
+      "vi": "Mike mở cửa. Trông anh rất mệt."
+    },
+    {
+      "id": "t15l12",
+      "speaker": "A",
+      "en": "Anna? Hi. I'm not feeling well.",
+      "vi": "Anna? Chào bạn. Tôi không khoẻ lắm.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t15l13",
+      "speaker": "B",
+      "en": "I know. Here you go. This is soup and tea.",
+      "vi": "Tôi biết. Của bạn đây. Có súp và trà.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t15l14",
+      "speaker": "A",
+      "en": "Thank you so much. You're so nice.",
+      "vi": "Cảm ơn bạn nhiều. Bạn tốt quá.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t15l15",
+      "speaker": "B",
+      "en": "No problem. Go to bed. I feel good about this.",
+      "vi": "Không có gì. Đi nằm nghỉ đi. Tôi thấy yên tâm.",
+      "who": "Anna",
+      "gender": "f"
+    }
+  ],
+  "chunks": [
+    "c001",
+    "c016",
+    "c017",
+    "c018",
+    "c043",
+    "c044",
+    "c061",
+    "c066",
+    "c085",
+    "c086",
+    "c087",
+    "c088",
+    "c089",
+    "c090"
+  ],
+  "questions": [
+    {
+      "id": "t15q1",
+      "q_vi": "Mike bị sao?",
+      "options_vi": [
+        "Bị cảm",
+        "Bị mất đồ",
+        "Đến trễ"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t15q2",
+      "q_vi": "Anna mang gì cho Mike?",
+      "options_vi": [
+        "Súp và trà",
+        "Cà phê và bánh",
+        "Thuốc và nước"
+      ],
+      "answer": 0
+    }
+  ]
+}

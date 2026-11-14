@@ -1,0 +1,189 @@
+{
+  "day": 20,
+  "story_id": "t20",
+  "title_vi": "Cuối tuần của Anna thế nào?",
+  "lines": [
+    {
+      "id": "t20l01",
+      "speaker": "N",
+      "en": "It is Monday. Anna is at Tom's café, and Mike comes in.",
+      "vi": "Hôm nay là thứ Hai. Anna đang ở quán của Tom, và Mike bước vào."
+    },
+    {
+      "id": "t20l02",
+      "speaker": "A",
+      "en": "Hi, Anna! How was your weekend?",
+      "vi": "Chào Anna! Cuối tuần của bạn thế nào?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t20l03",
+      "speaker": "B",
+      "en": "It was great! I went to the lake with Lisa on Saturday.",
+      "vi": "Tuyệt lắm! Thứ Bảy tôi đi hồ với Lisa.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t20l04",
+      "speaker": "A",
+      "en": "What did you do there?",
+      "vi": "Bạn làm gì ở đó?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t20l05",
+      "speaker": "B",
+      "en": "We had a picnic. I had a sandwich and an orange.",
+      "vi": "Bọn tôi đi dã ngoại. Tôi ăn một cái bánh mì kẹp và một quả cam.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t20l06",
+      "speaker": "A",
+      "en": "Nice! How was the weather?",
+      "vi": "Hay quá! Thời tiết thế nào?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t20l07",
+      "speaker": "B",
+      "en": "It was sunny. It was a little cold, but the lake was beautiful.",
+      "vi": "Trời nắng. Hơi lạnh một chút, nhưng cái hồ rất đẹp.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t20l08",
+      "speaker": "A",
+      "en": "I'm so happy for you. Yesterday, I stayed home. I felt tired.",
+      "vi": "Tôi mừng cho bạn. Hôm qua tôi ở nhà. Tôi thấy mệt.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t20l09",
+      "speaker": "B",
+      "en": "What did you do at home?",
+      "vi": "Bạn làm gì ở nhà?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t20l10",
+      "speaker": "A",
+      "en": "I watched a movie. I had pizza. It was a good day.",
+      "vi": "Tôi xem phim. Tôi ăn pizza. Là một ngày tốt lành.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t20l11",
+      "speaker": "B",
+      "en": "How was your barbecue?",
+      "vi": "Buổi nướng thịt của bạn thế nào?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t20l12",
+      "speaker": "A",
+      "en": "It was fun. Tom came, too.",
+      "vi": "Vui lắm. Tom cũng đến.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t20l13",
+      "speaker": "B",
+      "en": "Really? Tom said he can't make it.",
+      "vi": "Thật sao? Tom nói anh ấy không đến được.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t20l14",
+      "speaker": "A",
+      "en": "He changed his mind. Yesterday, he came at six.",
+      "vi": "Anh ấy đổi ý. Hôm qua anh ấy đến lúc sáu giờ.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t20l15",
+      "speaker": "B",
+      "en": "What did Tom have?",
+      "vi": "Tom ăn gì vậy?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t20l16",
+      "speaker": "A",
+      "en": "He had a big hamburger. He loved it.",
+      "vi": "Anh ấy ăn một cái hamburger lớn. Anh ấy rất thích.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t20l17",
+      "speaker": "B",
+      "en": "Tom, do you want to go to the lake next weekend?",
+      "vi": "Tom, cuối tuần sau bạn có muốn đi hồ không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t20l18",
+      "speaker": "A",
+      "en": "Yes, I do. I love the lake.",
+      "vi": "Có chứ. Tôi rất thích cái hồ.",
+      "who": "Tom",
+      "gender": "m"
+    },
+    {
+      "id": "t20l19",
+      "speaker": "N",
+      "en": "Tom brings two coffees to the table. He smiles.",
+      "vi": "Tom mang hai ly cà phê ra bàn. Anh ấy mỉm cười."
+    }
+  ],
+  "chunks": [
+    "c015",
+    "c040",
+    "c085",
+    "c097",
+    "c115",
+    "c116",
+    "c117",
+    "c118",
+    "c119",
+    "c120"
+  ],
+  "questions": [
+    {
+      "id": "t20q1",
+      "q_vi": "Anna đã đi đâu hôm thứ Bảy?",
+      "options_vi": [
+        "Đi hồ với Lisa",
+        "Đi leo núi với Mike",
+        "Ở nhà"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t20q2",
+      "q_vi": "Hôm qua Mike làm gì?",
+      "options_vi": [
+        "Ở nhà xem phim và ăn pizza",
+        "Đi hồ",
+        "Đi làm"
+      ],
+      "answer": 0
+    }
+  ]
+}

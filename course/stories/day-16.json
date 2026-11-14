@@ -1,0 +1,179 @@
+{
+  "day": 16,
+  "story_id": "t16",
+  "title_vi": "Cuối tuần bạn làm gì?",
+  "lines": [
+    {
+      "id": "t16l01",
+      "speaker": "N",
+      "en": "It is Friday afternoon. Anna and Mike are at Tom's café.",
+      "vi": "Chiều thứ Sáu. Anna và Mike đang ở quán của Tom."
+    },
+    {
+      "id": "t16l02",
+      "speaker": "B",
+      "en": "Mike, what do you do on weekends?",
+      "vi": "Mike, cuối tuần bạn làm gì?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t16l03",
+      "speaker": "A",
+      "en": "I usually sleep late. Then I go for a walk with Max.",
+      "vi": "Tôi thường ngủ nướng. Rồi tôi đi dạo với Max.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t16l04",
+      "speaker": "B",
+      "en": "How often do you walk Max?",
+      "vi": "Bạn dắt Max đi dạo bao lâu một lần?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t16l05",
+      "speaker": "A",
+      "en": "I always walk him in the morning and at night.",
+      "vi": "Tôi luôn dắt nó đi vào buổi sáng và buổi tối.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t16l06",
+      "speaker": "B",
+      "en": "Wow. Do you ever go to the gym?",
+      "vi": "Chà. Bạn có bao giờ đến phòng tập không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t16l07",
+      "speaker": "A",
+      "en": "No, I never go to the gym. I don't like it.",
+      "vi": "Không, tôi chẳng bao giờ đến phòng tập. Tôi không thích.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t16l08",
+      "speaker": "B",
+      "en": "Me too. I like to be outside.",
+      "vi": "Tôi cũng vậy. Tôi thích ở ngoài trời.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t16l09",
+      "speaker": "A",
+      "en": "What about you? What do you do on weekends?",
+      "vi": "Còn bạn thì sao? Cuối tuần bạn làm gì?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t16l10",
+      "speaker": "B",
+      "en": "I usually go to the park. I always bring a book.",
+      "vi": "Tôi thường đi công viên. Tôi luôn mang theo một cuốn sách.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t16l11",
+      "speaker": "A",
+      "en": "Do you read a lot?",
+      "vi": "Bạn có đọc nhiều không?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t16l12",
+      "speaker": "B",
+      "en": "Yes, I read a book once a week. I love books.",
+      "vi": "Có, tôi đọc một cuốn sách mỗi tuần. Tôi rất thích sách.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t16l13",
+      "speaker": "N",
+      "en": "Tom comes to the table with two cakes.",
+      "vi": "Tom mang hai cái bánh đến bàn."
+    },
+    {
+      "id": "t16l14",
+      "speaker": "A",
+      "en": "Tom, how often do you go to the park?",
+      "vi": "Tom, bạn đi công viên bao lâu một lần?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t16l15",
+      "speaker": "B",
+      "en": "I never go! I work every weekend.",
+      "vi": "Tôi chẳng bao giờ đi! Tuần nào tôi cũng làm việc.",
+      "who": "Tom",
+      "gender": "m"
+    },
+    {
+      "id": "t16l16",
+      "speaker": "N",
+      "en": "Anna laughs. Tom is always at the café.",
+      "vi": "Anna bật cười. Tom lúc nào cũng ở quán."
+    },
+    {
+      "id": "t16l17",
+      "speaker": "A",
+      "en": "Then you need a day off, Tom. Come to the park with us.",
+      "vi": "Vậy bạn cần một ngày nghỉ, Tom. Đi công viên với bọn tôi đi.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t16l18",
+      "speaker": "B",
+      "en": "Maybe. I usually sleep on Mondays, so Monday is good.",
+      "vi": "Có thể. Tôi thường ngủ vào thứ Hai, nên thứ Hai được đó.",
+      "who": "Tom",
+      "gender": "m"
+    }
+  ],
+  "chunks": [
+    "c037",
+    "c038",
+    "c040",
+    "c042",
+    "c091",
+    "c092",
+    "c093",
+    "c094",
+    "c095",
+    "c096"
+  ],
+  "questions": [
+    {
+      "id": "t16q1",
+      "q_vi": "Mike thường làm gì vào cuối tuần?",
+      "options_vi": [
+        "Ngủ nướng và dắt Max đi dạo",
+        "Đến phòng tập",
+        "Đi làm"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t16q2",
+      "q_vi": "Ai chẳng bao giờ đến công viên?",
+      "options_vi": [
+        "Anna",
+        "Tom",
+        "Mike"
+      ],
+      "answer": 1
+    }
+  ]
+}

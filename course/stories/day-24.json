@@ -1,0 +1,172 @@
+{
+  "day": 24,
+  "story_id": "t24",
+  "title_vi": "Chọn quà sinh nhật",
+  "lines": [
+    {
+      "id": "t24l01",
+      "speaker": "N",
+      "en": "Joe's birthday is next week. Anna and Lisa are looking for a present.",
+      "vi": "Tuần sau là sinh nhật chú Joe. Anna và Lisa đang tìm quà."
+    },
+    {
+      "id": "t24l02",
+      "speaker": "A",
+      "en": "What do you think? A hat or a book?",
+      "vi": "Bạn nghĩ sao? Một cái mũ hay một cuốn sách?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t24l03",
+      "speaker": "B",
+      "en": "I think a hat is good. He always wears one.",
+      "vi": "Tôi nghĩ một cái mũ thì hay. Chú ấy lúc nào cũng đội mũ.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t24l04",
+      "speaker": "A",
+      "en": "I don't think he needs another hat. He has twenty!",
+      "vi": "Tôi không nghĩ chú ấy cần thêm mũ. Chú có hai mươi cái rồi!",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t24l05",
+      "speaker": "B",
+      "en": "That's true. I agree. What about a book?",
+      "vi": "Đúng vậy. Tôi đồng ý. Còn sách thì sao?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t24l06",
+      "speaker": "A",
+      "en": "I don't think he likes to read. He likes to talk.",
+      "vi": "Tôi không nghĩ chú ấy thích đọc. Chú thích nói chuyện.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t24l07",
+      "speaker": "B",
+      "en": "Ha! Maybe a game? Do you think he likes games?",
+      "vi": "Ha! Hay là một trò chơi? Bạn nghĩ chú ấy có thích chơi không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t24l08",
+      "speaker": "A",
+      "en": "It depends. Is it a long game?",
+      "vi": "Còn tuỳ. Có phải trò chơi dài không?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t24l09",
+      "speaker": "B",
+      "en": "No, it's short. It's a card game, and it's ten dollars.",
+      "vi": "Không, ngắn thôi. Là trò chơi bài và giá mười đô la.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t24l10",
+      "speaker": "A",
+      "en": "That's a good idea! I agree. Joe loves cards.",
+      "vi": "Ý hay đó! Tôi đồng ý. Chú Joe rất thích chơi bài.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t24l11",
+      "speaker": "B",
+      "en": "Great. Can I pay by card?",
+      "vi": "Tuyệt. Tôi trả bằng thẻ được không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t24l12",
+      "speaker": "N",
+      "en": "Anna asks the clerk. The clerk smiles. She says yes.",
+      "vi": "Anna hỏi nhân viên. Nhân viên mỉm cười. Cô nói được."
+    },
+    {
+      "id": "t24l13",
+      "speaker": "A",
+      "en": "Let's get a card for him, too. What do you think about blue?",
+      "vi": "Mình mua thêm tấm thiệp cho chú nữa. Bạn nghĩ màu xanh dương thì sao?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t24l14",
+      "speaker": "B",
+      "en": "I like blue. Joe likes blue, too.",
+      "vi": "Tôi thích màu xanh dương. Chú Joe cũng thích.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t24l15",
+      "speaker": "B",
+      "en": "When is the party?",
+      "vi": "Khi nào có bữa tiệc?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t24l16",
+      "speaker": "A",
+      "en": "It's on Friday at seven. We can go together.",
+      "vi": "Là thứ Sáu lúc bảy giờ. Mình đi cùng nhau được.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t24l17",
+      "speaker": "N",
+      "en": "They leave the store with a game and a card. They are happy.",
+      "vi": "Họ rời cửa hàng với một trò chơi và một tấm thiệp. Họ rất vui."
+    }
+  ],
+  "chunks": [
+    "c026",
+    "c030",
+    "c037",
+    "c097",
+    "c106",
+    "c139",
+    "c140",
+    "c141",
+    "c142",
+    "c143",
+    "c144"
+  ],
+  "questions": [
+    {
+      "id": "t24q1",
+      "q_vi": "Họ quyết định mua gì cho chú Joe?",
+      "options_vi": [
+        "Một trò chơi bài",
+        "Một cái mũ",
+        "Một cuốn sách"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t24q2",
+      "q_vi": "Vì sao họ không mua mũ?",
+      "options_vi": [
+        "Chú đã có rất nhiều mũ",
+        "Mũ quá mắc",
+        "Chú không thích mũ"
+      ],
+      "answer": 0
+    }
+  ]
+}

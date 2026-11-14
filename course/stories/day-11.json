@@ -1,0 +1,151 @@
+{
+  "day": 11,
+  "story_id": "t11",
+  "title_vi": "Căn hộ mới của Anna",
+  "lines": [
+    {
+      "id": "t11l01",
+      "speaker": "N",
+      "en": "Lisa visits Anna's new apartment. It is small, but nice.",
+      "vi": "Lisa đến thăm căn hộ mới của Anna. Nhỏ nhưng xinh."
+    },
+    {
+      "id": "t11l02",
+      "speaker": "A",
+      "en": "Wow, nice place! Do you have a TV?",
+      "vi": "Ồ, chỗ đẹp quá! Bạn có TV không?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t11l03",
+      "speaker": "B",
+      "en": "No, I don't have a TV. But I have a lot of books.",
+      "vi": "Không, tôi không có TV. Nhưng tôi có rất nhiều sách.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t11l04",
+      "speaker": "A",
+      "en": "I see. Is there a couch?",
+      "vi": "Ra vậy. Có ghế sofa không?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t11l05",
+      "speaker": "B",
+      "en": "No, there's a bed and a table. There are two chairs, too.",
+      "vi": "Không, có một cái giường và một cái bàn. Cũng có hai cái ghế.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t11l06",
+      "speaker": "A",
+      "en": "Do you have a lamp?",
+      "vi": "Bạn có đèn không?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t11l07",
+      "speaker": "B",
+      "en": "Yes! I have the lamp from the market. It's twenty dollars.",
+      "vi": "Có! Tôi có cái đèn mua ở chợ. Hai mươi đô la.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t11l08",
+      "speaker": "A",
+      "en": "It's pretty. There's a big window, too.",
+      "vi": "Đẹp đó. Còn có một cái cửa sổ lớn nữa.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t11l09",
+      "speaker": "B",
+      "en": "Yes, I love the window. I can see the park.",
+      "vi": "Ừ, tôi thích cửa sổ. Tôi nhìn thấy công viên.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t11l10",
+      "speaker": "A",
+      "en": "Do you have a coffee machine?",
+      "vi": "Bạn có máy pha cà phê không?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t11l11",
+      "speaker": "B",
+      "en": "No, I don't have one. Do you have one?",
+      "vi": "Không, tôi không có. Bạn có không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t11l12",
+      "speaker": "A",
+      "en": "Yes, I have two! I can give you one.",
+      "vi": "Có, tôi có hai cái! Tôi cho bạn một cái được.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t11l13",
+      "speaker": "B",
+      "en": "Really? That's great! Thank you so much.",
+      "vi": "Thật sao? Tuyệt quá! Cảm ơn bạn nhiều.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t11l14",
+      "speaker": "N",
+      "en": "Now Anna has a coffee machine. There's coffee in her room.",
+      "vi": "Giờ Anna đã có máy pha cà phê. Trong phòng cô có mùi cà phê."
+    }
+  ],
+  "chunks": [
+    "c012",
+    "c016",
+    "c024",
+    "c026",
+    "c040",
+    "c043",
+    "c061",
+    "c062",
+    "c063",
+    "c064",
+    "c065",
+    "c066"
+  ],
+  "questions": [
+    {
+      "id": "t11q1",
+      "q_vi": "Anna có gì trong căn hộ?",
+      "options_vi": [
+        "Rất nhiều sách",
+        "Một cái TV",
+        "Một cái sofa"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t11q2",
+      "q_vi": "Lisa cho Anna cái gì?",
+      "options_vi": [
+        "Một cái đèn",
+        "Một máy pha cà phê",
+        "Một cái ghế"
+      ],
+      "answer": 1
+    }
+  ]
+}

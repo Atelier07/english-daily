@@ -1,0 +1,157 @@
+{
+  "day": 21,
+  "story_id": "t21",
+  "title_vi": "Vì sao Mike đến trễ?",
+  "lines": [
+    {
+      "id": "t21l01",
+      "speaker": "N",
+      "en": "On Sunday, Lisa waits for Mike. The barbecue starts at five, but he is late.",
+      "vi": "Chủ nhật, Lisa đợi Mike. Buổi nướng thịt bắt đầu lúc năm giờ nhưng anh ấy trễ."
+    },
+    {
+      "id": "t21l02",
+      "speaker": "A",
+      "en": "Mike, where were you? Did you forget about the barbecue?",
+      "vi": "Mike, bạn ở đâu vậy? Bạn quên buổi nướng thịt à?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t21l03",
+      "speaker": "B",
+      "en": "No, I didn't forget. I forgot to buy the meat, so I went to the store.",
+      "vi": "Không, tôi không quên. Tôi quên mua thịt nên tôi đi ra cửa hàng.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t21l04",
+      "speaker": "A",
+      "en": "Oh no. Did you find it?",
+      "vi": "Ôi không. Bạn có mua được không?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t21l05",
+      "speaker": "B",
+      "en": "Yes, I did. But the store was far, and I was really slow.",
+      "vi": "Có chứ. Nhưng cửa hàng ở xa và tôi đi rất chậm.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t21l06",
+      "speaker": "A",
+      "en": "Did you see Anna there?",
+      "vi": "Bạn có thấy Anna ở đó không?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t21l07",
+      "speaker": "B",
+      "en": "No, I didn't see her. But I met Joe at the store.",
+      "vi": "Không, tôi không thấy cô ấy. Nhưng tôi gặp chú Joe ở cửa hàng.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t21l08",
+      "speaker": "A",
+      "en": "Joe! What did he say?",
+      "vi": "Chú Joe! Chú ấy nói gì?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t21l09",
+      "speaker": "B",
+      "en": "He talked a lot. I saw his new truck, too. It was big and red.",
+      "vi": "Chú nói rất nhiều. Tôi còn thấy chiếc xe tải mới của chú. Nó to và đỏ.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t21l10",
+      "speaker": "A",
+      "en": "That's funny. Anna was here an hour ago. She didn't want to wait.",
+      "vi": "Buồn cười ghê. Anna có ở đây một tiếng trước. Cô ấy không muốn đợi.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t21l11",
+      "speaker": "B",
+      "en": "Really? I didn't know that. Is she okay?",
+      "vi": "Thật sao? Tôi không biết. Cô ấy ổn chứ?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t21l12",
+      "speaker": "A",
+      "en": "She's fine. She went to the lake with Tom.",
+      "vi": "Cô ấy ổn. Cô ấy đi hồ với Tom rồi.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t21l13",
+      "speaker": "N",
+      "en": "Mike puts the meat on the table. He looks tired.",
+      "vi": "Mike đặt thịt lên bàn. Trông anh rất mệt."
+    },
+    {
+      "id": "t21l14",
+      "speaker": "A",
+      "en": "Sit down. I made coffee.",
+      "vi": "Ngồi xuống đi. Tôi pha cà phê rồi.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t21l15",
+      "speaker": "B",
+      "en": "Thank you so much, Lisa. Sorry I'm late.",
+      "vi": "Cảm ơn Lisa nhiều. Xin lỗi vì tôi đến trễ.",
+      "who": "Mike",
+      "gender": "m"
+    }
+  ],
+  "chunks": [
+    "c016",
+    "c097",
+    "c115",
+    "c118",
+    "c121",
+    "c122",
+    "c123",
+    "c124",
+    "c125",
+    "c126"
+  ],
+  "questions": [
+    {
+      "id": "t21q1",
+      "q_vi": "Mike quên làm gì?",
+      "options_vi": [
+        "Quên mua thịt",
+        "Quên giờ",
+        "Quên gọi Lisa"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t21q2",
+      "q_vi": "Mike gặp ai ở cửa hàng?",
+      "options_vi": [
+        "Chú Joe",
+        "Anna",
+        "Tom"
+      ],
+      "answer": 0
+    }
+  ]
+}

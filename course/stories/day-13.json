@@ -1,0 +1,169 @@
+{
+  "day": 13,
+  "story_id": "t13",
+  "title_vi": "Cà phê mang đi",
+  "lines": [
+    {
+      "id": "t13l01",
+      "speaker": "N",
+      "en": "It is Monday morning. Anna is at Tom's café. There are many people.",
+      "vi": "Sáng thứ Hai. Anna đang ở quán của Tom. Có rất nhiều người."
+    },
+    {
+      "id": "t13l02",
+      "speaker": "A",
+      "en": "Hi, Anna. For here or to go?",
+      "vi": "Chào Anna. Dùng tại đây hay mang đi?",
+      "who": "Tom",
+      "gender": "m"
+    },
+    {
+      "id": "t13l03",
+      "speaker": "B",
+      "en": "Coffee to go, please.",
+      "vi": "Cho tôi cà phê mang đi.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t13l04",
+      "speaker": "A",
+      "en": "Sure. Anything else?",
+      "vi": "Được. Còn gì nữa không?",
+      "who": "Tom",
+      "gender": "m"
+    },
+    {
+      "id": "t13l05",
+      "speaker": "B",
+      "en": "Do you have a cake?",
+      "vi": "Bạn có bánh không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t13l06",
+      "speaker": "A",
+      "en": "Yes, we have chocolate cake. It's three dollars.",
+      "vi": "Có, bọn tôi có bánh sô cô la. Ba đô la.",
+      "who": "Tom",
+      "gender": "m"
+    },
+    {
+      "id": "t13l07",
+      "speaker": "B",
+      "en": "I'll take one. That's all, thanks.",
+      "vi": "Tôi lấy một cái. Vậy thôi, cảm ơn.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t13l08",
+      "speaker": "A",
+      "en": "Here you go. Enjoy!",
+      "vi": "Của bạn đây. Thưởng thức nhé!",
+      "who": "Tom",
+      "gender": "m"
+    },
+    {
+      "id": "t13l09",
+      "speaker": "B",
+      "en": "Thank you so much.",
+      "vi": "Cảm ơn bạn nhiều.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t13l10",
+      "speaker": "N",
+      "en": "Anna is not in a hurry. She wants to sit. A man sits at a big table.",
+      "vi": "Anna không vội. Cô muốn ngồi xuống. Một người đàn ông đang ngồi ở bàn lớn."
+    },
+    {
+      "id": "t13l11",
+      "speaker": "B",
+      "en": "Excuse me. Is this seat taken?",
+      "vi": "Xin lỗi. Chỗ này có ai ngồi chưa?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t13l12",
+      "speaker": "A",
+      "en": "No, it's not. Sit here.",
+      "vi": "Chưa. Cứ ngồi đi.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t13l13",
+      "speaker": "N",
+      "en": "It is Mike! He has a laptop and a coffee.",
+      "vi": "Là Mike! Anh ấy có một cái máy tính và một ly cà phê."
+    },
+    {
+      "id": "t13l14",
+      "speaker": "B",
+      "en": "Mike! I'm happy to see you. Are you working?",
+      "vi": "Mike! Thấy bạn tôi vui quá. Bạn đang làm việc à?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t13l15",
+      "speaker": "A",
+      "en": "Yes, but I can talk. How are you?",
+      "vi": "Ừ, nhưng tôi nói chuyện được. Bạn khoẻ không?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t13l16",
+      "speaker": "B",
+      "en": "I'm good, thanks. And you?",
+      "vi": "Tôi khoẻ, cảm ơn. Còn bạn?",
+      "who": "Anna",
+      "gender": "f"
+    }
+  ],
+  "chunks": [
+    "c005",
+    "c006",
+    "c016",
+    "c018",
+    "c026",
+    "c029",
+    "c043",
+    "c054",
+    "c062",
+    "c065",
+    "c073",
+    "c074",
+    "c075",
+    "c076",
+    "c077",
+    "c078"
+  ],
+  "questions": [
+    {
+      "id": "t13q1",
+      "q_vi": "Anna gọi cà phê như thế nào?",
+      "options_vi": [
+        "Uống tại quán",
+        "Mang đi",
+        "Mua hai ly"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "t13q2",
+      "q_vi": "Anna gặp ai ở quán?",
+      "options_vi": [
+        "Mike",
+        "Lisa",
+        "Joe"
+      ],
+      "answer": 0
+    }
+  ]
+}

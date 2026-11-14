@@ -1,0 +1,132 @@
+{
+  "day": 3,
+  "story_id": "t03",
+  "title_vi": "Ở quán cà phê",
+  "lines": [
+    {
+      "id": "t03l01",
+      "speaker": "N",
+      "en": "Anna goes to a small café. Tom works there.",
+      "vi": "Anna vào một quán cà phê nhỏ. Tom làm việc ở đó."
+    },
+    {
+      "id": "t03l02",
+      "speaker": "A",
+      "en": "Hi! How are you?",
+      "vi": "Chào bạn! Bạn khoẻ không?",
+      "who": "Tom",
+      "gender": "m"
+    },
+    {
+      "id": "t03l03",
+      "speaker": "B",
+      "en": "I'm good, thanks. Can I have a coffee, please?",
+      "vi": "Tôi khoẻ, cảm ơn. Cho tôi một ly cà phê nhé?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t03l04",
+      "speaker": "A",
+      "en": "Sure. Do you want to have a cake, too?",
+      "vi": "Được chứ. Bạn có muốn ăn thêm bánh không?",
+      "who": "Tom",
+      "gender": "m"
+    },
+    {
+      "id": "t03l05",
+      "speaker": "B",
+      "en": "Yes, I want to try a cake. Thank you so much.",
+      "vi": "Có, tôi muốn thử một cái bánh. Cảm ơn bạn nhiều.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t03l06",
+      "speaker": "A",
+      "en": "No problem. I'm Tom. What's your name?",
+      "vi": "Không có gì. Tôi là Tom. Bạn tên gì?",
+      "who": "Tom",
+      "gender": "m"
+    },
+    {
+      "id": "t03l07",
+      "speaker": "B",
+      "en": "I'm Anna. Nice to meet you.",
+      "vi": "Tôi là Anna. Rất vui được gặp bạn.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t03l08",
+      "speaker": "N",
+      "en": "Tom gives Anna the coffee and the cake.",
+      "vi": "Tom đưa cho Anna ly cà phê và bánh."
+    },
+    {
+      "id": "t03l09",
+      "speaker": "A",
+      "en": "Here you go.",
+      "vi": "Của bạn đây.",
+      "who": "Tom",
+      "gender": "m"
+    },
+    {
+      "id": "t03l10",
+      "speaker": "B",
+      "en": "Thank you so much!",
+      "vi": "Cảm ơn bạn nhiều!",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t03l11",
+      "speaker": "A",
+      "en": "No problem. Do you want to sit by the window?",
+      "vi": "Không có gì. Bạn có muốn ngồi cạnh cửa sổ không?",
+      "who": "Tom",
+      "gender": "m"
+    },
+    {
+      "id": "t03l12",
+      "speaker": "B",
+      "en": "Yes, I want to sit there.",
+      "vi": "Có, tôi muốn ngồi ở đó.",
+      "who": "Anna",
+      "gender": "f"
+    }
+  ],
+  "chunks": [
+    "c003",
+    "c004",
+    "c005",
+    "c013",
+    "c014",
+    "c015",
+    "c016",
+    "c017",
+    "c018"
+  ],
+  "questions": [
+    {
+      "id": "t03q1",
+      "q_vi": "Anna gọi gì ở quán?",
+      "options_vi": [
+        "Trà và bánh",
+        "Cà phê và bánh",
+        "Nước và bánh mì"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "t03q2",
+      "q_vi": "Anna muốn ngồi ở đâu?",
+      "options_vi": [
+        "Cạnh cửa sổ",
+        "Ngoài sân",
+        "Gần quầy"
+      ],
+      "answer": 0
+    }
+  ]
+}

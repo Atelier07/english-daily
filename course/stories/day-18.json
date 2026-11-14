@@ -1,0 +1,173 @@
+{
+  "day": 18,
+  "story_id": "t18",
+  "title_vi": "Kế hoạch đi leo núi",
+  "lines": [
+    {
+      "id": "t18l01",
+      "speaker": "N",
+      "en": "It is Wednesday. Mike wants to make a plan for Saturday.",
+      "vi": "Hôm nay là thứ Tư. Mike muốn lên kế hoạch cho thứ Bảy."
+    },
+    {
+      "id": "t18l02",
+      "speaker": "A",
+      "en": "Hi, Anna! What are you going to do on Saturday?",
+      "vi": "Chào Anna! Thứ Bảy bạn định làm gì?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t18l03",
+      "speaker": "B",
+      "en": "I'm not sure yet. Why?",
+      "vi": "Tôi chưa chắc. Có chuyện gì vậy?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t18l04",
+      "speaker": "A",
+      "en": "I'm going to go hiking. Are you free on Saturday morning?",
+      "vi": "Tôi định đi leo núi. Sáng thứ Bảy bạn rảnh không?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t18l05",
+      "speaker": "B",
+      "en": "Yes, I'm free. Where are you going to hike?",
+      "vi": "Có, tôi rảnh. Bạn định đi leo ở đâu?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t18l06",
+      "speaker": "A",
+      "en": "There's a nice trail near the lake. It's a two hour walk.",
+      "vi": "Có một đường mòn đẹp gần cái hồ. Đi bộ hai tiếng.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t18l07",
+      "speaker": "B",
+      "en": "Sounds good! What time are you going to start?",
+      "vi": "Nghe hay đó! Bạn định bắt đầu lúc mấy giờ?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t18l08",
+      "speaker": "A",
+      "en": "I'm going to leave at eight.",
+      "vi": "Tôi định đi lúc tám giờ.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t18l09",
+      "speaker": "B",
+      "en": "Eight? That's early, but okay. I usually get up at seven.",
+      "vi": "Tám giờ à? Sớm đó, nhưng được. Tôi thường dậy lúc bảy giờ.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t18l10",
+      "speaker": "A",
+      "en": "Let's meet at my house at eight.",
+      "vi": "Mình gặp ở nhà tôi lúc tám giờ nhé.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t18l11",
+      "speaker": "B",
+      "en": "Is Lisa going to come, too?",
+      "vi": "Lisa cũng sẽ đi chứ?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t18l12",
+      "speaker": "A",
+      "en": "I'm not sure yet. I can ask her. She's always busy.",
+      "vi": "Tôi chưa chắc. Tôi hỏi cô ấy được. Cô ấy lúc nào cũng bận.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t18l13",
+      "speaker": "B",
+      "en": "I love hiking. I can bring sandwiches.",
+      "vi": "Tôi rất thích leo núi. Tôi mang bánh mì kẹp được.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t18l14",
+      "speaker": "A",
+      "en": "Sounds good. I'm going to bring water.",
+      "vi": "Nghe hay đó. Tôi sẽ mang nước.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t18l15",
+      "speaker": "B",
+      "en": "Are we going to eat lunch on the trail?",
+      "vi": "Mình sẽ ăn trưa trên đường mòn chứ?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t18l16",
+      "speaker": "A",
+      "en": "Yes. Then we can go back home. It's going to be a long day.",
+      "vi": "Ừ. Rồi mình có thể về nhà. Sẽ là một ngày dài.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t18l17",
+      "speaker": "N",
+      "en": "They are both happy. Saturday is going to be fun.",
+      "vi": "Cả hai đều vui. Thứ Bảy sẽ rất vui."
+    }
+  ],
+  "chunks": [
+    "c040",
+    "c043",
+    "c064",
+    "c091",
+    "c103",
+    "c104",
+    "c105",
+    "c106",
+    "c107",
+    "c108"
+  ],
+  "questions": [
+    {
+      "id": "t18q1",
+      "q_vi": "Họ định làm gì vào thứ Bảy?",
+      "options_vi": [
+        "Đi leo núi",
+        "Đi xem phim",
+        "Đi ăn tối"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t18q2",
+      "q_vi": "Họ hẹn gặp ở đâu?",
+      "options_vi": [
+        "Ở nhà Mike",
+        "Ở quán Tom",
+        "Ở hồ"
+      ],
+      "answer": 0
+    }
+  ]
+}

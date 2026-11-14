@@ -1,0 +1,149 @@
+{
+  "day": 10,
+  "story_id": "t10",
+  "title_vi": "Đi thư viện thế nào?",
+  "lines": [
+    {
+      "id": "t10l01",
+      "speaker": "N",
+      "en": "Anna wants to go to the library. She asks Tom for help.",
+      "vi": "Anna muốn đến thư viện. Cô nhờ Tom chỉ đường."
+    },
+    {
+      "id": "t10l02",
+      "speaker": "B",
+      "en": "Excuse me, Tom. How do I get to the library?",
+      "vi": "Xin lỗi Tom. Đi đến thư viện thế nào vậy?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t10l03",
+      "speaker": "A",
+      "en": "It's easy. Go straight for two blocks.",
+      "vi": "Dễ thôi. Đi thẳng hai dãy phố.",
+      "who": "Tom",
+      "gender": "m"
+    },
+    {
+      "id": "t10l04",
+      "speaker": "B",
+      "en": "Go straight for two blocks. Okay.",
+      "vi": "Đi thẳng hai dãy phố. Được rồi.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t10l05",
+      "speaker": "A",
+      "en": "Then turn left at the bank.",
+      "vi": "Sau đó rẽ trái ở chỗ ngân hàng.",
+      "who": "Tom",
+      "gender": "m"
+    },
+    {
+      "id": "t10l06",
+      "speaker": "B",
+      "en": "Turn left at the bank. Is it far?",
+      "vi": "Rẽ trái ở ngân hàng. Có xa không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t10l07",
+      "speaker": "A",
+      "en": "No. It's a ten minute walk.",
+      "vi": "Không. Đi bộ khoảng mười phút.",
+      "who": "Tom",
+      "gender": "m"
+    },
+    {
+      "id": "t10l08",
+      "speaker": "B",
+      "en": "That's good. Where is the library?",
+      "vi": "Vậy thì tốt. Thư viện nằm ở đâu?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t10l09",
+      "speaker": "A",
+      "en": "It's next to the big park. You can't miss it.",
+      "vi": "Nó cạnh công viên lớn. Bạn không thể nhầm được.",
+      "who": "Tom",
+      "gender": "m"
+    },
+    {
+      "id": "t10l10",
+      "speaker": "B",
+      "en": "Thank you so much, Tom.",
+      "vi": "Cảm ơn Tom nhiều.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t10l11",
+      "speaker": "A",
+      "en": "No problem. Can you see a map?",
+      "vi": "Không có gì. Bạn xem được bản đồ không?",
+      "who": "Tom",
+      "gender": "m"
+    },
+    {
+      "id": "t10l12",
+      "speaker": "B",
+      "en": "Yes, my phone has a map.",
+      "vi": "Có, điện thoại tôi có bản đồ.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t10l13",
+      "speaker": "N",
+      "en": "Anna walks for ten minutes. She goes straight and turns left.",
+      "vi": "Anna đi bộ mười phút. Cô đi thẳng, rồi rẽ trái ở ngân hàng."
+    },
+    {
+      "id": "t10l14",
+      "speaker": "N",
+      "en": "The library is big and old. She can't miss it.",
+      "vi": "Thư viện vừa lớn vừa cũ. Cô không thể nhầm được."
+    }
+  ],
+  "chunks": [
+    "c016",
+    "c017",
+    "c045",
+    "c049",
+    "c052",
+    "c054",
+    "c055",
+    "c056",
+    "c057",
+    "c058",
+    "c059",
+    "c060"
+  ],
+  "questions": [
+    {
+      "id": "t10q1",
+      "q_vi": "Anna đi đâu?",
+      "options_vi": [
+        "Thư viện",
+        "Ngân hàng",
+        "Hiệu thuốc"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t10q2",
+      "q_vi": "Đi bộ mất bao lâu?",
+      "options_vi": [
+        "Hai phút",
+        "Mười phút",
+        "Một giờ"
+      ],
+      "answer": 1
+    }
+  ]
+}

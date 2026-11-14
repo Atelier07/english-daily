@@ -1,0 +1,167 @@
+{
+  "day": 14,
+  "story_id": "t14",
+  "title_vi": "Mua áo khoác",
+  "lines": [
+    {
+      "id": "t14l01",
+      "speaker": "N",
+      "en": "Anna is in a clothes store. A clerk comes to her.",
+      "vi": "Anna đang ở trong một cửa hàng quần áo. Một nhân viên đến chỗ cô."
+    },
+    {
+      "id": "t14l02",
+      "speaker": "A",
+      "en": "Hi! Can I help you?",
+      "vi": "Chào bạn! Tôi giúp gì được không?",
+      "who": "clerk",
+      "gender": "m"
+    },
+    {
+      "id": "t14l03",
+      "speaker": "B",
+      "en": "I'm just looking, thanks.",
+      "vi": "Tôi chỉ xem thôi, cảm ơn.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t14l04",
+      "speaker": "N",
+      "en": "Anna sees a green jacket. She likes it.",
+      "vi": "Anna thấy một cái áo khoác xanh lá. Cô thích nó."
+    },
+    {
+      "id": "t14l05",
+      "speaker": "B",
+      "en": "Excuse me. I'm looking for a jacket like this.",
+      "vi": "Xin lỗi. Tôi đang tìm một cái áo khoác như thế này.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t14l06",
+      "speaker": "A",
+      "en": "Sure. It's forty dollars.",
+      "vi": "Được. Nó giá bốn mươi đô la.",
+      "who": "clerk",
+      "gender": "m"
+    },
+    {
+      "id": "t14l07",
+      "speaker": "B",
+      "en": "Do you have this in blue?",
+      "vi": "Cái này có màu xanh dương không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t14l08",
+      "speaker": "A",
+      "en": "Yes, we do. Here you go.",
+      "vi": "Có. Của bạn đây.",
+      "who": "clerk",
+      "gender": "m"
+    },
+    {
+      "id": "t14l09",
+      "speaker": "B",
+      "en": "Can I try this on?",
+      "vi": "Tôi mặc thử được không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t14l10",
+      "speaker": "A",
+      "en": "Of course. It's over there, on the left.",
+      "vi": "Dĩ nhiên. Phòng thử ở đằng kia, bên trái.",
+      "who": "clerk",
+      "gender": "m"
+    },
+    {
+      "id": "t14l11",
+      "speaker": "N",
+      "en": "Anna comes back with the jacket. It is too big.",
+      "vi": "Anna quay lại với cái áo. Nó quá rộng."
+    },
+    {
+      "id": "t14l12",
+      "speaker": "B",
+      "en": "It doesn't fit. Do you have a smaller one?",
+      "vi": "Nó không vừa. Bạn có cỡ nhỏ hơn không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t14l13",
+      "speaker": "A",
+      "en": "Yes. Here you go.",
+      "vi": "Có. Của bạn đây.",
+      "who": "clerk",
+      "gender": "m"
+    },
+    {
+      "id": "t14l14",
+      "speaker": "B",
+      "en": "How does it look?",
+      "vi": "Trông thế nào?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t14l15",
+      "speaker": "A",
+      "en": "It looks great!",
+      "vi": "Trông rất đẹp!",
+      "who": "clerk",
+      "gender": "m"
+    },
+    {
+      "id": "t14l16",
+      "speaker": "B",
+      "en": "I'll take it. Can I pay by card?",
+      "vi": "Tôi lấy nó. Tôi trả bằng thẻ được không?",
+      "who": "Anna",
+      "gender": "f"
+    }
+  ],
+  "chunks": [
+    "c018",
+    "c026",
+    "c029",
+    "c030",
+    "c047",
+    "c051",
+    "c054",
+    "c062",
+    "c079",
+    "c080",
+    "c081",
+    "c082",
+    "c083",
+    "c084"
+  ],
+  "questions": [
+    {
+      "id": "t14q1",
+      "q_vi": "Anna đang tìm gì?",
+      "options_vi": [
+        "Một cái áo khoác",
+        "Một đôi giày",
+        "Một cái túi"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t14q2",
+      "q_vi": "Vì sao Anna thử lại cỡ khác?",
+      "options_vi": [
+        "Nó quá rộng",
+        "Nó quá mắc",
+        "Nó màu xấu"
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "day": 25,
+  "story_id": "t25",
+  "title_vi": "Nhạc to quá",
+  "lines": [
+    {
+      "id": "t25l01",
+      "speaker": "N",
+      "en": "It is ten at night. Anna can't sleep. There is loud music next door.",
+      "vi": "Mười giờ đêm. Anna không ngủ được. Có tiếng nhạc lớn ở nhà bên cạnh."
+    },
+    {
+      "id": "t25l02",
+      "speaker": "N",
+      "en": "She goes to Mike's door. She knocks.",
+      "vi": "Cô đến cửa nhà Mike. Cô gõ cửa."
+    },
+    {
+      "id": "t25l03",
+      "speaker": "A",
+      "en": "Anna? Hi! Would you like some pizza?",
+      "vi": "Anna? Chào! Bạn có muốn ăn pizza không?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t25l04",
+      "speaker": "B",
+      "en": "Hi, Mike. Sorry to bother you, but the music is very loud.",
+      "vi": "Chào Mike. Xin lỗi làm phiền, nhưng nhạc to quá.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t25l05",
+      "speaker": "A",
+      "en": "Oh! Sorry about that. I didn't know.",
+      "vi": "Ồ! Xin lỗi nhé. Tôi không biết.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t25l06",
+      "speaker": "B",
+      "en": "No worries. I have a meeting at eight tomorrow.",
+      "vi": "Không sao. Tám giờ sáng mai tôi có một cuộc họp.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t25l07",
+      "speaker": "A",
+      "en": "Could you wait one minute, please? I'll turn it down.",
+      "vi": "Bạn đợi một phút được không? Tôi sẽ vặn nhỏ lại.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t25l08",
+      "speaker": "B",
+      "en": "Sure. Thank you so much.",
+      "vi": "Được thôi. Cảm ơn bạn nhiều.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t25l09",
+      "speaker": "N",
+      "en": "The music gets quiet. Mike comes back to the door. He turns off his TV, too.",
+      "vi": "Nhạc nhỏ lại. Mike quay lại cửa. Anh còn tắt cả TV."
+    },
+    {
+      "id": "t25l10",
+      "speaker": "A",
+      "en": "Is it okay now?",
+      "vi": "Giờ ổn chưa?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t25l11",
+      "speaker": "B",
+      "en": "Yes, it's perfect. Do you mind if I ask something?",
+      "vi": "Ổn rồi, hoàn hảo. Tôi hỏi bạn một chuyện được không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t25l12",
+      "speaker": "A",
+      "en": "Of course. What is it?",
+      "vi": "Dĩ nhiên. Chuyện gì vậy?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t25l13",
+      "speaker": "B",
+      "en": "Do you mind if I come to the barbecue next time? I want to try your meat!",
+      "vi": "Bạn có phiền nếu lần sau tôi đến buổi nướng thịt không? Tôi muốn thử thịt của bạn!",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t25l14",
+      "speaker": "A",
+      "en": "Ha! Of course. You're always welcome. Would you like pizza now?",
+      "vi": "Ha! Dĩ nhiên. Lúc nào bạn cũng được chào đón. Giờ bạn ăn pizza không?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t25l15",
+      "speaker": "B",
+      "en": "Thanks, but I'm going to sleep now. Good night!",
+      "vi": "Cảm ơn, nhưng giờ tôi đi ngủ đây. Chúc ngủ ngon!",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t25l16",
+      "speaker": "N",
+      "en": "Anna goes home. Now it is quiet. She sleeps well.",
+      "vi": "Anna về nhà. Giờ đã yên tĩnh. Cô ngủ ngon."
+    }
+  ],
+  "chunks": [
+    "c013",
+    "c016",
+    "c047",
+    "c061",
+    "c097",
+    "c103",
+    "c121",
+    "c134",
+    "c145",
+    "c146",
+    "c147",
+    "c148",
+    "c149",
+    "c150"
+  ],
+  "questions": [
+    {
+      "id": "t25q1",
+      "q_vi": "Vì sao Anna gõ cửa nhà Mike?",
+      "options_vi": [
+        "Nhạc quá to",
+        "Cô muốn ăn pizza",
+        "Cô mất chìa khoá"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t25q2",
+      "q_vi": "Mike làm gì sau khi nghe Anna nói?",
+      "options_vi": [
+        "Vặn nhỏ nhạc",
+        "Tắt đèn",
+        "Không làm gì"
+      ],
+      "answer": 0
+    }
+  ]
+}

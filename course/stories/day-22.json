@@ -1,0 +1,175 @@
+{
+  "day": 22,
+  "story_id": "t22",
+  "title_vi": "Anna mất điện thoại",
+  "lines": [
+    {
+      "id": "t22l01",
+      "speaker": "N",
+      "en": "It is Thursday. Anna comes into the café. She looks upset. Lisa is there.",
+      "vi": "Hôm nay là thứ Năm. Anna bước vào quán. Trông cô buồn bực. Lisa đang ở đó."
+    },
+    {
+      "id": "t22l02",
+      "speaker": "B",
+      "en": "Guess what? I lost my phone.",
+      "vi": "Đoán xem? Tôi mất điện thoại rồi.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t22l03",
+      "speaker": "A",
+      "en": "No way! What happened?",
+      "vi": "Không thể nào! Chuyện gì đã xảy ra?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t22l04",
+      "speaker": "B",
+      "en": "Yesterday, I went to the library. I had my phone in my bag.",
+      "vi": "Hôm qua tôi đến thư viện. Điện thoại tôi để trong túi.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t22l05",
+      "speaker": "A",
+      "en": "And then?",
+      "vi": "Rồi sao nữa?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t22l06",
+      "speaker": "B",
+      "en": "After that, I took the bus home. I was tired, so I fell asleep.",
+      "vi": "Sau đó tôi đi xe buýt về nhà. Tôi mệt nên ngủ thiếp đi.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t22l07",
+      "speaker": "A",
+      "en": "Oh no. Did you forget your bag on the bus?",
+      "vi": "Ôi không. Bạn để quên túi trên xe buýt à?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t22l08",
+      "speaker": "B",
+      "en": "No, I had my bag. But my phone wasn't in it.",
+      "vi": "Không, tôi có mang túi. Nhưng điện thoại không còn trong đó.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t22l09",
+      "speaker": "A",
+      "en": "Maybe it's in the library. Did you call the library?",
+      "vi": "Có thể nó ở thư viện. Bạn gọi thư viện chưa?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t22l10",
+      "speaker": "B",
+      "en": "I can't call anyone. I don't have a phone!",
+      "vi": "Tôi không gọi cho ai được. Tôi đâu có điện thoại!",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t22l11",
+      "speaker": "N",
+      "en": "Lisa laughs and gives Anna her phone.",
+      "vi": "Lisa bật cười và đưa điện thoại của mình cho Anna."
+    },
+    {
+      "id": "t22l12",
+      "speaker": "A",
+      "en": "Here you go. Call them now.",
+      "vi": "Của bạn đây. Gọi họ đi.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t22l13",
+      "speaker": "N",
+      "en": "Anna calls the library. A woman answers. She says, \"Yes, we have a phone!\"",
+      "vi": "Anna gọi thư viện. Một người phụ nữ trả lời. Cô nói: \"Có, chúng tôi có một chiếc điện thoại!\""
+    },
+    {
+      "id": "t22l14",
+      "speaker": "B",
+      "en": "Really? That's great! Thank you so much!",
+      "vi": "Thật sao? Tuyệt quá! Cảm ơn chị nhiều!",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t22l15",
+      "speaker": "N",
+      "en": "In the end, Anna gets her phone back. She is happy again.",
+      "vi": "Cuối cùng Anna lấy lại được điện thoại. Cô lại vui như cũ."
+    },
+    {
+      "id": "t22l16",
+      "speaker": "A",
+      "en": "Next time, put your phone in a small pocket.",
+      "vi": "Lần sau hãy bỏ điện thoại vào túi nhỏ.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t22l17",
+      "speaker": "B",
+      "en": "Good idea. And I'll never sleep on the bus again!",
+      "vi": "Ý hay đó. Và tôi sẽ không bao giờ ngủ trên xe buýt nữa!",
+      "who": "Anna",
+      "gender": "f"
+    }
+  ],
+  "chunks": [
+    "c012",
+    "c016",
+    "c018",
+    "c044",
+    "c063",
+    "c115",
+    "c116",
+    "c119",
+    "c122",
+    "c126",
+    "c127",
+    "c128",
+    "c129",
+    "c130",
+    "c131",
+    "c132"
+  ],
+  "questions": [
+    {
+      "id": "t22q1",
+      "q_vi": "Anna mất điện thoại ở đâu?",
+      "options_vi": [
+        "Ở thư viện",
+        "Trên xe buýt",
+        "Ở quán cà phê"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t22q2",
+      "q_vi": "Kết cục thế nào?",
+      "options_vi": [
+        "Anna tìm lại được điện thoại",
+        "Anna mua điện thoại mới",
+        "Lisa cho Anna điện thoại"
+      ],
+      "answer": 0
+    }
+  ]
+}

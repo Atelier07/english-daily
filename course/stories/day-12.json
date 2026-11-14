@@ -1,0 +1,166 @@
+{
+  "day": 12,
+  "story_id": "t12",
+  "title_vi": "Ăn tối ở nhà hàng",
+  "lines": [
+    {
+      "id": "t12l01",
+      "speaker": "N",
+      "en": "Anna, Mike, and Lisa are at a restaurant. A waiter comes to the table.",
+      "vi": "Anna, Mike và Lisa đang ở nhà hàng. Một anh phục vụ đến bàn."
+    },
+    {
+      "id": "t12l02",
+      "speaker": "A",
+      "en": "Hi! What do you want to drink?",
+      "vi": "Chào mọi người! Mọi người muốn uống gì?",
+      "who": "waiter",
+      "gender": "m"
+    },
+    {
+      "id": "t12l03",
+      "speaker": "B",
+      "en": "I'd like water, please.",
+      "vi": "Cho tôi nước, làm ơn.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t12l04",
+      "speaker": "N",
+      "en": "Mike looks at the menu. It is long.",
+      "vi": "Mike nhìn thực đơn. Nó dài lắm."
+    },
+    {
+      "id": "t12l05",
+      "speaker": "B",
+      "en": "What do you recommend?",
+      "vi": "Anh gợi ý món nào?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t12l06",
+      "speaker": "A",
+      "en": "The chicken is very good.",
+      "vi": "Món gà rất ngon.",
+      "who": "waiter",
+      "gender": "m"
+    },
+    {
+      "id": "t12l07",
+      "speaker": "B",
+      "en": "Does it come with rice?",
+      "vi": "Nó có kèm cơm không?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t12l08",
+      "speaker": "A",
+      "en": "Yes, it comes with rice and a salad.",
+      "vi": "Có, nó kèm cơm và một đĩa salad.",
+      "who": "waiter",
+      "gender": "m"
+    },
+    {
+      "id": "t12l09",
+      "speaker": "B",
+      "en": "Great. I'll have the chicken.",
+      "vi": "Tuyệt. Tôi sẽ ăn món gà.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t12l10",
+      "speaker": "N",
+      "en": "Lisa asks, \"Can I get the fish, please?\" Anna wants a pizza.",
+      "vi": "Lisa hỏi: \"Cho tôi món cá nhé?\" Anna muốn ăn pizza."
+    },
+    {
+      "id": "t12l11",
+      "speaker": "A",
+      "en": "Of course. It comes in twenty minutes.",
+      "vi": "Dĩ nhiên. Hai mươi phút nữa món ăn sẽ lên.",
+      "who": "waiter",
+      "gender": "m"
+    },
+    {
+      "id": "t12l12",
+      "speaker": "N",
+      "en": "The food is hot and good. Everyone is happy.",
+      "vi": "Món ăn nóng và ngon. Ai cũng vui."
+    },
+    {
+      "id": "t12l13",
+      "speaker": "B",
+      "en": "I love this chicken. It's so good!",
+      "vi": "Tôi rất thích món gà này. Ngon quá!",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t12l14",
+      "speaker": "N",
+      "en": "Lisa likes the fish. Anna likes her pizza.",
+      "vi": "Lisa thích món cá. Anna thích pizza của cô."
+    },
+    {
+      "id": "t12l15",
+      "speaker": "N",
+      "en": "After dinner, Mike calls the waiter.",
+      "vi": "Ăn xong, Mike gọi người phục vụ."
+    },
+    {
+      "id": "t12l16",
+      "speaker": "B",
+      "en": "Excuse me. Could we have the check, please?",
+      "vi": "Xin lỗi. Cho chúng tôi xin hoá đơn nhé?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t12l17",
+      "speaker": "A",
+      "en": "Of course. Here you go.",
+      "vi": "Dĩ nhiên. Của anh đây.",
+      "who": "waiter",
+      "gender": "m"
+    }
+  ],
+  "chunks": [
+    "c015",
+    "c018",
+    "c040",
+    "c047",
+    "c054",
+    "c067",
+    "c068",
+    "c069",
+    "c070",
+    "c071",
+    "c072"
+  ],
+  "questions": [
+    {
+      "id": "t12q1",
+      "q_vi": "Mike gọi món gì?",
+      "options_vi": [
+        "Món gà",
+        "Món cá",
+        "Pizza"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t12q2",
+      "q_vi": "Cuối bữa, họ xin gì?",
+      "options_vi": [
+        "Thêm nước",
+        "Hoá đơn",
+        "Thực đơn"
+      ],
+      "answer": 1
+    }
+  ]
+}

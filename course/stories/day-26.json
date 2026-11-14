@@ -1,0 +1,171 @@
+{
+  "day": 26,
+  "story_id": "t26",
+  "title_vi": "Chuẩn bị cho chuyến đi",
+  "lines": [
+    {
+      "id": "t26l01",
+      "speaker": "N",
+      "en": "Anna and Lisa are going to Chicago for the weekend. Tonight, Anna is packing.",
+      "vi": "Anna và Lisa sắp đi Chicago cuối tuần này. Tối nay Anna đang sắp đồ."
+    },
+    {
+      "id": "t26l02",
+      "speaker": "A",
+      "en": "Hi, Anna. What are you doing?",
+      "vi": "Chào Anna. Bạn đang làm gì vậy?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t26l03",
+      "speaker": "B",
+      "en": "I need to pack, but I don't know what to bring.",
+      "vi": "Tôi cần sắp đồ nhưng không biết mang gì.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t26l04",
+      "speaker": "A",
+      "en": "You should bring a jacket. It can be cold at night.",
+      "vi": "Bạn nên mang theo áo khoác. Ban đêm có thể lạnh.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t26l05",
+      "speaker": "B",
+      "en": "Good idea. I need a bag, too. Mine is too small.",
+      "vi": "Ý hay đó. Tôi cũng cần một cái túi. Cái của tôi nhỏ quá.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t26l06",
+      "speaker": "A",
+      "en": "You can use my bag. You don't have to buy a new one.",
+      "vi": "Bạn dùng túi của tôi đi. Bạn không cần mua cái mới.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t26l07",
+      "speaker": "B",
+      "en": "Really? Thank you so much, Lisa!",
+      "vi": "Thật sao? Cảm ơn Lisa nhiều!",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t26l08",
+      "speaker": "A",
+      "en": "No problem. Do you have your phone charger?",
+      "vi": "Không có gì. Bạn có sạc điện thoại chưa?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t26l09",
+      "speaker": "B",
+      "en": "No, I need a new charger. I'll buy one tomorrow.",
+      "vi": "Chưa, tôi cần một cái sạc mới. Ngày mai tôi sẽ mua.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t26l10",
+      "speaker": "A",
+      "en": "You don't have to. I have two. I can give you one.",
+      "vi": "Không cần đâu. Tôi có hai cái. Tôi cho bạn một cái.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t26l11",
+      "speaker": "B",
+      "en": "You're the best. I have to work until five tomorrow, so I'm busy.",
+      "vi": "Bạn tuyệt nhất. Ngày mai tôi phải làm đến năm giờ nên tôi bận.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t26l12",
+      "speaker": "A",
+      "en": "Okay. We can meet at six. Our bus leaves at seven.",
+      "vi": "Được. Mình gặp lúc sáu giờ. Xe buýt chạy lúc bảy giờ.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t26l13",
+      "speaker": "B",
+      "en": "Is it a long ride? How long does it take?",
+      "vi": "Đi có lâu không? Mất bao lâu?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t26l14",
+      "speaker": "A",
+      "en": "It takes about four hours. We can sleep on the bus.",
+      "vi": "Mất khoảng bốn tiếng. Mình ngủ trên xe được.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t26l15",
+      "speaker": "B",
+      "en": "Sounds good. I'd better go to bed early tonight.",
+      "vi": "Nghe hay đó. Tối nay tôi nên đi ngủ sớm.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t26l16",
+      "speaker": "A",
+      "en": "Me too. See you tomorrow!",
+      "vi": "Tôi cũng vậy. Mai gặp nhé!",
+      "who": "Lisa",
+      "gender": "f"
+    }
+  ],
+  "chunks": [
+    "c016",
+    "c017",
+    "c042",
+    "c043",
+    "c061",
+    "c062",
+    "c107",
+    "c135",
+    "c151",
+    "c152",
+    "c153",
+    "c154",
+    "c155",
+    "c156"
+  ],
+  "questions": [
+    {
+      "id": "t26q1",
+      "q_vi": "Lisa khuyên Anna mang gì?",
+      "options_vi": [
+        "Một cái áo khoác",
+        "Một cái ô",
+        "Một cuốn sách"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t26q2",
+      "q_vi": "Ai cho Anna mượn sạc?",
+      "options_vi": [
+        "Lisa",
+        "Mike",
+        "Tom"
+      ],
+      "answer": 0
+    }
+  ]
+}

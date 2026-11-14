@@ -1,0 +1,144 @@
+{
+  "day": 9,
+  "story_id": "t09",
+  "title_vi": "Hiệu thuốc ở đâu?",
+  "lines": [
+    {
+      "id": "t09l01",
+      "speaker": "N",
+      "en": "Anna is in the city. She wants medicine. She needs a pharmacy.",
+      "vi": "Anna đang ở trong thành phố. Cô muốn mua thuốc. Cô đang tìm một hiệu thuốc."
+    },
+    {
+      "id": "t09l02",
+      "speaker": "B",
+      "en": "Excuse me. Where is the pharmacy?",
+      "vi": "Xin lỗi. Hiệu thuốc ở đâu vậy?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t09l03",
+      "speaker": "A",
+      "en": "Sorry, I don't know. I'm not from here.",
+      "vi": "Xin lỗi, tôi không biết. Tôi không phải người ở đây.",
+      "who": "passerby",
+      "gender": "m"
+    },
+    {
+      "id": "t09l04",
+      "speaker": "B",
+      "en": "I see. Thank you.",
+      "vi": "Ra vậy. Cảm ơn bạn.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t09l05",
+      "speaker": "N",
+      "en": "Anna sees a woman with a dog.",
+      "vi": "Anna thấy một người phụ nữ dắt chó."
+    },
+    {
+      "id": "t09l06",
+      "speaker": "B",
+      "en": "Excuse me. Is there a pharmacy near here?",
+      "vi": "Xin lỗi. Gần đây có hiệu thuốc không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t09l07",
+      "speaker": "A",
+      "en": "Yes, there is. It's over there.",
+      "vi": "Có. Nó ở đằng kia.",
+      "who": "woman with a dog",
+      "gender": "f"
+    },
+    {
+      "id": "t09l08",
+      "speaker": "B",
+      "en": "Where? Sorry, I don't see it.",
+      "vi": "Ở đâu vậy? Xin lỗi, tôi không thấy.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t09l09",
+      "speaker": "A",
+      "en": "It's next to the bank. It's on the left.",
+      "vi": "Nó ở cạnh ngân hàng. Bên tay trái.",
+      "who": "woman with a dog",
+      "gender": "f"
+    },
+    {
+      "id": "t09l10",
+      "speaker": "B",
+      "en": "Next to the bank. On the left. I see!",
+      "vi": "Cạnh ngân hàng. Bên trái. Tôi thấy rồi!",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t09l11",
+      "speaker": "A",
+      "en": "Yes. It's a big white building.",
+      "vi": "Đúng rồi. Đó là toà nhà trắng lớn.",
+      "who": "woman with a dog",
+      "gender": "f"
+    },
+    {
+      "id": "t09l12",
+      "speaker": "N",
+      "en": "Anna walks and sees Tom's café. Tom waves from the window.",
+      "vi": "Anna đi tiếp và thấy quán của Tom. Tom vẫy tay qua cửa sổ."
+    },
+    {
+      "id": "t09l13",
+      "speaker": "B",
+      "en": "Hi, Tom! Where is the bank?",
+      "vi": "Chào Tom! Ngân hàng ở đâu?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t09l14",
+      "speaker": "A",
+      "en": "The bank is next to the pharmacy. It's over there!",
+      "vi": "Ngân hàng ở cạnh hiệu thuốc. Ở đằng kia!",
+      "who": "Tom",
+      "gender": "m"
+    }
+  ],
+  "chunks": [
+    "c024",
+    "c049",
+    "c050",
+    "c051",
+    "c052",
+    "c053",
+    "c054"
+  ],
+  "questions": [
+    {
+      "id": "t09q1",
+      "q_vi": "Hiệu thuốc nằm ở đâu?",
+      "options_vi": [
+        "Cạnh ngân hàng",
+        "Cạnh quán cà phê",
+        "Cạnh công viên"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t09q2",
+      "q_vi": "Anna thấy ai vẫy tay?",
+      "options_vi": [
+        "Tom",
+        "Lisa",
+        "Mike"
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "day": 17,
+  "story_id": "t17",
+  "title_vi": "Nói chuyện về bạn bè",
+  "lines": [
+    {
+      "id": "t17l01",
+      "speaker": "N",
+      "en": "Lisa and Anna are in the park. Lisa has a photo on her phone.",
+      "vi": "Lisa và Anna đang ở công viên. Lisa có một tấm ảnh trên điện thoại."
+    },
+    {
+      "id": "t17l02",
+      "speaker": "A",
+      "en": "This is my friend Rosa. She's really funny.",
+      "vi": "Đây là bạn tôi, Rosa. Cô ấy rất vui tính.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t17l03",
+      "speaker": "B",
+      "en": "She looks nice. Does she live in Denver?",
+      "vi": "Trông cô ấy dễ thương. Cô ấy có sống ở Denver không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t17l04",
+      "speaker": "A",
+      "en": "No, she lives in Mexico. She likes to cook.",
+      "vi": "Không, cô ấy sống ở Mexico. Cô ấy thích nấu ăn.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t17l05",
+      "speaker": "B",
+      "en": "Does she speak English?",
+      "vi": "Cô ấy có nói tiếng Anh không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t17l06",
+      "speaker": "A",
+      "en": "She speaks a little English. My friend is learning every day.",
+      "vi": "Cô ấy nói được một chút tiếng Anh. Bạn tôi học mỗi ngày.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t17l07",
+      "speaker": "B",
+      "en": "That's great! Who is this man?",
+      "vi": "Tuyệt quá! Người đàn ông này là ai?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t17l08",
+      "speaker": "A",
+      "en": "That's my brother, Carlos. He likes music. He doesn't like cold weather.",
+      "vi": "Đó là anh tôi, Carlos. Anh ấy thích âm nhạc. Anh ấy không thích thời tiết lạnh.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t17l09",
+      "speaker": "B",
+      "en": "Does he live in Denver?",
+      "vi": "Anh ấy có sống ở Denver không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t17l10",
+      "speaker": "A",
+      "en": "No, he doesn't. He lives with Rosa.",
+      "vi": "Không. Anh ấy sống cùng Rosa.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t17l11",
+      "speaker": "B",
+      "en": "Are they married?",
+      "vi": "Họ cưới nhau chưa?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t17l12",
+      "speaker": "A",
+      "en": "No, no! They're just friends. They're really close.",
+      "vi": "Không, không! Họ chỉ là bạn. Họ rất thân.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t17l13",
+      "speaker": "B",
+      "en": "I see. Do they like Mike, too?",
+      "vi": "Ra vậy. Họ cũng quý Mike chứ?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t17l14",
+      "speaker": "A",
+      "en": "They don't know him. But he's really nice.",
+      "vi": "Họ không biết anh ấy. Nhưng anh ấy rất tốt.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t17l15",
+      "speaker": "B",
+      "en": "What does Rosa do?",
+      "vi": "Rosa làm nghề gì?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t17l16",
+      "speaker": "A",
+      "en": "She works in a school. She's really good with kids.",
+      "vi": "Cô ấy làm ở một trường học. Cô ấy rất giỏi với trẻ con.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t17l17",
+      "speaker": "B",
+      "en": "She sounds great. I like her already.",
+      "vi": "Nghe cô ấy tuyệt quá. Tôi đã quý cô ấy rồi.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t17l18",
+      "speaker": "A",
+      "en": "Me too. She's always happy. She loves her job.",
+      "vi": "Tôi cũng vậy. Cô ấy lúc nào cũng vui. Cô ấy yêu công việc của mình.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t17l19",
+      "speaker": "N",
+      "en": "Anna laughs. Lisa looks at the photo again. She misses her friends.",
+      "vi": "Anna bật cười. Lisa lại nhìn tấm ảnh. Cô nhớ bạn bè mình."
+    }
+  ],
+  "chunks": [
+    "c024",
+    "c037",
+    "c042",
+    "c097",
+    "c098",
+    "c099",
+    "c100",
+    "c101",
+    "c102"
+  ],
+  "questions": [
+    {
+      "id": "t17q1",
+      "q_vi": "Rosa sống ở đâu?",
+      "options_vi": [
+        "Mexico",
+        "Denver",
+        "Canada"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t17q2",
+      "q_vi": "Carlos là ai của Lisa?",
+      "options_vi": [
+        "Anh trai",
+        "Bạn trai",
+        "Hàng xóm"
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "day": 4,
+  "story_id": "t04",
+  "title_vi": "Chú Joe nói nhanh quá",
+  "lines": [
+    {
+      "id": "t04l01",
+      "speaker": "N",
+      "en": "Mike's uncle Joe is here. He is from Texas, and he talks very fast.",
+      "vi": "Chú Joe của Mike đến chơi. Chú từ Texas và nói rất nhanh."
+    },
+    {
+      "id": "t04l02",
+      "speaker": "A",
+      "en": "Howdy, Anna! Nice to meet you. Y'all want some tea?",
+      "vi": "Chào Anna! Rất vui được gặp cháu. Mọi người uống trà không?",
+      "who": "Joe",
+      "gender": "m"
+    },
+    {
+      "id": "t04l03",
+      "speaker": "B",
+      "en": "Sorry, can you say that again?",
+      "vi": "Xin lỗi, chú nói lại được không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t04l04",
+      "speaker": "A",
+      "en": "Do you want some tea?",
+      "vi": "Cháu có muốn uống trà không?",
+      "who": "Joe",
+      "gender": "m"
+    },
+    {
+      "id": "t04l05",
+      "speaker": "B",
+      "en": "Yes, please. Can you speak more slowly? I don't understand everything.",
+      "vi": "Có ạ. Chú nói chậm hơn được không? Cháu không hiểu hết.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t04l06",
+      "speaker": "A",
+      "en": "Sure. Slowly. Do you want tea?",
+      "vi": "Được. Chậm thôi. Cháu muốn uống trà không?",
+      "who": "Joe",
+      "gender": "m"
+    },
+    {
+      "id": "t04l07",
+      "speaker": "B",
+      "en": "Yes, I want tea. Thank you so much.",
+      "vi": "Có, cháu muốn uống trà. Cảm ơn chú nhiều.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t04l08",
+      "speaker": "A",
+      "en": "Here you go. No problem.",
+      "vi": "Của cháu đây. Không có gì.",
+      "who": "Joe",
+      "gender": "m"
+    },
+    {
+      "id": "t04l09",
+      "speaker": "B",
+      "en": "What does y'all mean?",
+      "vi": "Y'all nghĩa là gì ạ?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t04l10",
+      "speaker": "A",
+      "en": "It means you, all of you.",
+      "vi": "Nghĩa là các bạn, tất cả mọi người.",
+      "who": "Joe",
+      "gender": "m"
+    },
+    {
+      "id": "t04l11",
+      "speaker": "B",
+      "en": "I see. How do you say that in English?",
+      "vi": "Ra vậy. Vậy nói câu đó bằng tiếng Anh thì sao?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t04l12",
+      "speaker": "N",
+      "en": "Joe laughs. Mike smiles. Anna writes it down.",
+      "vi": "Chú Joe bật cười. Mike mỉm cười. Anna viết nó xuống."
+    }
+  ],
+  "chunks": [
+    "c004",
+    "c016",
+    "c017",
+    "c018",
+    "c019",
+    "c020",
+    "c021",
+    "c022",
+    "c023",
+    "c024"
+  ],
+  "questions": [
+    {
+      "id": "t04q1",
+      "q_vi": "Vì sao Anna bảo chú Joe nói lại?",
+      "options_vi": [
+        "Chú nói quá nhanh",
+        "Chú nói rất nhỏ",
+        "Anna không thích trà"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t04q2",
+      "q_vi": "Y'all nghĩa là gì?",
+      "options_vi": [
+        "Một ly trà",
+        "Tất cả mọi người",
+        "Xin chào"
+      ],
+      "answer": 1
+    }
+  ]
+}

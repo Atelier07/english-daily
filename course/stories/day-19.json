@@ -1,0 +1,178 @@
+{
+  "day": 19,
+  "story_id": "t19",
+  "title_vi": "Lời mời đi nướng thịt",
+  "lines": [
+    {
+      "id": "t19l01",
+      "speaker": "N",
+      "en": "Mike is making plans again. This time, he calls Lisa.",
+      "vi": "Mike lại lên kế hoạch. Lần này anh gọi cho Lisa."
+    },
+    {
+      "id": "t19l02",
+      "speaker": "A",
+      "en": "Hi, Lisa. How about a barbecue on Sunday?",
+      "vi": "Chào Lisa. Chủ nhật nướng thịt ngoài trời thì sao?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t19l03",
+      "speaker": "B",
+      "en": "Oh, a barbecue! I love it. What time?",
+      "vi": "Ồ, nướng thịt! Tôi rất thích. Lúc mấy giờ?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t19l04",
+      "speaker": "A",
+      "en": "Around two. Why don't we invite Anna and Tom?",
+      "vi": "Khoảng hai giờ. Sao mình không mời Anna và Tom?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t19l05",
+      "speaker": "B",
+      "en": "Good idea. Let me check my calendar.",
+      "vi": "Ý hay đó. Để tôi xem lịch.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t19l06",
+      "speaker": "N",
+      "en": "Lisa looks at her phone. She is quiet for a moment.",
+      "vi": "Lisa nhìn điện thoại. Cô im lặng một lúc."
+    },
+    {
+      "id": "t19l07",
+      "speaker": "B",
+      "en": "Sorry, Mike. I can't make it on Sunday. I'm at work all day.",
+      "vi": "Xin lỗi Mike. Chủ nhật tôi không đến được. Tôi làm cả ngày.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t19l08",
+      "speaker": "A",
+      "en": "That's too bad. What about Saturday?",
+      "vi": "Tiếc quá. Thứ Bảy thì sao?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t19l09",
+      "speaker": "B",
+      "en": "That works for me. I'm free after four.",
+      "vi": "Vậy thì được. Tôi rảnh sau bốn giờ.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t19l10",
+      "speaker": "A",
+      "en": "Let me check with Anna. Just a minute.",
+      "vi": "Để tôi hỏi Anna. Chờ chút.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t19l11",
+      "speaker": "N",
+      "en": "Lisa smiles. She likes Mike's plans.",
+      "vi": "Lisa mỉm cười. Cô thích những kế hoạch của Mike."
+    },
+    {
+      "id": "t19l12",
+      "speaker": "N",
+      "en": "Mike calls Anna. Anna says she is going to hike on Saturday morning.",
+      "vi": "Mike gọi Anna. Anna nói thứ Bảy sáng cô sẽ đi leo núi."
+    },
+    {
+      "id": "t19l13",
+      "speaker": "B",
+      "en": "But I'm free after lunch. Saturday at five is good for me.",
+      "vi": "Nhưng tôi rảnh sau bữa trưa. Năm giờ chiều thứ Bảy được với tôi.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t19l14",
+      "speaker": "A",
+      "en": "Great! Saturday at five. Tom, can you make it?",
+      "vi": "Tuyệt! Năm giờ thứ Bảy. Tom, bạn đến được không?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t19l15",
+      "speaker": "B",
+      "en": "I can't make it. I'm at the café all day. Maybe next time.",
+      "vi": "Tôi không đến được. Tôi ở quán cả ngày. Để lần sau nhé.",
+      "who": "Tom",
+      "gender": "m"
+    },
+    {
+      "id": "t19l16",
+      "speaker": "A",
+      "en": "No problem. Maybe next time, Tom.",
+      "vi": "Không sao. Để lần sau nhé, Tom.",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t19l17",
+      "speaker": "A",
+      "en": "Okay. Lisa, Anna, and me. Why don't we also invite Joe?",
+      "vi": "Được rồi. Lisa, Anna và tôi. Sao mình không mời cả chú Joe nữa?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t19l18",
+      "speaker": "B",
+      "en": "Good idea. He always brings good food.",
+      "vi": "Ý hay đó. Chú ấy luôn mang đồ ăn ngon.",
+      "who": "Anna",
+      "gender": "f"
+    }
+  ],
+  "chunks": [
+    "c017",
+    "c040",
+    "c044",
+    "c045",
+    "c097",
+    "c109",
+    "c110",
+    "c111",
+    "c112",
+    "c113",
+    "c114"
+  ],
+  "questions": [
+    {
+      "id": "t19q1",
+      "q_vi": "Vì sao Lisa không đến được vào Chủ nhật?",
+      "options_vi": [
+        "Cô phải làm việc",
+        "Cô bị ốm",
+        "Cô đi chơi xa"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t19q2",
+      "q_vi": "Cuối cùng buổi nướng thịt là lúc nào?",
+      "options_vi": [
+        "Thứ Bảy lúc năm giờ",
+        "Chủ nhật lúc hai giờ",
+        "Thứ Sáu tối"
+      ],
+      "answer": 0
+    }
+  ]
+}

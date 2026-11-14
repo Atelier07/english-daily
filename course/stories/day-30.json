@@ -1,0 +1,155 @@
+{
+  "day": 30,
+  "story_id": "t30",
+  "title_vi": "Ngày cuối ở thành phố",
+  "lines": [
+    {
+      "id": "t30l01",
+      "speaker": "N",
+      "en": "It is Sunday morning. Anna and Lisa are in the hotel room. Their bus leaves at noon.",
+      "vi": "Sáng Chủ nhật. Anna và Lisa đang ở trong phòng khách sạn. Xe buýt của họ chạy lúc trưa."
+    },
+    {
+      "id": "t30l02",
+      "speaker": "A",
+      "en": "Anna, are you ready? It's eleven.",
+      "vi": "Anna, bạn sẵn sàng chưa? Mười một giờ rồi.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t30l03",
+      "speaker": "B",
+      "en": "Wait a second! I'm almost ready.",
+      "vi": "Đợi chút! Tôi sắp xong rồi.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t30l04",
+      "speaker": "A",
+      "en": "Okay. Take your time. No rush.",
+      "vi": "Được rồi. Cứ từ từ. Không vội.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t30l05",
+      "speaker": "B",
+      "en": "Hold on. I can't find my phone.",
+      "vi": "Khoan đã. Tôi không tìm thấy điện thoại.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t30l06",
+      "speaker": "A",
+      "en": "Again? Did you check the bed?",
+      "vi": "Lại nữa à? Bạn xem trên giường chưa?",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t30l07",
+      "speaker": "B",
+      "en": "Yes. Wait. It's in my jacket. Here it is!",
+      "vi": "Rồi. Khoan. Nó ở trong áo khoác. Đây rồi!",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t30l08",
+      "speaker": "A",
+      "en": "Great. Sorry, I'll be right back. I forgot to get the key.",
+      "vi": "Tuyệt. Xin lỗi, tôi quay lại ngay. Tôi quên lấy chìa khoá.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t30l09",
+      "speaker": "N",
+      "en": "Lisa goes to the front desk. Anna looks at her phone. There's a text from Ben.",
+      "vi": "Lisa xuống quầy lễ tân. Anna nhìn điện thoại. Có tin nhắn từ Ben."
+    },
+    {
+      "id": "t30l10",
+      "speaker": "B",
+      "en": "Guess what? Ben says, \"Have a good trip. Let me know when you are in Denver.\"",
+      "vi": "Đoán xem? Ben nói: \"Chúc chuyến đi vui. Khi nào bạn ở Denver thì báo tôi.\"",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t30l11",
+      "speaker": "A",
+      "en": "Oh, nice! That works for me. Let's all have coffee at Tom's café.",
+      "vi": "Ồ, hay quá! Vậy thì được. Mình cùng uống cà phê ở quán của Tom nhé.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t30l12",
+      "speaker": "B",
+      "en": "Yes! I love that idea. I think it's going to be fun.",
+      "vi": "Ừ! Tôi thích ý đó. Tôi nghĩ sẽ vui lắm.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t30l13",
+      "speaker": "A",
+      "en": "Me too. I met so many nice people this weekend.",
+      "vi": "Tôi cũng vậy. Cuối tuần này tôi gặp rất nhiều người tốt.",
+      "who": "Lisa",
+      "gender": "f"
+    },
+    {
+      "id": "t30l14",
+      "speaker": "N",
+      "en": "They get on the bus. Anna looks out the window and smiles. She is going home.",
+      "vi": "Họ lên xe buýt. Anna nhìn ra cửa sổ và mỉm cười. Cô đang về nhà."
+    }
+  ],
+  "chunks": [
+    "c040",
+    "c042",
+    "c044",
+    "c064",
+    "c106",
+    "c114",
+    "c122",
+    "c124",
+    "c125",
+    "c127",
+    "c138",
+    "c139",
+    "c175",
+    "c176",
+    "c177",
+    "c178",
+    "c179",
+    "c180"
+  ],
+  "questions": [
+    {
+      "id": "t30q1",
+      "q_vi": "Anna tìm thấy điện thoại ở đâu?",
+      "options_vi": [
+        "Trong áo khoác",
+        "Trên giường",
+        "Ở quầy lễ tân"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t30q2",
+      "q_vi": "Ben nhắn gì cho Anna?",
+      "options_vi": [
+        "Chúc đi vui và báo khi đến Denver",
+        "Hẹn gặp ở Chicago",
+        "Hỏi mượn điện thoại"
+      ],
+      "answer": 0
+    }
+  ]
+}

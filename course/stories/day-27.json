@@ -1,0 +1,165 @@
+{
+  "day": 27,
+  "story_id": "t27",
+  "title_vi": "Trời hôm nay thế nào?",
+  "lines": [
+    {
+      "id": "t27l01",
+      "speaker": "N",
+      "en": "It is Saturday. Anna and Lisa are in Chicago.",
+      "vi": "Hôm nay là thứ Bảy. Anna và Lisa đang ở Chicago."
+    },
+    {
+      "id": "t27l02",
+      "speaker": "N",
+      "en": "They wait at a bus stop in front of the hotel.",
+      "vi": "Họ đợi ở trạm xe buýt trước khách sạn."
+    },
+    {
+      "id": "t27l03",
+      "speaker": "N",
+      "en": "An old man stands next to them. He smiles at Anna.",
+      "vi": "Một ông cụ đứng cạnh họ. Ông mỉm cười với Anna."
+    },
+    {
+      "id": "t27l04",
+      "speaker": "A",
+      "en": "Nice day, isn't it?",
+      "vi": "Ngày đẹp trời nhỉ?",
+      "who": "old man",
+      "gender": "m"
+    },
+    {
+      "id": "t27l05",
+      "speaker": "B",
+      "en": "Yes, it is. It's sunny and warm today.",
+      "vi": "Vâng. Hôm nay trời nắng và ấm.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t27l06",
+      "speaker": "A",
+      "en": "What's the weather like in Denver?",
+      "vi": "Thời tiết ở Denver thế nào?",
+      "who": "old man",
+      "gender": "m"
+    },
+    {
+      "id": "t27l07",
+      "speaker": "B",
+      "en": "It's usually dry. But it's cold in the winter.",
+      "vi": "Thường thì khô. Nhưng mùa đông lạnh.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t27l08",
+      "speaker": "A",
+      "en": "Here, it's windy. It looks like rain later.",
+      "vi": "Ở đây thì gió. Có vẻ lát nữa sẽ mưa.",
+      "who": "old man",
+      "gender": "m"
+    },
+    {
+      "id": "t27l09",
+      "speaker": "B",
+      "en": "Oh no. I don't have an umbrella with me.",
+      "vi": "Ôi không. Tôi không mang theo ô.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t27l10",
+      "speaker": "N",
+      "en": "Lisa looks at the sky. She sees a few dark clouds.",
+      "vi": "Lisa nhìn trời. Cô thấy vài đám mây đen."
+    },
+    {
+      "id": "t27l11",
+      "speaker": "A",
+      "en": "Don't worry. There's a store over there. You can buy one.",
+      "vi": "Đừng lo. Có một cửa hàng ở đằng kia. Bạn mua một cái được.",
+      "who": "old man",
+      "gender": "m"
+    },
+    {
+      "id": "t27l12",
+      "speaker": "B",
+      "en": "Thank you! That's a good idea.",
+      "vi": "Cảm ơn ông! Ý hay đó.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t27l13",
+      "speaker": "N",
+      "en": "The old man smiles again. He likes to talk about the weather.",
+      "vi": "Ông cụ lại mỉm cười. Ông thích nói chuyện về thời tiết."
+    },
+    {
+      "id": "t27l14",
+      "speaker": "N",
+      "en": "The bus comes. The man gets on first. He turns and waves.",
+      "vi": "Xe buýt đến. Ông cụ lên xe trước. Ông quay lại và vẫy tay."
+    },
+    {
+      "id": "t27l15",
+      "speaker": "A",
+      "en": "Have a good one!",
+      "vi": "Chúc cô một ngày tốt lành!",
+      "who": "old man",
+      "gender": "m"
+    },
+    {
+      "id": "t27l16",
+      "speaker": "B",
+      "en": "You too!",
+      "vi": "Ông cũng vậy!",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t27l17",
+      "speaker": "N",
+      "en": "Anna and Lisa go to the store first. They buy a small blue umbrella. It is ten dollars.",
+      "vi": "Anna và Lisa ghé cửa hàng trước. Họ mua một cái ô xanh dương nhỏ. Giá mười đô la."
+    }
+  ],
+  "chunks": [
+    "c026",
+    "c063",
+    "c064",
+    "c090",
+    "c097",
+    "c142",
+    "c157",
+    "c158",
+    "c159",
+    "c160",
+    "c161",
+    "c162"
+  ],
+  "questions": [
+    {
+      "id": "t27q1",
+      "q_vi": "Hôm nay thời tiết ở Chicago thế nào?",
+      "options_vi": [
+        "Nắng, gió, sắp mưa",
+        "Tuyết rơi",
+        "Nóng và khô"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t27q2",
+      "q_vi": "Anna và Lisa mua gì ở cửa hàng?",
+      "options_vi": [
+        "Một cái ô",
+        "Một cái áo khoác",
+        "Một chiếc bản đồ"
+      ],
+      "answer": 0
+    }
+  ]
+}

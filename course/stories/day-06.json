@@ -1,0 +1,155 @@
+{
+  "day": 6,
+  "story_id": "t06",
+  "title_vi": "Đi xem phim lúc mấy giờ?",
+  "lines": [
+    {
+      "id": "t06l01",
+      "speaker": "N",
+      "en": "It is Friday. Anna wants to see a movie with Mike.",
+      "vi": "Hôm nay là thứ Sáu. Anna muốn đi xem phim với Mike."
+    },
+    {
+      "id": "t06l02",
+      "speaker": "B",
+      "en": "Hi, Mike! How are you?",
+      "vi": "Chào Mike! Bạn khoẻ không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t06l03",
+      "speaker": "A",
+      "en": "I'm good, thanks. And you?",
+      "vi": "Tôi khoẻ, cảm ơn. Còn bạn?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t06l04",
+      "speaker": "B",
+      "en": "I'm good. Do you want to see a movie tonight?",
+      "vi": "Tôi khoẻ. Tối nay bạn có muốn đi xem phim không?",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t06l05",
+      "speaker": "A",
+      "en": "Sure! What time does the movie start?",
+      "vi": "Được chứ! Phim bắt đầu lúc mấy giờ?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t06l06",
+      "speaker": "B",
+      "en": "It starts at seven.",
+      "vi": "Bảy giờ bắt đầu.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t06l07",
+      "speaker": "A",
+      "en": "What time is it now?",
+      "vi": "Bây giờ là mấy giờ?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t06l08",
+      "speaker": "B",
+      "en": "It's about five.",
+      "vi": "Khoảng năm giờ.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t06l09",
+      "speaker": "A",
+      "en": "Okay. Can I have a coffee first?",
+      "vi": "Được. Trước đó tôi uống một ly cà phê được không?",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t06l10",
+      "speaker": "B",
+      "en": "Sure. We can meet at six. See you at six!",
+      "vi": "Được chứ. Mình gặp nhau lúc sáu giờ. Hẹn gặp lúc sáu giờ nhé!",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t06l11",
+      "speaker": "N",
+      "en": "At six, Anna waits at the café. Mike is not there.",
+      "vi": "Lúc sáu giờ, Anna đợi ở quán cà phê. Mike chưa tới."
+    },
+    {
+      "id": "t06l12",
+      "speaker": "N",
+      "en": "Her phone rings. It's Mike.",
+      "vi": "Điện thoại cô reo. Là Mike."
+    },
+    {
+      "id": "t06l13",
+      "speaker": "A",
+      "en": "Sorry, Anna. I'm running late!",
+      "vi": "Xin lỗi Anna. Tôi đến trễ rồi!",
+      "who": "Mike",
+      "gender": "m"
+    },
+    {
+      "id": "t06l14",
+      "speaker": "B",
+      "en": "It's okay. The movie starts at seven.",
+      "vi": "Không sao. Phim bắt đầu lúc bảy giờ.",
+      "who": "Anna",
+      "gender": "f"
+    },
+    {
+      "id": "t06l15",
+      "speaker": "A",
+      "en": "I know. I'm close. Thank you so much.",
+      "vi": "Tôi biết. Tôi sắp tới rồi. Cảm ơn bạn nhiều.",
+      "who": "Mike",
+      "gender": "m"
+    }
+  ],
+  "chunks": [
+    "c005",
+    "c006",
+    "c015",
+    "c016",
+    "c031",
+    "c032",
+    "c033",
+    "c034",
+    "c035",
+    "c036"
+  ],
+  "questions": [
+    {
+      "id": "t06q1",
+      "q_vi": "Phim bắt đầu lúc mấy giờ?",
+      "options_vi": [
+        "Sáu giờ",
+        "Bảy giờ",
+        "Năm giờ"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "t06q2",
+      "q_vi": "Vì sao Anna phải đợi?",
+      "options_vi": [
+        "Mike đến trễ",
+        "Anna quên giờ",
+        "Quán đóng cửa"
+      ],
+      "answer": 0
+    }
+  ]
+}
