@@ -5,6 +5,8 @@ import { currentPhase, phaseHours, nextCheckpoint, trend, phases, checkState, go
 import { getProfile, budget, weeklyHours, currentDay, dayDoneMap } from './profile.js';
 import { stats as itemStats } from './items.js';
 import { allChecks } from './weekly.js';
+import { summaryLine as pronLine } from './pronweak.js';
+import { allFreeTalks } from './freetalk.js';
 
 const COMP = { lt70: '<70%', '70-90': '70–90%', '90-95': '90–95%', gt95: '>95%' };
 
@@ -57,6 +59,12 @@ export function progressMarkdown(now = new Date()) {
     }
     lines.push('');
   }
+  lines.push('## Phát âm và nói chuyện tự do');
+  lines.push(pronLine());
+  const fts = allFreeTalks().slice(-3).reverse();
+  if (fts.length) fts.forEach((f) => lines.push(`- Nói chuyện tự do tuần ${f.week} (${f.date}): ${f.turns} lượt. ${f.summary_vi || ''}${f.fix && f.fix.length ? ` Cần sửa: ${f.fix.map((x) => `"${x.said}" → "${x.better}"`).join('; ')}.` : ''}`));
+  else lines.push('- Nói chuyện tự do: (chưa có)');
+  lines.push('');
   lines.push('## Lỗi đang sửa (gặp nhiều nhất)');
   const errs = d.errors.filter((e) => !e.fixed).sort((a, b) => (b.seen || 1) - (a.seen || 1)).slice(0, 5);
   if (errs.length) errs.forEach((e) => lines.push(`- "${e.wrong}" → "${e.right}" (gặp ${e.seen || 1} lần)${e.note ? ` · ${e.note}` : ''}`));

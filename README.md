@@ -173,3 +173,11 @@ icons/                biểu tượng
 ## Quét lỗ hổng và kiểm tra tuần
 - **Kiểm tra nhanh** (đầu mỗi ngày MỚI, sau phần ôn): với từng cụm, nhìn nghĩa, nói to, nghe đáp án, tự chấm "Biết rồi" / "Chưa chắc". Biết hết: chỉ còn Đóng vai (khoảng 5 phút). Chưa chắc cụm nào: Cụm mới, Thay ô chỉ gồm cụm đó; Nhại theo chỉ các câu chứa cụm đó (tối thiểu 2 câu). Cụm "Biết rồi" vào SRS với khoảng cách đầu 7 ngày, quên khi ôn thì học lại như thường. Kết quả quét nằm trong `db().session.scan` (tạm dừng/tiếp tục an toàn).
 - **Kiểm tra tuần** sau Ngày 7, 14, 21, 30 (`js/weekly.js`): 8–10 tình huống tiếng Việt, nói (nếu trình duyệt có nhận giọng) hoặc gõ tiếng Anh; Gemini chấm (`weeklyCheckPrompt` trong `js/ai.js`), không có khoá thì chấm offline bằng so khớp mờ với câu mẫu/`accept`. Đạt từ 70. Cụm sai được đẩy vào thẻ ôn ngày mai; chưa đạt thì buổi sau ôn lại tuần đó trước khi học bài mới. Kết quả lưu ở bộ sưu tập `weekChecks` (đồng bộ) và ghi vào progress.md.
+
+## Buổi học: truyện nghe, phát âm, nói chuyện tự do (phiên 3)
+
+Tất cả nằm trong buổi học có hướng dẫn và danh sách bước ở tab Hôm nay, không có trang riêng.
+
+- **Nghe truyện (S7)**, cuối mỗi ngày sau Đóng vai: đọc `course/stories/day-XX.json` (`lines`, `chunks`, `questions`); thiếu file thì bỏ bước. Nghe không chữ → 2–3 câu hỏi (không điểm) → nghe lại có chữ, chạm câu xem tiếng Việt, cụm được tô. Ngân sách 15–20 phút: chỉ nghe + câu hỏi.
+- **Phát âm (SP)**, ≤ 3 phút, tự chèn sau Nhại theo: khi một điểm yếu (âm cuối, -s, -ed, th, cụm phụ âm) vượt ngưỡng 3, hoặc mỗi ngày thứ 3 (xoay nhóm). Tín hiệu: so lời máy chép với câu mong đợi ở các bước dùng STT và nút “Mình thấy khó phát âm câu này” ở Nhại theo. Bộ đếm lưu ở `pronWeak` (đồng bộ).
+- **Nói chuyện tự do (Gemini)**, ngay sau kiểm tra tuần 1–4 và cuối buổi ôn lại tuần: 7 lượt, đối tác nói đơn giản bằng cụm đã học, có dòng gợi ý tiếng Việt, rồi nhận xét; cụm liên quan quay lại thẻ ôn ngày mai. Lưu ở `freeTalks`. Không có khoá AI thì bỏ qua kèm hướng dẫn vào Cài đặt.

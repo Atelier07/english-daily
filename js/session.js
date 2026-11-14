@@ -1,5 +1,6 @@
 // Buổi học có hướng dẫn: mỗi lúc chỉ một bước trên màn hình.
-// S1 Ôn → S0 Kiểm tra nhanh (quét lỗ hổng, chỉ ngày mới) → S2 Nghe hội thoại → S3 Cụm mới → S4 Nhại theo → S5 Thay ô bằng miệng → S6 Đóng vai (→ SX Ôn thêm)
+// S1 Ôn → S0 Kiểm tra nhanh (quét lỗ hổng, chỉ ngày mới) → S2 Nghe hội thoại → S3 Cụm mới → S4 Nhại theo → (SP Phát âm, tự chèn khi cần)
+// → S5 Thay ô bằng miệng → S6 Đóng vai → S7 Nghe truyện (→ SX Ôn thêm). Buổi ôn lại tuần: S1 → S8 Nói chuyện tự do.
 import { db, save } from './store.js';
 import { esc, today, fmtClock } from './util.js';
 import { toast } from './ui.js';
@@ -13,6 +14,9 @@ import {
   dueItems, weakestItems, getItem, rate, intervalText, addDayItems, bumpEncounters, updateMastery,
 } from './items.js';
 import { hasAI, askJSON } from './ai.js';
+import { loadStory } from './stories.js';
+import { recordSTT, reportHard, pronPlan, markBlockDone, markTargetHtml, detectCats, TARGET_INFO } from './pronweak.js';
+import { renderFreeTalk, newFreeTalk } from './freetalk.js';
 
 export const STEPS = {
   S0: { name: 'Kiểm tra nhanh', block: 'review', hint: 'Nhìn nghĩa, nói to cả câu tiếng Anh, nghe đáp án, rồi tự chấm. Cụm nào biết rồi thì khỏi học lại.' },
@@ -23,14 +27,19 @@ export const STEPS = {
   S5: { name: 'Thay ô bằng miệng', block: 'speak', hint: 'Nhìn ý tiếng Việt, nói cả câu tiếng Anh bằng khung câu, rồi xem câu mẫu.' },
   S6: { name: 'Đóng vai', block: 'speak', hint: 'Người kia nói, đến lượt bạn thì nói theo gợi ý.' },
   SX: { name: 'Ôn thêm', block: 'review', hint: 'Vài thẻ yếu nhất, chưa đến hạn.' },
+  SP: { name: 'Phát âm', block: 'shadow', hint: 'Nghe chậm, ghi âm, rồi so sánh với giọng mẫu. Chú ý âm được tô.' },
+  S7: { name: 'Nghe truyện', block: 'input', hint: 'Nghe cả câu chuyện không nhìn chữ, trả lời vài câu hỏi, rồi nghe lại với chữ.' },
+  S8: { name: 'Nói chuyện tự do', block: 'speak', hint: 'Trò chuyện với Gemini về một tình huống đời thường, dùng các cụm đã học.' },
 };
 
 export const PLANS = {
-  15: { rev: 5, steps: ['S1', 'S2', 'S3', 'S5'], stems: 2, cues: 3 },
-  20: { rev: 8, steps: ['S1', 'S2', 'S3', 'S5'], stems: 3, cues: 4 },
-  30: { rev: 12, steps: ['S1', 'S2', 'S3', 'S4', 'S5', 'S6'], stems: 9, cues: 9 },
-  45: { rev: 20, steps: ['S1', 'S2', 'S3', 'S4', 'S5', 'S6'], stems: 9, cues: 9 },
-  60: { rev: 30, steps: ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'SX'], stems: 9, cues: 9, extra: 10 },
+  // Truyện nghe (S7) có ở mọi ngân sách: 15–20 phút chỉ nghe + câu hỏi (storyFull=false), từ 30 phút thêm nghe lại có chữ.
+  // Khối phát âm (SP, ≤3 phút) chỉ chèn khi cần; 30 phút đã bớt số thẻ ôn (12→8) để tổng vẫn khoảng 30 phút.
+  15: { rev: 5, steps: ['S1', 'S2', 'S3', 'S5'], stems: 2, cues: 3, storyFull: false },
+  20: { rev: 8, steps: ['S1', 'S2', 'S3', 'S5'], stems: 3, cues: 4, storyFull: false },
+  30: { rev: 8, storyFull: true, steps: ['S1', 'S2', 'S3', 'S4', 'S5', 'S6'], stems: 9, cues: 9 },
+  45: { rev: 20, storyFull: true, steps: ['S1', 'S2', 'S3', 'S4', 'S5', 'S6'], stems: 9, cues: 9 },
+  60: { rev: 30, storyFull: true, steps: ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'SX'], stems: 9, cues: 9, extra: 10 },
 };
 export const planFor = (b) => PLANS[b] || PLANS[30];
 
@@ -42,7 +51,7 @@ export function unknownIds(d, scan) {
 
 // Các bước thật sự chạy cho một ngày (bỏ S1 nếu không có thẻ đến hạn, bỏ bước không có dữ liệu).
 // isNew: ngày mới → thêm S0 quét lỗ hổng. scan (đã xong): biết hết → chỉ S6; còn cụm chưa chắc → S3/S5/S4 chỉ cho các cụm đó.
-export function buildSteps(day, b = budget(), due = dueItems().length, { isNew = false, scan = null } = {}) {
+export function buildSteps(day, b = budget(), due = dueItems().length, { isNew = false, scan = null, story = false, pron = null } = {}) {
   const p = planFor(b);
   const unk = unknownIds(day, scan);
   const allKnown = unk && unk.length === 0 && day.chunks.length > 0;
@@ -57,6 +66,12 @@ export function buildSteps(day, b = budget(), due = dueItems().length, { isNew =
     if (s === 'SX') return db().items.length > 0;
     return true;
   });
+  if (pron && !allKnown) {
+    const i4 = out.lastIndexOf('S4');
+    if (i4 >= 0) out.splice(i4 + 1, 0, 'SP');
+    else if (pron.forced) { const i3 = out.lastIndexOf('S3'); out.splice(i3 >= 0 ? i3 + 1 : out.length, 0, 'SP'); }
+  }
+  if (story) { const ix = out.indexOf('SX'); if (ix >= 0) out.splice(ix, 0, 'S7'); else out.push('S7'); }
   if (isNew && day.chunks.length) out.splice(out[0] === 'S1' ? 1 : 0, 0, 'S0');
   return out;
 }
@@ -66,6 +81,8 @@ let onExit = null;    // gọi khi thoát/xong
 let day = null;
 let cmap = new Map();
 let clockT = null;
+let storyDoc = null;
+let seqTok = 0;
 const rec = createRecorder();
 
 const S = () => db().session;
@@ -81,8 +98,12 @@ export async function startSession(n) {
   const p = planFor(budget());
   const queue = dueItems().slice(0, p.rev).map((i) => i.id);
   const isNew = !dayDoneMap()[n] && d.chunks.length > 0;
+  const hasStory = !!(await loadStory(n));
+  let pron = null;
+  try { pron = await pronPlan(n, { withS4: planFor(budget()).steps.includes('S4') }); } catch (e) { pron = null; }
   db().session = {
-    day: n, steps: buildSteps(d, budget(), queue.length, { isNew }), scan: isNew ? { known: {}, done: false } : null, i: 0, stepStart: Date.now(), startedDate: today(),
+    day: n, hasStory, pron: pron ? { ...pron, pos: 0 } : null, hardLines: [], story: { phase: 'listen', qpos: 0, ans: {}, open: {}, hide: false },
+    steps: buildSteps(d, budget(), queue.length, { isNew, story: hasStory, pron }), scan: isNew ? { known: {}, done: false } : null, i: 0, stepStart: Date.now(), startedDate: today(),
     queue, pos: {}, flags: {}, enc: {}, s5ok: {}, s6ok: [], said: {}, again: [], extra: [], aiCues: [], minutes: 0,
   };
   persist();
@@ -91,7 +112,7 @@ export async function startSession(n) {
 // Buổi chỉ ôn (không học ngày mới): vd ôn lại tuần sau khi kiểm tra tuần chưa đạt
 export function startReviewSession(itemIds, { label = 'Ôn lại', day: n = currentDay(), weekReview = null } = {}) {
   db().session = {
-    day: n, label, reviewOnly: true, weekReview, steps: ['S1'], scan: null, i: 0, stepStart: Date.now(), startedDate: today(),
+    day: n, label, reviewOnly: true, weekReview, steps: weekReview ? ['S1', 'S8'] : ['S1'], ft: weekReview ? newFreeTalk(weekReview) : null, scan: null, i: 0, stepStart: Date.now(), startedDate: today(),
     queue: itemIds.slice(), pos: {}, flags: {}, enc: {}, s5ok: {}, s6ok: [], said: {}, again: [], extra: [], aiCues: [], minutes: 0,
   };
   persist();
@@ -107,6 +128,7 @@ export async function renderSession(el, exit) {
   try {
     day = await loadDay(s.day);
     cmap = await chunkMap();
+    storyDoc = s.hasStory ? await loadStory(s.day) : null;
   } catch (e) {
     host.innerHTML = `<div class="notice">Không tải được bài của Ngày ${s.day}. Kiểm tra mạng rồi thử lại.</div>`;
     return;
@@ -117,7 +139,7 @@ export async function renderSession(el, exit) {
 function draw() {
   const s = S();
   if (!s || !host) return;
-  stopAudio();
+  stopSeq();
   clearInterval(clockT);
   const key = s.steps[s.i];
   const meta = STEPS[key];
@@ -130,7 +152,8 @@ function draw() {
         </div>
         <div class="sess-clock num" id="stepClock">00:00</div>
       </div>
-      <div class="sess-dots">${s.steps.map((_, k) => `<i class="${k < s.i ? 'done' : k === s.i ? 'cur' : ''}"></i>`).join('')}</div>
+      <div class="sess-dots" role="list">${s.steps.map((k2, k) => `<i role="listitem" title="${esc(STEPS[k2].name)}" class="${k < s.i ? 'done' : k === s.i ? 'cur' : ''}"></i>`).join('')}</div>
+      <p class="sess-next small muted">${s.i < s.steps.length - 1 ? `Tiếp theo: ${esc(STEPS[s.steps[s.i + 1]].name)}` : 'Bước cuối'}</p>
       <p class="sess-hint">${esc(meta.hint)}</p>
       <div id="stepBody" class="sess-body"></div>
       <div class="sess-foot">
@@ -145,7 +168,7 @@ function draw() {
   host.querySelector('#pauseBtn').addEventListener('click', pause);
   host.querySelector('#doneStep').addEventListener('click', nextStep);
   const body = host.querySelector('#stepBody');
-  ({ S0: s0, S1: s1, S2: s2, S3: s3, S4: s4, S5: s5, S6: s6, SX: sx })[key](body);
+  ({ S0: s0, S1: s1, S2: s2, S3: s3, S4: s4, S5: s5, S6: s6, S7: s7, S8: s8, SP: sp, SX: sx })[key](body);
   window.scrollTo(0, 0);
 }
 
@@ -165,7 +188,7 @@ function pause() {
   s.stepStart = null;
   s.paused = true;
   persist();
-  stopAudio();
+  stopSeq();
   clearInterval(clockT);
   if (onExit) onExit();
 }
@@ -175,13 +198,28 @@ export function resumeClock() {
   if (s && (!s.stepStart || s.paused)) { s.stepStart = Date.now(); s.paused = false; persist(); }
 }
 
-function nextStep() {
+let advancing = false;
+async function nextStep() {
+  if (advancing) return;
+  advancing = true;
+  try { await nextStepInner(); } finally { advancing = false; }
+}
+async function nextStepInner() {
   const s = S();
   logStep();
+  stopSeq();
+  if (s.steps[s.i] === 'SP' && s.pron) markBlockDone(s.pron.target);
+  if (s.steps[s.i] === 'S4' && (s.hardLines || []).length && !s.steps.includes('SP')) {
+    // tự báo "khó phát âm": chèn khối phát âm ngay sau Nhại theo
+    try {
+      const plan = await pronPlan(s.day, { only: topFromReports(s.hardLines), first: s.hardLines });
+      if (plan) { s.pron = { ...plan, pos: 0 }; s.pos.SP = 0; s.steps.splice(s.i + 1, 0, 'SP'); }
+    } catch (e) { /* bỏ qua */ }
+  }
   if (s.steps[s.i] === 'S0' && s.scan && !s.scan.done) {
     // quét xong: dựng lại các bước còn lại theo kết quả
     s.scan.done = true;
-    const rest = buildSteps(day, budget(), 0, { scan: s.scan }).filter((k) => k !== 'S1');
+    const rest = buildSteps(day, budget(), 0, { scan: s.scan, story: !!s.hasStory, pron: s.pron ? { forced: s.pron.forced } : null }).filter((k) => k !== 'S1');
     s.steps = s.steps.slice(0, s.i + 1).concat(rest);
   }
   s.i++;
@@ -254,6 +292,10 @@ async function trySay(btn, answers, out) {
   btn.textContent = 'Nói lại';
   if (!heard.length) { out.innerHTML = '<p class="muted small">Máy chưa nghe được. Cứ nói to rồi xem đáp án.</p>'; return ''; }
   const r = compare(heard, answers);
+  try {
+    const exp = answers.filter(Boolean).map((a) => ({ a, sc: compare(heard, [a]).score })).sort((x, y) => y.sc - x.sc)[0];
+    if (exp) recordSTT(exp.a, heard);
+  } catch (e) { /* không chặn người học */ }
   out.innerHTML = `<p class="heard ${r.match ? 'ok' : ''}">Máy nghe: “${esc(heard[0])}”${r.match ? ' · khớp' : ''}</p>`;
   return heard[0];
 }
@@ -496,6 +538,7 @@ function s4(body) {
         <button type="button" class="btn" id="recBtn">Nói theo</button>
         <button type="button" class="btn" id="cmpBtn" ${rec.url ? '' : 'hidden'}>So sánh giọng</button>
       </div>
+      <button type="button" class="btn btn-quiet btn-sm hard-btn" id="hardBtn" ${(s.hardLines || []).includes(l.en) ? 'disabled' : ''}>${(s.hardLines || []).includes(l.en) ? 'Đã ghi nhận, sẽ luyện âm này' : 'Mình thấy khó phát âm câu này'}</button>
     </div>
     <div class="row pager">
       <button type="button" class="btn btn-quiet" id="prevL" ${pos === 0 ? 'disabled' : ''}>← Câu trước</button>
@@ -509,6 +552,14 @@ function s4(body) {
     else if (await rec.start()) { b.textContent = 'Dừng ghi'; b.classList.add('on'); }
   });
   body.querySelector('#cmpBtn').addEventListener('click', async () => { await play({ id: l.id, text: l.en }); await rec.play(); });
+  body.querySelector('#hardBtn').addEventListener('click', (e) => {
+    reportHard(l.en);
+    s.hardLines = s.hardLines || [];
+    if (!s.hardLines.includes(l.en)) s.hardLines.push(l.en);
+    persist();
+    e.currentTarget.disabled = true;
+    e.currentTarget.textContent = 'Đã ghi nhận, sẽ luyện âm này';
+  });
   const go = (d) => { s.pos.S4 = pos + d; persist(); s4(body); };
   body.querySelector('#prevL').addEventListener('click', () => go(-1));
   const nx = body.querySelector('#nextL');
@@ -672,5 +723,175 @@ ${rows}`);
   }));
 }
 
-export function stopSession() { clearInterval(clockT); stopAudio(); }
+// ---------- tiện ích phát liền mạch (có thể huỷ) ----------
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+function stopSeq() { seqTok++; stopAudio(); }
+async function playSeq(lines, { slow = false, onLine = null } = {}) {
+  const my = ++seqTok;
+  for (let i = 0; i < lines.length; i++) {
+    if (my !== seqTok) return false;
+    if (onLine) onLine(i);
+    // eslint-disable-next-line no-await-in-loop
+    await play({ id: lines[i].id || null, text: lines[i].en || lines[i].text }, { slow });
+    if (my !== seqTok) return false;
+    // eslint-disable-next-line no-await-in-loop
+    await wait(450);
+  }
+  if (onLine) onLine(-1);
+  return true;
+}
+function topFromReports(lines) {
+  const tot = {};
+  lines.forEach((t) => { const d = detectCats(t); Object.keys(d).forEach((k) => { tot[k] = (tot[k] || 0) + d[k]; }); });
+  return Object.keys(tot).sort((a, b) => tot[b] - tot[a])[0] || null;
+}
+
+// ---------- SP: khối phát âm (≤ 3 phút) ----------
+function sp(body) {
+  const s = S();
+  const p = s.pron;
+  if (!p || !p.lines || !p.lines.length) { body.innerHTML = '<div class="card sess-card"><p class="big-line">Hôm nay không có câu luyện âm.</p></div>'; return; }
+  const info = TARGET_INFO[p.target];
+  const lines = p.lines;
+  const pos = Math.min(s.pos.SP || 0, lines.length - 1);
+  const l = lines[pos];
+  let recorded = false;
+  body.innerHTML = `
+    <div class="sess-progress">Câu ${pos + 1} / ${lines.length} · ${esc(info.name)}${p.forced ? ' · bạn hay vấp âm này' : ''}</div>
+    <div class="tip-box"><b>Mẹo:</b> ${esc(info.tip)}</div>
+    <div class="card sess-card">
+      <p class="answer" lang="en">${markTargetHtml(l.text, p.target)}</p>
+      ${l.vi ? `<p class="vi">${esc(l.vi)}</p>` : ''}
+      <ol class="mini-steps"><li>Nghe chậm, chú ý âm được tô</li><li>Ghi âm, nói lại thật rõ âm đó</li><li>So sánh với giọng mẫu</li></ol>
+      <div class="row sess-actions">
+        ${playBtn({ id: l.id, text: l.text }, 'Nghe chậm', true, 'btn-primary')}
+        ${playBtn({ id: l.id, text: l.text }, 'Thường')}
+        <button type="button" class="btn" id="recBtn">Ghi âm</button>
+        <button type="button" class="btn" id="cmpBtn" hidden>So sánh giọng</button>
+        ${sttSupported() ? '<button type="button" class="btn" id="sayBtn">Máy nghe thử</button>' : ''}
+      </div>
+      <div id="heard"></div>
+    </div>
+    <div class="row pager">
+      <button type="button" class="btn btn-quiet" id="prevP" ${pos === 0 ? 'disabled' : ''}>← Câu trước</button>
+      <span class="spacer"></span>
+      ${pos < lines.length - 1 ? '<button type="button" class="btn" id="nextP">Câu tiếp →</button>' : ''}
+    </div>`;
+  wirePlay(body);
+  body.querySelector('#recBtn').addEventListener('click', async (e) => {
+    const b = e.currentTarget;
+    if (rec.recording) { await rec.stop(); recorded = true; b.textContent = 'Ghi lại'; b.classList.remove('on'); body.querySelector('#cmpBtn').hidden = false; }
+    else if (await rec.start()) { b.textContent = 'Dừng ghi'; b.classList.add('on'); }
+  });
+  body.querySelector('#cmpBtn').addEventListener('click', async () => { if (!recorded) return; await play({ id: l.id, text: l.text }); await rec.play(); });
+  const say = body.querySelector('#sayBtn');
+  if (say) say.addEventListener('click', () => trySay(say, [l.text], body.querySelector('#heard')));
+  const go = (d) => { s.pos.SP = pos + d; persist(); sp(body); };
+  body.querySelector('#prevP').addEventListener('click', () => go(-1));
+  const nx = body.querySelector('#nextP');
+  if (nx) nx.addEventListener('click', () => go(1));
+}
+
+// ---------- S7: nghe truyện ----------
+function s7(body) {
+  const s = S();
+  const story = storyDoc;
+  if (!story) { body.innerHTML = '<div class="card sess-card"><p class="big-line">Hôm nay chưa có truyện.</p><p class="muted">Bỏ qua bước này.</p></div>'; return; }
+  const st = s.story || (s.story = { phase: 'listen', qpos: 0, ans: {}, open: {}, hide: false });
+  const full = planFor(budget()).storyFull;
+  const encOnce = (k) => { if (!s.flags[k]) { s.flags[k] = true; countEnc(story.chunks); persist(); } };
+  const go = (phase) => { st.phase = phase; persist(); s7(body); };
+  const qs = story.questions;
+
+  if (st.phase === 'listen') {
+    body.innerHTML = `
+      <div class="card sess-card story-card">
+        <div class="row" style="gap:8px"><span class="tag tag-moss">Chưa xem chữ</span><span class="muted small">${story.lines.length} câu</span></div>
+        ${story.title_vi ? `<p class="big-line">${esc(story.title_vi)}</p>` : ''}
+        <p class="muted">Nghe cả câu chuyện, chỉ cần hiểu ý chính. Không hiểu hết cũng không sao.</p>
+        <div class="story-dots" id="stDots">${story.lines.map(() => '<i></i>').join('')}</div>
+        <div class="row sess-actions"><button type="button" class="btn btn-primary" id="stPlay">Nghe câu chuyện</button><button type="button" class="btn" id="stSlow">Nghe chậm</button></div>
+      </div>
+      <div class="row pager"><span class="spacer"></span><button type="button" class="btn ${qs.length ? '' : 'btn-quiet'}" id="stNext">${qs.length ? 'Trả lời câu hỏi →' : 'Xem chữ →'}</button></div>`;
+    const dots = [...body.querySelectorAll('#stDots i')];
+    const onLine = (i) => dots.forEach((d, k) => { d.className = k === i ? 'cur' : (i === -1 || k < i ? 'done' : ''); });
+    const run = (slow) => { encOnce('s7enc1'); playSeq(story.lines, { slow, onLine }); };
+    body.querySelector('#stPlay').addEventListener('click', () => run(false));
+    body.querySelector('#stSlow').addEventListener('click', () => run(true));
+    body.querySelector('#stNext').addEventListener('click', () => { stopSeq(); go(qs.length ? 'quiz' : 'read'); });
+    return;
+  }
+
+  if (st.phase === 'quiz') {
+    const q = qs[Math.min(st.qpos, qs.length - 1)];
+    const picked = st.ans[q.id];
+    const answered = picked !== undefined;
+    const last = st.qpos >= qs.length - 1;
+    body.innerHTML = `
+      <div class="sess-progress">Câu hỏi ${st.qpos + 1} / ${qs.length}</div>
+      <div class="card sess-card">
+        <p class="cue">${esc(q.q_vi)}</p>
+        <div class="opts">${q.options_vi.map((o, k) => `<button type="button" class="opt ${answered ? (k === q.answer ? 'ok' : k === picked ? 'soft' : '') : ''}" data-opt="${k}" ${answered ? 'disabled' : ''}>${esc(o)}</button>`).join('')}</div>
+        ${answered ? `<p class="${picked === q.answer ? 'self-ok' : 'muted'}">${picked === q.answer ? 'Đúng rồi.' : `Gần đúng. Đáp án là “${esc(q.options_vi[q.answer])}”. Lúc nghe lại có chữ sẽ rõ hơn.`}</p>` : '<p class="muted small">Chọn một đáp án. Không tính điểm.</p>'}
+        <div class="row"><button type="button" class="btn" id="stAgain">Nghe lại câu chuyện</button></div>
+      </div>
+      <div class="row pager"><span class="spacer"></span>${answered ? `<button type="button" class="btn btn-primary" id="stQNext">${last ? (full ? 'Nghe lại có chữ →' : 'Xong câu hỏi →') : 'Câu tiếp →'}</button>` : ''}</div>`;
+    body.querySelectorAll('[data-opt]').forEach((b) => b.addEventListener('click', () => { st.ans[q.id] = Number(b.dataset.opt); persist(); s7(body); }));
+    body.querySelector('#stAgain').addEventListener('click', () => playSeq(story.lines));
+    const nx = body.querySelector('#stQNext');
+    if (nx) nx.addEventListener('click', () => { stopSeq(); if (!last) { st.qpos += 1; persist(); s7(body); } else go(full ? 'read' : 'end'); });
+    return;
+  }
+
+  if (st.phase === 'end') {
+    const right = qs.filter((q) => st.ans[q.id] === q.answer).length;
+    body.innerHTML = `
+      <div class="card sess-card">
+        <p class="big-line">Xong phần nghe hiểu.</p>
+        <p class="muted">${qs.length ? `Bạn nắm đúng ý ở ${right}/${qs.length} câu hỏi.` : ''} Hôm nay chỉ nghe một lần cho gọn.</p>
+        <div class="row"><button type="button" class="btn" id="stRead">Xem chữ và nghe lại (tuỳ chọn)</button></div>
+      </div>`;
+    body.querySelector('#stRead').addEventListener('click', () => go('read'));
+    return;
+  }
+
+  // read: nghe lại có chữ, chạm câu để xem tiếng Việt, cụm được tô
+  encOnce('s7enc2');
+  const hide = !!st.hide;
+  body.innerHTML = `
+    <div class="row sess-actions">
+      <button type="button" class="btn btn-primary" id="stPlayAll">Nghe cả bài</button>
+      <button type="button" class="btn" id="stHide">${hide ? 'Hiện chữ' : 'Nghe lại không chữ'}</button>
+    </div>
+    <p class="muted small">${hide ? 'Chữ đang ẩn. Chạm ▶ để nghe từng câu.' : 'Chạm một câu để xem nghĩa tiếng Việt. Cụm đã học được tô sáng.'}</p>
+    <ol class="dlg story-lines">${story.lines.map((l, i) => `
+      <li class="dlg-line spk-${l.speaker === 'B' ? 1 : 0} ${st.open[l.id] && !hide ? 'open' : ''}" data-i="${i}">
+        <span class="spk">${esc(l.speaker || 'N')}</span>
+        <div class="dlg-text" ${hide ? '' : 'role="button" tabindex="0"'} data-tap="${esc(l.id)}">${hide ? '<p class="hidden-line">· · ·</p>' : `<p class="en" lang="en">${highlightLine(l.en, story.chunks)}</p>${st.open[l.id] ? `<p class="vi">${esc(l.vi)}</p>` : ''}`}</div>
+        <button type="button" class="btn btn-sm icon-btn" data-line="${esc(l.id)}" aria-label="Nghe câu này">▶</button>
+      </li>`).join('')}</ol>`;
+  const lis = [...body.querySelectorAll('.story-lines li')];
+  const onLine = (i) => lis.forEach((li, k) => li.classList.toggle('playing', k === i));
+  body.querySelector('#stPlayAll').addEventListener('click', () => playSeq(story.lines, { onLine }));
+  body.querySelector('#stHide').addEventListener('click', () => { stopSeq(); st.hide = !hide; persist(); s7(body); });
+  body.querySelectorAll('[data-tap]').forEach((t) => {
+    const tog = () => { st.open[t.dataset.tap] = !st.open[t.dataset.tap]; persist(); s7(body); };
+    t.addEventListener('click', tog);
+    t.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tog(); } });
+  });
+  body.querySelectorAll('[data-line]').forEach((b) => b.addEventListener('click', () => { const l = story.lines.find((x) => x.id === b.dataset.line); seqTok++; play({ id: l.id, text: l.en }); }));
+}
+
+// ---------- S8: nói chuyện tự do (buổi ôn lại tuần) ----------
+function s8(body) {
+  const s = S();
+  if (!s.ft) s.ft = newFreeTalk(s.weekReview || 1);
+  const onPhase = (ph) => {
+    const btn = host && host.querySelector('#doneStep');
+    if (btn) btn.textContent = ph === 'done' || ph === 'skipped' ? (s.i === s.steps.length - 1 ? 'Xong buổi học' : 'Xong bước này') : 'Bỏ qua và kết thúc';
+  };
+  renderFreeTalk(body, { st: s.ft, persist, standalone: false, onPhase });
+}
+
+export function stopSession() { clearInterval(clockT); stopSeq(); }
 export { currentDay };

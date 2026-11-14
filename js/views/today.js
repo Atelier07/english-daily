@@ -9,8 +9,10 @@ import { goalHours, levelMarks, planSentence } from '../roadmap.js';
 import { loadIndex, loadDay } from '../course.js';
 import { budget, currentDay, dayDoneMap, needsPlacement, skipPlacement, weeklyHours, saveProfile } from '../profile.js';
 import {
-  pendingWeek, snoozed, snooze, reviewWeek, renderCheck, startWeekReview, weekCardHtml, weekRange,
+  pendingWeek, snoozed, snooze, reviewWeek, renderCheck, startWeekReview, weekCardHtml, weekRange, startFreeTalk,
 } from '../weekly.js';
+import { loadStory } from '../stories.js';
+import { pronPlan, TARGET_INFO } from '../pronweak.js';
 import { dueItems } from '../items.js';
 import { startSession, renderSession, hasSession, resumeClock, stopSession, buildSteps, planFor, STEPS } from '../session.js';
 
@@ -130,6 +132,21 @@ async function render() {
   }
 
   const paused = hasSession() && db().session.paused ? db().session : null;
+  const ft = db().ftDraft;
+  if (ft && (ft.phase === 'done' || ft.phase === 'skipped')) { db().ftDraft = null; save(); } else if (ft && !paused) {
+    root.innerHTML = `
+      <div class="hero">
+        ${head}
+        <h1>Nói chuyện tự do</h1>
+        <p class="lede">Bạn đang dở phần nói chuyện tự do của tuần ${ft.week}${ft.turns ? ` (đã nói ${ft.turns} lượt)` : ''}.</p>
+        <button type="button" class="btn btn-primary btn-xl" id="ftGo">Tiếp tục</button>
+        <button type="button" class="btn btn-quiet" id="ftDrop">Bỏ qua phần này</button>
+      </div>${quietSection()}`;
+    root.querySelector('#ftGo').addEventListener('click', () => { stopSession(); ++renderToken; root.innerHTML = '<div id="wkHost"></div>'; startFreeTalk(root.querySelector('#wkHost'), ft.week, () => render()); });
+    root.querySelector('#ftDrop').addEventListener('click', () => { db().ftDraft = null; save(); render(); });
+    wireQuiet();
+    return;
+  }
   const pw = pendingWeek();
   if (!paused && pw && !snoozed()) {
     const { from, to } = weekRange(pw);
@@ -196,7 +213,14 @@ async function render() {
   if (token !== renderToken) return;
   const b = budget();
   const isNew = !!day && !paused && !dayDoneMap()[entry.day];
-  const steps = day ? (paused ? paused.steps : buildSteps(day, b, Math.min(due, planFor(b).rev), { isNew })) : [];
+  let story = false, pron = null;
+  if (day && !paused) {
+    try { story = !!(await loadStory(entry.day)); } catch (e) { story = false; }
+    try { pron = await pronPlan(entry.day, { withS4: planFor(b).steps.includes('S4') }); } catch (e) { pron = null; }
+    if (token !== renderToken) return;
+  }
+  const pronT = paused ? (paused.pron && paused.pron.target) : (pron && pron.target);
+  const steps = day ? (paused ? paused.steps : buildSteps(day, b, Math.min(due, planFor(b).rev), { isNew, story, pron })) : [];
   root.innerHTML = `
     <div class="hero">
       ${head}
@@ -204,7 +228,7 @@ async function render() {
       ${day && day.intro_vi ? `<p class="lede">${esc(day.intro_vi)}</p>` : ''}
       ${!day ? `<p class="notice" id="dayMissing">Chưa tải được bài của Ngày ${entry.day} (file course/${esc(entry.file || '')} thiếu hoặc lỗi). Kiểm tra mạng rồi mở lại; nếu vẫn vậy, bài này chưa được thêm vào khoá.</p>` : ''}
       <button type="button" class="btn btn-primary btn-xl" id="startBtn" ${!day ? 'disabled' : ''}>${paused ? `Tiếp tục Ngày ${entry.day} · bước ${paused.i + 1}/${paused.steps.length}` : `Bắt đầu Ngày ${entry.day} · ${b} phút`}</button>
-      ${steps.length ? `<ol class="step-preview">${steps.map((k) => `<li>${esc(STEPS[k].name)}${k === 'S1' ? ` · ${Math.min(due, planFor(b).rev)} thẻ` : ''}${k === 'S0' && day ? ` · ${day.chunks.length} cụm` : ''}${k === 'S3' && day ? ` · ${day.chunks.length} cụm` : ''}</li>`).join('')}</ol>` : ''}
+      ${steps.length ? `<ol class="step-preview">${steps.map((k) => `<li>${esc(STEPS[k].name)}${k === 'S1' ? ` · ${Math.min(due, planFor(b).rev)} thẻ` : ''}${k === 'S0' && day ? ` · ${day.chunks.length} cụm` : ''}${k === 'S3' && day ? ` · ${day.chunks.length} cụm` : ''}${k === 'SP' && pronT ? ` · ${esc(TARGET_INFO[pronT].name)}` : ''}${k === 'S7' ? ` · ${planFor(b).storyFull ? '6' : '4'} phút` : ''}</li>`).join('')}</ol>` : ''}
       ${steps.includes('S0') ? '<p class="small muted scan-note">Sau Kiểm tra nhanh: biết hết thì chỉ còn Đóng vai (khoảng 5 phút); cụm nào chưa chắc thì chỉ học kỹ cụm đó.</p>' : ''}
     </div>
     ${weekCardHtml()}

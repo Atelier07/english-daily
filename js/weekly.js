@@ -9,6 +9,8 @@ import { getItem, dueSoon } from './items.js';
 import { hasAI, askJSON, weeklyCheckPrompt } from './ai.js';
 import { sttSupported, listenOnce, compare } from './stt.js';
 import { startReviewSession } from './session.js';
+import { renderFreeTalk, newFreeTalk } from './freetalk.js';
+import { recordSTT } from './pronweak.js';
 
 export const WEEK_END = [7, 14, 21, 30];
 export const PASS_SCORE = 70;
@@ -174,7 +176,7 @@ function drawQ(el) {
     say.disabled = true; say.textContent = 'Đang nghe…';
     const heard = await listenOnce();
     say.disabled = false; say.textContent = 'Nói lại';
-    if (heard.length) { input.value = heard[0]; st.answers[pos] = heard[0]; el.querySelector('#heard').innerHTML = '<p class="muted small">Máy chép được: sửa lại bên trên nếu nghe nhầm.</p>'; }
+    if (heard.length) { try { recordSTT(it.model, heard); } catch (e) { /* không chặn */ } input.value = heard[0]; st.answers[pos] = heard[0]; el.querySelector('#heard').innerHTML = '<p class="muted small">Máy chép được: sửa lại bên trên nếu nghe nhầm.</p>'; }
     else el.querySelector('#heard').innerHTML = '<p class="muted small">Máy chưa nghe được. Gõ câu của bạn vào ô trên.</p>';
   });
   el.querySelector('#wkPrev').addEventListener('click', () => { st.pos--; drawQ(el); });
@@ -205,7 +207,16 @@ function drawResult(el, rec) {
       </div>
       <div class="sess-foot"><span></span><button type="button" class="btn btn-primary btn-lg" id="wkDone">Xong</button></div>
     </div>`;
-  el.querySelector('#wkDone').addEventListener('click', () => { const x = st && st.exit; st = null; if (x) x(); });
+  el.querySelector('#wkDone').addEventListener('click', () => { const x = st && st.exit; const w = rec.week; st = null; startFreeTalk(el, w, x); });
+  window.scrollTo(0, 0);
+}
+
+// Nói chuyện tự do ngay sau kiểm tra tuần (tự động, tiếp nối; có thể bỏ qua). Trạng thái lưu ở db().ftDraft để tiếp tục được.
+export function startFreeTalk(el, w, exit) {
+  let draft = db().ftDraft && db().ftDraft.week === w && db().ftDraft.phase !== 'done' ? db().ftDraft : null;
+  if (!draft) { draft = newFreeTalk(w); db().ftDraft = draft; save(); }
+  el.innerHTML = `<div class="sess"><div class="sess-top"><div><div class="eyebrow">Kiểm tra tuần ${w}</div><h1 class="sess-title">Nói chuyện tự do</h1></div></div><p class="sess-hint">Khoảng 5 phút: trò chuyện với Gemini về một tình huống đời thường, dùng các cụm đã học.</p><div id="ftBody"></div></div>`;
+  renderFreeTalk(el.querySelector('#ftBody'), { st: draft, persist: save, standalone: true, onDone: () => { db().ftDraft = null; save(); if (exit) exit(); } });
   window.scrollTo(0, 0);
 }
 
