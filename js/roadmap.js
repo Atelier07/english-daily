@@ -53,7 +53,7 @@ const DEFS = [
 
 const ORDER = { A0: ['p0', 'p1', 'p2', 'p3'], A1: ['p0', 'p1', 'p2', 'p3'], A2: ['p1', 'p2', 'p3'], B1: ['p3'], B2: ['p3'] };
 
-export function monthLabel(s) { const d = parseDate(s); return `${d.getMonth() + 1}/${d.getFullYear()}`; }
+export function monthLabel(s) { if (!s) return '…'; const d = parseDate(s); if (isNaN(d)) return '…'; return `${d.getMonth() + 1}/${d.getFullYear()}`; }
 
 // Các giai đoạn với giờ cộng dồn và ngày dự kiến (từ hôm nay, theo số giờ/tuần đã chọn)
 export function phases(lv = level(), perWeek = weeklyHours()) {

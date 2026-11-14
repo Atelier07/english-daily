@@ -1,6 +1,6 @@
 // Service worker: lưu sẵn khung ứng dụng để mở được khi mất mạng.
 // YouTube và các dịch vụ Google video KHÔNG bao giờ bị cache.
-const VERSION = 'ed-v4';
+const VERSION = 'ed-v5';
 const SHELL = [
   './',
   './index.html',
@@ -54,7 +54,7 @@ const NEVER = /(^|\.)(youtube\.com|youtube-nocookie\.com|ytimg\.com|googlevideo\
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(VERSION)
-    .then((c) => c.addAll(SHELL).then(() => c.add('./course/index.json').catch(() => {})))
+    .then((c) => c.addAll(SHELL).then(() => Promise.all(['./course/index.json', './course/audio/index.json'].map((u) => c.add(u).catch(() => {})))))
     .then(() => self.skipWaiting()));
 });
 
@@ -86,6 +86,7 @@ self.addEventListener('fetch', (e) => {
 
   if (url.origin !== self.location.origin) return;
 
+  // course/index.json (precache) và course/days/*.json: luôn thử mạng trước để bài mới lên ngay, mất mạng dùng bản đã lưu.
   // Cùng nguồn: ưu tiên mạng (để bản mới lên ngay), mất mạng thì dùng cache.
   e.respondWith(
     fetch(req)

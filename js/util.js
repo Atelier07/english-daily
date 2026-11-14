@@ -9,6 +9,7 @@ export function dateStr(d = new Date()) {
 export const today = () => dateStr(new Date());
 
 export function parseDate(s) {
+  if (typeof s !== 'string' || !/^\d{4}-\d{1,2}-\d{1,2}/.test(s)) return new Date(NaN);
   const [y, m, d] = s.split('-').map(Number);
   return new Date(y, m - 1, d);
 }
@@ -37,6 +38,7 @@ export function viLongDate(d = new Date()) {
 }
 export function viShortDate(s) {
   const d = parseDate(s);
+  if (isNaN(d)) return '';
   return `${d.getDate()}/${d.getMonth() + 1}`;
 }
 

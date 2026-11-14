@@ -4,7 +4,7 @@ import { esc, today, viShortDate } from '../util.js';
 import { phases, checkpoints, RULE, nextCheckpoint, checkState, monthLabel } from '../roadmap.js';
 import { openDoubt } from '../doubt.js';
 
-const fmtDate = (s) => `${viShortDate(s)}/${s.slice(0, 4)}`;
+const fmtDate = (s) => !s ? '' : `${viShortDate(s)}/${s.slice(0, 4)}`;
 
 export function renderRoadmapInto(el) {
   const t = today();

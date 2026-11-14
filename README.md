@@ -27,6 +27,27 @@ Khi nói đúng tự nhiên được vài buổi liền, đánh dấu “đã s�
 ### Mốc
 Biểu đồ giờ học 12 tuần, tổng giờ / 600, chuỗi ngày, số cụm từ, và nhật ký điểm TOEIC thi thử (nên thi thử 3 tháng một lần).
 
+## Khoá học (thư mục `course/`)
+
+Tab **Hôm nay** và **Khoá học** đọc khoá học từ file tĩnh, không cần máy chủ. Khuôn đầy đủ nằm ở `course/SCHEMA.md`.
+
+```
+course/
+  index.json            danh sách ngày: [{ "day": 1, "file": "days/day-01.json", "level": "A0", "function": "…", "title": "…" }]
+  days/day-01.json …    mỗi ngày một file: chunks, dialogue, substitution, roleplay
+  audio/index.json      danh sách id có mp3 (để [] nếu chưa có)
+  audio/<id>.mp3        tuỳ chọn; không có thì app dùng giọng máy en-US
+```
+
+**Thêm một ngày mới:** (1) tạo `course/days/day-NN.json` theo `SCHEMA.md` (id cụm, câu ví dụ, dòng hội thoại, lượt thay ô, lượt đóng vai phải duy nhất toàn khoá); (2) thêm một dòng vào `course/index.json` với `day` kế tiếp; (3) commit và đẩy lên GitHub Pages. Không cần sửa mã. Nếu một ngày có trong `index.json` mà file bị thiếu, app báo bằng tiếng Việt và tắt nút bắt đầu, các ngày khác vẫn dùng bình thường.
+
+**Cách app tải:** `course/index.json` được lưu sẵn (precache) khi cài service worker; các file `course/days/*.json` luôn thử mạng trước (bài mới lên ngay), mất mạng thì dùng bản đã lưu. Mỗi lần đổi nội dung nên tăng `VERSION` trong `sw.js`.
+
+**Thêm audio:** đặt `course/audio/<id>.mp3` (id = id dòng hội thoại, ví dụ, lượt đóng vai) rồi liệt kê các id đó trong `course/audio/index.json`.
+
+### Bài xếp lớp và nguồn dữ liệu
+Bài xếp lớp (Yes/No từ vựng kiểu Meara, nghe hiểu, tự đánh giá) dùng danh sách tần suất **NGSL** (New General Service List, Browne, Culligan & Phillips) trong `js/data/ngsl.js`, giấy phép **CC BY-SA 4.0** (https://www.newgeneralservicelist.com). Danh sách chỉ dùng để chọn từ hỏi và ước lượng vốn từ; nếu phát hành lại phần dữ liệu này phải giữ ghi nguồn và cùng giấy phép. Từ giả trong bài là danh sách tự soạn. Nội dung khoá học (câu ví dụ, nghĩa tiếng Việt) tự viết.
+
 ## Chuyển dữ liệu giữa điện thoại và Mac
 
 Dữ liệu nằm trong `localStorage` của từng trình duyệt, nên điện thoại và Mac **không tự đồng bộ**.

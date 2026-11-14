@@ -89,7 +89,7 @@ async function render() {
   let idx;
   try { idx = await loadIndex(); } catch (e) {
     if (token !== renderToken) return;
-    root.innerHTML = `<div class="hero">${head}<h1>Chưa tải được khoá học</h1><p class="lede">Kiểm tra kết nối mạng rồi mở lại. Sau lần tải đầu, app học được cả khi mất mạng.</p></div>${quietSection()}`;
+    root.innerHTML = `<div class="hero">${head}<h1>Chưa tải được khoá học</h1><p class="lede">Không đọc được course/index.json. Kiểm tra kết nối mạng rồi mở lại. Sau lần tải đầu, app học được cả khi mất mạng.</p></div>${quietSection()}`;
     wireQuiet();
     return;
   }
@@ -115,6 +115,11 @@ async function render() {
 
   const paused = hasSession() && db().session.paused ? db().session : null;
   const n = paused ? paused.day : currentDay();
+  if (!idx.length) {
+    root.innerHTML = `<div class="hero">${head}<h1>Khoá học chưa có bài nào</h1><p class="lede">course/index.json đang trống. Bài sẽ được thêm dần.</p></div>${quietSection()}`;
+    wireQuiet();
+    return;
+  }
   const entry = idx.find((d) => d.day === n) || idx[0];
   const allDone = !!dayDoneMap()[entry.day] && !idx.find((d) => d.day > entry.day);
   const due = dueItems().length;
@@ -148,7 +153,8 @@ async function render() {
       ${head}
       <h1>Ngày ${entry.day}${day && day.title ? `<span class="hero-sub">${esc(day.title)}</span>` : ''}</h1>
       ${day && day.intro_vi ? `<p class="lede">${esc(day.intro_vi)}</p>` : ''}
-      <button type="button" class="btn btn-primary btn-xl" id="startBtn">${paused ? `Tiếp tục Ngày ${entry.day} · bước ${paused.i + 1}/${paused.steps.length}` : `Bắt đầu Ngày ${entry.day} · ${b} phút`}</button>
+      ${!day ? `<p class="notice" id="dayMissing">Chưa tải được bài của Ngày ${entry.day} (file course/${esc(entry.file || '')} thiếu hoặc lỗi). Kiểm tra mạng rồi mở lại; nếu vẫn vậy, bài này chưa được thêm vào khoá.</p>` : ''}
+      <button type="button" class="btn btn-primary btn-xl" id="startBtn" ${!day ? 'disabled' : ''}>${paused ? `Tiếp tục Ngày ${entry.day} · bước ${paused.i + 1}/${paused.steps.length}` : `Bắt đầu Ngày ${entry.day} · ${b} phút`}</button>
       ${steps.length ? `<ol class="step-preview">${steps.map((k) => `<li>${esc(STEPS[k].name)}${k === 'S1' ? ` · ${Math.min(due, planFor(b).rev)} thẻ` : ''}${k === 'S3' && day ? ` · ${day.chunks.length} cụm` : ''}</li>`).join('')}</ol>` : ''}
     </div>
     ${quietSection()}`;
