@@ -1,5 +1,5 @@
 import { getSettings, setSettings, testConnection, syncNow, getStatus, onStatus, isConfigured, forgetConfig, loadConfig, getManualKey, setManualKey } from '../sync.js';
-import { ask } from '../ai.js';
+import { ask, probeModels } from '../ai.js';
 import { esc } from '../util.js';
 import { toast, confirmModal } from '../ui.js';
 import { getProfile, budget, setBudget } from '../profile.js';
@@ -110,10 +110,11 @@ function render() {
   root.querySelector('#testAI').addEventListener('click', async (e) => {
     const out = root.querySelector('#aiOut');
     e.target.disabled = true;
-    out.textContent = 'Đang hỏi Gemini…';
+    out.textContent = 'Đang thử từng model Gemini (có thể mất vài chục giây)…';
     try {
-      const r = await ask('Reply with exactly: OK');
-      out.textContent = `AI trả lời qua ${r.model}: ${r.text.slice(0, 80)}`;
+      const rows = await probeModels();
+      const best = rows.find((r) => r.ok && !/lite/i.test(r.model)) || rows.find((r) => r.ok);
+      out.innerHTML = `${best ? `Chấm bài và nói chuyện sẽ dùng: <b>${esc(best.model)}</b>` : '<b>Chưa model nào chạy được.</b>'}<br>${rows.map((r) => `${r.ok ? '✓' : '✗'} ${esc(r.model)}: ${esc(r.note.slice(0, 90))}`).join('<br>')}`;
     } catch (err) { out.textContent = err.message; }
     e.target.disabled = false;
   });

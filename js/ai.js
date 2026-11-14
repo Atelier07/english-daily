@@ -41,19 +41,22 @@ export function parseJSON(text) {
   throw new AIError('parse', 'AI trả lời không đúng định dạng. Thử lại nhé.');
 }
 
-function modelOrder(cfg) {
+const isLite = (m) => /lite/i.test(m);
+function modelOrder(cfg, allowLite) {
   let models = Array.isArray(cfg.models) && cfg.models.length ? cfg.models.filter((m) => typeof m === 'string') : DEFAULT_MODELS.slice();
-  let last = null;
-  try { last = localStorage.getItem(LAST_KEY); } catch (e) { /* ignore */ }
-  if (last && models.includes(last)) models = [last, ...models.filter((m) => m !== last)];
-  return models;
+  // Ưu tiên model mạnh: bản lite chỉ dùng khi mọi model mạnh đều hỏng.
+  const strong = models.filter((m) => !isLite(m));
+  const lite = models.filter(isLite);
+  return allowLite ? [...strong, ...lite] : strong.concat(strong.length ? [] : lite);
 }
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const isBusy = (code, msg) => /unavailable|high demand|503|overload|429|exhausted|rate/i.test(`${code} ${msg}`);
 
-export async function ask(prompt) {
-  const cfg = await getConfig();
-  if (!cfg || !cfg.geminiKey) throw new AIError('nokey', 'Chưa có khoá Gemini. Vào Cài đặt, dán khoá Gemini (hoặc dán token GitHub).', true);
-  let lastErr = null;
-  for (const model of modelOrder(cfg)) {
+// Gọi một model; quá tải thì thử lại 2 lần (đợi 2s, 5s) trước khi bỏ qua.
+async function callModel(cfg, model, prompt) {
+  let err = null;
+  for (const wait of [0, 2000, 5000]) {
+    if (wait) await sleep(wait);
     const ctrl = new AbortController();
     const timer = setTimeout(() => ctrl.abort(), TIMEOUT);
     try {
@@ -71,26 +74,57 @@ export async function ask(prompt) {
         if (/api key|api_key|permission|unauthenticated/i.test(msg) || res.status === 401) {
           throw new AIError(code, 'Khoá Gemini không hợp lệ hoặc không có quyền.', true);
         }
-        lastErr = new AIError(code, msg);
-        continue; // 503 quá tải, 429, model không tồn tại... → thử model tiếp theo
+        err = new AIError(code, msg);
+        if (isBusy(code, msg)) continue; // quá tải → đợi rồi thử lại cùng model
+        return { err };                  // model không tồn tại / lỗi khác → sang model khác ngay
       }
       const text = extractText(j);
-      if (!text) { lastErr = new AIError('empty', 'AI không trả lời nội dung.'); continue; }
-      try { localStorage.setItem(LAST_KEY, model); } catch (e) { /* ignore */ }
-      return { text, model };
+      if (!text) { err = new AIError('empty', 'AI không trả lời nội dung.'); continue; }
+      return { text };
     } catch (e) {
       if (e instanceof AIError && e.fatal) throw e;
-      lastErr = e.name === 'AbortError' ? new AIError('timeout', 'AI quá 45 giây không trả lời.') : (e instanceof AIError ? e : new AIError('network', 'Không kết nối được Gemini (mạng?).'));
+      err = e.name === 'AbortError' ? new AIError('timeout', 'AI quá 45 giây không trả lời.') : (e instanceof AIError ? e : new AIError('network', 'Không kết nối được Gemini (mạng?).'));
+      if (err.code === 'network') return { err };
     } finally {
       clearTimeout(timer);
     }
   }
-  const busy = lastErr && /unavailable|high demand|503|overload|429|exhausted/i.test(`${lastErr.code} ${lastErr.message}`);
+  return { err };
+}
+
+export async function ask(prompt, { allowLite = true, onTry } = {}) {
+  const cfg = await getConfig();
+  if (!cfg || !cfg.geminiKey) throw new AIError('nokey', 'Chưa có khoá Gemini. Vào Cài đặt, dán khoá Gemini (hoặc dán token GitHub).', true);
+  let lastErr = null;
+  for (const model of modelOrder(cfg, allowLite)) {
+    const r = await callModel(cfg, model, prompt);
+    if (onTry) onTry(model, r.err ? r.err.message : 'OK');
+    if (r.text) {
+      try { localStorage.setItem(LAST_KEY, model); } catch (e) { /* ignore */ }
+      return { text: r.text, model };
+    }
+    lastErr = r.err;
+  }
+  const busy = lastErr && isBusy(lastErr.code, lastErr.message);
   throw new AIError(lastErr ? lastErr.code : 'fail', busy ? 'Gemini đang quá tải ở mọi model. Thử lại sau ít phút.' : `AI chưa trả lời được: ${lastErr ? lastErr.message : 'lỗi không rõ'}`);
 }
 
-export async function askJSON(prompt) {
-  const { text, model } = await ask(prompt);
+// Kiểm tra từng model (cho nút thử ở Cài đặt).
+export async function probeModels() {
+  const cfg = await getConfig();
+  if (!cfg || !cfg.geminiKey) throw new AIError('nokey', 'Chưa có khoá Gemini.', true);
+  const models = Array.isArray(cfg.models) && cfg.models.length ? cfg.models : DEFAULT_MODELS;
+  const out = [];
+  for (const m of models) {
+    const r = await callModel(cfg, m, 'Reply with exactly: OK');
+    out.push({ model: m, ok: !!r.text, note: r.text ? 'chạy được' : (r.err ? r.err.message : 'lỗi') });
+  }
+  return out;
+}
+
+// Việc cần suy nghĩ (chấm bài, nói chuyện, nhận xét) không dùng bản lite trừ khi chỉ còn nó.
+export async function askJSON(prompt, opts = {}) {
+  const { text, model } = await ask(prompt, { allowLite: false, ...opts });
   return { data: parseJSON(text), model };
 }
 
