@@ -1,22 +1,11 @@
 // Ghi âm ngắn trong bộ nhớ (không lưu lâu dài) + đọc mẫu bằng giọng máy.
 import { toast } from './ui.js';
-import { audioEl, audioMode, stop as stopAudio } from './audio.js';
+import { audioEl, audioMode, play, stop as stopAudio } from './audio.js';
 
+// Đọc mẫu: dùng mp3 Kokoro nếu có (tìm theo nội dung câu), không thì mới dùng giọng máy.
+// (iPhone thường câm với giọng máy, nên mọi câu trong khoá đều phải có mp3.)
 export function speakEn(text, rate = 0.85) {
-  return new Promise((resolve) => {
-    try {
-      if (!('speechSynthesis' in window)) { toast('Máy này không đọc được văn bản.'); resolve(); return; }
-      speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(text);
-      u.lang = 'en-US';
-      u.rate = rate;
-      const v = speechSynthesis.getVoices().find((x) => x.lang && x.lang.startsWith('en-US'));
-      if (v) u.voice = v;
-      u.onend = () => resolve();
-      u.onerror = () => resolve();
-      speechSynthesis.speak(u);
-    } catch (e) { resolve(); }
-  });
+  return play({ text }, { slow: rate < 0.95 });
 }
 
 export function createRecorder() {

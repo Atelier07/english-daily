@@ -39,18 +39,7 @@ export function highlight(sentence, phrase) {
   return esc(sentence.slice(0, i)) + '<mark>' + esc(sentence.slice(i, i + phrase.length)) + '</mark>' + esc(sentence.slice(i + phrase.length));
 }
 
-function speakEn(text) {
-  try {
-    if (!('speechSynthesis' in window)) { toast('Máy này không đọc được văn bản.'); return; }
-    speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = 'en-US';
-    u.rate = 0.9;
-    const v = speechSynthesis.getVoices().find((x) => x.lang && x.lang.startsWith('en-US'));
-    if (v) u.voice = v;
-    speechSynthesis.speak(u);
-  } catch (e) { /* ignore */ }
-}
+function speakEn(text) { ttsEn(text, 0.9); }
 
 function dueLabel(p) {
   const d = daysBetween(today(), p.due || today());
