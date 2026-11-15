@@ -1,6 +1,6 @@
 // Ghi âm ngắn trong bộ nhớ (không lưu lâu dài) + đọc mẫu bằng giọng máy.
 import { toast } from './ui.js';
-import { audioEl, stop as stopAudio } from './audio.js';
+import { audioEl, audioMode, stop as stopAudio } from './audio.js';
 
 export function speakEn(text, rate = 0.85) {
   return new Promise((resolve) => {
@@ -26,6 +26,8 @@ export function createRecorder() {
     get recording() { return !!(rec && rec.state === 'recording'); },
     async start() {
       if (!navigator.mediaDevices || !window.MediaRecorder) { toast('Trình duyệt này không hỗ trợ ghi âm.'); return false; }
+      stopAudio();
+      audioMode('play-and-record');
       try { stream = await navigator.mediaDevices.getUserMedia({ audio: true }); } catch (e) { toast('Chưa có quyền dùng micro.'); return false; }
       chunks = [];
       rec = new MediaRecorder(stream);
@@ -41,6 +43,7 @@ export function createRecorder() {
           url = URL.createObjectURL(new Blob(chunks, { type: rec.mimeType || 'audio/webm' }));
           if (stream) stream.getTracks().forEach((t) => t.stop());
           stream = null;
+          audioMode('playback');
           resolve(url);
         };
         rec.stop();

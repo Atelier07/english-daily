@@ -1,3 +1,4 @@
+import { audioMode, stop as stopAudio } from './audio.js';
 // Nhận giọng nói (tuỳ chọn) + so sánh khoan dung. Không bao giờ chặn người học.
 const SRc = () => window.SpeechRecognition || window.webkitSpeechRecognition;
 export const sttSupported = () => typeof window !== 'undefined' && !!SRc();
@@ -8,9 +9,18 @@ export function listenOnce({ maxAlternatives = 3, timeout = 12000 } = {}) {
     if (!SR) { resolve([]); return; }
     let got = [];
     let done = false;
-    const finish = () => { if (!done) { done = true; resolve(got); } };
+    let r = null;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      try { if (r) r.abort(); } catch (e) { /* ignore */ }
+      audioMode('playback');
+      resolve(got);
+    };
     try {
-      const r = new SR();
+      stopAudio();
+      audioMode('play-and-record');
+      r = new SR();
       r.lang = 'en-US';
       r.maxAlternatives = maxAlternatives;
       r.interimResults = false;

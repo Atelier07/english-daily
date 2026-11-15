@@ -11,6 +11,11 @@ let voice = null;
 // nếu không có chạm tay. Cách chữa: MỘT thẻ audio dùng chung, "mở khoá" ở lần chạm đầu,
 // sau đó đổi src thoải mái.
 const SILENT = 'data:audio/mpeg;base64,SUQzBAAAAAAAIlRTU0UAAAAOAAADTGF2ZjYwLjMuMTAwAAAAAAAAAAAAAAD/84TAAAAAAAAAAAAASW5mbwAAAA8AAAAHAAADYABVVVVVVVVVVVVVVVVVVXFxcXFxcXFxcXFxcXFxjo6Ojo6Ojo6Ojo6Ojo6qqqqqqqqqqqqqqqqqqqrHx8fHx8fHx8fHx8fHx+Pj4+Pj4+Pj4+Pj4+Pj//////////////////8AAAAATGF2YzYwLjMuAAAAAAAAAAAAAAAAJAQgAAAAAAAAA2DibpoWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/80TEAAAAA0gAAAAATEFNRTMuOTkuNVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVMQU1FMy7/80TEUwAAA0gAAAAAOTkuNVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVMQU1FMy7/80TEpgAAA0gAAAAAOTkuNVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVMQU1FMy7/80TErAAAA0gAAAAAOTkuNVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVMQU1FMy7/80TErAAAA0gAAAAAOTkuNVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVX/80TErAAAA0gAAAAAVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVX/80TErAAAA0gAAAAAVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVU=';
+// iPhone: sau khi dùng mic (nhận giọng nói/ghi âm) Safari đẩy tiếng sang loa thoại hoặc tắt hẳn.
+// audioSession (Safari 16.4+) ép về loa ngoài; 'playback' còn phát được cả khi gạt nút im lặng.
+export function audioMode(type) {
+  try { if (navigator.audioSession && navigator.audioSession.type !== type) navigator.audioSession.type = type; } catch (e) { /* ignore */ }
+}
 let el = null;
 export function audioEl() {
   if (!el && typeof Audio !== 'undefined') {
@@ -26,6 +31,7 @@ function unlock() {
   if (unlocked) return;
   const a = audioEl();
   if (!a) return;
+  audioMode('playback');
   unlocked = true; // chỉ cần gọi play() một lần trong lúc chạm tay
   if (!a.paused) return;
   try {
@@ -105,6 +111,7 @@ function speak(text, rate) {
 // play({id, text}, {slow}) → Promise khi phát xong
 export async function play(line, { slow = false } = {}) {
   stop();
+  audioMode('playback');
   const rate = slow ? 0.8 : 1.0;
   const fid = await mp3Id(line);
   if (fid) {

@@ -1,6 +1,6 @@
 // Service worker: lưu sẵn khung ứng dụng để mở được khi mất mạng.
 // YouTube và các dịch vụ Google video KHÔNG bao giờ bị cache.
-const VERSION = 'ed-v11';
+const VERSION = 'ed-v12';
 const SHELL = [
   './',
   './index.html',
