@@ -1,6 +1,6 @@
 // Service worker: lưu sẵn khung ứng dụng để mở được khi mất mạng.
 // YouTube và các dịch vụ Google video KHÔNG bao giờ bị cache.
-const VERSION = 'ed-v10';
+const VERSION = 'ed-v11';
 const SHELL = [
   './',
   './index.html',
@@ -58,7 +58,7 @@ const NEVER = /(^|\.)(youtube\.com|youtube-nocookie\.com|ytimg\.com|googlevideo\
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(VERSION)
-    .then((c) => c.addAll(SHELL).then(() => Promise.all(['./course/index.json', './course/audio/index.json'].map((u) => c.add(u).catch(() => {})))))
+    .then((c) => c.addAll(SHELL.map((u) => new Request(u, { cache: 'reload' }))).then(() => Promise.all(['./course/index.json', './course/audio/index.json'].map((u) => c.add(u).catch(() => {})))))
     .then(() => self.skipWaiting()));
 });
 
@@ -90,10 +90,14 @@ self.addEventListener('fetch', (e) => {
 
   if (url.origin !== self.location.origin) return;
 
+  // Âm thanh/ghi âm: KHÔNG đi qua service worker. Safari iPhone đòi phản hồi 206 (tải từng đoạn),
+  // đi qua SW là audio im lặng.
+  if (req.destination === 'audio' || req.destination === 'video' || req.headers.has('range') || /\.(mp3|m4a|wav|ogg|webm)$/i.test(url.pathname)) return;
+
   // course/index.json (precache) và course/days/*.json: luôn thử mạng trước để bài mới lên ngay, mất mạng dùng bản đã lưu.
   // Cùng nguồn: ưu tiên mạng (để bản mới lên ngay), mất mạng thì dùng cache.
   e.respondWith(
-    fetch(req)
+    fetch(req, { cache: 'no-cache' })
       .then((r) => {
         // chỉ lưu phản hồi đầy đủ (200); bỏ qua 206 (audio tải từng đoạn)
         if (r.status === 200) { const copy = r.clone(); caches.open(VERSION).then((c) => c.put(req, copy)).catch(() => {}); }

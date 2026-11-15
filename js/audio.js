@@ -1,3 +1,5 @@
+import { toast } from './ui.js';
+
 // Âm thanh: dùng course/audio/<id>.mp3 nếu có (danh sách trong course/audio/index.json),
 // không thì đọc bằng giọng máy en-US, chọn giọng tự nhiên nhất có sẵn.
 
@@ -110,9 +112,15 @@ export async function play(line, { slow = false } = {}) {
       const a = audioEl();
       let done = false;
       const ok = () => { if (!done) { done = true; resolve(); } };
-      const fail = () => { if (!done) { done = true; speak(line.text || line.en || '', rate).then(resolve); } };
+      const fail = (err) => {
+        if (done) return;
+        if (err && err.name === 'AbortError') { done = true; resolve(); return; } // bị câu khác chen ngang
+        const why = (err && err.name) || (a.error && ('mã ' + a.error.code)) || 'lỗi';
+        try { toast('Không phát được tiếng (' + why + '). Chạm vào trang rồi bấm nghe lại.', 4000); } catch (e) { /* ignore */ }
+        done = true; speak(line.text || line.en || '', rate).then(resolve);
+      };
       a.onended = ok;
-      a.onerror = fail;
+      a.onerror = () => fail();
       a.src = `course/audio/${fid}.mp3`;
       a.playbackRate = rate;
       a.defaultPlaybackRate = rate;
