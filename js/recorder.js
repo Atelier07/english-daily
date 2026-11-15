@@ -1,5 +1,6 @@
 // Ghi âm ngắn trong bộ nhớ (không lưu lâu dài) + đọc mẫu bằng giọng máy.
 import { toast } from './ui.js';
+import { audioEl, stop as stopAudio } from './audio.js';
 
 export function speakEn(text, rate = 0.85) {
   return new Promise((resolve) => {
@@ -48,10 +49,14 @@ export function createRecorder() {
     play() {
       return new Promise((resolve) => {
         if (!url) { resolve(); return; }
-        const a = new Audio(url);
+        stopAudio();
+        const a = audioEl();
         a.onended = () => resolve();
         a.onerror = () => resolve();
-        a.play().catch(() => resolve());
+        a.src = url;
+        a.playbackRate = 1; a.defaultPlaybackRate = 1;
+        const p = a.play();
+        if (p && p.catch) p.catch(() => resolve());
       });
     },
   };

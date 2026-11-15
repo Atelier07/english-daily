@@ -5,6 +5,39 @@ let manifest = null;      // Promise<{ids:Set, byText:Map}>
 let current = null;       // Audio đang phát
 let voice = null;
 
+// iPhone/Android chặn new Audio() phát sau await hoặc nối tiếp câu này sang câu khác
+// nếu không có chạm tay. Cách chữa: MỘT thẻ audio dùng chung, "mở khoá" ở lần chạm đầu,
+// sau đó đổi src thoải mái.
+const SILENT = 'data:audio/mpeg;base64,SUQzBAAAAAAAIlRTU0UAAAAOAAADTGF2ZjYwLjMuMTAwAAAAAAAAAAAAAAD/84TAAAAAAAAAAAAASW5mbwAAAA8AAAAHAAADYABVVVVVVVVVVVVVVVVVVXFxcXFxcXFxcXFxcXFxjo6Ojo6Ojo6Ojo6Ojo6qqqqqqqqqqqqqqqqqqqrHx8fHx8fHx8fHx8fHx+Pj4+Pj4+Pj4+Pj4+Pj//////////////////8AAAAATGF2YzYwLjMuAAAAAAAAAAAAAAAAJAQgAAAAAAAAA2DibpoWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/80TEAAAAA0gAAAAATEFNRTMuOTkuNVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVMQU1FMy7/80TEUwAAA0gAAAAAOTkuNVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVMQU1FMy7/80TEpgAAA0gAAAAAOTkuNVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVMQU1FMy7/80TErAAAA0gAAAAAOTkuNVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVMQU1FMy7/80TErAAAA0gAAAAAOTkuNVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVX/80TErAAAA0gAAAAAVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVX/80TErAAAA0gAAAAAVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVU=';
+let el = null;
+export function audioEl() {
+  if (!el && typeof Audio !== 'undefined') {
+    el = new Audio();
+    el.preload = 'auto';
+    el.setAttribute('playsinline', '');
+    try { el.preservesPitch = true; } catch (e) { /* ignore */ }
+  }
+  return el;
+}
+let unlocked = false;
+function unlock() {
+  if (unlocked) return;
+  const a = audioEl();
+  if (!a) return;
+  unlocked = true; // chỉ cần gọi play() một lần trong lúc chạm tay
+  if (!a.paused) return;
+  try {
+    a.src = SILENT;
+    const p = a.play();
+    if (p && p.catch) p.catch(() => {});
+  } catch (e) { /* ignore */ }
+  try { if (ttsSupported()) { const u = new SpeechSynthesisUtterance(' '); u.volume = 0; speechSynthesis.speak(u); } } catch (e) { /* ignore */ }
+}
+if (typeof window !== 'undefined') {
+  ['pointerdown', 'touchend', 'click', 'keydown'].forEach((ev) =>
+    window.addEventListener(ev, unlock, { capture: true, passive: true }));
+}
+
 const norm = (t) => String(t || '').replace(/’/g, "'").replace(/\s+/g, ' ').trim().toLowerCase();
 function loadManifest() {
   if (manifest) return manifest;
@@ -43,7 +76,7 @@ if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
 export const ttsSupported = () => typeof window !== 'undefined' && 'speechSynthesis' in window;
 
 export function stop() {
-  try { if (current) { current.pause(); current = null; } } catch (e) { /* ignore */ }
+  try { if (current) { current.onended = null; current.onerror = null; current.pause(); current = null; } } catch (e) { /* ignore */ }
   try { if (ttsSupported()) speechSynthesis.cancel(); } catch (e) { /* ignore */ }
 }
 
@@ -74,13 +107,18 @@ export async function play(line, { slow = false } = {}) {
   const fid = await mp3Id(line);
   if (fid) {
     return new Promise((resolve) => {
-      const a = new Audio(`course/audio/${fid}.mp3`);
-      a.preservesPitch = true;
+      const a = audioEl();
+      let done = false;
+      const ok = () => { if (!done) { done = true; resolve(); } };
+      const fail = () => { if (!done) { done = true; speak(line.text || line.en || '', rate).then(resolve); } };
+      a.onended = ok;
+      a.onerror = fail;
+      a.src = `course/audio/${fid}.mp3`;
       a.playbackRate = rate;
+      a.defaultPlaybackRate = rate;
       current = a;
-      a.onended = () => resolve();
-      a.onerror = () => { speak(line.text || line.en || '', rate).then(resolve); };
-      a.play().catch(() => speak(line.text || line.en || '', rate).then(resolve));
+      const p = a.play();
+      if (p && p.catch) p.catch(fail);
     });
   }
   return speak(line.text || line.en || '', rate);
