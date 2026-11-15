@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kiểm tra âm thanh</title>
+<style>
+body{font:16px/1.4 -apple-system,system-ui,sans-serif;margin:16px;background:#f4f1ea;color:#222}
+button{display:block;width:100%;margin:8px 0;padding:14px;font-size:17px;border:1px solid #6b7a4f;border-radius:10px;background:#fff}
+audio{width:100%;margin:8px 0}
+#log{white-space:pre-wrap;font:12px/1.35 ui-monospace,Menlo,monospace;background:#fff;padding:10px;border-radius:8px;margin-top:12px}
+</style></head><body>
+<h3>Kiểm tra âm thanh</h3>
+<p>Bấm lần lượt từng nút 1 → 5. Nút nào <b>nghe được</b> thì nhớ số. Xong chụp màn hình cả trang gửi Claude.</p>
+<p>1. Trình phát gốc của iPhone (bấm ▶):</p>
+<audio controls src="course/audio/d01e01.mp3"></audio>
+<button id="b2">2. Phát kiểu mới (new Audio)</button>
+<button id="b3">3. Phát qua app (audio.js)</button>
+<button id="b4">4. Giọng máy iPhone (speechSynthesis)</button>
+<button id="b5">5. Tiếng bíp (Web Audio)</button>
+<div id="log"></div>
+<script type="module">
+const L = document.getElementById('log');
+const log = (m) => { L.textContent += new Date().toISOString().slice(14, 23) + ' ' + m + '\n'; };
+log('UA: ' + navigator.userAgent);
+log('standalone (app màn hình chính): ' + (navigator.standalone === true));
+log('audioSession: ' + (navigator.audioSession ? navigator.audioSession.type : 'KHÔNG CÓ'));
+log('SW điều khiển: ' + !!(navigator.serviceWorker && navigator.serviceWorker.controller));
+try { const r = await fetch('sw.js', { cache: 'no-store' }); const t = await r.text(); log('sw trên web: ' + (t.match(/ed-v\d+/) || ['?'])[0]); } catch (e) { log('fetch sw lỗi ' + e); }
+const watch = (a, tag) => ['loadstart', 'loadedmetadata', 'canplay', 'play', 'playing', 'pause', 'ended', 'stalled', 'suspend', 'waiting', 'error'].forEach((ev) =>
+  a.addEventListener(ev, () => log(`${tag} ${ev}${ev === 'error' && a.error ? ' code=' + a.error.code + ' ' + (a.error.message || '') : ''}${ev === 'ended' || ev === 'pause' ? ' t=' + a.currentTime.toFixed(2) : ''} vol=${a.volume} muted=${a.muted}`)));
+watch(document.querySelector('audio'), '[1]');
+document.getElementById('b2').onclick = () => {
+  const a = new Audio('course/audio/d01e02.mp3'); watch(a, '[2]');
+  a.play().then(() => log('[2] play() OK')).catch((e) => log('[2] play() LỖI ' + e.name + ': ' + e.message));
+};
+let mod = null;
+import('./js/audio.js').then((m) => { mod = m; log('audio.js nạp OK'); }).catch((e) => log('audio.js LỖI ' + e));
+document.getElementById('b3').onclick = async () => {
+  if (!mod) { log('[3] audio.js chưa nạp'); return; }
+  const el = mod.audioEl(); if (!el._w) { watch(el, '[3]'); el._w = 1; }
+  log('[3] gọi play…'); await mod.play({ id: 'd01e03', text: 'test' }); log('[3] play xong, audioSession=' + (navigator.audioSession ? navigator.audioSession.type : '-'));
+};
+document.getElementById('b4').onclick = () => {
+  if (!('speechSynthesis' in window)) { log('[4] không có speechSynthesis'); return; }
+  const u = new SpeechSynthesisUtterance('Hello, can you hear me?'); u.lang = 'en-US';
+  u.onstart = () => log('[4] start'); u.onend = () => log('[4] end'); u.onerror = (e) => log('[4] error ' + e.error);
+  speechSynthesis.cancel(); speechSynthesis.speak(u); log('[4] voices=' + speechSynthesis.getVoices().length);
+};
+document.getElementById('b5').onclick = async () => {
+  try {
+    const C = window.AudioContext || window.webkitAudioContext; const c = new C(); await c.resume();
+    const o = c.createOscillator(); const g = c.createGain(); g.gain.value = 0.2; o.connect(g).connect(c.destination);
+    o.start(); o.stop(c.currentTime + 0.5); log('[5] state=' + c.state);
+  } catch (e) { log('[5] LỖI ' + e); }
+};
+window.addEventListener('error', (e) => log('JS LỖI ' + e.message));
+</script>
+</body></html>
